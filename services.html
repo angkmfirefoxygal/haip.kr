@@ -23,6 +23,8 @@
     .service-visual-label { font-size: 14px; font-weight: 600; color: var(--gray-3); letter-spacing: 0.05em; }
     .service-visual.blue .service-visual-label { color: rgba(255,255,255,0.5); }
     .service-visual.lime .service-visual-label { color: rgba(0,0,0,0.3); }
+    .award-badge { display: inline-flex; align-items: center; gap: 8px; background: #0425FF; color: #fff; font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 7px 14px; border-radius: 100px; margin-bottom: 20px; }
+    .award-badge-dot { width: 6px; height: 6px; background: #F3FF94; border-radius: 50%; flex-shrink: 0; }
     .process { padding: 100px 0; background: var(--gray-1); }
     .process-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; margin-top: 56px; }
     .process-step { padding: 0 28px; border-right: 1px solid var(--gray-2); }
@@ -131,9 +133,10 @@
       <div class="service-detail-grid">
         <div>
           <div class="service-num reveal">03</div>
+          <div class="award-badge reveal"><span class="award-badge-dot"></span>iF Design Award Laureate</div>
           <h2 class="reveal">UX/UI Design</h2>
-          <p class="reveal">사용자 중심으로 경험을 설계합니다. 리서치에서 시작해 와이어프레임, 프로토타입, 최종 디자인까지 체계적으로 진행합니다.</p>
-          <p class="reveal">감각적인 비주얼과 직관적인 사용성, 두 마리 토끼를 모두 잡습니다.</p>
+          <p class="reveal">국제 디자인 어워드 iF Design Award에서 수상한 검증된 UX/UI 역량. 사용자 리서치에서 출발해 와이어프레임, 프로토타입, 최종 디자인까지 한 팀이 일관되게 완성합니다.</p>
+          <p class="reveal">심미성과 사용성 — 타협하지 않고 둘 다 만듭니다.</p>
           <div class="service-tags reveal">
             <span class="tag">홈페이지 기획 및 설계</span>
             <span class="tag">UX 리서치 및 사용성 분석</span>
@@ -143,7 +146,7 @@
             <span class="tag">반응형 디자인 구현</span>
           </div>
         </div>
-        <div class="service-visual reveal reveal-delay-1" style="background: #F3FF94;">
+        <div class="service-visual reveal reveal-delay-1" style="background: #F3FF94; border: 0.3px solid rgba(197,202,208,1);">
           <img src="assets/images/service-uxui-design.png" alt="Web Marketing Visual" style="width:100%;height:100%;object-fit:cover;border-radius:20px;">
         </div>
       </div>
