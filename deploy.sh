@@ -5,6 +5,7 @@ set -e
 cd /var/www/haip
 
 echo "코드 가져오는 중..."
+sudo git reset --hard HEAD
 sudo git pull
 
 # CSS/JS 캐시 버스팅 — git hash로 버전 자동 갱신
