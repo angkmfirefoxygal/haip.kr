@@ -110,6 +110,9 @@ summary::-webkit-details-marker{display:none}
 .nav-in{display:flex;align-items:center;gap:var(--sp-xl);height:var(--nav-h);
   max-width:var(--max);margin:0 auto;padding-inline:var(--pad);position:relative}
 .logo{font-size:19px;font-weight:800;letter-spacing:-.03em;color:var(--ink);line-height:1.1}
+/* 로고 워드마크 — 단색(#0425FF) SVG. 네이비 푸터에서는 대비가 2.34:1 이라 흰색으로 반전한다. */
+.logo img{display:block;height:26px;width:auto}
+.foot .logo img{filter:brightness(0) invert(1)}
 .logo span{display:block;font-size:11px;font-weight:500;letter-spacing:.1em;color:var(--faint);margin-top:2px}
 .nav-menu{display:flex;align-items:center;gap:var(--sp-xs);margin-left:auto;align-self:stretch}
 .nav-link{
@@ -456,7 +459,7 @@ summary::-webkit-details-marker{display:none}
 <!-- ============ NAV ============ -->
 <nav class="nav">
   <div class="nav-in">
-    <a href="index.html" class="logo">HaiP<span>CATCH / KEEP / TRACK</span></a>
+    <a href="index.html" class="logo"><img src="assets/haip-logo.svg" alt="HaiP" width="157" height="79"><span>CATCH / KEEP / TRACK</span></a>
     <div class="nav-menu">
       <a href="index.html" class="nav-link">홈</a>
       <div class="has-sub">
@@ -551,7 +554,7 @@ summary::-webkit-details-marker{display:none}
 <footer class="foot">
   <div class="wrap">
     <div class="foot-in">
-      <a href="index.html" class="logo">HaiP<span>CATCH / KEEP / TRACK</span></a>
+      <a href="index.html" class="logo"><img src="assets/haip-logo.svg" alt="HaiP" width="157" height="79"><span>CATCH / KEEP / TRACK</span></a>
       <nav class="foot-nav">
         <a href="index.html">홈</a><a href="services.html">제작 안내</a><a href="insight.html">인사이트</a><a href="brand-story.html">일하는 방식</a><a href="contact.html">문의</a>
       </nav>

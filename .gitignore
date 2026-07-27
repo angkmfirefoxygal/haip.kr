@@ -3,3 +3,4 @@ CLAUDE.md
 design/
 _bk_*/
 .wrangler/
+.cf-dist/
