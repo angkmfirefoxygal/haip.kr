@@ -29,17 +29,194 @@
 <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css">
 <link rel="stylesheet" href="css/base.css">
 <link rel="stylesheet" href="css/index.css">
+<!-- @schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://haip.kr/#organization",
+      "name": "하입",
+      "alternateName": ["HaiP", "하입 HaiP"],
+      "url": "https://haip.kr/",
+      "logo": "https://haip.kr/assets/haip-logo.svg",
+      "image": "https://haip.kr/assets/og-image.jpg",
+      "description": "인터랙티브 이벤트 설계와 오프라인 캠페인 퍼포먼스 트래킹을 제공하는 서울 기반 스튜디오. 참여형 웹 콘텐츠 제작부터 방문객 ID 발급, 전환 측정, CRM 이관까지 담당합니다.",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "장충단로 6길 54, 5층",
+        "addressLocality": "중구",
+        "addressRegion": "서울특별시",
+        "addressCountry": "KR"
+      },
+      "founder": { "@type": "Person", "name": "김문원" },
+      "taxID": "579-22-02317",
+      "email": "haip.office@gmail.com",
+      "sameAs": ["https://www.instagram.com/studio.haip/"],
+      "knowsAbout": [
+        "인터랙티브 이벤트",
+        "브랜드 미니게임",
+        "팝업스토어 KPI",
+        "오프라인 어트리뷰션",
+        "퍼스트파티 데이터",
+        "게이미피케이션",
+        "체류시간 설계",
+        "개인정보 동의 설계",
+        "퍼포먼스 트래킹"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://haip.kr/#website",
+      "url": "https://haip.kr/",
+      "name": "하입 HaiP",
+      "publisher": { "@id": "https://haip.kr/#organization" },
+      "inLanguage": "ko-KR"
+    }
+  ]
+}
+</script>
+<!-- /@schema -->
+<!-- @page-schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "@id": "https://haip.kr/#faq",
+  "inLanguage": "ko-KR",
+  "publisher": {
+    "@id": "https://haip.kr/#organization"
+  },
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "브랜드 미니게임이란 무엇인가요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "브랜드 메시지를 게임 규칙 안에 심어 만드는 짧은 인터랙티브 게임입니다. 로고를 노출하는 대신 플레이 방식으로 브랜드를 전달합니다."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "제작 기간은 얼마나 걸리나요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "이벤트 게임은 1~2주, 커스텀 브랜드 미니게임은 3~5주, AI·AR을 결합한 콘텐츠는 4~6주 정도를 기준으로 안내드립니다. 정확한 일정은 요구사항 확인 후 확정됩니다."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "앱 설치가 필요한가요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "아니요. QR 한 번으로 진입하는 웹 기반 콘텐츠로 설계합니다. 앱 설치는 참여 장벽이 되므로 기본값에 넣지 않습니다."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "온라인 이벤트만 진행할 수도 있나요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "네. 오프라인 부스 없이 온라인 캠페인 단독으로도 진행합니다."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "오프라인 부스인데 어떻게 방문객을 ID로 추적하나요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "참여 시점에 방문객 ID를 발급하고, 기존 회원 시스템이 있다면 그 ID와 매칭합니다. 이후 서버 간 통신(S2S) 방식으로 구매·재방문 등의 이벤트를 같은 ID에 이어 붙여 추적합니다. 브라우저 쿠키에 의존하지 않기 때문에 오프라인 환경에서도 동작합니다."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "어떤 데이터를 수집할 수 있나요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "참여 로그, 체류시간, 완주 여부, 유입 경로(QR 위치·채널), 신규/기존 회원 여부, 이후 전환·재방문 데이터를 수집합니다. 수집 범위는 캠페인 목적과 동의 범위에 맞춰 조정합니다."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "수집된 데이터의 소유권은 누구에게 있나요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "수집된 데이터는 브랜드에 귀속됩니다. 캠페인 종료 시 리포트와 함께 원본 데이터·세그먼트를 이관합니다."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "개인정보 수집 동의는 어떻게 처리되나요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "국내 기준 옵트인(사전 동의) 방식으로 설계합니다. \"정보를 입력하세요\"가 아니라 \"결과를 받아가세요\"처럼 참여 흐름 안에서 자연스럽게 동의를 받는 지점을 함께 기획합니다."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "기존 CRM·CDP와 연동되나요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "네. 보유 중인 CRM·CDP 스펙을 확인한 뒤 연동 방식을 설계합니다. 별도 시스템이 없다면 저희 쪽 대시보드로 우선 운영 후 이관하는 방식도 가능합니다."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "매출 전환은 어떤 방식으로 매칭하나요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "참여 시 발급한 ID를 구매 시스템의 결제 데이터와 매칭합니다. 매칭 인정 기간(룩백 윈도우)은 사전에 협의해 설정합니다."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "대시보드는 캠페인 종료 후 얼마나 볼 수 있나요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "기본 제공 기간은 계약 조건에 따라 다르며, 데이터셋 자체는 이관되므로 자체 시스템에서 계속 활용하실 수 있습니다."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "현장 운영 인력도 지원되나요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "네. 콘텐츠 운영에 필요한 현장 인력 지원이 가능하며, 범위는 프로젝트별로 협의합니다."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "동시 접속이 몰릴 때 안정성은 어떻게 확보하나요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "예상 방문 규모를 사전에 파악해 서버 용량을 설계하고, 피크 시간대 대응 테스트를 거쳐 운영합니다."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "캠페인 중간에 콘텐츠를 수정할 수 있나요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "네. 실시간 모니터링 중 발견되는 이탈 지점이나 개선 요청사항은 운영 기간 중에도 반영합니다."
+      }
+    }
+  ]
+}
+</script>
+<!-- /@page-schema -->
 </head>
 <body>
 
 <!-- ============ NAV ============ -->
+<!-- @nav -->
 <nav class="nav">
   <div class="nav-in">
     <a href="index.html" class="logo"><img src="assets/haip-logo.svg" alt="HaiP" width="157" height="79"></a>
     <div class="nav-menu">
-      <a href="index.html" class="nav-link is-active">홈</a>
+      <a href="index.html" class="nav-link is-active" data-nav="index">홈</a>
       <div class="has-sub">
-        <a href="services.html" class="nav-link">서비스</a>
+        <a href="services.html" class="nav-link" data-nav="services">서비스</a>
         <div class="sub">
           <a href="services.html#process"><b>진행 방식 5단계</b><small>진단 → 기획 → 제작 → 운영 → 이관</small></a>
           <a href="services.html#types"><b>콘텐츠 유형 11가지</b><small>참여 흐름과 유형별로 남는 데이터</small></a>
@@ -49,7 +226,7 @@
         </div>
       </div>
       <div class="has-sub">
-        <a href="insight.html" class="nav-link">인사이트</a>
+        <a href="insight.html" class="nav-link" data-nav="insight">인사이트</a>
         <div class="sub">
           <a href="insight.html#glossary"><b>용어사전</b><small>마케팅·퍼포먼스·애드테크 필수 용어 74개</small></a>
           <a href="insight.html#guide"><b>가이드</b><small>KPI 설정, 체류시간 설계, 동의 확보 실무 해법</small></a>
@@ -60,6 +237,7 @@
     <a href="contact.html" class="nav-cta">문의하기</a>
   </div>
 </nav>
+<!-- /@nav -->
 
 <!-- ============ HERO ============ -->
 <header class="hero" id="top">
@@ -273,6 +451,7 @@
 </section>
 
 <!-- ============ FOOTER ============ -->
+<!-- @footer -->
 <footer class="foot">
   <div class="wrap">
     <div class="foot-in">
@@ -287,6 +466,7 @@
     </small>
   </div>
 </footer>
+<!-- /@footer -->
 
 <script src="js/main.js"></script>
 </body>

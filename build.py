@@ -98,12 +98,70 @@ def build_page(html):
         return m.group(1) + strip_js(m.group(2)) + m.group(3)
 
     html = re.sub(r'(<style[^>]*>)(.*?)(</style>)', do_style, html, flags=re.S)
-    html = re.sub(r'(<script(?![^>]*\bsrc=)[^>]*>)(.*?)(</script>)', do_script, html, flags=re.S)
+    # ld+json 은 건드리지 않는다. JSON 에는 주석이 없고, 잘못 훑으면 데이터가 깨진다.
+    html = re.sub(r'(<script(?![^>]*\bsrc=)(?![^>]*ld\+json)[^>]*>)(.*?)(</script>)',
+                  do_script, html, flags=re.S)
     html = re.sub(r'<!--(?!\[if).*?-->', '', html, flags=re.S)
     return tidy(html)
 
 
+ACTIVE = {'index': 'index', 'services': 'services', 'insight': 'insight'}
+PARTIALS = ('nav', 'footer', 'schema')
+
+
+def render_partial(name, page):
+    """partials/<name>.html 을 페이지에 맞게 렌더. nav 는 현재 메뉴에 is-active 를 붙인다."""
+    with open(os.path.join(SRC, 'partials', name + '.html'), encoding='utf-8') as f:
+        html = f.read().strip()
+    if name == 'nav':
+        key = ACTIVE.get(page)
+        if key:
+            html = html.replace('class="nav-link" data-nav="%s"' % key,
+                                'class="nav-link is-active" data-nav="%s"' % key)
+    return html
+
+
+def sync_partials(write):
+    """소스 HTML 의 <!-- @nav --> 구역을 partials 내용으로 맞춘다.
+    write=False 면 어긋난 파일 목록만 돌려준다 (빌드 시 검사용).
+
+    partials 를 원본으로 두고 소스에 써 넣는 방식이다. 소스 HTML 이 그대로 완결된
+    문서라서 file:// 로 바로 열어볼 수 있고, 동시에 nav/footer 의 출처는 한 곳이다."""
+    drift = []
+    for name in sorted(PAGES):
+        page = name[:-5]
+        path = os.path.join(SRC, name)
+        with open(path, encoding='utf-8') as f:
+            s = f.read()
+        out = s
+        for part in PARTIALS:
+            pat = re.compile(r'(<!-- @%s -->\n)(.*?)(\n<!-- /@%s -->)' % (part, part), re.S)
+            m = pat.search(out)
+            if not m:
+                continue
+            want = render_partial(part, page)
+            if m.group(2) != want:
+                out = out[:m.start(2)] + want + out[m.end(2):]
+        if out != s:
+            drift.append(name)
+            if write:
+                with open(path, 'w', encoding='utf-8', newline='\n') as f:
+                    f.write(out)
+    return drift
+
+
 def main():
+    if '--sync' in sys.argv:
+        changed = sync_partials(write=True)
+        print('partials 반영: ' + (', '.join(changed) if changed else '변경 없음'))
+        return 0
+
+    drift = sync_partials(write=False)
+    if drift:
+        print('오류: partials/ 와 소스 HTML 이 다릅니다 -> %s' % ', '.join(drift), file=sys.stderr)
+        print('      python build.py --sync 로 맞추세요.', file=sys.stderr)
+        return 1
+
     if os.path.isdir(DIST):
         shutil.rmtree(DIST)
     os.makedirs(DIST)

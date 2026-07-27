@@ -29,6 +29,684 @@
 <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css">
 <link rel="stylesheet" href="css/base.css">
 <link rel="stylesheet" href="css/insight.css">
+<!-- @schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://haip.kr/#organization",
+      "name": "하입",
+      "alternateName": ["HaiP", "하입 HaiP"],
+      "url": "https://haip.kr/",
+      "logo": "https://haip.kr/assets/haip-logo.svg",
+      "image": "https://haip.kr/assets/og-image.jpg",
+      "description": "인터랙티브 이벤트 설계와 오프라인 캠페인 퍼포먼스 트래킹을 제공하는 서울 기반 스튜디오. 참여형 웹 콘텐츠 제작부터 방문객 ID 발급, 전환 측정, CRM 이관까지 담당합니다.",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "장충단로 6길 54, 5층",
+        "addressLocality": "중구",
+        "addressRegion": "서울특별시",
+        "addressCountry": "KR"
+      },
+      "founder": { "@type": "Person", "name": "김문원" },
+      "taxID": "579-22-02317",
+      "email": "haip.office@gmail.com",
+      "sameAs": ["https://www.instagram.com/studio.haip/"],
+      "knowsAbout": [
+        "인터랙티브 이벤트",
+        "브랜드 미니게임",
+        "팝업스토어 KPI",
+        "오프라인 어트리뷰션",
+        "퍼스트파티 데이터",
+        "게이미피케이션",
+        "체류시간 설계",
+        "개인정보 동의 설계",
+        "퍼포먼스 트래킹"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://haip.kr/#website",
+      "url": "https://haip.kr/",
+      "name": "하입 HaiP",
+      "publisher": { "@id": "https://haip.kr/#organization" },
+      "inLanguage": "ko-KR"
+    }
+  ]
+}
+</script>
+<!-- /@schema -->
+<!-- @page-schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "DefinedTermSet",
+  "@id": "https://haip.kr/insight.html#termset",
+  "name": "마케팅·퍼포먼스·애드테크 용어사전",
+  "description": "인터랙티브 이벤트와 오프라인 성과 측정 실무에서 쓰이는 용어 74개",
+  "inLanguage": "ko-KR",
+  "publisher": {
+    "@id": "https://haip.kr/#organization"
+  },
+  "hasDefinedTerm": [
+    {
+      "@type": "DefinedTerm",
+      "name": "참여율",
+      "description": "부스를 방문한 사람 중 실제로 콘텐츠에 참여한 비율. CATCH 단계의 핵심 지표로, 이 숫자가 낮으면 진입 장벽이나 안내 동선을 먼저 봅니다.",
+      "inDefinedTermSet": "https://haip.kr/insight.html#glossary",
+      "alternateName": "Participation Rate",
+      "termCode": "g-a"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "QR 스캔율",
+      "description": "QR을 노출한 대비 실제 스캔된 비율. 오프라인에서 온라인의 클릭률을 대신하는 지표이며, 위치별로 나눠 보면 어느 동선이 작동하는지 드러납니다.",
+      "inDefinedTermSet": "https://haip.kr/insight.html#glossary",
+      "alternateName": "QR Scan Rate",
+      "termCode": "g-a"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "체류시간",
+      "description": "방문객이 한 공간·콘텐츠에 머문 시간. 부스에서는 온라인의 페이지뷰를 대신하는 가장 실용적인 지표로, 길어질수록 메시지 전달과 전환 확률이 함께 올라갑니다.",
+      "inDefinedTermSet": "https://haip.kr/insight.html#glossary",
+      "alternateName": "DT · Duration Time",
+      "termCode": "g-a"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "인게이지먼트",
+      "description": "방문객이 클릭·공유·참여 등 능동적으로 반응하는 정도. 단순 노출과 구분되는 개념으로, 체류시간·이탈률·순방문자 수로 측정합니다.",
+      "inDefinedTermSet": "https://haip.kr/insight.html#glossary",
+      "alternateName": "Engagement",
+      "termCode": "g-a"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "완주율",
+      "description": "게임이나 미션을 끝까지 완료한 참여자 비율. 콘텐츠 난이도를 조정하는 기준이 되며, 낮으면 보상 경로를 늘려 좌절 이탈을 막습니다.",
+      "inDefinedTermSet": "https://haip.kr/insight.html#glossary",
+      "alternateName": "Completion Rate",
+      "termCode": "g-a"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "재참여율",
+      "description": "같은 방문객이 이벤트에 두 번 이상 참여한 비율. 출석체크와 스탬프 투어의 성패를 판정하는 지표입니다.",
+      "inDefinedTermSet": "https://haip.kr/insight.html#glossary",
+      "alternateName": "Repeat Rate",
+      "termCode": "g-a"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "이탈률",
+      "description": "유입됐지만 아무 상호작용 없이 나간 비율. 부스에서는 입구까지 왔다가 돌아선 사람에 해당합니다.",
+      "inDefinedTermSet": "https://haip.kr/insight.html#glossary",
+      "alternateName": "Bounce Rate",
+      "termCode": "g-a"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "노출",
+      "description": "콘텐츠가 화면에 표시된 횟수. 사람 수가 아니라 표시 횟수라서, 같은 사람에게 세 번 보이면 3으로 집계됩니다.",
+      "inDefinedTermSet": "https://haip.kr/insight.html#glossary",
+      "alternateName": "Impression",
+      "termCode": "g-a"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "도달 · 빈도",
+      "description": "도달은 최소 1회 이상 본 순수 인원, 빈도는 1인당 평균 노출 횟수입니다. 노출 = 도달 × 빈도 관계가 성립합니다.",
+      "inDefinedTermSet": "https://haip.kr/insight.html#glossary",
+      "alternateName": "Reach · Frequency",
+      "termCode": "g-a"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "클릭률",
+      "description": "클릭 수 ÷ 노출 수 × 100. 소재가 얼마나 눈길을 끄는지 보는 지표로, 오프라인에서는 QR 스캔율이 같은 역할을 합니다.",
+      "inDefinedTermSet": "https://haip.kr/insight.html#glossary",
+      "alternateName": "CTR · Click Through Rate",
+      "termCode": "g-a"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "전환",
+      "description": "구매·회원가입·앱 설치 등 브랜드가 정의한 가치 있는 행동을 실제로 완료한 것. 무엇을 전환으로 볼지는 캠페인마다 다르게 정의합니다.",
+      "inDefinedTermSet": "https://haip.kr/insight.html#glossary",
+      "alternateName": "Conversion",
+      "termCode": "g-b"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "전환율",
+      "description": "전환 수 ÷ 모수 × 100. 분모를 참여자로 잡느냐 방문자로 잡느냐에 따라 숫자가 크게 달라지므로, 정의를 먼저 합의해야 합니다.",
+      "inDefinedTermSet": "https://haip.kr/insight.html#glossary",
+      "alternateName": "CVR · Conversion Rate",
+      "termCode": "g-b"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "퍼널",
+      "description": "노출에서 전환까지 단계별로 이탈하며 좁아지는 사용자 흐름. 어느 단계에서 가장 많이 빠지는지 찾는 것이 개선의 출발점입니다.",
+      "inDefinedTermSet": "https://haip.kr/insight.html#glossary",
+      "alternateName": "Funnel",
+      "termCode": "g-b"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "참여 단가",
+      "description": "성과 1건당 비용. 광고에서는 전환 1건 기준이고, 이벤트 캠페인에서는 참여자 1명 확보 비용으로 환산해 부스 효율을 비교할 수 있습니다.",
+      "inDefinedTermSet": "https://haip.kr/insight.html#glossary",
+      "alternateName": "CPA · Cost Per Action",
+      "termCode": "g-b"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "CPM",
+      "description": "노출 1,000회당 비용. 인지도 확보가 목적인 캠페인에서 주로 쓰는 과금 방식입니다.",
+      "inDefinedTermSet": "https://haip.kr/insight.html#glossary",
+      "alternateName": "Cost Per Mille",
+      "termCode": "g-b"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "CPC",
+      "description": "클릭 1회당 비용. 유입 자체를 사는 방식으로, 트래픽 확보형 캠페인의 기본 단위입니다.",
+      "inDefinedTermSet": "https://haip.kr/insight.html#glossary",
+      "alternateName": "Cost Per Click",
+      "termCode": "g-b"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "ROAS",
+      "description": "캠페인으로 발생한 매출 ÷ 투입 비용 × 100. 팝업 예산 승인 논의에서 가장 자주 요구되는 숫자입니다.",
+      "inDefinedTermSet": "https://haip.kr/insight.html#glossary",
+      "alternateName": "Return On Ad Spend",
+      "termCode": "g-b"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "ROI",
+      "description": "순이익 ÷ 총투자비용 × 100. ROAS가 매출 기준인 것과 달리 원가와 운영비까지 반영해 실제로 남았는지를 봅니다.",
+      "inDefinedTermSet": "https://haip.kr/insight.html#glossary",
+      "alternateName": "Return On Investment",
+      "termCode": "g-b"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "CAC",
+      "description": "신규 고객 1명 확보에 든 총비용. 팝업은 대관·제작·인건비를 모두 포함해야 실제 값이 나옵니다.",
+      "inDefinedTermSet": "https://haip.kr/insight.html#glossary",
+      "alternateName": "Customer Acquisition Cost",
+      "termCode": "g-b"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "LTV",
+      "description": "한 고객이 관계 기간 전체에 걸쳐 창출하는 가치. LTV가 CAC보다 커야 캠페인이 비용이 아니라 투자가 됩니다.",
+      "inDefinedTermSet": "https://haip.kr/insight.html#glossary",
+      "alternateName": "Life Time Value",
+      "termCode": "g-b"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "리텐션",
+      "description": "일정 기간 이탈하지 않고 남은 사용자 비율. 팝업 성과를 단기 매출이 아니라 관계의 지속으로 평가하는 지표입니다.",
+      "inDefinedTermSet": "https://haip.kr/insight.html#glossary",
+      "alternateName": "Retention · 잔존율",
+      "termCode": "g-b"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "코호트 분석",
+      "description": "같은 시점·조건을 공유한 집단을 묶어 이후 행동을 추적하는 분석. &#x27;이번 팝업 참여자&#x27;를 하나의 코호트로 놓고 재구매율을 봅니다.",
+      "inDefinedTermSet": "https://haip.kr/insight.html#glossary",
+      "alternateName": "Cohort Analysis",
+      "termCode": "g-b"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "AARRR",
+      "description": "획득·활성화·유지·추천·수익 5단계로 성장을 보는 프레임워크. 이벤트 캠페인은 주로 획득과 활성화 구간에 기여합니다.",
+      "inDefinedTermSet": "https://haip.kr/insight.html#glossary",
+      "alternateName": "해적 지표",
+      "termCode": "g-b"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "어트리뷰션",
+      "description": "여러 접점을 거쳐 전환에 이른 과정을 추적해, 어떤 접점이 성과에 기여했는지 판정하는 작업입니다.",
+      "inDefinedTermSet": "https://haip.kr/insight.html#glossary",
+      "alternateName": "Attribution",
+      "termCode": "g-c"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "오프라인 어트리뷰션",
+      "description": "오프라인 접점의 기여도를 온라인 성과와 이어 붙여 측정하는 것. 방문객을 식별할 수단이 없으면 성립하지 않으며, 부스 성과 측정이 가장 어려운 이유가 여기에 있습니다.",
+      "inDefinedTermSet": "https://haip.kr/insight.html#glossary",
+      "alternateName": "Offline Attribution",
+      "termCode": "g-c"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "기여 모델",
+      "description": "기여도를 배분하는 규칙. 마지막 접점에 전부 주는 라스트클릭, 첫 접점에 주는 퍼스트클릭, 여러 접점에 나누는 멀티터치 방식이 있습니다.",
+      "inDefinedTermSet": "https://haip.kr/insight.html#glossary",
+      "alternateName": "Attribution Model",
+      "termCode": "g-c"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "룩백 윈도우",
+      "description": "성과로 인정하는 기간. 7일로 설정하면 참여 후 7일 안의 구매만 캠페인 성과로 집계되며, 길게 잡을수록 성과가 커 보입니다.",
+      "inDefinedTermSet": "https://haip.kr/insight.html#glossary",
+      "alternateName": "Lookback Window",
+      "termCode": "g-c"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "클릭스루 · 뷰스루 전환",
+      "description": "클릭한 뒤 전환한 경우와, 클릭 없이 보기만 하고 나중에 전환한 경우. 오프라인 체험은 뷰스루에 가까워 측정이 까다롭습니다.",
+      "inDefinedTermSet": "https://haip.kr/insight.html#glossary",
+      "alternateName": "CTC · VTC",
+      "termCode": "g-c"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "인크리멘탈리티",
+      "description": "캠페인이 없었어도 어차피 발생했을 전환을 걷어내고, 순수하게 캠페인 때문에 늘어난 몫만 계산하는 접근입니다.",
+      "inDefinedTermSet": "https://haip.kr/insight.html#glossary",
+      "alternateName": "Incrementality · 증분 효과",
+      "termCode": "g-c"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "동선 분석 · 히트맵",
+      "description": "방문객이 공간 안에서 어디로 이동하고 어디에 머물렀는지 파악하는 것. 동선마다 다른 QR을 배치하면 별도 장비 없이도 근사치를 얻을 수 있습니다.",
+      "inDefinedTermSet": "https://haip.kr/insight.html#glossary",
+      "alternateName": "Traffic Flow · Heatmap",
+      "termCode": "g-c"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "O2O",
+      "description": "온라인과 오프라인 접점을 하나의 흐름으로 잇는 것. 같은 캠페인인데 데이터가 두 갈래로 쌓이는 문제를 통합 ID로 해결합니다.",
+      "inDefinedTermSet": "https://haip.kr/insight.html#glossary",
+      "alternateName": "Online to Offline",
+      "termCode": "g-c"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "S2S 트래킹",
+      "description": "브라우저 쿠키가 아니라 서버 간 통신으로 고유 ID를 주고받아 전환을 추적하는 방식. 쿠키 제약 환경과 오프라인에서 현실적인 대안입니다.",
+      "inDefinedTermSet": "https://haip.kr/insight.html#glossary",
+      "alternateName": "Server to Server",
+      "termCode": "g-c"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "UTM 파라미터",
+      "description": "링크 뒤에 붙여 유입 경로를 구분하는 태그. QR마다 다른 UTM을 심으면 어느 위치에서 몇 명이 들어왔는지 나눠 볼 수 있습니다.",
+      "inDefinedTermSet": "https://haip.kr/insight.html#glossary",
+      "alternateName": "UTM Parameter",
+      "termCode": "g-c"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "MMP",
+      "description": "앱 설치와 인앱 행동의 기여도를 중립적으로 측정하는 3자 솔루션. 캠페인이 앱 설치를 목표로 할 때 연동합니다.",
+      "inDefinedTermSet": "https://haip.kr/insight.html#glossary",
+      "alternateName": "Mobile Measurement Partner",
+      "termCode": "g-c"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "퍼스트파티 데이터",
+      "description": "브랜드가 자사 접점에서 직접, 동의를 받아 수집한 데이터. 정확도가 높고 규제 리스크가 낮아 가치가 큽니다. 오프라인 이벤트는 이를 확보하는 유력한 창구입니다.",
+      "inDefinedTermSet": "https://haip.kr/insight.html#glossary",
+      "alternateName": "1st Party Data",
+      "termCode": "g-d"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "세컨파티 데이터",
+      "description": "다른 기업의 퍼스트파티 데이터를 제휴·계약을 통해 넘겨받은 것. 협업 캠페인에서 파트너사와 교환하는 형태가 일반적입니다.",
+      "inDefinedTermSet": "https://haip.kr/insight.html#glossary",
+      "alternateName": "2nd Party Data",
+      "termCode": "g-d"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "서드파티 데이터",
+      "description": "직접 관계가 없는 외부 사업자가 여러 출처에서 모아 판매하는 데이터. 규모는 크지만 정확도와 적법성 검증이 과제입니다.",
+      "inDefinedTermSet": "https://haip.kr/insight.html#glossary",
+      "alternateName": "3rd Party Data",
+      "termCode": "g-d"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "서드파티 쿠키",
+      "description": "방문 중인 사이트가 아닌 외부 도메인이 심는 쿠키로, 사이트 간 추적과 리타깃팅의 기반이었습니다. 구글은 2020년부터 크롬에서 이를 없애겠다고 예고했으나 2025년 4월 계획을 사실상 철회해, 현재 크롬에서는 여전히 동작합니다.",
+      "inDefinedTermSet": "https://haip.kr/insight.html#glossary",
+      "alternateName": "3rd Party Cookie",
+      "termCode": "g-d"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "쿠키리스",
+      "description": "서드파티 쿠키 없이 마케팅을 운영하는 환경. 크롬은 철회했지만 사파리와 파이어폭스는 여전히 기본 차단이라, 전면적이지는 않아도 일부 트래픽에서는 이미 현실입니다.",
+      "inDefinedTermSet": "https://haip.kr/insight.html#glossary",
+      "alternateName": "Cookieless",
+      "termCode": "g-d"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "방문객 ID",
+      "description": "참여자를 식별하는 고유 키. 이것이 있어야 &#x27;이 사람이 나중에 구매했는가&#x27;를 이을 수 있고, 없으면 방문객은 영구히 익명으로 남습니다.",
+      "inDefinedTermSet": "https://haip.kr/insight.html#glossary",
+      "alternateName": "Visitor ID",
+      "termCode": "g-d"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "CDP",
+      "description": "흩어진 고객 데이터를 통합해 한 사람 단위의 프로필로 관리하는 도구. 퍼스트파티 데이터 중심이라는 점에서 DMP와 구분됩니다.",
+      "inDefinedTermSet": "https://haip.kr/insight.html#glossary",
+      "alternateName": "Customer Data Platform",
+      "termCode": "g-d"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "DMP",
+      "description": "익명 식별자 기반의 대규모 데이터를 모아 광고 타깃 세그먼트를 만드는 플랫폼. 주로 서드파티 데이터를 다룹니다.",
+      "inDefinedTermSet": "https://haip.kr/insight.html#glossary",
+      "alternateName": "Data Management Platform",
+      "termCode": "g-d"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "CRM",
+      "description": "확보한 고객과의 관계를 관리하고 재구매로 이어가는 체계. 이벤트에서 모은 데이터의 최종 목적지입니다.",
+      "inDefinedTermSet": "https://haip.kr/insight.html#glossary",
+      "alternateName": "Customer Relationship Management",
+      "termCode": "g-d"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "세그멘테이션",
+      "description": "고객을 공통 특성으로 나누는 작업. 참여한 게임 유형이나 결과값이 그 자체로 세그먼트 기준이 됩니다.",
+      "inDefinedTermSet": "https://haip.kr/insight.html#glossary",
+      "alternateName": "Segmentation",
+      "termCode": "g-d"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "옵트인 · 옵트아웃",
+      "description": "동의를 먼저 받고 처리하는 방식과, 수집 후 거부 의사를 밝히면 중지하는 방식. 국내 개인정보보호법은 옵트인이 원칙입니다.",
+      "inDefinedTermSet": "https://haip.kr/insight.html#glossary",
+      "alternateName": "Opt-in · Opt-out",
+      "termCode": "g-d"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "가명정보 · 비식별화",
+      "description": "추가 정보 없이는 특정 개인을 알아볼 수 없도록 처리한 데이터. 일정 조건에서 동의 없이 통계·연구 목적으로 활용할 수 있습니다.",
+      "inDefinedTermSet": "https://haip.kr/insight.html#glossary",
+      "alternateName": "Pseudonymization",
+      "termCode": "g-d"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "데이터 클린룸",
+      "description": "서로의 원본 데이터를 공개하지 않은 채 겹치는 부분만 분석할 수 있게 하는 보안 환경. 브랜드와 매체사 간 협업 측정에 쓰입니다.",
+      "inDefinedTermSet": "https://haip.kr/insight.html#glossary",
+      "alternateName": "Data Clean Room",
+      "termCode": "g-d"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "게이미피케이션",
+      "description": "게임이 아닌 영역에 게임의 규칙과 보상 구조를 접목해 자발적 참여를 끌어내는 기법입니다.",
+      "inDefinedTermSet": "https://haip.kr/insight.html#glossary",
+      "alternateName": "Gamification",
+      "termCode": "g-e"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "애드버게이밍",
+      "description": "광고 메시지 자체를 게임 콘텐츠로 만드는 방식. 배너처럼 노출하는 것이 아니라 직접 플레이하게 합니다.",
+      "inDefinedTermSet": "https://haip.kr/insight.html#glossary",
+      "alternateName": "Advergaming",
+      "termCode": "g-e"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "브랜드 미니게임",
+      "description": "브랜드 메시지를 게임 규칙 안에 심어 설계한 짧은 인터랙티브 게임. 로고 노출이 아니라 플레이 방식으로 브랜드를 전달합니다.",
+      "inDefinedTermSet": "https://haip.kr/insight.html#glossary",
+      "alternateName": "Branded Mini Game",
+      "termCode": "g-e"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "HTML5 인스턴트 게임",
+      "description": "앱 설치 없이 웹 브라우저에서 즉시 실행되는 게임. 오프라인 부스에서 진입장벽이 가장 낮은 포맷입니다.",
+      "inDefinedTermSet": "https://haip.kr/insight.html#glossary",
+      "alternateName": "Instant Game",
+      "termCode": "g-e"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "유형 테스트",
+      "description": "몇 개의 문항으로 참여자를 유형으로 분류해 결과를 보여주는 포맷. 결과가 개인화되어 공유 동기가 높고, 결과 수령 지점이 자연스러운 동의 획득 접점이 됩니다.",
+      "inDefinedTermSet": "https://haip.kr/insight.html#glossary",
+      "alternateName": "Type Test",
+      "termCode": "g-e"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "스탬프 투어",
+      "description": "여러 지점을 돌며 도장을 모으는 구조. 공간 전체로 동선을 확장시켜 체류시간을 늘리는 대표적인 장치입니다.",
+      "inDefinedTermSet": "https://haip.kr/insight.html#glossary",
+      "alternateName": "Stamp Tour",
+      "termCode": "g-e"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "출석체크",
+      "description": "기간 중 매일 방문하면 보상을 주는 구조. 단발성 참여를 반복 방문으로 바꾸는 리텐션 장치입니다.",
+      "inDefinedTermSet": "https://haip.kr/insight.html#glossary",
+      "alternateName": "Daily Check-in",
+      "termCode": "g-e"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "럭키드로우 · 래플",
+      "description": "응모 후 추첨으로 당첨자를 뽑는 방식. 참여 장벽이 가장 낮은 대신 체리피커가 몰릴 수 있어 다른 장치와 함께 설계합니다.",
+      "inDefinedTermSet": "https://haip.kr/insight.html#glossary",
+      "alternateName": "Lucky Draw · Raffle",
+      "termCode": "g-e"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "인증 이벤트",
+      "description": "구매 영수증이나 방문 사진 등을 인증하면 보상을 주는 구조. 참여를 실제 행동과 묶는다는 점에서 전환 연결이 쉽습니다.",
+      "inDefinedTermSet": "https://haip.kr/insight.html#glossary",
+      "alternateName": "Proof Event",
+      "termCode": "g-e"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "리퍼럴 · 추천코드",
+      "description": "기존 참여자가 새 참여자를 데려오면 양쪽에 보상을 주는 구조. 확산 효율은 바이럴 계수로 측정합니다.",
+      "inDefinedTermSet": "https://haip.kr/insight.html#glossary",
+      "alternateName": "Referral",
+      "termCode": "g-e"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "AR 필터",
+      "description": "카메라로 얼굴이나 공간을 인식해 가상 요소를 덧입히는 체험. 앱 설치 없이 웹에서 구동할 수 있고, 촬영물이 그대로 확산 소재가 됩니다.",
+      "inDefinedTermSet": "https://haip.kr/insight.html#glossary",
+      "alternateName": "AR Filter",
+      "termCode": "g-e"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "포토부스 · 키오스크",
+      "description": "현장에 설치해 촬영·출력·참여를 처리하는 장치. 브랜드 프레임과 AI·AR 연출을 결합하며, 데이터 수집이 가장 자연스럽게 일어나는 접점입니다.",
+      "inDefinedTermSet": "https://haip.kr/insight.html#glossary",
+      "alternateName": "Photo Booth · Kiosk",
+      "termCode": "g-e"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "플레이 앤 리딤",
+      "description": "플레이로 포인트를 얻고 쿠폰·할인으로 교환하는 구조. 게임을 매출 동선에 직접 연결합니다.",
+      "inDefinedTermSet": "https://haip.kr/insight.html#glossary",
+      "alternateName": "Play and Redeem",
+      "termCode": "g-e"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "바이럴 계수",
+      "description": "참여자 1명이 새로 데려오는 참여자 수. 1을 넘으면 자체 확산이 일어나며, 추천코드·공유 이벤트의 성패를 판정합니다.",
+      "inDefinedTermSet": "https://haip.kr/insight.html#glossary",
+      "alternateName": "K-factor",
+      "termCode": "g-e"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "인증샷 · UGC",
+      "description": "방문객이 직접 만들어 확산시키는 콘텐츠. 포토부스와 AR 필터의 실질적인 성과물입니다.",
+      "inDefinedTermSet": "https://haip.kr/insight.html#glossary",
+      "alternateName": "User Generated Content",
+      "termCode": "g-e"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "체리피커",
+      "description": "참여하기 쉬운 이벤트에만 반응하고 구매까지는 가지 않는 사용자. 참여 수만 KPI로 잡으면 이들만 모입니다.",
+      "inDefinedTermSet": "https://haip.kr/insight.html#glossary",
+      "alternateName": "Cherry Picker",
+      "termCode": "g-e"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "DSP",
+      "description": "광고주 쪽에서 여러 매체의 지면을 한 번에 사들이고 타깃·입찰을 관리하는 플랫폼입니다.",
+      "inDefinedTermSet": "https://haip.kr/insight.html#glossary",
+      "alternateName": "Demand Side Platform",
+      "termCode": "g-f"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "SSP",
+      "description": "매체사 쪽에서 보유한 광고 지면을 최적의 가격에 판매하도록 돕는 플랫폼입니다.",
+      "inDefinedTermSet": "https://haip.kr/insight.html#glossary",
+      "alternateName": "Supply Side Platform",
+      "termCode": "g-f"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "애드 익스체인지",
+      "description": "DSP와 SSP가 만나 광고 지면이 실시간으로 거래되는 마켓플레이스입니다.",
+      "inDefinedTermSet": "https://haip.kr/insight.html#glossary",
+      "alternateName": "Ad Exchange",
+      "termCode": "g-f"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "애드 네트워크",
+      "description": "여러 매체의 지면을 묶어 패키지로 판매하는 중개 사업자. 애드 익스체인지 이전 세대의 거래 방식입니다.",
+      "inDefinedTermSet": "https://haip.kr/insight.html#glossary",
+      "alternateName": "Ad Network",
+      "termCode": "g-f"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "RTB",
+      "description": "이용자가 페이지를 여는 순간 밀리초 단위로 경매가 열려 노출 1건이 낙찰되는 실시간 입찰 방식입니다.",
+      "inDefinedTermSet": "https://haip.kr/insight.html#glossary",
+      "alternateName": "Real Time Bidding",
+      "termCode": "g-f"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "프로그래매틱 바잉",
+      "description": "사람의 협상이 아니라 시스템이 자동으로 광고를 사고파는 것. RTB가 대표적인 형태입니다.",
+      "inDefinedTermSet": "https://haip.kr/insight.html#glossary",
+      "alternateName": "Programmatic Buying",
+      "termCode": "g-f"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "인벤토리",
+      "description": "매체가 보유한 광고 노출 공간. 오프라인에서는 부스의 동선과 접점이 같은 역할을 합니다.",
+      "inDefinedTermSet": "https://haip.kr/insight.html#glossary",
+      "alternateName": "Inventory · 지면",
+      "termCode": "g-f"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "리타깃팅",
+      "description": "이미 관심을 보인 사용자에게 다시 광고를 노출하는 기법. 이벤트 참여자 데이터가 여기서 모수가 됩니다.",
+      "inDefinedTermSet": "https://haip.kr/insight.html#glossary",
+      "alternateName": "Retargeting · 리마케팅",
+      "termCode": "g-f"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "룩얼라이크 타깃팅",
+      "description": "기존 우수 고객과 특성이 닮은 신규 집단을 찾아 타깃하는 방식. 시드 데이터의 품질이 성패를 가릅니다.",
+      "inDefinedTermSet": "https://haip.kr/insight.html#glossary",
+      "alternateName": "Lookalike Targeting",
+      "termCode": "g-f"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "리테일 미디어",
+      "description": "유통사가 보유한 구매 데이터와 지면을 광고 상품으로 파는 영역. 구매 직전 접점이라 전환율이 높습니다.",
+      "inDefinedTermSet": "https://haip.kr/insight.html#glossary",
+      "alternateName": "Retail Media",
+      "termCode": "g-f"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "브랜드 세이프티",
+      "description": "브랜드 이미지를 해칠 수 있는 콘텐츠 옆에 광고가 노출되지 않도록 관리하는 장치입니다.",
+      "inDefinedTermSet": "https://haip.kr/insight.html#glossary",
+      "alternateName": "Brand Safety",
+      "termCode": "g-f"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "홈",
+      "item": "https://haip.kr/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "인사이트",
+      "item": "https://haip.kr/insight.html"
+    }
+  ]
+}
+</script>
+<!-- /@page-schema -->
 </head>
 <body>
 
@@ -165,13 +843,14 @@
   </symbol>
 </svg>
 
+<!-- @nav -->
 <nav class="nav">
   <div class="nav-in">
     <a href="index.html" class="logo"><img src="assets/haip-logo.svg" alt="HaiP" width="157" height="79"></a>
     <div class="nav-menu">
-      <a href="index.html" class="nav-link">홈</a>
+      <a href="index.html" class="nav-link" data-nav="index">홈</a>
       <div class="has-sub">
-        <a href="services.html" class="nav-link">서비스</a>
+        <a href="services.html" class="nav-link" data-nav="services">서비스</a>
         <div class="sub">
           <a href="services.html#process"><b>진행 방식 5단계</b><small>진단 → 기획 → 제작 → 운영 → 이관</small></a>
           <a href="services.html#types"><b>콘텐츠 유형 11가지</b><small>참여 흐름과 유형별로 남는 데이터</small></a>
@@ -181,7 +860,7 @@
         </div>
       </div>
       <div class="has-sub">
-        <a href="insight.html" class="nav-link is-active">인사이트</a>
+        <a href="insight.html" class="nav-link is-active" data-nav="insight">인사이트</a>
         <div class="sub">
           <a href="insight.html#glossary"><b>용어사전</b><small>마케팅·퍼포먼스·애드테크 필수 용어 74개</small></a>
           <a href="insight.html#guide"><b>가이드</b><small>KPI 설정, 체류시간 설계, 동의 확보 실무 해법</small></a>
@@ -192,6 +871,7 @@
     <a href="contact.html" class="nav-cta">문의하기</a>
   </div>
 </nav>
+<!-- /@nav -->
 
 <header class="ins-hero">
   <div class="wrap">
@@ -1864,6 +2544,7 @@
   </main>
 </div>
 
+<!-- @footer -->
 <footer class="foot">
   <div class="wrap">
     <div class="foot-in">
@@ -1874,10 +2555,11 @@
     </div>
     <small>
       하입(HaiP) &nbsp;·&nbsp; 대표 김문원 &nbsp;·&nbsp; 사업자등록번호 579-22-02317<br>서울특별시 중구 장충단로 6길 54, 5층<br>
-      © 2026 HaiP. All rights reserved. 
+      © 2026 HaiP. All rights reserved.
     </small>
   </div>
 </footer>
+<!-- /@footer -->
 
 <script src="js/main.js"></script>
 <script src="js/insight.js"></script>
