@@ -2,3 +2,4 @@ CLAUDE.md
 .DS_Store
 design/
 _bk_*/
+.wrangler/
