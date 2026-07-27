@@ -1,19 +1,21 @@
 #!/bin/bash
 # EC2에서 실행: bash deploy.sh
+#
+# v2 브랜치를 웹 루트에 그대로 반영한다.
+# (v1 과 달리 외부 css/js 파일이 없고 모든 스타일·스크립트가 HTML 안에 있어
+#  캐시 버스팅 치환 단계가 필요 없다.)
 set -e
 
+BRANCH="${1:-v2}"
 cd /var/www/haip
 
-echo "코드 가져오는 중..."
-sudo git reset --hard HEAD
-sudo git pull
+echo "코드 가져오는 중... (브랜치: $BRANCH)"
+sudo git fetch origin "$BRANCH"
+sudo git checkout "$BRANCH"
+sudo git reset --hard "origin/$BRANCH"
+sudo git clean -fd            # 이전 버전에 있던 css/ js/ 등 잔여 파일 제거
 
-# CSS/JS 캐시 버스팅 — git hash로 버전 자동 갱신
-VER=$(git rev-parse --short HEAD)
-for f in index.html services.html insight.html brand-story.html contact.html; do
-  [ -f "$f" ] && sudo sed -i "s/style\.css?v=[^\"']*/style.css?v=$VER/g; s/main\.js?v=[^\"']*/main.js?v=$VER/g" "$f"
-done
-echo "캐시 버전: $VER"
+echo "현재 커밋: $(git rev-parse --short HEAD)"
 
 echo "Nginx 설정 확인 중..."
 sudo nginx -t
