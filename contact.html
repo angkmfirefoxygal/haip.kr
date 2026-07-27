@@ -26,7 +26,7 @@
 <meta name="twitter:description" content="캠페인이 끝난 뒤에 남는 것을 만듭니다. 프로젝트 유형과 진행 시기만 알려주셔도 됩니다.">
 <meta name="twitter:image" content="https://haip.kr/assets/og-image.jpg">
 <link rel="preconnect" href="https://cdn.jsdelivr.net">
-<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css">
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <link rel="stylesheet" href="css/base.css">
 <link rel="stylesheet" href="css/contact.css">
 
@@ -181,6 +181,10 @@
           </div>
 
           <div class="field"><label for="ms">프로젝트 내용 <span class="required">*</span></label><textarea id="ms" name="프로젝트내용" required placeholder="목적, 예상 방문 규모, 참고 사례 등 자유롭게"></textarea></div>
+
+          <div class="field"><label for="src">어떻게 알게 되셨나요</label>
+              <select id="src" name="유입경로"><option value="">선택</option><option>검색 (구글 · 네이버)</option><option>AI 검색 (ChatGPT · Perplexity 등)</option><option>추천 · 소개</option><option>인스타그램</option><option>기고 · 기사</option><option>기타</option></select>
+          </div>
 
           <label class="consent"><input type="checkbox" id="consent" name="개인정보동의" value="동의" required><span>개인정보 수집·이용에 동의합니다. <u>전문 보기</u></span></label>
 

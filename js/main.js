@@ -9,6 +9,12 @@
     var v = document.querySelector('.hero-video');
     if(!v) return;
     if(reduce){ v.pause(); v.removeAttribute('autoplay'); return; }
+    /* 영상은 1.6MB다. 데이터 절약 모드나 저속 회선에서는 받지 않고
+       --ink 배경만 남긴다. 레이아웃은 그대로이고 LCP 요소도 영상이 아니다. */
+    var conn = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+    if(conn && (conn.saveData || /^(slow-)?2g$|^3g$/.test(conn.effectiveType || ''))){
+      v.removeAttribute('autoplay'); v.removeAttribute('src'); v.load(); return;
+    }
     /* 일부 브라우저는 autoplay 속성만으로 재생을 시작하지 않으므로 명시적으로 한 번 더 시도한다.
        실패하면(정책·저전력 모드 등) 영상 없이 --ink 배경만 남고 레이아웃은 그대로다. */
     var go = function(){ var r = v.play(); if(r && r.catch) r.catch(function(){}); };
