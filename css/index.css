@@ -1,0 +1,262 @@
+/* index.html 고유 스타일 — 공용은 base.css */
+/* ============================================================
+   Buzzvil design tokens
+   ============================================================ */
+
+summary{cursor:pointer;list-style:none}
+summary::-webkit-details-marker{display:none}
+.sec{padding:var(--sp-section) 0}
+
+/* bands */
+.band-surface{background:var(--surface)}
+.band-navy{background:var(--ink);color:var(--canvas)}
+
+/* ---------- type roles ---------- */
+.eyebrow{
+  font-size:12px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--muted-alt);margin:0 0 var(--sp-base);
+}
+.sec-h{
+  font-size:clamp(27px,3.8vw,48px);font-weight:700;line-height:1.2;
+  letter-spacing:-.02em;margin:0 0 var(--sp-lg);color:inherit;
+}
+.sec-lead{
+  font-size:clamp(17px,1.7vw,24px);font-weight:400;line-height:1.31;
+  color:var(--body);max-width:60ch;margin:0 0 var(--sp-xxl);
+}
+/* 가운데 정렬 섹션 헤더 — .sec-lead 는 max-width 가 있어 블록 자체도 가운데로 보낸다 */
+.sec-head-c{text-align:center}
+.sec-head-c .eyebrow{color:var(--point)}
+.sec-head-c .sec-lead{margin-inline:auto;margin-bottom:calc(var(--sp-xxl) * 3)}
+.sec-head-c .sec-h:last-child{margin-bottom:0}/* ============================================================
+   NAV — sticky white, 75px, hairline base
+   ============================================================ */
+
+.nav-link.is-active{color:var(--ink)}/* ============================================================
+   HERO — navy band, 78px ExtraBold, slate stat cards
+   ============================================================ */
+
+/* 히어로 — 배경 영상 + 중앙 타이틀 이미지. 색상 레이어(스크림) 없음. */
+.hero{position:relative;isolation:isolate;overflow:hidden;
+  background:var(--ink);color:var(--canvas);
+  min-height:clamp(420px,62vh,720px);
+  display:flex;align-items:center;justify-content:center;
+  padding:var(--sp-section) var(--pad)}
+/* 배경 영상 — 무한 루프. 영상이 없거나 아직 로드되지 않았을 때는 --ink 배경이 그대로 보인다. */
+/* 영상은 별도 합성 레이어라, 소수점 크기(예: DPR 1.25 · 폭 1366px)에서 반올림 때문에
+   컨테이너를 1px 못 덮고 뒤의 --ink 가 검은 선으로 비친다.
+   1px 씩 넘치게 두고 .hero 의 overflow:hidden 으로 잘라 이음매를 없앤다. */
+.hero-video{position:absolute;top:-1px;left:-1px;
+  width:calc(100% + 2px);height:calc(100% + 2px);object-fit:cover;
+  z-index:0;pointer-events:none;border:0}
+/* 타이틀 이미지 + 하단 문구를 한 블록으로 묶어 중앙 정렬 */
+.hero-block{position:relative;z-index:2;width:min(736px,86vw)}
+/* 타이틀 이미지 (h1 안에 두어 문서 구조상 제목을 유지한다) */
+.hero .hero-title{margin:0;line-height:0;width:100%}
+.hero .hero-title img{display:block;width:100%;height:auto}
+/* 하단 문구 — Pretendard Light(300), 자간 -7%, 검정.
+   padding-left 4.76% 는 타이틀 이미지에서 글자('W')가 시작하는 x=35/736 지점과 맞춘 값이다.
+   (이미지 맨 왼쪽 10px 은 세로 막대) */
+.hero .hero-lead{
+  margin:clamp(20px,2.4vw,32px) 0 0;
+  padding-left:4.76%;
+  color:var(--black);
+  font-weight:300;
+  letter-spacing:-.07em;
+  font-size:clamp(16px,1.7vw,22px);
+  line-height:1.55;
+}
+.hero>.wrap{position:relative;z-index:2}/* ============================================================
+   로고 캐러셀 — 히어로 바로 아래
+   로고가 4개뿐이라 가로 전체에 깔지 않고 좁은 폭으로 가운데 두고,
+   그 안에서만 흐르게 한다. 양옆은 흰색 그라디언트로 끊어 준다.
+   ============================================================ */
+
+.logos{padding:clamp(24px,3vw,36px) var(--pad);background:var(--canvas)}
+.logos-mask{position:relative;overflow:hidden;width:min(560px,100%);margin-inline:auto}
+/* 좌우 페이드 — 섹션 배경(흰색)과 같은 색에서 투명으로 */
+.logos-mask::before,
+.logos-mask::after{
+  content:"";position:absolute;top:0;bottom:0;width:15%;z-index:2;pointer-events:none}
+.logos-mask::before{left:0;background:linear-gradient(90deg,var(--canvas),transparent)}
+.logos-mask::after{right:0;background:linear-gradient(270deg,var(--canvas),transparent)}
+/* 트랙에 같은 목록을 두 벌 넣고 -50% 까지 밀어 이음매 없이 순환시킨다 */
+.logos-track{
+  display:flex;align-items:center;gap:var(--logo-gap,56px);
+  width:max-content;margin:0;padding:0;list-style:none;
+  animation:logo-marquee 22s linear infinite}
+.logos-mask:hover .logos-track{animation-play-state:paused}
+.logos-track img{display:block;height:28px;width:auto}
+/* 두 벌 중 한 벌 + 그 뒤 간격 하나만큼 밀면 원위치와 겹친다.
+   -50% 는 간격이 홀수 개(7개) 끼어 있어 반 칸 모자라므로 gap/2 를 더 뺀다. */
+@keyframes logo-marquee{
+  from{transform:translateX(0)}
+  to{transform:translateX(calc(-50% - var(--logo-gap,56px) / 2))}
+}
+@media(max-width:640px){
+  .logos{--logo-gap:36px}
+  .logos-track img{height:22px}
+}
+/* 모션 최소화 — 흐르지 않으므로 한 벌만 보여주고 넘치면 직접 스크롤하게 둔다 */
+@media(prefers-reduced-motion:reduce){
+  .logos-track{animation:none;overflow-x:auto;max-width:100%;scrollbar-width:none}
+  .logos-track::-webkit-scrollbar{display:none}
+  .logos-track li[aria-hidden="true"]{display:none}
+}
+
+.hero h1,
+.verb-block{
+  font-size:clamp(38px,6.4vw,78px);font-weight:800;line-height:1.19;
+  letter-spacing:-.03em;margin:0 0 var(--sp-lg);color:var(--canvas);
+}
+.hero-copy p+p{margin-top:var(--sp-sm);color:var(--faint)}
+
+/* buttons per token spec */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;
+  height:55px;padding:var(--sp-base) var(--sp-xl);
+  font-size:20px;font-weight:400;border-radius:var(--r-md);
+  background:var(--surface);color:var(--body);border:1px solid var(--surface);
+  transition:background .15s,color .15s;cursor:pointer;
+}
+.btn:hover{background:var(--hairline);border-color:var(--hairline)}
+.btn-primary{
+  display:inline-flex;align-items:center;justify-content:center;
+  height:55px;padding:var(--sp-base) var(--sp-xl);
+  background:var(--point);color:var(--on-primary);border:1px solid var(--point);
+  font-size:20px;font-weight:400;border-radius:var(--r-md);cursor:pointer;
+  font-family:var(--font);transition:filter .15s;
+}
+.btn-primary:hover{filter:brightness(.92)}/* ============================================================
+   핵심사업 — 대분류 3 × 하위 3 (feature cards, 32px)
+   ============================================================ */
+
+.core-block{padding:var(--sp-xxl) 0}
+.core-block+.core-block{border-top:1px solid var(--hairline)}
+.core-num{font-size:12px;font-weight:500;letter-spacing:.12em;color:var(--faint);margin:0 0 var(--sp-md)}
+.core-h{font-size:clamp(24px,3.2vw,40px);font-weight:700;line-height:1.2;letter-spacing:-.025em;margin:0;color:var(--ink)}
+.core-desc{font-size:clamp(16px,1.5vw,20px);font-weight:400;line-height:1.5;color:var(--body);margin:0;padding-top:var(--sp-xs)}
+/* 홈에서는 축(대분류)만 요약한다. 구체적인 유형·흐름·기간은 제작 안내의 비교 표가 담당한다. */
+.core-tags{display:flex;flex-wrap:wrap;gap:var(--sp-sm);margin:0;padding:0;list-style:none}
+/* 핵심사업 — 3열. 각 열은 라벨 → 제목 → 썸네일 → 설명 → 태그 순으로 쌓는다. */
+/* 열 폭을 정확히 3등분하기 위해 좌우 패딩 대신 gap 을 쓰고,
+   구분선은 gap 한가운데에 그린다. (패딩 방식은 가운데 열만 좁아진다) */
+.core-grid{--core-gap:clamp(24px,4vw,56px);
+  display:grid;grid-template-columns:repeat(3,1fr);gap:var(--core-gap)}
+.core-col{position:relative}
+.core-col+.core-col::before{content:"";position:absolute;top:0;bottom:0;
+  left:calc(var(--core-gap) / -2);border-left:1px solid var(--hairline)}
+.core-grid .core-num{margin:0 0 var(--sp-sm)}
+.core-grid .core-h{font-size:clamp(20px,2.2vw,28px);margin:0}
+/* 썸네일은 16:10 고정. 어떤 비율의 이미지를 넣어도 cover 로 맞춰 3열이 어긋나지 않는다. */
+.core-thumb{margin:var(--sp-lg) 0;border-radius:var(--r-lg);overflow:hidden;
+  background:var(--surface);aspect-ratio:740/444}
+.core-thumb img{display:block;width:100%;height:100%;object-fit:cover}
+.core-grid .core-desc{font-size:clamp(15px,1.2vw,17px);padding-top:0;margin:0 0 var(--sp-lg)}
+.core-tags li{font-size:14px;font-weight:500;color:var(--body);
+  background:var(--surface);border-radius:var(--r-full);padding:8px var(--sp-base)}
+@media(max-width:900px){
+  /* 좁아지면 세로로 쌓고 구분선을 가로로 바꾼다 */
+  .core-grid{grid-template-columns:1fr;gap:0}
+  .core-col+.core-col::before{content:none}
+  .core-col+.core-col{border-top:1px solid var(--hairline);
+    margin-top:var(--sp-xl);padding-top:var(--sp-xl)}
+}/* ============================================================
+   INSIGHT cards / posts
+   ============================================================ */
+
+.posts{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--sp-base)}
+.post{background:var(--canvas);border:1px solid var(--hairline);border-radius:var(--r-xl);
+  padding:var(--sp-xl);display:flex;flex-direction:column;transition:border-color .15s}
+.post:hover{border-color:var(--faint-alt)}
+.post-cat{font-size:12px;font-weight:500;letter-spacing:.1em;color:var(--point);margin:0 0 var(--sp-base)}
+.post h3{font-size:clamp(18px,2vw,24px);font-weight:700;line-height:1.3;letter-spacing:-.015em;
+  margin:0 0 var(--sp-md);color:var(--ink)}
+/* .post-cat(0,1,0) 이 이 규칙(0,1,1)에 눌려 12px 캡션이 16px 본문색으로 렌더되던 문제 */
+.post p:not(.post-cat){margin:0 0 var(--sp-lg);font-size:16px;line-height:1.5;color:var(--body)}
+.post-more{margin-top:auto;font-size:14px;font-weight:600;color:var(--muted)}/* ============================================================
+   CTA / CONTACT
+   ============================================================ */
+
+.cta-h{font-size:clamp(28px,4.6vw,56px);font-weight:700;line-height:1.2;letter-spacing:-.03em;
+  margin:0 0 var(--sp-lg);max-width:24ch;color:var(--canvas)}
+.cta-h b{color:var(--point-lift);font-weight:inherit}
+.cta-note{font-size:16px;line-height:1.6;color:var(--faint-alt);margin:0 0 var(--sp-xl)}
+.field input,
+.field select,
+.field textarea{
+  width:100%;font-family:var(--font);font-size:16px;padding:var(--sp-base);
+  background:var(--slate);border:1px solid rgba(242,245,247,.16);color:var(--canvas);
+  border-radius:var(--r-md);
+}
+.field input::placeholder,
+.field textarea::placeholder{color:var(--faint)}/* ============================================================
+   FOOTER
+   ============================================================ */
+
+.faq-group{margin-bottom:var(--sp-lg)}
+.faq-cat-h{font-size:12px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--faint);margin:0 0 var(--sp-md);padding-left:var(--sp-lg)}
+.faq{display:grid;gap:var(--sp-sm)}
+.faq-item{background:var(--surface);border-radius:var(--r-lg);overflow:hidden;transition:background .15s}
+.faq-item:hover{background:var(--hairline)}
+.faq-item[open]{background:var(--surface)}
+.faq-q{
+  width:100%;text-align:left;background:none;border:none;cursor:pointer;
+  display:flex;justify-content:space-between;align-items:center;gap:var(--sp-base);
+  padding:var(--sp-lg);font-family:var(--font);
+  font-size:clamp(16px,1.7vw,18px);font-weight:600;color:var(--ink);line-height:1.45;
+}
+.faq-plus{
+  flex:0 0 auto;width:24px;height:24px;position:relative;transition:transform .22s ease;
+}
+.faq-plus::before,
+.faq-plus::after{
+  content:"";position:absolute;left:50%;top:50%;background:var(--muted);border-radius:1px;
+}
+.faq-plus::before{width:13px;height:1.5px;transform:translate(-50%,-50%)}
+.faq-plus::after{width:1.5px;height:13px;transform:translate(-50%,-50%)}
+.faq-item[open] .faq-plus{transform:rotate(135deg)}
+.faq-a{margin:0;padding:0 var(--sp-lg) var(--sp-lg);font-size:16px;line-height:1.65;color:var(--body)}
+
+@media(max-width:900px){
+  .faq-cat-h{padding-left:0}
+}/* ============================================================
+   REVEAL
+   ============================================================ */
+
+.rv{opacity:0;transform:translateY(16px);
+  transition:opacity .55s cubic-bezier(.2,.7,.3,1),transform .55s cubic-bezier(.2,.7,.3,1)}
+.rv.in{opacity:1;transform:none}/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+
+@media(max-width:1024px){
+  .probs,
+.posts,
+.pipe,
+.dash-grid,
+.hero-stats,
+.core-cards{grid-template-columns:1fr 1fr}
+  .stat-hero,
+.cta-grid,
+.core-head{grid-template-columns:1fr;gap:var(--sp-lg)}
+}
+@media(max-width:640px){
+  .nav-in .logo{flex:none}
+  .nav-menu::-webkit-scrollbar{display:none}
+  .probs,
+.posts,
+.pipe,
+.dash-grid,
+.hero-stats,
+.core-cards,
+.fr{grid-template-columns:1fr}
+  .btn,
+.btn-primary{width:100%;font-size:18px}
+}
+@media(prefers-reduced-motion:reduce){
+  .rv{opacity:1;transform:none}
+  /* 모션을 줄이도록 설정한 사용자에게는 배경 영상을 재생하지 않고 --ink 배경만 남긴다 */
+  .hero-video{display:none}
+}

@@ -5,441 +5,30 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>인사이트 — HaiP</title>
 <meta name="description" content="마케팅·애드테크 용어사전 74개, 실무 가이드, 브랜드 사례집. 인터랙티브 이벤트와 오프라인 성과 측정에 관해 현장에서 쌓인 것들을 정리합니다.">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="assets/favicon.ico" sizes="32x32">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<meta name="theme-color" content="#0425FF">
+<link rel="canonical" href="https://haip.kr/insight.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="HaiP">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:url" content="https://haip.kr/insight.html">
+<meta property="og:title" content="인사이트 — HaiP">
+<meta property="og:description" content="마케팅·애드테크 용어사전 74개, 실무 가이드, 브랜드 사례집. 인터랙티브 이벤트와 오프라인 성과 측정에 관해 현장에서 쌓인 것들을 정리합니다.">
+<meta property="og:image" content="https://haip.kr/assets/og-image.jpg">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="HaiP — 게임으로 붙잡고, 브랜드로 남기고, 데이터로 증명합니다.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="인사이트 — HaiP">
+<meta name="twitter:description" content="마케팅·애드테크 용어사전 74개, 실무 가이드, 브랜드 사례집. 인터랙티브 이벤트와 오프라인 성과 측정에 관해 현장에서 쌓인 것들을 정리합니다.">
+<meta name="twitter:image" content="https://haip.kr/assets/og-image.jpg">
 <link rel="preconnect" href="https://cdn.jsdelivr.net">
 <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css">
-<style>
-/* ============================================================
-   Buzzvil design tokens
-   ============================================================ */
-:root{
-  /* color */
-  --point:      #0425FF;
-  --point-lift: #6B87FF;
-  --ink:        #0e171f;
-  --black:      #000000;
-  --canvas:     #ffffff;
-  --surface:    #f2f5f7;
-  --slate:      #2a3f4d;
-  --body:       #3e5463;
-  --muted:      #5b7282;
-  --muted-alt:  #7a909e;
-  --faint:      #9fb1bd;
-  --faint-alt:  #c1ccd6;
-  --hairline:   #dce3e8;
-  --on-primary: #ffffff;
-
-  /* type */
-  --font: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont,
-          system-ui, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
-
-  /* spacing */
-  --sp-xs:4px; --sp-sm:8px; --sp-md:12px; --sp-base:16px;
-  --sp-lg:24px; --sp-xl:32px; --sp-xxl:40px;
-  --sp-section: clamp(56px, 7vw, 80px);
-
-  /* radius */
-  --r-sm:4px; --r-md:8px; --r-lg:16px; --r-xl:32px; --r-full:9999px;
-
-  --pad: clamp(20px, 5vw, 60px);
-  --max: 1280px;
-  --nav-h: 75px;
-}
-
-*,*::before,*::after{box-sizing:border-box}
-html{scroll-behavior:smooth}
-
-/* ---------- 스크롤바 ----------
-   크롬 기본 막대 대신 얇고 옅게. 새 크롬·파이어폭스는 scrollbar-width/color 를 쓰고,
-   구 크롬·사파리는 아래 ::-webkit- 규칙을 쓴다 (둘은 서로 배타적이라 겹치지 않는다). */
-html,.art-scroll,.side-nav{scrollbar-width:thin;scrollbar-color:var(--faint-alt) transparent}
-html::-webkit-scrollbar,.art-scroll::-webkit-scrollbar,.side-nav::-webkit-scrollbar{width:10px;height:10px}
-html::-webkit-scrollbar-track,.art-scroll::-webkit-scrollbar-track,.side-nav::-webkit-scrollbar-track{background:transparent}
-html::-webkit-scrollbar-thumb,.art-scroll::-webkit-scrollbar-thumb,.side-nav::-webkit-scrollbar-thumb{
-  background:var(--faint-alt);border-radius:var(--r-full);
-  border:3px solid var(--canvas);background-clip:padding-box}
-html::-webkit-scrollbar-thumb:hover,.art-scroll::-webkit-scrollbar-thumb:hover,.side-nav::-webkit-scrollbar-thumb:hover{background:var(--faint);background-clip:padding-box}
-html::-webkit-scrollbar-corner,.art-scroll::-webkit-scrollbar-corner,.side-nav::-webkit-scrollbar-corner{background:transparent}
-
-body{
-  margin:0;
-  font-family:var(--font);
-  background:var(--canvas);
-  color:var(--black);
-  font-size:16px;
-  font-weight:400;
-  line-height:1.5;
-  -webkit-font-smoothing:antialiased;
-}
-img{max-width:100%;display:block}
-a{color:inherit;text-decoration:none}
-:focus-visible{outline:2px solid var(--point);outline-offset:3px}
-
-.wrap{max-width:var(--max);margin:0 auto;padding-inline:var(--pad)}
-.band-navy .sec-lead,.band-navy .disc{color:var(--faint-alt)}
-.band-navy :focus-visible,
-.hero :focus-visible,
-.foot :focus-visible{outline-color:var(--point-lift)}
-
-/* ============================================================
-   NAV — sticky white, 75px, hairline base
-   ============================================================ */
-.nav{position:sticky;top:0;z-index:100;background:var(--canvas);border-bottom:1px solid var(--hairline)}
-.nav-in{display:flex;align-items:center;gap:var(--sp-xl);height:var(--nav-h);
-  max-width:var(--max);margin:0 auto;padding-inline:var(--pad);position:relative}
-.logo{font-size:19px;font-weight:800;letter-spacing:-.03em;color:var(--ink);line-height:1.1}
-/* 로고 워드마크 — 단색(#0425FF) SVG. 네이비 푸터에서는 대비가 2.34:1 이라 흰색으로 반전한다. */
-.logo img{display:block;height:26px;width:auto}
-.foot .logo img{filter:brightness(0) invert(1)}
-.nav-menu{display:flex;align-items:center;gap:var(--sp-xs);margin-left:auto;align-self:stretch}
-.nav-link{
-  font-size:16px;font-weight:600;color:var(--muted);
-  padding:var(--sp-md) var(--sp-base);border-radius:var(--r-sm);
-  transition:color .15s;
-}
-.nav-link:hover{color:var(--ink)}
-.nav-link.is-active{color:var(--ink)}
-.nav-cta{
-  display:inline-flex;align-items:center;height:44px;
-  padding:var(--sp-md) var(--sp-base);
-  background:var(--point);color:var(--on-primary);
-  font-size:16px;font-weight:400;border-radius:var(--r-sm);
-  margin-left:var(--sp-sm);transition:filter .15s;
-}
-.nav-cta:hover{filter:brightness(.92)}
-
-/* mega dropdown */
-/* 드롭다운은 링크가 아니라 nav 컨테이너(.nav-in)를 기준으로 배치한다.
-   링크 기준(position:relative + left:0)으로 열면 우측 정렬된 메뉴에서 패널이
-   화면 밖으로 나가 문서 폭이 늘어나고 가로 스크롤이 생긴다. */
-.has-sub{display:flex;align-items:center;align-self:stretch}
-.sub{
-  position:absolute;top:100%;right:var(--pad);left:auto;
-  background:var(--canvas);border:1px solid var(--hairline);
-  border-radius:var(--r-lg);padding:var(--sp-sm);
-  width:min(560px,calc(100% - var(--pad) * 2));display:grid;grid-template-columns:1fr 1fr;gap:2px;
-  opacity:0;visibility:hidden;transform:translateY(-6px);
-  transition:opacity .18s,transform .18s,visibility .18s;
-}
-.has-sub:hover .sub,.has-sub:focus-within .sub{opacity:1;visibility:visible;transform:none}
-.sub a{display:block;padding:var(--sp-md) var(--sp-base);border-radius:var(--r-md)}
-.sub a:hover{background:var(--surface)}
-.sub b{display:block;font-size:16px;font-weight:700;color:var(--ink)}
-.sub small{display:block;font-size:12px;font-weight:400;color:var(--muted);margin-top:2px;line-height:1.45}
-.hero h1,.verb-block{
-  font-size:clamp(38px,6.4vw,78px);font-weight:800;line-height:1.19;
-  letter-spacing:-.03em;margin:0 0 var(--sp-lg);color:var(--canvas);
-}
-.hero-copy p+p{margin-top:var(--sp-sm);color:var(--faint)}
-
-/* ============================================================
-   핵심사업 — 대분류 3 × 하위 3 (feature cards, 32px)
-   ============================================================ */
-.core-block{padding:var(--sp-xxl) 0}
-.core-block+.core-block{border-top:1px solid var(--hairline)}
-
-/* ============================================================
-   INSIGHT cards / posts
-   ============================================================ */
-.posts{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--sp-base)}
-.post{background:var(--canvas);border:1px solid var(--hairline);border-radius:var(--r-xl);
-  padding:var(--sp-xl);display:flex;flex-direction:column;transition:border-color .15s}
-.post:hover{border-color:var(--faint-alt)}
-.post-cat{font-size:12px;font-weight:500;letter-spacing:.1em;color:var(--muted-alt);margin:0 0 var(--sp-base)}
-.post h3{font-size:clamp(18px,2vw,24px);font-weight:700;line-height:1.3;letter-spacing:-.015em;
-  margin:0 0 var(--sp-md);color:var(--ink)}
-/* .post-cat(0,1,0) 이 이 규칙(0,1,1)에 눌려 12px 캡션이 16px 본문색으로 렌더되던 문제 */
-.post p:not(.post-cat){margin:0 0 var(--sp-lg);font-size:16px;line-height:1.5;color:var(--body)}
-.post-more{margin-top:auto;font-size:14px;font-weight:600;color:var(--muted)}
-.field input,.field select,.field textarea{
-  width:100%;font-family:var(--font);font-size:16px;padding:var(--sp-base);
-  background:var(--slate);border:1px solid rgba(242,245,247,.16);color:var(--canvas);
-  border-radius:var(--r-md);
-}
-.field input::placeholder,.field textarea::placeholder{color:var(--faint)}
-
-/* ============================================================
-   FOOTER
-   ============================================================ */
-.foot{background:var(--ink);color:var(--faint);padding:var(--sp-xxl) 0 var(--sp-xl);
-  border-top:1px solid rgba(242,245,247,.12)}
-.foot-in{display:flex;flex-wrap:wrap;gap:var(--sp-lg);justify-content:space-between;align-items:flex-start}
-.foot .logo{color:var(--canvas)}
-.foot-nav{display:flex;flex-wrap:wrap;gap:var(--sp-lg);font-size:14px;font-weight:600}
-.foot-nav a:hover{color:var(--canvas)}
-.foot small{display:block;font-size:12px;color:var(--muted-alt);margin-top:var(--sp-lg);line-height:1.9}
-.faq-plus::before,.faq-plus::after{
-  content:"";position:absolute;left:50%;top:50%;background:var(--muted);border-radius:1px;
-}
-
-/* ============================================================
-   REVEAL
-   ============================================================ */
-.rv{opacity:0;transform:translateY(16px);
-  transition:opacity .55s cubic-bezier(.2,.7,.3,1),transform .55s cubic-bezier(.2,.7,.3,1)}
-.rv.in{opacity:1;transform:none}
-
-/* ============================================================
-   RESPONSIVE
-   ============================================================ */
-@media(max-width:1024px){
-  .probs,.posts,.pipe,.dash-grid,.hero-stats,.core-cards{grid-template-columns:1fr 1fr}
-  .stat-hero,.cta-grid,.core-head{grid-template-columns:1fr;gap:var(--sp-lg)}
-  .sub{grid-template-columns:1fr}
-}
-@media(max-width:640px){
-  /* 로고 · 메뉴 · 문의 CTA 를 한 줄에 유지한다.
-     로고와 CTA 는 고정폭, 가운데 메뉴만 줄어들고 모자라면 그 안에서만 가로 스크롤한다. */
-  .nav-in{gap:var(--sp-sm)}
-  .nav-in .logo{flex:none}
-  .nav-cta{flex:none;font-size:15px;padding:var(--sp-sm) var(--sp-md);height:40px}
-  .nav-menu{flex:1 1 auto;min-width:0;justify-content:flex-end;margin-left:0;
-    flex-wrap:nowrap;overflow-x:auto;gap:0;scrollbar-width:none}
-  .nav-menu::-webkit-scrollbar{display:none}
-  /* 좁은 화면에서 좌우 패딩이 줄어 '홈' 같은 짧은 라벨이 24px 미만이 된다 (WCAG 2.5.8) */
-  .nav-link{padding:var(--sp-sm) var(--sp-xs);font-size:15px;white-space:nowrap;
-    min-width:24px;text-align:center}
-  .probs,.posts,.pipe,.dash-grid,.hero-stats,.core-cards,.fr{grid-template-columns:1fr}
-  .sub{position:static;width:auto;border:none;opacity:1;visibility:visible;transform:none;display:none}
-  .btn,.btn-primary{width:100%;font-size:18px}
-}
-@media(prefers-reduced-motion:reduce){
-  *{animation:none!important;transition:none!important}
-  .rv{opacity:1;transform:none}
-  html{scroll-behavior:auto}
-}
-
-/* ============================================================
-   INSIGHT — hero, sidebar, glossary, guide, case, faq
-   ============================================================ */
-/* ---------- type roles ---------- */
-.eyebrow{
-  font-size:12px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;
-  color:var(--muted-alt);margin:0 0 var(--sp-base);
-}
-
-/* 배경 사진은 매우 밝은 워시 이미지. 로드 실패·지연 시에도 레이아웃이 유지되도록
-   --surface 를 폴백 색으로 남긴다. */
-.ins-hero{
-  background:var(--surface) url("assets/ins_hero_bg.webp") center center/cover no-repeat;
-  padding:clamp(44px,6vw,72px) 0 clamp(36px,5vw,56px);
-}
-.ins-hero h1{font-size:clamp(30px,5vw,56px);font-weight:700;line-height:1.2;
-  letter-spacing:-.03em;color:var(--ink);margin:0 0 var(--sp-base)}
-/* .eyebrow 가 이 규칙에 눌리지 않도록 제외 — 상단 라벨은 12px 캡션 */
-.ins-hero p:not(.eyebrow){font-size:clamp(16px,1.6vw,24px);font-weight:400;line-height:1.4;
-  color:var(--body);max-width:64ch;margin:0}
-
-.insight-shell{
-  max-width:var(--max);margin:0 auto;padding-inline:var(--pad);
-  display:grid;grid-template-columns:232px 1fr;gap:clamp(28px,4vw,64px);
-  align-items:start;padding-top:var(--sp-xxl);padding-bottom:var(--sp-section);
-}
-.insight-side{position:sticky;top:calc(var(--nav-h) + 16px);
-  max-height:calc(100vh - var(--nav-h) - 40px);overflow-y:auto;scrollbar-width:thin}
-.side-label{font-size:12px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;
-  color:var(--faint);margin:0 0 var(--sp-base)}
-.side-nav{list-style:none;margin:0;padding:0}
-.side-nav>li>a{
-  display:block;padding:var(--sp-md) var(--sp-base);border-radius:var(--r-md);
-  font-size:16px;font-weight:600;color:var(--muted);transition:.15s;
-}
-.side-nav>li>a:hover{background:var(--surface);color:var(--ink)}
-.side-nav>li>a.active{background:var(--ink);color:var(--canvas)}
-.side-nav>li>a small{display:block;font-size:12px;font-weight:400;color:var(--faint);
-  margin-top:2px;line-height:1.4}
-.side-nav>li>a.active small{color:var(--faint-alt)}
-
-.side-nav .side-sub{list-style:none;margin:var(--sp-sm) 0 var(--sp-md);padding:0 0 0 var(--sp-base)}
-.side-nav .side-sub a{
-  display:flex;justify-content:space-between;align-items:baseline;gap:var(--sp-sm);
-  padding:var(--sp-sm) var(--sp-md);border-radius:var(--r-sm);
-  font-size:14px;font-weight:500;color:var(--muted-alt);transition:.15s;
-}
-.side-nav .side-sub a:hover{color:var(--ink);background:var(--surface)}
-.side-nav .side-sub a em{font-style:normal;font-size:12px;font-weight:500;color:var(--faint)}
-.insight-main{min-width:0}
-.svg-sprite{position:absolute;width:0;height:0;overflow:hidden}
-
-/* SPA views — only the active view renders; sidebar/hero/nav never unmount */
-.view{display:none}
-.view.is-active{display:block}
-
-/* group jump (mobile only) */
-.g-jump{display:none;flex-wrap:wrap;gap:var(--sp-sm);margin-bottom:var(--sp-lg)}
-.g-jump a{font-size:14px;font-weight:500;padding:var(--sp-sm) var(--sp-base);
-  border:1px solid var(--hairline);border-radius:var(--r-full);color:var(--body)}
-.g-jump a:hover{background:var(--ink);color:var(--canvas);border-color:var(--ink)}
-.g-jump a.active{background:var(--ink);color:var(--canvas);border-color:var(--ink);font-weight:700}
-
-/* ---------- glossary ---------- */
-.g-groups{display:block}
-.g-group{padding:var(--sp-xl) 0}
-.g-group+.g-group{border-top:1px solid var(--hairline)}
-.g-tag{font-size:clamp(19px,2.1vw,24px);font-weight:700;letter-spacing:-.015em;
-  color:var(--ink);margin:0 0 var(--sp-lg)}
-.g-cnt{font-size:12px;font-weight:500;color:var(--faint);margin-left:var(--sp-sm)}
-.g-note{font-size:14px;line-height:1.6;color:var(--muted);margin:calc(var(--sp-base) * -1) 0 var(--sp-lg);
-  padding:var(--sp-md) var(--sp-base);background:var(--surface);border-radius:var(--r-md)}
-.g-list{display:grid;grid-template-columns:1fr 1fr;gap:0 clamp(24px,3vw,48px)}
-.g-item{padding:var(--sp-base) 0;border-bottom:1px solid var(--hairline)}
-.g-item dt{font-size:16px;font-weight:700;color:var(--ink);margin:0 0 var(--sp-xs)}
-.g-item dt small{font-size:12px;font-weight:500;color:var(--faint);margin-left:var(--sp-sm)}
-.g-item dd{margin:0;font-size:14px;line-height:1.6;color:var(--body)}
-
-/* ---------- index list — 가이드 · 사례집 공용 ---------- */
-.idx-intro{margin:0 0 var(--sp-lg);font-size:16px;line-height:1.6;color:var(--body);max-width:64ch}
-.idx-intro b{color:var(--ink);font-weight:700}
-.g-note b{color:var(--ink);font-weight:700}
-.idx-list{border-top:1px solid var(--hairline)}
-.idx-row{
-  display:grid;grid-template-columns:180px 1fr auto;gap:clamp(16px,2.6vw,32px);
-  align-items:center;padding:var(--sp-lg) var(--sp-base);
-  margin-inline:calc(var(--sp-base) * -1);
-  border-bottom:1px solid var(--hairline);transition:background .15s;
-}
-.idx-row:hover{background:var(--surface)}
-.idx-thumb{border-radius:var(--r-lg);overflow:hidden;background:var(--surface);aspect-ratio:180/112}
-.idx-thumb svg{display:block;width:100%;height:100%}
-.idx-body{min-width:0}
-.idx-row h3{font-size:clamp(18px,2vw,24px);font-weight:700;line-height:1.3;letter-spacing:-.015em;
-  margin:0 0 var(--sp-sm);color:var(--ink)}
-.idx-row p{margin:0;font-size:16px;line-height:1.55;color:var(--body)}
-.idx-meta{display:flex;flex-wrap:wrap;gap:var(--sp-md);margin:var(--sp-md) 0 0;
-  font-size:12px;font-weight:500;color:var(--faint)}
-.idx-meta span{display:inline-flex;align-items:center;gap:var(--sp-md)}
-.idx-meta span+span::before{content:"";width:3px;height:3px;border-radius:50%;background:var(--faint-alt)}
-.idx-link{font-size:14px;font-weight:600;color:var(--muted);white-space:nowrap;transition:color .15s}
-.idx-row:hover .idx-link{color:var(--ink)}
-
-/* ---------- article detail — 가이드 · 사례집 공용 ---------- */
-.art-back{display:inline-block;font-size:14px;font-weight:600;color:var(--muted);
-  margin-bottom:var(--sp-lg);transition:color .15s}
-.art-back:hover{color:var(--ink)}
-.art-head{display:grid;grid-template-columns:1fr 200px;gap:clamp(20px,3vw,40px);
-  align-items:center;padding-bottom:var(--sp-xl);border-bottom:1px solid var(--hairline)}
-.art-head .idx-thumb{aspect-ratio:180/112}
-.art-cat{font-size:12px;font-weight:500;letter-spacing:.1em;color:var(--muted-alt);
-  margin:0 0 var(--sp-md);font-variant-numeric:tabular-nums}
-.art-head h1{font-size:clamp(24px,3.4vw,40px);font-weight:700;line-height:1.25;
-  letter-spacing:-.025em;color:var(--ink);margin:0 0 var(--sp-md)}
-.art-lead{font-size:clamp(16px,1.7vw,20px);font-weight:400;line-height:1.6;color:var(--body);margin:0}
-
-.art-body{padding-top:var(--sp-xl)}
-.art-body h2{font-size:clamp(19px,2.3vw,26px);font-weight:700;line-height:1.3;letter-spacing:-.02em;
-  color:var(--ink);margin:var(--sp-xxl) 0 var(--sp-base)}
-.art-body h2:first-child{margin-top:0}
-.art-body h3{font-size:clamp(16px,1.8vw,19px);font-weight:700;line-height:1.4;
-  color:var(--ink);margin:var(--sp-xl) 0 var(--sp-sm)}
-.art-body p{margin:0 0 var(--sp-base);font-size:16px;line-height:1.75;color:var(--body)}
-.art-body strong{color:var(--ink);font-weight:700}
-.art-body ul,.art-body ol{margin:0 0 var(--sp-base);padding-left:var(--sp-lg);color:var(--body)}
-.art-body li{font-size:16px;line-height:1.75;margin-bottom:var(--sp-sm)}
-.art-body li::marker{color:var(--faint)}
-/* 본문 하이라이트 — 지정 색 #F3FF94 */
-.art-body mark,.g-item dd mark{
-  background:#F3FF94;color:inherit;
-  padding:.06em .18em;border-radius:2px;
-  box-decoration-break:clone;-webkit-box-decoration-break:clone;
-}
-.art-body code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:.88em;
-  background:var(--surface);border-radius:var(--r-sm);padding:2px 6px;color:var(--ink);white-space:nowrap}
-.art-table code{background:var(--canvas)}
-
-.art-note{background:var(--surface);border-radius:var(--r-lg);padding:var(--sp-lg);margin:var(--sp-lg) 0}
-.art-note p:last-child,.art-note ul:last-child{margin-bottom:0}
-.art-note .art-note-h{font-size:12px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;
-  color:var(--faint);margin:0 0 var(--sp-md)}
-
-.art-check{list-style:none;padding:0;margin:var(--sp-base) 0}
-.art-check li{position:relative;padding:var(--sp-sm) 0 var(--sp-sm) 28px;
-  font-size:16px;line-height:1.6;color:var(--body);margin:0}
-.art-check li::before{content:"";position:absolute;left:3px;top:14px;width:9px;height:5px;
-  border-left:1.5px solid var(--muted);border-bottom:1.5px solid var(--muted);transform:rotate(-45deg)}
-
-.art-scroll{overflow-x:auto;margin:var(--sp-lg) 0}
-.art-table{width:100%;border-collapse:collapse;font-size:14px;min-width:520px}
-.art-table th{text-align:left;font-size:12px;font-weight:500;letter-spacing:.08em;color:var(--faint);
-  padding:var(--sp-md);border-bottom:1px solid var(--hairline);white-space:nowrap}
-.art-table td{padding:var(--sp-md);border-bottom:1px solid var(--hairline);
-  color:var(--body);line-height:1.6;vertical-align:top}
-.art-table td b{color:var(--ink);font-weight:700}
-.art-table tr:last-child td{border-bottom:none}
-
-.art-metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--sp-sm);margin:var(--sp-lg) 0}
-.art-metric{background:var(--surface);border-radius:var(--r-lg);padding:var(--sp-lg) var(--sp-base)}
-.art-metric-l{font-size:12px;font-weight:500;letter-spacing:.06em;color:var(--muted-alt);margin:0 0 var(--sp-sm)}
-.art-metric-v{font-size:clamp(20px,2.4vw,28px);font-weight:800;letter-spacing:-.02em;line-height:1.15;
-  color:var(--ink);margin:0;font-variant-numeric:tabular-nums}
-.art-metric-d{font-size:12px;font-weight:400;line-height:1.5;color:var(--muted);margin:var(--sp-xs) 0 0}
-
-.art-take{border-left:2px solid var(--ink);padding:var(--sp-xs) 0 var(--sp-xs) var(--sp-lg);margin:var(--sp-lg) 0}
-.art-take p{margin:0;font-size:clamp(16px,1.7vw,18px);line-height:1.6;color:var(--ink);font-weight:500}
-.art-take .art-note-h{margin-bottom:var(--sp-sm)}
-
-/* 사례집 — 우리가 맡았다면 어떻게 측정하는가 */
-.art-measure{border:1px solid var(--hairline);border-radius:var(--r-lg);
-  padding:var(--sp-lg);margin:var(--sp-lg) 0}
-.art-measure .art-note-h{margin:0 0 var(--sp-md)}
-.art-measure dl{display:grid;grid-template-columns:116px 1fr;gap:var(--sp-sm) var(--sp-base);margin:0}
-.art-measure dt{font-size:12px;font-weight:500;letter-spacing:.04em;color:var(--faint);padding-top:3px}
-.art-measure dd{margin:0;font-size:15px;line-height:1.65;color:var(--body)}
-.art-measure dd b{color:var(--ink);font-weight:700}
-@media(max-width:640px){
-  .art-measure dl{grid-template-columns:1fr;gap:2px}
-  .art-measure dt{margin-top:var(--sp-md)}
-  .art-measure dt:first-child{margin-top:0}
-}
-
-.art-src{font-size:12px;line-height:1.8;color:var(--muted-alt);
-  border-top:1px solid var(--hairline);padding-top:var(--sp-base);margin-top:var(--sp-xxl)}
-.art-src b{display:block;font-weight:500;letter-spacing:.1em;text-transform:uppercase;
-  color:var(--faint);margin-bottom:var(--sp-sm)}
-.art-src ol{margin:0;padding-left:var(--sp-lg)}
-.art-src li{margin-bottom:var(--sp-xs)}
-.art-src a{text-decoration:underline;text-underline-offset:2px;text-decoration-color:var(--faint-alt)}
-.art-src a:hover{color:var(--ink)}
-
-.art-nav{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-base);
-  margin-top:var(--sp-xxl);padding-top:var(--sp-lg);border-top:1px solid var(--hairline)}
-.art-nav a{display:block;padding:var(--sp-base);border:1px solid var(--hairline);
-  border-radius:var(--r-lg);transition:border-color .15s}
-.art-nav a:hover{border-color:var(--faint-alt)}
-.art-nav small{display:block;font-size:12px;font-weight:500;color:var(--faint);margin-bottom:var(--sp-xs)}
-.art-nav b{font-size:15px;font-weight:600;line-height:1.4;color:var(--ink)}
-.art-nav .nx{text-align:right}
-.art-nav .sp{border:none}
-
-@media(max-width:1024px){
-  .g-list{grid-template-columns:1fr}
-  .idx-row{grid-template-columns:148px 1fr}
-  .idx-link{display:none}
-  .art-head{grid-template-columns:1fr;gap:var(--sp-lg)}
-  .art-head .idx-thumb{max-width:280px;order:-1}
-  .art-metrics{grid-template-columns:1fr}
-}
-@media(max-width:900px){
-  /* 1fr 은 minmax(auto,1fr) 이라 가로 스크롤되는 .side-nav 의 최소폭이 트랙을 밀어낸다.
-     좁은 화면에서 문서 전체가 넘치므로 트랙이 줄어들 수 있게 minmax(0,1fr) 로 고정한다. */
-  .insight-shell{grid-template-columns:minmax(0,1fr);padding-top:var(--sp-lg)}
-  .insight-side{position:static;max-height:none;overflow:visible;margin-bottom:var(--sp-sm);min-width:0}
-  .side-label{display:none}
-  .side-nav{display:flex;overflow-x:auto;gap:var(--sp-sm);padding-bottom:var(--sp-sm)}
-  .side-nav>li>a{white-space:nowrap;border:1px solid var(--hairline);border-radius:var(--r-full);
-    padding:var(--sp-md) var(--sp-base)}
-  .side-nav>li>a small{display:none}
-  .side-nav .side-sub{display:none}
-  .g-jump{display:flex}
-  .idx-row{grid-template-columns:104px 1fr;gap:var(--sp-base);align-items:start;
-    margin-inline:0;padding-inline:0}
-  .idx-row p{font-size:15px}
-  .idx-meta{margin-top:var(--sp-sm);gap:var(--sp-xs) var(--sp-md)}
-  /* 좁은 화면에서 메타가 줄바꿈되면 구분점만 다음 줄에 남으므로 숨긴다 */
-  .idx-meta span+span::before{display:none}
-  .art-nav{grid-template-columns:1fr}
-  .art-nav .nx{text-align:left}
-}
-
-</style>
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/insight.css">
 </head>
 <body>
 
@@ -1687,7 +1276,6 @@ a{color:inherit;text-decoration:none}
           </dl>
         </div>
 
-
         <h2>그대로 따라 하면 안 되는 부분</h2>
         <div class="art-note">
           <p class="art-note-h">전제 조건과 리스크</p>
@@ -1760,7 +1348,6 @@ a{color:inherit;text-decoration:none}
             <dt>증명 방법</dt><dd>분모 두 개를 모두 공개하고, 단계별 이탈 지점을 주 단위로 리포트합니다. 한쪽만 쓰면 과장이 됩니다.</dd>
           </dl>
         </div>
-
 
         <h2>숫자를 읽을 때 주의할 점</h2>
         <div class="art-note">
@@ -1973,7 +1560,6 @@ a{color:inherit;text-decoration:none}
           </dl>
         </div>
 
-
         <h2>전제 조건</h2>
         <div class="art-note">
           <p class="art-note-h">그대로 옮기기 전에 확인할 것</p>
@@ -2114,7 +1700,6 @@ a{color:inherit;text-decoration:none}
           </dl>
         </div>
 
-
         <h2>이 수치를 읽을 때의 전제</h2>
         <div class="art-note">
           <p class="art-note-h">출처의 성격</p>
@@ -2251,7 +1836,6 @@ a{color:inherit;text-decoration:none}
           </dl>
         </div>
 
-
         <h2>한계</h2>
         <div class="art-note">
           <p class="art-note-h">그대로 적용하기 전에</p>
@@ -2277,7 +1861,6 @@ a{color:inherit;text-decoration:none}
       </div>
     </div>
 
-
   </main>
 </div>
 
@@ -2296,212 +1879,7 @@ a{color:inherit;text-decoration:none}
   </div>
 </footer>
 
-<script>
-(function(){
-  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  /* ---- 스코어보드 카운터 (홈 히어로) ---- */
-  function fmt(v, kind){
-    if(kind==='int')  return Math.round(v).toLocaleString('en-US');
-    if(kind==='pct')  return (v/10).toFixed(1) + '%';
-    if(kind==='time'){
-      var s = Math.round(v), m = Math.floor(s/60);
-      return String(m).padStart(2,'0') + ':' + String(s%60).padStart(2,'0');
-    }
-    return v;
-  }
-  document.querySelectorAll('.hstat-v').forEach(function(el,i){
-    var to = +el.dataset.to, kind = el.dataset.fmt;
-    if(reduce){ el.textContent = fmt(to, kind); return; }
-    var dur = 1100, delay = 220 + i*160, t0 = null;
-    setTimeout(function(){
-      requestAnimationFrame(function step(ts){
-        if(!t0) t0 = ts;
-        var p = Math.min((ts-t0)/dur, 1);
-        var e = 1 - Math.pow(1-p, 3);
-        el.textContent = fmt(to*e, kind);
-        if(p < 1) requestAnimationFrame(step);
-      });
-    }, delay);
-  });
-
-  /* ---- 스크롤 리빌 ---- */
-  var rv = document.querySelectorAll('.rv');
-  if(reduce || !('IntersectionObserver' in window)){
-    rv.forEach(function(n){ n.classList.add('in'); });
-  } else {
-    var io = new IntersectionObserver(function(ents){
-      ents.forEach(function(e){
-        if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
-      });
-    }, {threshold:.12, rootMargin:'0px 0px -8% 0px'});
-    rv.forEach(function(n){ io.observe(n); });
-  }
-
-  /* ---- 인사이트 필터 탭 (홈 티저 등에서 재사용될 경우 대비) ---- */
-  document.querySelectorAll('.tab').forEach(function(t){
-    t.addEventListener('click', function(){
-      document.querySelectorAll('.tab').forEach(function(x){ x.setAttribute('aria-selected','false'); });
-      t.setAttribute('aria-selected','true');
-    });
-  });
-
-  /* ============================================================
-     INSIGHT SPA ROUTER
-     좌측 메뉴(insight-side)와 상단 히어로(ins-hero)는 절대 다시 그리지 않고,
-     insight-main 안의 .view 4개(overview/glossary/guide/case)만 해시로 전환한다.
-     ============================================================ */
-  (function(){
-    var TITLES = {overview:'인사이트', glossary:'용어사전', guide:'가이드', case:'사례집'};
-    var views = document.querySelectorAll('.view');
-    var topLinks = document.querySelectorAll('.side-nav > li > a[data-view]');
-    var shell = document.querySelector('.insight-shell');
-    var prevView = null;
-    var groupWrap = document.querySelector('.g-groups');
-    var gGroups = Array.prototype.slice.call(document.querySelectorAll('.g-group'));
-    if(!views.length) return;
-
-    /* 목록 뷰(overview/glossary/guide/case)와 상세 글 뷰(guide-01… / case-01…)를 한 맵으로 관리한다.
-       상세 글은 data-parent로 좌측 메뉴 활성 항목을, data-title로 문서 제목을 지정한다. */
-    var META = {};
-    Array.prototype.forEach.call(views, function(v){
-      var id = v.dataset.view;
-      if(!id) return;
-      META[id] = {
-        parent: v.dataset.parent || id,
-        title:  v.dataset.title  || TITLES[id] || '인사이트'
-      };
-    });
-
-    function parseHash(hash){
-      hash = (hash || '').replace(/^#/, '');
-      if(!hash) return {view:'overview', group:null};
-      /* #g-a … #g-f = 용어사전의 특정 그룹만 표시. 스크롤로 데려가지 않는다. */
-      if(/^g-[a-f]$/.test(hash)) return {view:'glossary', group:hash};
-      if(META[hash]) return {view:hash, group:null};
-      return {view:'overview', group:null};
-    }
-
-    function activate(hash, opts){
-      opts = opts || {};
-      var r = parseHash(hash);
-
-      var meta = META[r.view] || {parent:r.view, title:'인사이트'};
-
-      views.forEach(function(v){
-        v.classList.toggle('is-active', v.dataset.view === r.view);
-      });
-      topLinks.forEach(function(a){
-        a.classList.toggle('active', a.dataset.view === meta.parent);
-      });
-      document.title = meta.title + ' — HaiP';
-
-      // 방금 켜진 뷰 안의 리빌 요소는 즉시 보이게 (숨겨져 있는 동안은 IntersectionObserver가 잡지 못하므로)
-      var active = document.querySelector('.view.is-active');
-      if(active){
-        active.querySelectorAll('.rv').forEach(function(n){ n.classList.add('in'); });
-      }
-
-      /* 용어사전 그룹 필터 — 선택한 그룹만 남기고 나머지는 숨긴다.
-         스크롤로 데려가지 않으므로 좌측 사이드바의 어떤 항목을 눌러도 화면이 움직이지 않는다.
-         상위 '용어사전'(#glossary)은 group이 없으므로 6그룹 전체를 보여준다. */
-      if(groupWrap){
-        groupWrap.classList.toggle('is-filtered', !!r.group);
-        gGroups.forEach(function(g){ g.hidden = !!r.group && g.dataset.group !== r.group; });
-        setActiveSub(r.group);
-      }
-
-      /* 스크롤 정책
-         - 좌측 메뉴 클릭(섹션 전환·그룹 필터)에서는 스크롤을 건드리지 않는다.
-         - 글 상세로 들어가거나 글에서 나올 때만, 그리고 현재 위치가 본문 시작점보다
-           아래일 때만 본문 시작점까지 끌어올린다. 아래로 내리는 스크롤은 하지 않는다. */
-      var isArticle  = meta.parent !== r.view;
-      var wasArticle = prevView && META[prevView] && META[prevView].parent !== prevView;
-
-      if(!opts.initial && shell && (isArticle || wasArticle)){
-        requestAnimationFrame(function(){
-          var navEl = document.querySelector('.nav');
-          var navH  = navEl ? navEl.getBoundingClientRect().height : 0;
-          var top   = shell.getBoundingClientRect().top + window.pageYOffset - navH - 16;
-          if(window.pageYOffset > top){
-            window.scrollTo({top: Math.max(top, 0), behavior: reduce ? 'auto' : 'smooth'});
-          }
-        });
-      }
-
-      prevView = r.view;
-      runGlossaryScrollspy();
-    }
-
-    document.body.addEventListener('click', function(e){
-      var a = e.target.closest('a[href*="insight.html#"]');
-      if(!a) return;
-      var href = a.getAttribute('href');
-      var hashIdx = href.indexOf('#');
-      var hash = href.slice(hashIdx); // includes '#'
-      if(hash === '#') return; // bare placeholder link, ignore
-      e.preventDefault();
-      if(location.hash === hash){
-        activate(hash);
-      } else {
-        location.hash = hash; // triggers hashchange -> activate()
-      }
-    });
-
-    window.addEventListener('hashchange', function(){ activate(location.hash); });
-
-    /* ---- 용어사전 좌측 서브메뉴 스크롤 연동 (glossary 뷰가 켜져 있을 때만 동작) ---- */
-    var ssLinks = Array.prototype.slice.call(document.querySelectorAll('.side-sub .ss-link'));
-    var jumpLinks = Array.prototype.slice.call(document.querySelectorAll('.g-jump a'));
-    var ssGroups = ssLinks.map(function(a){
-      var hashIdx = a.getAttribute('href').indexOf('#');
-      return document.querySelector('.g-group[data-group="' + a.getAttribute('href').slice(hashIdx + 1) + '"]');
-    }).filter(Boolean);
-    var scrollBound = false;
-
-    /* opts.spy = 스크롤 연동 호출. 이때는 사이드바만 갱신하고 모바일 칩은 건드리지 않는다.
-       (전체 보기 중에는 '전체' 칩이 선택 상태로 남아 있어야 한다) */
-    function setActiveSub(id, opts){
-      ssLinks.forEach(function(a){
-        a.classList.toggle('active', !!id && a.getAttribute('href').indexOf('#' + id) !== -1);
-      });
-      if(opts && opts.spy) return;
-      jumpLinks.forEach(function(a){
-        var h = a.getAttribute('href');
-        a.classList.toggle('active', id ? h.indexOf('#' + id) !== -1 : h.indexOf('#glossary') !== -1);
-      });
-    }
-
-    function onScroll(){
-      var glossaryView = document.querySelector('.view[data-view="glossary"]');
-      if(!glossaryView || !glossaryView.classList.contains('is-active') || !ssGroups.length) return;
-      /* 한 그룹만 표시 중일 때는 활성 표시가 이미 확정돼 있고,
-         숨은 그룹의 좌표는 0이라 스크롤 기준 판정이 틀어진다. */
-      if(groupWrap && groupWrap.classList.contains('is-filtered')) return;
-      var offset = 120, current = ssGroups[0].dataset.group;
-      for(var i=0;i<ssGroups.length;i++){
-        if(ssGroups[i].getBoundingClientRect().top <= offset) current = ssGroups[i].dataset.group;
-      }
-      setActiveSub(current, {spy:true});
-    }
-
-    function runGlossaryScrollspy(){
-      onScroll();
-      if(scrollBound) return;
-      scrollBound = true;
-      var ticking = false;
-      window.addEventListener('scroll', function(){
-        if(ticking) return;
-        ticking = true;
-        requestAnimationFrame(function(){ onScroll(); ticking = false; });
-      }, {passive:true});
-    }
-
-    activate(location.hash, {initial:true});
-  })();
-
-})();
-
-</script>
+<script src="js/main.js"></script>
+<script src="js/insight.js"></script>
 </body>
 </html>

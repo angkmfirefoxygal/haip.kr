@@ -5,256 +5,30 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>문의하기 — HaiP</title>
 <meta name="description" content="캠페인이 끝난 뒤에 남는 것을 만듭니다. 프로젝트 유형과 진행 시기만 알려주셔도 됩니다.">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="assets/favicon.ico" sizes="32x32">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<meta name="theme-color" content="#0425FF">
+<link rel="canonical" href="https://haip.kr/contact.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="HaiP">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:url" content="https://haip.kr/contact.html">
+<meta property="og:title" content="문의하기 — HaiP">
+<meta property="og:description" content="캠페인이 끝난 뒤에 남는 것을 만듭니다. 프로젝트 유형과 진행 시기만 알려주셔도 됩니다.">
+<meta property="og:image" content="https://haip.kr/assets/og-image.jpg">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="HaiP — 게임으로 붙잡고, 브랜드로 남기고, 데이터로 증명합니다.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="문의하기 — HaiP">
+<meta name="twitter:description" content="캠페인이 끝난 뒤에 남는 것을 만듭니다. 프로젝트 유형과 진행 시기만 알려주셔도 됩니다.">
+<meta name="twitter:image" content="https://haip.kr/assets/og-image.jpg">
 <link rel="preconnect" href="https://cdn.jsdelivr.net">
 <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css">
-<style>
-/* ============================================================
-   Buzzvil design tokens
-   ============================================================ */
-:root{
-  /* color */
-  --point:      #0425FF;
-  --point-lift: #6B87FF;
-  --ink:        #0e171f;
-  --black:      #000000;
-  --canvas:     #ffffff;
-  --surface:    #f2f5f7;
-  --slate:      #2a3f4d;
-  --body:       #3e5463;
-  --muted:      #5b7282;
-  --muted-alt:  #7a909e;
-  --faint:      #9fb1bd;
-  --faint-alt:  #c1ccd6;
-  --hairline:   #dce3e8;
-  --on-primary: #ffffff;
-
-  /* type */
-  --font: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont,
-          system-ui, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
-
-  /* spacing */
-  --sp-xs:4px; --sp-sm:8px; --sp-md:12px; --sp-base:16px;
-  --sp-lg:24px; --sp-xl:32px; --sp-xxl:40px;
-  --sp-section: clamp(56px, 7vw, 80px);
-
-  /* radius */
-  --r-sm:4px; --r-md:8px; --r-lg:16px; --r-xl:32px; --r-full:9999px;
-
-  --pad: clamp(20px, 5vw, 60px);
-  --max: 1280px;
-  --nav-h: 75px;
-}
-
-*,*::before,*::after{box-sizing:border-box}
-html{scroll-behavior:smooth}
-
-/* ---------- 스크롤바 ----------
-   크롬 기본 막대 대신 얇고 옅게. 새 크롬·파이어폭스는 scrollbar-width/color 를 쓰고,
-   구 크롬·사파리는 아래 ::-webkit- 규칙을 쓴다 (둘은 서로 배타적이라 겹치지 않는다). */
-html{scrollbar-width:thin;scrollbar-color:var(--faint-alt) transparent}
-html::-webkit-scrollbar{width:10px;height:10px}
-html::-webkit-scrollbar-track{background:transparent}
-html::-webkit-scrollbar-thumb{
-  background:var(--faint-alt);border-radius:var(--r-full);
-  border:3px solid var(--canvas);background-clip:padding-box}
-html::-webkit-scrollbar-thumb:hover{background:var(--faint);background-clip:padding-box}
-html::-webkit-scrollbar-corner{background:transparent}
-
-body{
-  margin:0;
-  font-family:var(--font);
-  background:var(--canvas);
-  color:var(--black);
-  font-size:16px;
-  font-weight:400;
-  line-height:1.5;
-  -webkit-font-smoothing:antialiased;
-}
-img{max-width:100%;display:block}
-a{color:inherit;text-decoration:none}
-:focus-visible{outline:2px solid var(--point);outline-offset:3px}
-
-.wrap{max-width:var(--max);margin:0 auto;padding-inline:var(--pad)}
-.sec{padding:var(--sp-section) 0}
-
-/* bands */
-.band-surface{background:var(--surface)}
-.band-navy{background:var(--ink);color:var(--canvas)}
-.band-navy .sec-lead,.band-navy .disc{color:var(--faint-alt)}
-
-/* 어두운 밴드 위에서는 포인트 컬러를 밝은 변형으로 바꾼다.
-   #0425FF는 #0e171f 대비 2.34:1로 텍스트에 쓸 수 없다(#6B87FF는 5.63:1). */
-.band-navy .big-pct,
-.band-navy .required{color:var(--point-lift)}
-.band-navy .consent input{accent-color:var(--point-lift)}
-.band-navy :focus-visible,
-.hero :focus-visible,
-.foot :focus-visible{outline-color:var(--point-lift)}
-
-/* ---------- type roles ---------- */
-.eyebrow{
-  font-size:12px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;
-  color:var(--muted-alt);margin:0 0 var(--sp-base);
-}
-.band-navy .eyebrow{color:var(--faint)}
-
-/* ============================================================
-   NAV — sticky white, 75px, hairline base
-   ============================================================ */
-.nav{position:sticky;top:0;z-index:100;background:var(--canvas);border-bottom:1px solid var(--hairline)}
-.nav-in{display:flex;align-items:center;gap:var(--sp-xl);height:var(--nav-h);
-  max-width:var(--max);margin:0 auto;padding-inline:var(--pad);position:relative}
-.logo{font-size:19px;font-weight:800;letter-spacing:-.03em;color:var(--ink);line-height:1.1}
-/* 로고 워드마크 — 단색(#0425FF) SVG. 네이비 푸터에서는 대비가 2.34:1 이라 흰색으로 반전한다. */
-.logo img{display:block;height:26px;width:auto}
-.foot .logo img{filter:brightness(0) invert(1)}
-.nav-menu{display:flex;align-items:center;gap:var(--sp-xs);margin-left:auto;align-self:stretch}
-.nav-link{
-  font-size:16px;font-weight:600;color:var(--muted);
-  padding:var(--sp-md) var(--sp-base);border-radius:var(--r-sm);
-  transition:color .15s;
-}
-.nav-link:hover{color:var(--ink)}
-.nav-cta{
-  display:inline-flex;align-items:center;height:44px;
-  padding:var(--sp-md) var(--sp-base);
-  background:var(--point);color:var(--on-primary);
-  font-size:16px;font-weight:400;border-radius:var(--r-sm);
-  margin-left:var(--sp-sm);transition:filter .15s;
-}
-.nav-cta:hover{filter:brightness(.92)}
-
-/* mega dropdown */
-/* 드롭다운은 링크가 아니라 nav 컨테이너(.nav-in)를 기준으로 배치한다.
-   링크 기준(position:relative + left:0)으로 열면 우측 정렬된 메뉴에서 패널이
-   화면 밖으로 나가 문서 폭이 늘어나고 가로 스크롤이 생긴다. */
-.has-sub{display:flex;align-items:center;align-self:stretch}
-.sub{
-  position:absolute;top:100%;right:var(--pad);left:auto;
-  background:var(--canvas);border:1px solid var(--hairline);
-  border-radius:var(--r-lg);padding:var(--sp-sm);
-  width:min(560px,calc(100% - var(--pad) * 2));display:grid;grid-template-columns:1fr 1fr;gap:2px;
-  opacity:0;visibility:hidden;transform:translateY(-6px);
-  transition:opacity .18s,transform .18s,visibility .18s;
-}
-.has-sub:hover .sub,.has-sub:focus-within .sub{opacity:1;visibility:visible;transform:none}
-.sub a{display:block;padding:var(--sp-md) var(--sp-base);border-radius:var(--r-md)}
-.sub a:hover{background:var(--surface)}
-.sub b{display:block;font-size:16px;font-weight:700;color:var(--ink)}
-.sub small{display:block;font-size:12px;font-weight:400;color:var(--muted);margin-top:2px;line-height:1.45}
-.hero h1,.verb-block{
-  font-size:clamp(38px,6.4vw,78px);font-weight:800;line-height:1.19;
-  letter-spacing:-.03em;margin:0 0 var(--sp-lg);color:var(--canvas);
-}
-.hero-copy p+p{margin-top:var(--sp-sm);color:var(--faint)}
-.btn-primary{
-  display:inline-flex;align-items:center;justify-content:center;
-  height:55px;padding:var(--sp-base) var(--sp-xl);
-  background:var(--point);color:var(--on-primary);border:1px solid var(--point);
-  font-size:20px;font-weight:400;border-radius:var(--r-md);cursor:pointer;
-  font-family:var(--font);transition:filter .15s;
-}
-.btn-primary:hover{filter:brightness(.92)}
-
-/* ============================================================
-   핵심사업 — 대분류 3 × 하위 3 (feature cards, 32px)
-   ============================================================ */
-.core-block{padding:var(--sp-xxl) 0}
-.core-block+.core-block{border-top:1px solid var(--hairline)}
-
-/* ============================================================
-   CTA / CONTACT
-   ============================================================ */
-.cta-h{font-size:clamp(28px,4.6vw,56px);font-weight:700;line-height:1.2;letter-spacing:-.03em;
-  margin:0 0 var(--sp-lg);max-width:24ch;color:var(--canvas)}
-.cta-h b{color:var(--point-lift);font-weight:inherit}
-.cta-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,5vw,72px);align-items:start}
-.cta-note{font-size:16px;line-height:1.6;color:var(--faint-alt);margin:0 0 var(--sp-xl)}
-.meta{list-style:none;margin:0;padding:0;font-size:14px}
-.meta li{display:flex;gap:var(--sp-base);padding:var(--sp-md) 0;
-  border-bottom:1px solid rgba(242,245,247,.14);color:var(--faint-alt)}
-.meta li b{min-width:88px;color:var(--canvas);font-weight:600}
-
-.form{display:grid;gap:var(--sp-md)}
-.fr{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-md)}
-.field label{display:block;font-size:12px;font-weight:500;letter-spacing:.06em;color:var(--faint);margin-bottom:var(--sp-sm)}
-.field input,.field select,.field textarea{
-  width:100%;font-family:var(--font);font-size:16px;padding:var(--sp-base);
-  background:var(--slate);border:1px solid rgba(242,245,247,.16);color:var(--canvas);
-  border-radius:var(--r-md);
-}
-.field textarea{min-height:104px;resize:vertical}
-.field input::placeholder,.field textarea::placeholder{color:var(--faint)}
-.chips{display:flex;flex-wrap:wrap;gap:var(--sp-sm)}
-.chip{
-  font-family:var(--font);font-size:16px;padding:var(--sp-md) var(--sp-base);
-  border:1px solid var(--faint-alt);border-radius:var(--r-full);
-  background:transparent;color:var(--faint-alt);cursor:pointer;transition:.15s;
-}
-.chip:hover{border-color:var(--canvas);color:var(--canvas)}
-.chip[aria-pressed="true"]{background:var(--canvas);color:var(--black);border-color:var(--canvas);font-weight:700}
-.consent{display:flex;gap:var(--sp-md);align-items:flex-start;font-size:14px;color:var(--faint-alt);line-height:1.55}
-.consent input{width:18px;height:18px;margin-top:2px;accent-color:var(--point);flex:0 0 auto}
-.required{color:var(--point)}
-.success{display:none;background:var(--slate);border-radius:var(--r-xl);padding:var(--sp-xl);margin-top:var(--sp-lg)}
-.form-err{margin:var(--sp-sm) 0 0;font-size:14px;line-height:1.5;color:var(--point-lift)}
-.success h3{font-size:24px;font-weight:700;color:var(--canvas);margin:0 0 var(--sp-sm)}
-.success p{margin:0;color:var(--faint-alt);font-size:16px;line-height:1.5}
-.cpage{min-height:calc(100vh - var(--nav-h));display:flex;align-items:center}
-.cpage .sec{width:100%}
-
-/* ============================================================
-   FOOTER
-   ============================================================ */
-.foot{background:var(--ink);color:var(--faint);padding:var(--sp-xxl) 0 var(--sp-xl);
-  border-top:1px solid rgba(242,245,247,.12)}
-.foot-in{display:flex;flex-wrap:wrap;gap:var(--sp-lg);justify-content:space-between;align-items:flex-start}
-.foot .logo{color:var(--canvas)}
-.foot-nav{display:flex;flex-wrap:wrap;gap:var(--sp-lg);font-size:14px;font-weight:600}
-.foot-nav a:hover{color:var(--canvas)}
-.foot small{display:block;font-size:12px;color:var(--muted-alt);margin-top:var(--sp-lg);line-height:1.9}
-.faq-plus::before,.faq-plus::after{
-  content:"";position:absolute;left:50%;top:50%;background:var(--muted);border-radius:1px;
-}
-
-/* ============================================================
-   REVEAL
-   ============================================================ */
-.rv{opacity:0;transform:translateY(16px);
-  transition:opacity .55s cubic-bezier(.2,.7,.3,1),transform .55s cubic-bezier(.2,.7,.3,1)}
-.rv.in{opacity:1;transform:none}
-
-/* ============================================================
-   RESPONSIVE
-   ============================================================ */
-@media(max-width:1024px){
-  .probs,.posts,.pipe,.dash-grid,.hero-stats,.core-cards{grid-template-columns:1fr 1fr}
-  .stat-hero,.cta-grid,.core-head{grid-template-columns:1fr;gap:var(--sp-lg)}
-  .sub{grid-template-columns:1fr}
-}
-@media(max-width:640px){
-  /* 로고 · 메뉴 · 문의 CTA 를 한 줄에 유지한다.
-     로고와 CTA 는 고정폭, 가운데 메뉴만 줄어들고 모자라면 그 안에서만 가로 스크롤한다. */
-  .nav-in{gap:var(--sp-sm)}
-  .nav-in .logo{flex:none}
-  .nav-cta{flex:none;font-size:15px;padding:var(--sp-sm) var(--sp-md);height:40px}
-  .nav-menu{flex:1 1 auto;min-width:0;justify-content:flex-end;margin-left:0;
-    flex-wrap:nowrap;overflow-x:auto;gap:0;scrollbar-width:none}
-  .nav-menu::-webkit-scrollbar{display:none}
-  /* 좁은 화면에서 좌우 패딩이 줄어 '홈' 같은 짧은 라벨이 24px 미만이 된다 (WCAG 2.5.8) */
-  .nav-link{padding:var(--sp-sm) var(--sp-xs);font-size:15px;white-space:nowrap;
-    min-width:24px;text-align:center}
-  .probs,.posts,.pipe,.dash-grid,.hero-stats,.core-cards,.fr{grid-template-columns:1fr}
-  .sub{position:static;width:auto;border:none;opacity:1;visibility:visible;transform:none;display:none}
-  .btn,.btn-primary{width:100%;font-size:18px}
-}
-@media(prefers-reduced-motion:reduce){
-  *{animation:none!important;transition:none!important}
-  .rv{opacity:1;transform:none}
-  html{scroll-behavior:auto}
-}
-
-</style>
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/contact.css">
 
 </head>
 <body>
@@ -370,79 +144,7 @@ a{color:inherit;text-decoration:none}
   </div>
 </footer>
 
-<script>
-(function(){
-  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  /* ---- 스크롤 리빌 ---- */
-  var rv = document.querySelectorAll('.rv');
-  if(reduce || !('IntersectionObserver' in window)){
-    rv.forEach(function(n){ n.classList.add('in'); });
-  } else {
-    var io = new IntersectionObserver(function(ents){
-      ents.forEach(function(e){
-        if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
-      });
-    }, {threshold:.12, rootMargin:'0px 0px -8% 0px'});
-    rv.forEach(function(n){ io.observe(n); });
-  }
-
-
-})();
-
-</script>
-<script>
-  document.querySelectorAll('#typeChips .chip').forEach(function(c){
-    c.addEventListener('click', function(){
-      c.setAttribute('aria-pressed', c.getAttribute('aria-pressed')==='true' ? 'false' : 'true');
-    });
-  });
-  /* 프로젝트 유형 칩은 button 이라 FormData 에 들어가지 않는다.
-     선택 상태를 hidden input 으로 옮겨 함께 전송한다. */
-  var chips = document.querySelectorAll('#typeChips .chip');
-  var typeValue = document.getElementById('typeValue');
-  function syncTypes(){
-    var on = [];
-    chips.forEach(function(c){ if(c.getAttribute('aria-pressed')==='true') on.push(c.textContent.trim()); });
-    typeValue.value = on.join(', ');
-    return on.length;
-  }
-  chips.forEach(function(c){ c.addEventListener('click', syncTypes); });
-
-  var form = document.getElementById('contactForm');
-  var btn  = document.getElementById('submitBtn');
-  var err  = document.getElementById('formErr');
-  var BTN_LABEL = btn.textContent;
-
-  function fail(msg){
-    err.textContent = msg; err.hidden = false;
-  }
-
-  form.addEventListener('submit', function(e){
-    e.preventDefault();
-    err.hidden = true;
-
-    var missing = ['co','nm','em','ms'].filter(function(id){ return !document.getElementById(id).value.trim(); });
-    if(missing.length){ fail('필수 항목을 모두 입력해 주세요.'); document.getElementById(missing[0]).focus(); return; }
-    if(!document.getElementById('em').checkValidity()){ fail('이메일 형식을 확인해 주세요.'); document.getElementById('em').focus(); return; }
-    if(!syncTypes()){ fail('프로젝트 유형을 하나 이상 선택해 주세요.'); return; }
-    if(!document.getElementById('consent').checked){ fail('개인정보 수집·이용 동의가 필요합니다.'); return; }
-
-    btn.disabled = true; btn.textContent = '전송 중…';
-    fetch(form.action, {
-      method: 'POST',
-      body: new FormData(form),
-      headers: { 'Accept': 'application/json' }
-    }).then(function(res){
-      if(!res.ok) throw new Error(res.status);
-      form.hidden = true;
-      document.getElementById('successBox').classList.add('show');
-      document.getElementById('successBox').scrollIntoView({behavior:'smooth', block:'center'});
-    }).catch(function(){
-      btn.disabled = false; btn.textContent = BTN_LABEL;
-      fail('전송에 실패했습니다. 잠시 후 다시 시도하시거나 haip.office@gmail.com 으로 보내주세요.');
-    });
-  });
-</script>
+<script src="js/main.js"></script>
+<script src="js/contact.js"></script>
 </body>
 </html>

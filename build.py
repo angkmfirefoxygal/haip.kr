@@ -121,13 +121,35 @@ def main():
         print('  %-24s %7.1fKB -> %7.1fKB' % (
             name, len(raw.encode()) / 1024, len(out.encode()) / 1024))
 
+    # css/ · js/ 도 주석을 제거해 dist 로 옮긴다
+    for sub, fn in (('css', strip_css), ('js', strip_js)):
+        srcdir = os.path.join(SRC, sub)
+        if not os.path.isdir(srcdir):
+            continue
+        os.makedirs(os.path.join(DIST, sub), exist_ok=True)
+        for name in sorted(os.listdir(srcdir)):
+            if not name.endswith('.' + ('css' if sub == 'css' else 'js')):
+                continue
+            with open(os.path.join(srcdir, name), encoding='utf-8') as f:
+                raw = f.read()
+            out = tidy(fn(raw))
+            with open(os.path.join(DIST, sub, name), 'w',
+                      encoding='utf-8', newline='\n') as f:
+                f.write(out)
+            before += len(raw.encode('utf-8'))
+            after += len(out.encode('utf-8'))
+            print('  %-24s %7.1fKB -> %7.1fKB' % (
+                sub + '/' + name, len(raw.encode()) / 1024, len(out.encode()) / 1024))
+
     # 남은 주석이 없는지 확인
     leftover = []
-    for name in sorted(PAGES):
-        with open(os.path.join(DIST, name), encoding='utf-8') as f:
-            s = f.read()
-        if re.search(r'<!--', s) or re.search(r'/\*', s):
-            leftover.append(name)
+    for root, _dirs, files in os.walk(DIST):
+        for name in files:
+            path = os.path.join(root, name)
+            with open(path, encoding='utf-8') as f:
+                s = f.read()
+            if '<!--' in s or '/*' in s:
+                leftover.append(os.path.relpath(path, DIST))
     print('\n  합계 %.1fKB -> %.1fKB (%.0f%% 감소)' % (
         before / 1024, after / 1024, (1 - after / before) * 100))
     if leftover:

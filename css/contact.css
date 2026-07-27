@@ -1,0 +1,131 @@
+/* contact.html 고유 스타일 — 공용은 base.css */
+/* ============================================================
+   Buzzvil design tokens
+   ============================================================ */
+
+.sec{padding:var(--sp-section) 0}
+
+/* bands */
+.band-surface{background:var(--surface)}
+.band-navy{background:var(--ink);color:var(--canvas)}
+
+/* 어두운 밴드 위에서는 포인트 컬러를 밝은 변형으로 바꾼다.
+   #0425FF는 #0e171f 대비 2.34:1로 텍스트에 쓸 수 없다(#6B87FF는 5.63:1). */
+.band-navy .big-pct,
+.band-navy .required{color:var(--point-lift)}
+.band-navy .consent input{accent-color:var(--point-lift)}
+
+/* ---------- type roles ---------- */
+.eyebrow{
+  font-size:12px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--muted-alt);margin:0 0 var(--sp-base);
+}
+.band-navy .eyebrow{color:var(--faint)}/* ============================================================
+   NAV — sticky white, 75px, hairline base
+   ============================================================ */
+
+.hero h1,
+.verb-block{
+  font-size:clamp(38px,6.4vw,78px);font-weight:800;line-height:1.19;
+  letter-spacing:-.03em;margin:0 0 var(--sp-lg);color:var(--canvas);
+}
+.hero-copy p+p{margin-top:var(--sp-sm);color:var(--faint)}
+.btn-primary{
+  display:inline-flex;align-items:center;justify-content:center;
+  height:55px;padding:var(--sp-base) var(--sp-xl);
+  background:var(--point);color:var(--on-primary);border:1px solid var(--point);
+  font-size:20px;font-weight:400;border-radius:var(--r-md);cursor:pointer;
+  font-family:var(--font);transition:filter .15s;
+}
+.btn-primary:hover{filter:brightness(.92)}/* ============================================================
+   핵심사업 — 대분류 3 × 하위 3 (feature cards, 32px)
+   ============================================================ */
+
+.core-block{padding:var(--sp-xxl) 0}
+.core-block+.core-block{border-top:1px solid var(--hairline)}/* ============================================================
+   CTA / CONTACT
+   ============================================================ */
+
+.cta-h{font-size:clamp(28px,4.6vw,56px);font-weight:700;line-height:1.2;letter-spacing:-.03em;
+  margin:0 0 var(--sp-lg);max-width:24ch;color:var(--canvas)}
+.cta-h b{color:var(--point-lift);font-weight:inherit}
+.cta-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,5vw,72px);align-items:start}
+.cta-note{font-size:16px;line-height:1.6;color:var(--faint-alt);margin:0 0 var(--sp-xl)}
+.meta{list-style:none;margin:0;padding:0;font-size:14px}
+.meta li{display:flex;gap:var(--sp-base);padding:var(--sp-md) 0;
+  border-bottom:1px solid rgba(242,245,247,.14);color:var(--faint-alt)}
+.meta li b{min-width:88px;color:var(--canvas);font-weight:600}
+
+.form{display:grid;gap:var(--sp-md)}
+.fr{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-md)}
+.field label{display:block;font-size:12px;font-weight:500;letter-spacing:.06em;color:var(--faint);margin-bottom:var(--sp-sm)}
+.field input,
+.field select,
+.field textarea{
+  width:100%;font-family:var(--font);font-size:16px;padding:var(--sp-base);
+  background:var(--slate);border:1px solid rgba(242,245,247,.16);color:var(--canvas);
+  border-radius:var(--r-md);
+}
+.field textarea{min-height:104px;resize:vertical}
+.field input::placeholder,
+.field textarea::placeholder{color:var(--faint)}
+.chips{display:flex;flex-wrap:wrap;gap:var(--sp-sm)}
+.chip{
+  font-family:var(--font);font-size:16px;padding:var(--sp-md) var(--sp-base);
+  border:1px solid var(--faint-alt);border-radius:var(--r-full);
+  background:transparent;color:var(--faint-alt);cursor:pointer;transition:.15s;
+}
+.chip:hover{border-color:var(--canvas);color:var(--canvas)}
+.chip[aria-pressed="true"]{background:var(--canvas);color:var(--black);border-color:var(--canvas);font-weight:700}
+.consent{display:flex;gap:var(--sp-md);align-items:flex-start;font-size:14px;color:var(--faint-alt);line-height:1.55}
+.consent input{width:18px;height:18px;margin-top:2px;accent-color:var(--point);flex:0 0 auto}
+.required{color:var(--point)}
+.success{display:none;background:var(--slate);border-radius:var(--r-xl);padding:var(--sp-xl);margin-top:var(--sp-lg)}
+.form-err{margin:var(--sp-sm) 0 0;font-size:14px;line-height:1.5;color:var(--point-lift)}
+.success h3{font-size:24px;font-weight:700;color:var(--canvas);margin:0 0 var(--sp-sm)}
+.success p{margin:0;color:var(--faint-alt);font-size:16px;line-height:1.5}
+.cpage{min-height:calc(100vh - var(--nav-h));display:flex;align-items:center}
+.cpage .sec{width:100%}/* ============================================================
+   FOOTER
+   ============================================================ */
+
+.faq-plus::before,
+.faq-plus::after{
+  content:"";position:absolute;left:50%;top:50%;background:var(--muted);border-radius:1px;
+}/* ============================================================
+   REVEAL
+   ============================================================ */
+
+.rv{opacity:0;transform:translateY(16px);
+  transition:opacity .55s cubic-bezier(.2,.7,.3,1),transform .55s cubic-bezier(.2,.7,.3,1)}
+.rv.in{opacity:1;transform:none}/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+
+@media(max-width:1024px){
+  .probs,
+.posts,
+.pipe,
+.dash-grid,
+.hero-stats,
+.core-cards{grid-template-columns:1fr 1fr}
+  .stat-hero,
+.cta-grid,
+.core-head{grid-template-columns:1fr;gap:var(--sp-lg)}
+}
+@media(max-width:640px){
+  .nav-in .logo{flex:none}
+  .nav-menu::-webkit-scrollbar{display:none}
+  .probs,
+.posts,
+.pipe,
+.dash-grid,
+.hero-stats,
+.core-cards,
+.fr{grid-template-columns:1fr}
+  .btn,
+.btn-primary{width:100%;font-size:18px}
+}
+@media(prefers-reduced-motion:reduce){
+  .rv{opacity:1;transform:none}
+}

@@ -1,0 +1,125 @@
+/* 404.html 고유 스타일 — 공용은 base.css */
+/* ============================================================
+   Buzzvil design tokens
+   ============================================================ */
+
+.sec{padding:var(--sp-section) 0}/* ============================================================
+   NAV — sticky white, 75px, hairline base
+   ============================================================ */
+
+.hero h1,
+.verb-block{
+  font-size:clamp(38px,6.4vw,78px);font-weight:800;line-height:1.19;
+  letter-spacing:-.03em;margin:0 0 var(--sp-lg);color:var(--canvas);
+}
+.hero-copy p+p{margin-top:var(--sp-sm);color:var(--faint)}
+.btns{display:flex;flex-wrap:wrap;gap:var(--sp-md);margin-top:var(--sp-xl)}
+
+/* buttons per token spec */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;
+  height:55px;padding:var(--sp-base) var(--sp-xl);
+  font-size:20px;font-weight:400;border-radius:var(--r-md);
+  background:var(--surface);color:var(--body);border:1px solid var(--surface);
+  transition:background .15s,color .15s;cursor:pointer;
+}
+.btn:hover{background:var(--hairline);border-color:var(--hairline)}
+.btn-primary{
+  display:inline-flex;align-items:center;justify-content:center;
+  height:55px;padding:var(--sp-base) var(--sp-xl);
+  background:var(--point);color:var(--on-primary);border:1px solid var(--point);
+  font-size:20px;font-weight:400;border-radius:var(--r-md);cursor:pointer;
+  font-family:var(--font);transition:filter .15s;
+}
+.btn-primary:hover{filter:brightness(.92)}/* ============================================================
+   핵심사업 — 대분류 3 × 하위 3 (feature cards, 32px)
+   ============================================================ */
+
+.core-block{padding:var(--sp-xxl) 0}
+.core-block+.core-block{border-top:1px solid var(--hairline)}
+.field input,
+.field select,
+.field textarea{
+  width:100%;font-family:var(--font);font-size:16px;padding:var(--sp-base);
+  background:var(--slate);border:1px solid rgba(242,245,247,.16);color:var(--canvas);
+  border-radius:var(--r-md);
+}
+.field input::placeholder,
+.field textarea::placeholder{color:var(--faint)}/* ============================================================
+   FOOTER
+   ============================================================ */
+
+.faq-plus::before,
+.faq-plus::after{
+  content:"";position:absolute;left:50%;top:50%;background:var(--muted);border-radius:1px;
+}/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+
+@media(max-width:1024px){
+  .probs,
+.posts,
+.pipe,
+.dash-grid,
+.hero-stats,
+.core-cards{grid-template-columns:1fr 1fr}
+  .stat-hero,
+.cta-grid,
+.core-head{grid-template-columns:1fr;gap:var(--sp-lg)}
+}
+@media(max-width:640px){
+  .nav-in .logo{flex:none}
+  .nav-menu::-webkit-scrollbar{display:none}
+  .probs,
+.posts,
+.pipe,
+.dash-grid,
+.hero-stats,
+.core-cards,
+.fr{grid-template-columns:1fr}
+  .btn,
+.btn-primary{width:100%;font-size:18px}
+}/* ============================================================
+   SERVICES — 제작 안내
+   ============================================================ */
+
+section[id]{scroll-margin-top:calc(var(--nav-h) + 16px)}
+.eyebrow{
+  font-size:12px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--muted-alt);margin:0 0 var(--sp-base);
+}
+.svc-hero{background:var(--surface);padding:clamp(44px,6vw,72px) 0 clamp(36px,5vw,56px)}
+.svc-hero h1{font-size:clamp(30px,5vw,56px);font-weight:700;line-height:1.2;
+  letter-spacing:-.03em;color:var(--ink);margin:0 0 var(--sp-base)}
+/* .eyebrow 가 이 규칙에 눌리지 않도록 제외 — 상단 라벨은 12px 캡션 */
+.svc-hero p:not(.eyebrow){font-size:clamp(16px,1.6vw,24px);font-weight:400;line-height:1.4;
+  color:var(--body);max-width:64ch;margin:0}
+.svc-types td:first-child b,
+.svc-types td:last-child b{display:block;color:var(--ink);font-weight:700}
+.svc-types td:first-child span,
+.svc-types td:last-child span{
+  display:block;font-size:12px;color:var(--muted-alt);margin-top:3px;white-space:nowrap}
+@media(max-width:900px){
+  /* 표를 좌우로 넘길 때 유형 이름이 따라오도록 첫 열 고정.
+     스티키 셀은 배경이 투명하면 내용이 겹쳐 보이므로 밴드 색을 채운다. */
+  .svc-types thead th:first-child,
+.svc-types tbody td:first-child{
+    position:sticky;left:0;z-index:1;background:var(--surface);
+    box-shadow:1px 0 0 var(--faint-alt)}
+}
+.band-surface .svc-table th,
+.band-surface .svc-table td{border-color:var(--faint-alt)}
+
+/* 404 — 인사이트 목록 스타일 재사용 */
+.idx-list{border-top:1px solid var(--hairline)}
+.idx-row{display:grid;grid-template-columns:1fr auto;gap:clamp(16px,2.6vw,32px);
+  align-items:center;padding:var(--sp-lg) 0;border-bottom:1px solid var(--hairline);transition:background .15s}
+.idx-row:hover{background:var(--surface)}
+.idx-cat{font-size:12px;font-weight:500;letter-spacing:.1em;color:var(--muted-alt);margin:0 0 var(--sp-sm)}
+.idx-row h3{font-size:clamp(18px,2vw,24px);font-weight:700;line-height:1.3;letter-spacing:-.015em;
+  margin:0 0 var(--sp-sm);color:var(--ink)}
+.idx-row p{margin:0;font-size:16px;line-height:1.55;color:var(--body)}
+.idx-link{font-size:14px;font-weight:600;color:var(--muted);white-space:nowrap}
+.idx-row:hover .idx-link{color:var(--ink)}
+@media(max-width:640px){.idx-link{display:none}
+}

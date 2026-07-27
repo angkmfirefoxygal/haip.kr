@@ -5,375 +5,30 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>서비스 — HaiP</title>
 <meta name="description" content="제작 가능한 인터랙티브 콘텐츠 11가지와 유형별로 남는 데이터, 소요기간과 포함 범위를 공개합니다. 하입(HaiP) 제작 안내.">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="assets/favicon.ico" sizes="32x32">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<meta name="theme-color" content="#0425FF">
+<link rel="canonical" href="https://haip.kr/services.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="HaiP">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:url" content="https://haip.kr/services.html">
+<meta property="og:title" content="서비스 — HaiP">
+<meta property="og:description" content="제작 가능한 인터랙티브 콘텐츠 11가지와 유형별로 남는 데이터, 소요기간과 포함 범위를 공개합니다. 하입(HaiP) 제작 안내.">
+<meta property="og:image" content="https://haip.kr/assets/og-image.jpg">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="HaiP — 게임으로 붙잡고, 브랜드로 남기고, 데이터로 증명합니다.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="서비스 — HaiP">
+<meta name="twitter:description" content="제작 가능한 인터랙티브 콘텐츠 11가지와 유형별로 남는 데이터, 소요기간과 포함 범위를 공개합니다. 하입(HaiP) 제작 안내.">
+<meta name="twitter:image" content="https://haip.kr/assets/og-image.jpg">
 <link rel="preconnect" href="https://cdn.jsdelivr.net">
 <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css">
-<style>
-/* ============================================================
-   Buzzvil design tokens
-   ============================================================ */
-:root{
-  /* color */
-  --point:      #0425FF;
-  --point-lift: #6B87FF;
-  --ink:        #0e171f;
-  --black:      #000000;
-  --canvas:     #ffffff;
-  --surface:    #f2f5f7;
-  --slate:      #2a3f4d;
-  --body:       #3e5463;
-  --muted:      #5b7282;
-  --muted-alt:  #7a909e;
-  --faint:      #9fb1bd;
-  --faint-alt:  #c1ccd6;
-  --hairline:   #dce3e8;
-  --on-primary: #ffffff;
-
-  /* type */
-  --font: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont,
-          system-ui, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
-
-  /* spacing */
-  --sp-xs:4px; --sp-sm:8px; --sp-md:12px; --sp-base:16px;
-  --sp-lg:24px; --sp-xl:32px; --sp-xxl:40px;
-  --sp-section: clamp(56px, 7vw, 80px);
-
-  /* radius */
-  --r-sm:4px; --r-md:8px; --r-lg:16px; --r-xl:32px; --r-full:9999px;
-
-  --pad: clamp(20px, 5vw, 60px);
-  --max: 1280px;
-  --nav-h: 75px;
-}
-
-*,*::before,*::after{box-sizing:border-box}
-html{scroll-behavior:smooth}
-
-/* ---------- 스크롤바 ----------
-   크롬 기본 막대 대신 얇고 옅게. 새 크롬·파이어폭스는 scrollbar-width/color 를 쓰고,
-   구 크롬·사파리는 아래 ::-webkit- 규칙을 쓴다 (둘은 서로 배타적이라 겹치지 않는다). */
-html,.svc-scroll{scrollbar-width:thin;scrollbar-color:var(--faint-alt) transparent}
-html::-webkit-scrollbar,.svc-scroll::-webkit-scrollbar{width:10px;height:10px}
-html::-webkit-scrollbar-track,.svc-scroll::-webkit-scrollbar-track{background:transparent}
-html::-webkit-scrollbar-thumb,.svc-scroll::-webkit-scrollbar-thumb{
-  background:var(--faint-alt);border-radius:var(--r-full);
-  border:3px solid var(--canvas);background-clip:padding-box}
-html::-webkit-scrollbar-thumb:hover,.svc-scroll::-webkit-scrollbar-thumb:hover{background:var(--faint);background-clip:padding-box}
-html::-webkit-scrollbar-corner,.svc-scroll::-webkit-scrollbar-corner{background:transparent}
-
-body{
-  margin:0;
-  font-family:var(--font);
-  background:var(--canvas);
-  color:var(--black);
-  font-size:16px;
-  font-weight:400;
-  line-height:1.5;
-  -webkit-font-smoothing:antialiased;
-}
-img{max-width:100%;display:block}
-a{color:inherit;text-decoration:none}
-:focus-visible{outline:2px solid var(--point);outline-offset:3px}
-
-.wrap{max-width:var(--max);margin:0 auto;padding-inline:var(--pad)}
-.sec{padding:var(--sp-section) 0}
-
-/* bands */
-.band-surface{background:var(--surface)}
-.band-navy{background:var(--ink);color:var(--canvas)}
-.band-navy .sec-lead,.band-navy .disc{color:var(--faint-alt)}
-.band-navy :focus-visible,
-.hero :focus-visible,
-.foot :focus-visible{outline-color:var(--point-lift)}
-
-/* ---------- type roles ---------- */
-.eyebrow{
-  font-size:12px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;
-  color:var(--muted-alt);margin:0 0 var(--sp-base);
-}
-.band-navy .eyebrow{color:var(--faint)}
-
-.sec-h{
-  font-size:clamp(27px,3.8vw,48px);font-weight:700;line-height:1.2;
-  letter-spacing:-.02em;margin:0 0 var(--sp-lg);color:inherit;
-}
-.sec-lead{
-  font-size:clamp(17px,1.7vw,24px);font-weight:400;line-height:1.31;
-  color:var(--body);max-width:60ch;margin:0 0 var(--sp-xxl);
-}
-.disc{font-size:12px;font-weight:500;color:var(--muted-alt);margin:var(--sp-lg) 0 0}
-
-/* ============================================================
-   NAV — sticky white, 75px, hairline base
-   ============================================================ */
-.nav{position:sticky;top:0;z-index:100;background:var(--canvas);border-bottom:1px solid var(--hairline)}
-.nav-in{display:flex;align-items:center;gap:var(--sp-xl);height:var(--nav-h);
-  max-width:var(--max);margin:0 auto;padding-inline:var(--pad);position:relative}
-.logo{font-size:19px;font-weight:800;letter-spacing:-.03em;color:var(--ink);line-height:1.1}
-/* 로고 워드마크 — 단색(#0425FF) SVG. 네이비 푸터에서는 대비가 2.34:1 이라 흰색으로 반전한다. */
-.logo img{display:block;height:26px;width:auto}
-.foot .logo img{filter:brightness(0) invert(1)}
-.nav-menu{display:flex;align-items:center;gap:var(--sp-xs);margin-left:auto;align-self:stretch}
-.nav-link{
-  font-size:16px;font-weight:600;color:var(--muted);
-  padding:var(--sp-md) var(--sp-base);border-radius:var(--r-sm);
-  transition:color .15s;
-}
-.nav-link:hover{color:var(--ink)}
-.nav-link.is-active{color:var(--ink)}
-.nav-cta{
-  display:inline-flex;align-items:center;height:44px;
-  padding:var(--sp-md) var(--sp-base);
-  background:var(--point);color:var(--on-primary);
-  font-size:16px;font-weight:400;border-radius:var(--r-sm);
-  margin-left:var(--sp-sm);transition:filter .15s;
-}
-.nav-cta:hover{filter:brightness(.92)}
-
-/* mega dropdown */
-/* 드롭다운은 링크가 아니라 nav 컨테이너(.nav-in)를 기준으로 배치한다.
-   링크 기준(position:relative + left:0)으로 열면 우측 정렬된 메뉴에서 패널이
-   화면 밖으로 나가 문서 폭이 늘어나고 가로 스크롤이 생긴다. */
-.has-sub{display:flex;align-items:center;align-self:stretch}
-.sub{
-  position:absolute;top:100%;right:var(--pad);left:auto;
-  background:var(--canvas);border:1px solid var(--hairline);
-  border-radius:var(--r-lg);padding:var(--sp-sm);
-  width:min(560px,calc(100% - var(--pad) * 2));display:grid;grid-template-columns:1fr 1fr;gap:2px;
-  opacity:0;visibility:hidden;transform:translateY(-6px);
-  transition:opacity .18s,transform .18s,visibility .18s;
-}
-.has-sub:hover .sub,.has-sub:focus-within .sub{opacity:1;visibility:visible;transform:none}
-.sub a{display:block;padding:var(--sp-md) var(--sp-base);border-radius:var(--r-md)}
-.sub a:hover{background:var(--surface)}
-.sub b{display:block;font-size:16px;font-weight:700;color:var(--ink)}
-.sub small{display:block;font-size:12px;font-weight:400;color:var(--muted);margin-top:2px;line-height:1.45}
-.hero h1,.verb-block{
-  font-size:clamp(38px,6.4vw,78px);font-weight:800;line-height:1.19;
-  letter-spacing:-.03em;margin:0 0 var(--sp-lg);color:var(--canvas);
-}
-.hero-copy p+p{margin-top:var(--sp-sm);color:var(--faint)}
-.btns{display:flex;flex-wrap:wrap;gap:var(--sp-md);margin-top:var(--sp-xl)}
-
-/* buttons per token spec */
-.btn{
-  display:inline-flex;align-items:center;justify-content:center;
-  height:55px;padding:var(--sp-base) var(--sp-xl);
-  font-size:20px;font-weight:400;border-radius:var(--r-md);
-  background:var(--surface);color:var(--body);border:1px solid var(--surface);
-  transition:background .15s,color .15s;cursor:pointer;
-}
-.btn:hover{background:var(--hairline);border-color:var(--hairline)}
-.btn.ghost{background:transparent;color:var(--surface);border:1px solid var(--surface)}
-.btn.ghost:hover{background:rgba(242,245,247,.12)}
-.btn-primary{
-  display:inline-flex;align-items:center;justify-content:center;
-  height:55px;padding:var(--sp-base) var(--sp-xl);
-  background:var(--point);color:var(--on-primary);border:1px solid var(--point);
-  font-size:20px;font-weight:400;border-radius:var(--r-md);cursor:pointer;
-  font-family:var(--font);transition:filter .15s;
-}
-.btn-primary:hover{filter:brightness(.92)}
-
-/* ============================================================
-   핵심사업 — 대분류 3 × 하위 3 (feature cards, 32px)
-   ============================================================ */
-.core-block{padding:var(--sp-xxl) 0}
-.core-block+.core-block{border-top:1px solid var(--hairline)}
-
-/* ============================================================
-   PROCESS (brand story)
-   ============================================================ */
-.steps{border-top:1px solid var(--hairline)}
-.step{display:grid;grid-template-columns:56px 1.15fr 1fr;gap:clamp(14px,2.6vw,40px);
-  padding:var(--sp-lg) 0;border-bottom:1px solid var(--hairline);align-items:start}
-.step-n{font-size:12px;font-weight:500;letter-spacing:.1em;color:var(--faint);padding-top:6px}
-.step h3{font-size:clamp(19px,2.1vw,24px);font-weight:700;letter-spacing:-.015em;margin:0 0 var(--sp-sm);color:var(--ink)}
-.step p{margin:0;font-size:16px;line-height:1.5;color:var(--body)}
-.step-out{font-size:14px;line-height:1.6;color:var(--muted-alt);padding-top:6px}
-
-/* ============================================================
-   TRACK 딥다이브 (brand story · navy band)
-   ============================================================ */
-.pipe{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--sp-base);margin-bottom:var(--sp-xxl)}
-.pipe-step{background:var(--slate);border-radius:var(--r-xl);padding:var(--sp-xl)}
-.pipe-step:last-child{background:var(--canvas)}
-.pipe-step h4{font-size:12px;font-weight:500;letter-spacing:.12em;color:var(--faint);margin:0 0 var(--sp-base)}
-.pipe-step:last-child h4{color:var(--muted)}
-.pipe-step ul{list-style:none;margin:0;padding:0}
-.pipe-step li{font-size:16px;line-height:1.5;padding:var(--sp-xs) 0;color:var(--surface)}
-.pipe-step:last-child li{color:var(--body)}
-
-.dash{background:var(--slate);border-radius:var(--r-xl);overflow:hidden}
-.dash-bar{display:flex;align-items:center;gap:var(--sp-sm);padding:var(--sp-base) var(--sp-lg);
-  border-bottom:1px solid rgba(242,245,247,.12);font-size:12px;font-weight:500;letter-spacing:.1em;color:var(--faint-alt)}
-.dot{width:7px;height:7px;border-radius:50%;background:var(--faint)}
-.dash-bar span{margin-left:auto;color:var(--faint)}
-.dash-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(242,245,247,.12)}
-.tile{background:var(--slate);padding:var(--sp-lg)}
-.tile-l{font-size:12px;font-weight:500;letter-spacing:.08em;color:var(--faint);margin:0 0 var(--sp-sm)}
-.tile-v{font-size:clamp(22px,2.6vw,32px);font-weight:800;letter-spacing:-.02em;color:var(--canvas);margin:0;
-  font-variant-numeric:tabular-nums}
-.tile-d{font-size:12px;font-weight:500;color:var(--faint-alt);margin:var(--sp-xs) 0 0}
-.chart{padding:var(--sp-lg);border-top:1px solid rgba(242,245,247,.12)}
-.chart-h{display:flex;justify-content:space-between;font-size:12px;font-weight:500;letter-spacing:.08em;
-  color:var(--faint-alt);margin-bottom:var(--sp-base)}
-.bars{display:flex;align-items:flex-end;gap:clamp(3px,.7vw,8px);height:132px}
-.bars i{flex:1;background:var(--faint);opacity:.45;border-radius:var(--r-sm) var(--r-sm) 0 0;transition:opacity .2s}
-.bars i.hi{background:var(--canvas);opacity:1}
-.axis{display:flex;justify-content:space-between;font-size:12px;color:var(--faint);margin-top:var(--sp-sm)}
-
-/* ============================================================
-   CTA / CONTACT
-   ============================================================ */
-.cta-h{font-size:clamp(28px,4.6vw,56px);font-weight:700;line-height:1.2;letter-spacing:-.03em;
-  margin:0 0 var(--sp-lg);max-width:24ch;color:var(--canvas)}
-.cta-h b{color:var(--point-lift);font-weight:inherit}
-.cta-note{font-size:16px;line-height:1.6;color:var(--faint-alt);margin:0 0 var(--sp-xl)}
-.field input,.field select,.field textarea{
-  width:100%;font-family:var(--font);font-size:16px;padding:var(--sp-base);
-  background:var(--slate);border:1px solid rgba(242,245,247,.16);color:var(--canvas);
-  border-radius:var(--r-md);
-}
-.field input::placeholder,.field textarea::placeholder{color:var(--faint)}
-
-/* ============================================================
-   FOOTER
-   ============================================================ */
-.foot{background:var(--ink);color:var(--faint);padding:var(--sp-xxl) 0 var(--sp-xl);
-  border-top:1px solid rgba(242,245,247,.12)}
-.foot-in{display:flex;flex-wrap:wrap;gap:var(--sp-lg);justify-content:space-between;align-items:flex-start}
-.foot .logo{color:var(--canvas)}
-.foot-nav{display:flex;flex-wrap:wrap;gap:var(--sp-lg);font-size:14px;font-weight:600}
-.foot-nav a:hover{color:var(--canvas)}
-.foot small{display:block;font-size:12px;color:var(--muted-alt);margin-top:var(--sp-lg);line-height:1.9}
-.faq-plus::before,.faq-plus::after{
-  content:"";position:absolute;left:50%;top:50%;background:var(--muted);border-radius:1px;
-}
-
-/* ============================================================
-   REVEAL
-   ============================================================ */
-.rv{opacity:0;transform:translateY(16px);
-  transition:opacity .55s cubic-bezier(.2,.7,.3,1),transform .55s cubic-bezier(.2,.7,.3,1)}
-.rv.in{opacity:1;transform:none}
-
-/* ============================================================
-   RESPONSIVE
-   ============================================================ */
-@media(max-width:1024px){
-  .probs,.posts,.pipe,.dash-grid,.hero-stats,.core-cards{grid-template-columns:1fr 1fr}
-  .stat-hero,.cta-grid,.core-head{grid-template-columns:1fr;gap:var(--sp-lg)}
-  .step{grid-template-columns:40px 1fr}
-  .step-out{grid-column:2;padding-top:var(--sp-md)}
-  .sub{grid-template-columns:1fr}
-}
-@media(max-width:640px){
-  /* 로고 · 메뉴 · 문의 CTA 를 한 줄에 유지한다.
-     로고와 CTA 는 고정폭, 가운데 메뉴만 줄어들고 모자라면 그 안에서만 가로 스크롤한다. */
-  .nav-in{gap:var(--sp-sm)}
-  .nav-in .logo{flex:none}
-  .nav-cta{flex:none;font-size:15px;padding:var(--sp-sm) var(--sp-md);height:40px}
-  .nav-menu{flex:1 1 auto;min-width:0;justify-content:flex-end;margin-left:0;
-    flex-wrap:nowrap;overflow-x:auto;gap:0;scrollbar-width:none}
-  .nav-menu::-webkit-scrollbar{display:none}
-  /* 좁은 화면에서 좌우 패딩이 줄어 '홈' 같은 짧은 라벨이 24px 미만이 된다 (WCAG 2.5.8) */
-  .nav-link{padding:var(--sp-sm) var(--sp-xs);font-size:15px;white-space:nowrap;
-    min-width:24px;text-align:center}
-  .probs,.posts,.pipe,.dash-grid,.hero-stats,.core-cards,.fr{grid-template-columns:1fr}
-  .sub{position:static;width:auto;border:none;opacity:1;visibility:visible;transform:none;display:none}
-  .btn,.btn-primary{width:100%;font-size:18px}
-  .bars{height:96px}
-}
-@media(prefers-reduced-motion:reduce){
-  *{animation:none!important;transition:none!important}
-  .rv{opacity:1;transform:none}
-  html{scroll-behavior:auto}
-}
-
-/* ============================================================
-   SERVICES — 제작 안내
-   ============================================================ */
-section[id]{scroll-margin-top:calc(var(--nav-h) + 16px)}
-/* 히어로 — 어두운 배경 이미지. 일러스트가 오른쪽에 있어 텍스트는 왼쪽 여백 안에 둔다.
-   이미지가 없거나 로드 전이면 --ink 가 그대로 보인다. */
-/* 히어로 — 배경 이미지를 contain 으로 두어 위아래가 잘리지 않게 한다.
-   이미지 왼쪽 54% 는 원래 단색(#01040c)이라 배경색과 이어져 경계가 보이지 않는다. */
-.svc-hero{background:#01040c url("assets/hero-brand-story-bg.webp") right center/auto 100% no-repeat;
-  padding:clamp(44px,6vw,72px) 0 clamp(36px,5vw,56px)}
-.svc-hero .eyebrow{color:var(--faint)}
-.svc-hero h1{font-size:clamp(30px,5vw,56px);font-weight:700;line-height:1.2;
-  letter-spacing:-.03em;color:var(--canvas);margin:0 0 var(--sp-base);max-width:16ch}
-/* 어두운 히어로 위 본문 — 밝은 회색. .eyebrow 가 이 규칙에 눌리지 않도록 제외 */
-.svc-hero p:not(.eyebrow){font-size:clamp(16px,1.6vw,24px);font-weight:400;line-height:1.4;
-  color:var(--faint-alt);max-width:44ch;margin:0}
-@media(max-width:1200px){
-  /* 가로 배치는 일러스트가 글자에 닿지 않을 만큼 넓을 때만 쓴다.
-     그 아래에서는 일러스트만 잘라낸 이미지를 글자 아래에 놓는다.
-     가로로 겹치게 두면 글자와 부딪히고, 전체 이미지를 쓰면 그림이 너무 작아진다. */
-  .svc-hero{background-image:url("assets/hero-brand-story-art.webp");
-    background-position:center bottom;background-size:min(420px,88%) auto;
-    padding-bottom:calc(clamp(36px,5vw,56px) + min(295px,62vw))}
-  .svc-hero h1,.svc-hero p:not(.eyebrow){max-width:none}
-}
-
-.svc-scroll{overflow-x:auto;margin:var(--sp-lg) 0 0}
-/* 콘텐츠 유형 비교 표 — 11개를 한 화면에서 나란히 비교하도록 */
-.svc-table.svc-types{min-width:820px}
-.svc-types td{font-size:13px;vertical-align:top}
-.svc-types td:first-child b,.svc-types td:last-child b{display:block;color:var(--ink);font-weight:700}
-.svc-types td:first-child b{font-size:15px}
-.svc-types td:first-child span,.svc-types td:last-child span{
-  display:block;font-size:12px;color:var(--muted-alt);margin-top:3px;white-space:nowrap}
-.svc-types .flow-c i{font-style:normal;color:var(--faint-alt);margin:0 3px}
-.svc-types .data-c{color:var(--muted)}
-.svc-types tr.grp th{
-  color:var(--ink);font-weight:700;font-size:13px;letter-spacing:0;
-  padding-top:var(--sp-lg);background:var(--canvas);white-space:nowrap}
-.svc-types tr.grp em{font-style:normal;font-weight:500;font-size:11px;letter-spacing:.12em;
-  color:var(--faint);margin-left:var(--sp-sm)}
-@media(max-width:900px){
-  /* 표를 좌우로 넘길 때 유형 이름이 따라오도록 첫 열 고정.
-     스티키 셀은 배경이 투명하면 내용이 겹쳐 보이므로 밴드 색을 채운다. */
-  .svc-types thead th:first-child,
-  .svc-types tbody td:first-child{
-    position:sticky;left:0;z-index:1;background:var(--surface);
-    box-shadow:1px 0 0 var(--faint-alt)}
-  /* 그룹 라벨도 따라오게 — 오른쪽으로 넘겼을 때 빈 띠만 남지 않도록 */
-  .svc-types tr.grp th{position:static;overflow:visible}
-  .svc-types tr.grp .grp-l{position:sticky;left:0;display:inline-block;
-    background:var(--canvas);padding-right:var(--sp-sm)}
-}
-
-.svc-table{width:100%;border-collapse:collapse;font-size:14px;min-width:640px}
-.svc-table th{text-align:left;font-size:12px;font-weight:500;letter-spacing:.08em;color:var(--faint);
-  padding:var(--sp-md);border-bottom:1px solid var(--hairline);white-space:nowrap}
-.svc-table td{padding:var(--sp-md);border-bottom:1px solid var(--hairline);color:var(--body);
-  line-height:1.6;vertical-align:top}
-.svc-table td b{color:var(--ink);font-weight:700}
-.svc-table tr:last-child td{border-bottom:none}
-.band-surface .svc-table th,.band-surface .svc-table td{border-color:var(--faint-alt)}
-
-/* 자료 다운로드 */
-.dl{display:grid;grid-template-columns:1fr auto;gap:clamp(20px,3vw,40px);align-items:center;
-  background:var(--surface);border-radius:var(--r-xl);padding:var(--sp-xxl) var(--sp-xl)}
-.dl h3{font-size:clamp(19px,2.1vw,24px);font-weight:700;letter-spacing:-.015em;margin:0 0 var(--sp-sm);color:var(--ink)}
-.dl p{margin:0;font-size:16px;line-height:1.55;color:var(--body);max-width:56ch}
-.dl-meta{display:block;font-size:12px;font-weight:500;color:var(--muted-alt);margin-top:var(--sp-md)}
-
-.svc-note{background:var(--surface);border-radius:var(--r-lg);padding:var(--sp-lg);margin-top:var(--sp-lg)}
-.band-surface .svc-note{background:var(--canvas)}
-.svc-note h4{font-size:12px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;
-  color:var(--faint);margin:0 0 var(--sp-md)}
-.svc-note ul{margin:0;padding-left:var(--sp-lg);color:var(--body)}
-.svc-note li{font-size:15px;line-height:1.7;margin-bottom:var(--sp-xs)}
-.svc-note li::marker{color:var(--faint)}
-.svc-note p{margin:var(--sp-md) 0 0;font-size:13px;line-height:1.6;color:var(--muted)}
-
-@media(max-width:640px){
-  .dl{grid-template-columns:1fr}
-  .dl .btn-primary{width:100%}
-}
-</style>
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/services.css">
 </head>
 <body>
 
@@ -616,7 +271,6 @@ section[id]{scroll-margin-top:calc(var(--nav-h) + 16px)}
   </div>
 </section>
 
-
 <!-- ============ TRACK 딥다이브 ============ -->
 
 <section class="band-navy sec" id="track">
@@ -670,7 +324,6 @@ section[id]{scroll-margin-top:calc(var(--nav-h) + 16px)}
   </div>
 </section>
 
-
 <section class="band-surface sec" id="download">
   <div class="wrap">
     <div class="dl rv">
@@ -711,26 +364,6 @@ section[id]{scroll-margin-top:calc(var(--nav-h) + 16px)}
   </div>
 </footer>
 
-<script>
-(function(){
-  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  /* ---- 스크롤 리빌 ---- */
-  var rv = document.querySelectorAll('.rv');
-  if(reduce || !('IntersectionObserver' in window)){
-    rv.forEach(function(n){ n.classList.add('in'); });
-  } else {
-    var io = new IntersectionObserver(function(ents){
-      ents.forEach(function(e){
-        if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
-      });
-    }, {threshold:.12, rootMargin:'0px 0px -8% 0px'});
-    rv.forEach(function(n){ io.observe(n); });
-  }
-
-
-})();
-
-</script>
+<script src="js/main.js"></script>
 </body>
 </html>
