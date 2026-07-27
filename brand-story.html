@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>문의하기 — HaiP</title>
-<meta name="description" content="캠페인이 끝난 뒤에 남는 것을 만듭니다. 프로젝트 유형과 진행 시기만 알려주셔도 됩니다.">
+<title>일하는 방식 — HaiP</title>
+<meta name="description" content="우리가 왜 측정을 먼저 설계하는지, 어떻게 진행하고 어떻게 증명하는지에 대한 이야기입니다.">
 <link rel="preconnect" href="https://cdn.jsdelivr.net">
 <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css">
 <style>
@@ -77,7 +77,6 @@ summary::-webkit-details-marker{display:none}
 .band-navy .required{color:var(--point-lift)}
 .band-navy .consent input{accent-color:var(--point-lift)}
 .band-navy :focus-visible,
-.hero :focus-visible,
 .foot :focus-visible{outline-color:var(--point-lift)}
 
 /* .stat-hero는 흰 배경 기준으로 작성됐는데 navy 밴드 안에 놓여 있어
@@ -150,16 +149,18 @@ summary::-webkit-details-marker{display:none}
 /* ============================================================
    HERO — navy band, 78px ExtraBold, slate stat cards
    ============================================================ */
-.hero{background:var(--ink);color:var(--canvas);padding:clamp(56px,7vw,88px) 0 var(--sp-section)}
-.hero-kicker{font-size:12px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;
-  color:var(--faint);margin:0 0 var(--sp-lg)}
+/* 페이지 히어로 — 인사이트(.ins-hero) / 제작 안내(.svc-hero)와 동일한 스펙.
+   밝은 surface 배경, 56px 이하 700 제목, body 색 리드. */
+.hero{background:var(--surface);padding:clamp(44px,6vw,72px) 0 clamp(36px,5vw,56px)}
+.hero-kicker{font-size:12px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--muted-alt);margin:0 0 var(--sp-base)}
 .hero h1,.verb-block{
-  font-size:clamp(38px,6.4vw,78px);font-weight:800;line-height:1.19;
-  letter-spacing:-.03em;margin:0 0 var(--sp-lg);color:var(--canvas);
+  font-size:clamp(30px,5vw,56px);font-weight:700;line-height:1.2;
+  letter-spacing:-.03em;margin:0 0 var(--sp-base);color:var(--ink);
 }
-.hero-copy p{font-size:clamp(17px,1.7vw,24px);font-weight:400;line-height:1.31;
-  color:var(--surface);margin:0;max-width:52ch}
-.hero-copy p+p{margin-top:var(--sp-sm);color:var(--faint)}
+.hero-copy p{font-size:clamp(16px,1.6vw,24px);font-weight:400;line-height:1.4;
+  color:var(--body);margin:0;max-width:64ch}
+.hero-copy p+p{margin-top:var(--sp-sm);color:var(--muted)}
 .btns{display:flex;flex-wrap:wrap;gap:var(--sp-md);margin-top:var(--sp-xl)}
 
 /* buttons per token spec */
@@ -350,7 +351,6 @@ summary::-webkit-details-marker{display:none}
 .required{color:var(--point)}
 .success{display:none;background:var(--slate);border-radius:var(--r-xl);padding:var(--sp-xl);margin-top:var(--sp-lg)}
 .success.show{display:block}
-.form-err{margin:var(--sp-sm) 0 0;font-size:14px;line-height:1.5;color:var(--point-lift)}
 .success h3{font-size:24px;font-weight:700;color:var(--canvas);margin:0 0 var(--sp-sm)}
 .success p{margin:0;color:var(--faint-alt);font-size:16px;line-height:1.5}
 .cpage{min-height:calc(100vh - var(--nav-h));display:flex;align-items:center}
@@ -449,11 +449,9 @@ summary::-webkit-details-marker{display:none}
 }
 
 </style>
-
 </head>
 <body>
 
-<!-- ============ NAV ============ -->
 <nav class="nav">
   <div class="nav-in">
     <a href="index.html" class="logo">HaiP<span>CATCH / KEEP / TRACK</span></a>
@@ -475,79 +473,114 @@ summary::-webkit-details-marker{display:none}
           <a href="insight.html#case"><b>사례집</b><small>국내외 브랜드 캠페인에서 배울 구조와 지표</small></a>
         </div>
       </div>
-      <a href="brand-story.html" class="nav-link">일하는 방식</a>
+      <a href="brand-story.html" class="nav-link is-active">일하는 방식</a>
     </div>
     <a href="contact.html" class="nav-cta">문의하기</a>
   </div>
 </nav>
 
-<!-- ============ CONTACT ============ -->
-<main class="band-navy cpage">
-  <div class="sec">
-    <div class="wrap">
-      <p class="eyebrow rv">문의 · Contact</p>
-      <div class="cta-grid">
-        <div class="rv">
-          <h1 class="cta-h">캠페인이 끝난 뒤에 <b>남는 것</b>을 만듭니다.</h1>
-          <p class="cta-note">진행 시기와 목적만 알려주셔도 됩니다. 예산이 정해지지 않았거나 포맷을 아직 고르지 못한 단계여도, 어떤 데이터를 남길 수 있는지부터 함께 정리해 드립니다.</p>
-          <ul class="meta">
-            <li><b>회신</b><span>영업일 기준 1일 내</span></li>
-            <li><b>리드타임</b><span>이벤트 게임 1~2주 · 커스텀 3~5주 · AI·AR 4~6주 <a href="services.html" style="text-decoration:underline;color:var(--canvas)">범위 보기 →</a></span></li>
-            <li><b>메일</b><span>haip.office@gmail.com</span></li>
-            <li><b>인사이트</b><span><a href="index.html#faq" style="text-decoration:underline;color:var(--canvas)">발주 전 FAQ 먼저 보기 →</a></span></li>
-            <li><b>자료</b><span><a href="assets/haip-company-profile.pdf" download="하입(HaiP) 회사소개서.pdf" style="text-decoration:underline;color:var(--canvas)">회사소개서 PDF 받기 →</a> <span style="color:var(--faint)">15p · 5.0MB</span></span></li>
-          </ul>
+<header class="hero">
+  <div class="wrap">
+    <p class="hero-kicker">일하는 방식 &nbsp;/&nbsp; How we work</p>
+    <h1>
+      화려하게 시작해서<br>조용히 끝나는 캠페인이 너무 많습니다.
+    </h1>
+    <div class="hero-copy">
+      <p>저희는 시작보다 그 다음을 봅니다. 무엇을 남길지 먼저 정하고, 그 다음에 무엇을 만들지 정합니다.</p>
+      <p>그래서 기획보다 측정 설계가 먼저 들어갑니다.</p>
+    </div>
+  </div>
+</header>
 
-          <div class="success" id="successBox">
-            <h3>문의가 접수되었습니다</h3>
-            <p>영업일 기준 1일 내로 담당자가 회신드립니다. 확인이 필요하시면 haip.office@gmail.com 로 직접 연락 주셔도 됩니다.</p>
-          </div>
-        </div>
+<!-- ============ PROCESS ============ -->
+<section class="sec">
+  <div class="wrap">
+    <p class="eyebrow rv">진행 방식 · Process</p>
+    <h2 class="sec-h rv">측정할 것을 먼저 정합니다</h2>
+    <p class="sec-lead rv">대부분의 제작은 기획에서 시작합니다. 그래서 끝나고 나면 측정할 것이 남지 않습니다. 저희는 그 앞에 진단을 한 단계 더 둡니다.</p>
 
-        <form class="form rv" id="contactForm" action="https://formspree.io/f/xqeorrol" method="POST" novalidate>
-          <input type="hidden" name="_subject" value="[HaiP] 홈페이지 프로젝트 문의">
-          <input type="hidden" name="프로젝트유형" id="typeValue">
-          <div class="fr">
-            <div class="field"><label for="co">회사명 <span class="required">*</span></label><input id="co" name="회사명" required placeholder="브랜드 또는 대행사"></div>
-            <div class="field"><label for="nm">담당자 / 직함 <span class="required">*</span></label><input id="nm" name="담당자" required placeholder="이름"></div>
-          </div>
-          <div class="field"><label for="em">이메일 <span class="required">*</span></label><input id="em" name="email" type="email" required placeholder="name@company.com"></div>
-          <div class="field"><label for="ph">연락처</label><input id="ph" name="연락처" type="tel" placeholder="선택 입력"></div>
-
-          <div class="field">
-            <label>프로젝트 유형 <span class="required">*</span> <span style="opacity:.5">복수 선택</span></label>
-            <div class="chips" id="typeChips">
-              <button type="button" class="chip" aria-pressed="false">오프라인 부스·팝업</button>
-              <button type="button" class="chip" aria-pressed="false">온라인 캠페인</button>
-              <button type="button" class="chip" aria-pressed="false">AI·AR 체험</button>
-              <button type="button" class="chip" aria-pressed="false">포토부스</button>
-              <button type="button" class="chip" aria-pressed="false">데이터 트래킹만</button>
-              <button type="button" class="chip" aria-pressed="false">미정</button>
-            </div>
-          </div>
-
-          <div class="fr">
-            <div class="field"><label for="wh">진행 시기 <span class="required">*</span></label>
-              <select id="wh" name="진행시기"><option>1개월 내</option><option>1~3개월</option><option>3개월 이상</option><option>미정</option></select>
-            </div>
-            <div class="field"><label for="bg">예산 범위</label>
-              <select id="bg" name="예산범위"><option>미정</option><option>1천만 원 이하</option><option>1천~3천만 원</option><option>3천~7천만 원</option><option>7천만 원 이상</option></select>
-            </div>
-          </div>
-
-          <div class="field"><label for="ms">프로젝트 내용 <span class="required">*</span></label><textarea id="ms" name="프로젝트내용" required placeholder="목적, 예상 방문 규모, 참고 사례 등 자유롭게"></textarea></div>
-
-          <label class="consent"><input type="checkbox" id="consent" name="개인정보동의" value="동의" required><span>개인정보 수집·이용에 동의합니다. <u>전문 보기</u></span></label>
-
-          <button class="btn-primary" type="submit" id="submitBtn">문의 보내기</button>
-          <p class="form-err" id="formErr" role="alert" hidden></p>
-        </form>
+    <div class="steps rv">
+      <div class="step">
+        <div class="step-n">01</div>
+        <div><h3>진단</h3><p>캠페인 목적과 KPI를 정의하고, 어떤 데이터를 남길지 먼저 설계합니다.</p></div>
+        <div class="step-out">KPI 정의서<br>데이터 수집 설계서</div>
+      </div>
+      <div class="step">
+        <div class="step-n">02</div>
+        <div><h3>기획</h3><p>브랜드 메시지를 게임 규칙으로 번역하고, 동선과 참여 흐름을 설계합니다.</p></div>
+        <div class="step-out">게임 기획서<br>참여 플로우</div>
+      </div>
+      <div class="step">
+        <div class="step-n">03</div>
+        <div><h3>제작</h3><p>개발·디자인·AI/AR을 구현하고, 트래킹 코드를 함께 심습니다.</p></div>
+        <div class="step-out">웹게임 · 대시보드<br>연동 스펙</div>
+      </div>
+      <div class="step">
+        <div class="step-n">04</div>
+        <div><h3>운영</h3><p>현장에 대응하고 실시간으로 모니터링하며, 필요하면 캠페인 중간에 개선합니다.</p></div>
+        <div class="step-out">운영 리포트</div>
+      </div>
+      <div class="step">
+        <div class="step-n">05</div>
+        <div><h3>이관</h3><p>성과 리포트와 함께 데이터·세그먼트를 브랜드에 넘깁니다. 리포트만 남기지 않습니다.</p></div>
+        <div class="step-out">성과 보고서<br>데이터셋 · 세그먼트</div>
       </div>
     </div>
   </div>
-</main>
+</section>
 
-<!-- ============ FOOTER ============ -->
+<!-- ============ TRACK 딥다이브 ============ -->
+<section class="band-navy sec">
+  <div class="wrap">
+    <p class="eyebrow rv">TRACK · 성과 증명</p>
+    <h2 class="sec-h rv" style="max-width:24ch">"이번 캠페인, 매출로 이어졌습니까?"</h2>
+    <p class="sec-lead rv" style="color:var(--faint-alt);opacity:1">이 질문에 숫자로 답할 수 있게 만드는 것이 저희 일의 절반입니다.</p>
+
+    <div class="pipe rv">
+      <div class="pipe-step">
+        <h4>01 &nbsp;현장 참여</h4>
+        <ul><li>게임 참여</li><li>참여 로그 자동 수집</li><li>동선별 QR 구분</li></ul>
+      </div>
+      <div class="pipe-step">
+        <h4>02 &nbsp;ID 연결</h4>
+        <ul><li>방문객 ID 발급</li><li>기존 회원 ID 매칭</li><li>옵트인 동의 확보</li></ul>
+      </div>
+      <div class="pipe-step">
+        <h4>03 &nbsp;성과 추적</h4>
+        <ul><li>전환율 · 재구매</li><li>리텐션 · 코호트</li><li>ROAS · CAC</li></ul>
+      </div>
+      <div class="pipe-step">
+        <h4>04 &nbsp;자산 이관</h4>
+        <ul><li>CRM · CDP 연동</li><li>세그먼트 인계</li><li>리타깃 모수 확보</li></ul>
+      </div>
+    </div>
+
+    <!-- 대시보드 목업 -->
+    <div class="dash rv">
+      <div class="dash-bar"><i class="dot"></i>CAMPAIGN DASHBOARD<span>예시 화면 · Sample</span></div>
+      <div class="dash-grid">
+        <div class="tile"><p class="tile-l">누적 참여</p><p class="tile-v">12,480</p><p class="tile-d">신규 68% / 기존 32%</p></div>
+        <div class="tile"><p class="tile-l">평균 체류</p><p class="tile-v">08:42</p><p class="tile-d">완주율 74.1%</p></div>
+        <div class="tile"><p class="tile-l">전환율</p><p class="tile-v">6.3%</p><p class="tile-d">룩백 7일 기준</p></div>
+        <div class="tile"><p class="tile-l">30일 리텐션</p><p class="tile-v">21.5%</p><p class="tile-d">참여 코호트 기준</p></div>
+      </div>
+      <div class="chart">
+        <div class="chart-h"><span>시간대별 참여 · 유입 곡선</span><span>PEAK 15:00–17:00</span></div>
+        <div class="bars" aria-hidden="true">
+          <i style="height:14%"></i><i style="height:22%"></i><i style="height:31%"></i>
+          <i style="height:44%"></i><i style="height:52%"></i><i style="height:47%"></i>
+          <i style="height:61%"></i><i style="height:78%"></i><i class="hi" style="height:96%"></i>
+          <i class="hi" style="height:88%"></i><i style="height:71%"></i><i style="height:58%"></i>
+          <i style="height:39%"></i><i style="height:24%"></i>
+        </div>
+        <div class="axis"><span>10시</span><span>13시</span><span>16시</span><span>19시</span><span>21시</span></div>
+      </div>
+    </div>
+
+    <p class="disc rv" style="color:var(--faint-alt)">방문객 ID 추적과 CRM 이관은 개인정보 수집·이용 동의를 전제로, 적법한 동의 절차 위에서 설계합니다.</p>
+  </div>
+</section>
+
 <footer class="foot">
   <div class="wrap">
     <div class="foot-in">
@@ -647,59 +680,6 @@ summary::-webkit-details-marker{display:none}
 
 })();
 
-</script>
-<script>
-  document.querySelectorAll('#typeChips .chip').forEach(function(c){
-    c.addEventListener('click', function(){
-      c.setAttribute('aria-pressed', c.getAttribute('aria-pressed')==='true' ? 'false' : 'true');
-    });
-  });
-  /* 프로젝트 유형 칩은 button 이라 FormData 에 들어가지 않는다.
-     선택 상태를 hidden input 으로 옮겨 함께 전송한다. */
-  var chips = document.querySelectorAll('#typeChips .chip');
-  var typeValue = document.getElementById('typeValue');
-  function syncTypes(){
-    var on = [];
-    chips.forEach(function(c){ if(c.getAttribute('aria-pressed')==='true') on.push(c.textContent.trim()); });
-    typeValue.value = on.join(', ');
-    return on.length;
-  }
-  chips.forEach(function(c){ c.addEventListener('click', syncTypes); });
-
-  var form = document.getElementById('contactForm');
-  var btn  = document.getElementById('submitBtn');
-  var err  = document.getElementById('formErr');
-  var BTN_LABEL = btn.textContent;
-
-  function fail(msg){
-    err.textContent = msg; err.hidden = false;
-  }
-
-  form.addEventListener('submit', function(e){
-    e.preventDefault();
-    err.hidden = true;
-
-    var missing = ['co','nm','em','ms'].filter(function(id){ return !document.getElementById(id).value.trim(); });
-    if(missing.length){ fail('필수 항목을 모두 입력해 주세요.'); document.getElementById(missing[0]).focus(); return; }
-    if(!document.getElementById('em').checkValidity()){ fail('이메일 형식을 확인해 주세요.'); document.getElementById('em').focus(); return; }
-    if(!syncTypes()){ fail('프로젝트 유형을 하나 이상 선택해 주세요.'); return; }
-    if(!document.getElementById('consent').checked){ fail('개인정보 수집·이용 동의가 필요합니다.'); return; }
-
-    btn.disabled = true; btn.textContent = '전송 중…';
-    fetch(form.action, {
-      method: 'POST',
-      body: new FormData(form),
-      headers: { 'Accept': 'application/json' }
-    }).then(function(res){
-      if(!res.ok) throw new Error(res.status);
-      form.hidden = true;
-      document.getElementById('successBox').classList.add('show');
-      document.getElementById('successBox').scrollIntoView({behavior:'smooth', block:'center'});
-    }).catch(function(){
-      btn.disabled = false; btn.textContent = BTN_LABEL;
-      fail('전송에 실패했습니다. 잠시 후 다시 시도하시거나 haip.office@gmail.com 으로 보내주세요.');
-    });
-  });
 </script>
 </body>
 </html>
