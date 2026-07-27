@@ -47,6 +47,19 @@
 
 *,*::before,*::after{box-sizing:border-box}
 html{scroll-behavior:smooth}
+
+/* ---------- 스크롤바 ----------
+   크롬 기본 막대 대신 얇고 옅게. 새 크롬·파이어폭스는 scrollbar-width/color 를 쓰고,
+   구 크롬·사파리는 아래 ::-webkit- 규칙을 쓴다 (둘은 서로 배타적이라 겹치지 않는다). */
+html{scrollbar-width:thin;scrollbar-color:var(--faint-alt) transparent}
+html::-webkit-scrollbar{width:10px;height:10px}
+html::-webkit-scrollbar-track{background:transparent}
+html::-webkit-scrollbar-thumb{
+  background:var(--faint-alt);border-radius:var(--r-full);
+  border:3px solid var(--canvas);background-clip:padding-box}
+html::-webkit-scrollbar-thumb:hover{background:var(--faint);background-clip:padding-box}
+html::-webkit-scrollbar-corner{background:transparent}
+
 body{
   margin:0;
   font-family:var(--font);
@@ -60,8 +73,6 @@ body{
 img{max-width:100%;display:block}
 a{color:inherit;text-decoration:none}
 :focus-visible{outline:2px solid var(--point);outline-offset:3px}
-summary{cursor:pointer;list-style:none}
-summary::-webkit-details-marker{display:none}
 
 .wrap{max-width:var(--max);margin:0 auto;padding-inline:var(--pad)}
 .sec{padding:var(--sp-section) 0}
@@ -80,28 +91,12 @@ summary::-webkit-details-marker{display:none}
 .hero :focus-visible,
 .foot :focus-visible{outline-color:var(--point-lift)}
 
-/* .stat-hero는 흰 배경 기준으로 작성됐는데 navy 밴드 안에 놓여 있어
-   본문(#3e5463 1.9:1)과 강조(#0e171f 1:1), 리댁션 바가 사실상 보이지 않았다. */
-.band-navy .stat-hero p:not(.big-pct){color:var(--faint-alt)}
-.band-navy .stat-hero p b{color:var(--canvas)}
-.band-navy .redact{background:var(--faint-alt)}
-
 /* ---------- type roles ---------- */
 .eyebrow{
   font-size:12px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;
   color:var(--muted-alt);margin:0 0 var(--sp-base);
 }
 .band-navy .eyebrow{color:var(--faint)}
-
-.sec-h{
-  font-size:clamp(27px,3.8vw,48px);font-weight:700;line-height:1.2;
-  letter-spacing:-.02em;margin:0 0 var(--sp-lg);color:inherit;
-}
-.sec-lead{
-  font-size:clamp(17px,1.7vw,24px);font-weight:400;line-height:1.31;
-  color:var(--body);max-width:60ch;margin:0 0 var(--sp-xxl);
-}
-.disc{font-size:12px;font-weight:500;color:var(--muted-alt);margin:var(--sp-lg) 0 0}
 
 /* ============================================================
    NAV — sticky white, 75px, hairline base
@@ -113,7 +108,6 @@ summary::-webkit-details-marker{display:none}
 /* 로고 워드마크 — 단색(#0425FF) SVG. 네이비 푸터에서는 대비가 2.34:1 이라 흰색으로 반전한다. */
 .logo img{display:block;height:26px;width:auto}
 .foot .logo img{filter:brightness(0) invert(1)}
-.logo span{display:block;font-size:11px;font-weight:500;letter-spacing:.1em;color:var(--faint);margin-top:2px}
 .nav-menu{display:flex;align-items:center;gap:var(--sp-xs);margin-left:auto;align-self:stretch}
 .nav-link{
   font-size:16px;font-weight:600;color:var(--muted);
@@ -121,7 +115,6 @@ summary::-webkit-details-marker{display:none}
   transition:color .15s;
 }
 .nav-link:hover{color:var(--ink)}
-.nav-link.is-active{color:var(--ink)}
 .nav-cta{
   display:inline-flex;align-items:center;height:44px;
   padding:var(--sp-md) var(--sp-base);
@@ -149,33 +142,11 @@ summary::-webkit-details-marker{display:none}
 .sub a:hover{background:var(--surface)}
 .sub b{display:block;font-size:16px;font-weight:700;color:var(--ink)}
 .sub small{display:block;font-size:12px;font-weight:400;color:var(--muted);margin-top:2px;line-height:1.45}
-
-/* ============================================================
-   HERO — navy band, 78px ExtraBold, slate stat cards
-   ============================================================ */
-.hero{background:var(--ink);color:var(--canvas);padding:clamp(56px,7vw,88px) 0 var(--sp-section)}
-.hero-kicker{font-size:12px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;
-  color:var(--faint);margin:0 0 var(--sp-lg)}
 .hero h1,.verb-block{
   font-size:clamp(38px,6.4vw,78px);font-weight:800;line-height:1.19;
   letter-spacing:-.03em;margin:0 0 var(--sp-lg);color:var(--canvas);
 }
-.hero-copy p{font-size:clamp(17px,1.7vw,24px);font-weight:400;line-height:1.31;
-  color:var(--surface);margin:0;max-width:52ch}
 .hero-copy p+p{margin-top:var(--sp-sm);color:var(--faint)}
-.btns{display:flex;flex-wrap:wrap;gap:var(--sp-md);margin-top:var(--sp-xl)}
-
-/* buttons per token spec */
-.btn{
-  display:inline-flex;align-items:center;justify-content:center;
-  height:55px;padding:var(--sp-base) var(--sp-xl);
-  font-size:20px;font-weight:400;border-radius:var(--r-md);
-  background:var(--surface);color:var(--body);border:1px solid var(--surface);
-  transition:background .15s,color .15s;cursor:pointer;
-}
-.btn:hover{background:var(--hairline);border-color:var(--hairline)}
-.btn.ghost{background:transparent;color:var(--surface);border:1px solid var(--surface)}
-.btn.ghost:hover{background:rgba(242,245,247,.12)}
 .btn-primary{
   display:inline-flex;align-items:center;justify-content:center;
   height:55px;padding:var(--sp-base) var(--sp-xl);
@@ -185,137 +156,11 @@ summary::-webkit-details-marker{display:none}
 }
 .btn-primary:hover{filter:brightness(.92)}
 
-/* hero stat cards (card-dark) */
-.hero-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--sp-base);margin-top:clamp(40px,5vw,64px)}
-.hstat{background:var(--slate);color:var(--canvas);border-radius:var(--r-xl);padding:var(--sp-xxl) var(--sp-xl) var(--sp-xl)}
-.hstat-tag{font-size:12px;font-weight:500;letter-spacing:.12em;color:var(--faint);margin:0 0 var(--sp-lg)}
-.hstat-v{font-size:clamp(30px,4vw,52px);font-weight:800;letter-spacing:-.03em;line-height:1.1;margin:0;
-  font-variant-numeric:tabular-nums;color:var(--canvas)}
-.hstat-l{font-size:16px;font-weight:400;color:var(--faint-alt);margin:var(--sp-sm) 0 0}
-
-/* ============================================================
-   PROBLEM
-   ============================================================ */
-.stat-hero{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(24px,4vw,64px);
-  align-items:end;padding-bottom:var(--sp-xxl);border-bottom:1px solid var(--hairline)}
-.band-navy .stat-hero{border-color:rgba(220,227,232,.18)}
-.big-pct{
-  font-size:clamp(64px,11vw,140px);font-weight:800;line-height:.95;letter-spacing:-.04em;
-  color:var(--point);margin:0;font-variant-numeric:tabular-nums;
-}
-.big-pct em{font-style:normal;font-size:.34em;margin-left:.04em}
-.stat-hero p:not(.big-pct){margin:0;font-size:clamp(17px,1.7vw,24px);font-weight:400;line-height:1.45;color:var(--body)}
-.stat-hero p b{color:var(--ink);font-weight:700}
-.redact{display:inline-block;background:var(--ink);border-radius:var(--r-sm);
-  width:3.1em;height:.92em;vertical-align:-.06em;margin:0 .12em;user-select:none}
-
-.probs{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--sp-base);margin-top:var(--sp-xxl)}
-.prob{background:var(--surface);border-radius:var(--r-xl);padding:var(--sp-xxl) var(--sp-xl) var(--sp-xl)}
-.prob-n{font-size:12px;font-weight:500;letter-spacing:.1em;color:var(--faint);margin:0 0 var(--sp-base)}
-.prob h3{font-size:clamp(19px,2.1vw,24px);font-weight:700;letter-spacing:-.015em;margin:0 0 var(--sp-md);color:var(--ink)}
-.prob p{margin:0;font-size:16px;line-height:1.5;color:var(--body)}
-.prob cite{display:block;font-size:12px;font-weight:500;font-style:normal;color:var(--muted-alt);
-  margin-top:var(--sp-lg);padding-top:var(--sp-md);border-top:1px solid var(--hairline)}
-
 /* ============================================================
    핵심사업 — 대분류 3 × 하위 3 (feature cards, 32px)
    ============================================================ */
 .core-block{padding:var(--sp-xxl) 0}
 .core-block+.core-block{border-top:1px solid var(--hairline)}
-.core-head{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(16px,3vw,48px);
-  align-items:start;margin-bottom:var(--sp-xl)}
-.core-num{font-size:12px;font-weight:500;letter-spacing:.12em;color:var(--faint);margin:0 0 var(--sp-md)}
-.core-h{font-size:clamp(24px,3.2vw,40px);font-weight:700;line-height:1.2;letter-spacing:-.025em;margin:0;color:var(--ink)}
-.core-h em{display:block;font-style:normal;font-size:12px;font-weight:500;letter-spacing:.14em;
-  color:var(--muted-alt);margin-top:var(--sp-md)}
-.core-desc{font-size:clamp(16px,1.5vw,20px);font-weight:400;line-height:1.5;color:var(--body);margin:0;padding-top:var(--sp-xs)}
-.core-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--sp-base)}
-.core-card{background:var(--canvas);border-radius:var(--r-xl);padding:var(--sp-xxl) var(--sp-xl) var(--sp-xl);
-  border:1px solid var(--hairline);transition:border-color .15s}
-.core-card:hover{border-color:var(--faint-alt)}
-.core-card h4{font-size:clamp(18px,2vw,24px);font-weight:700;letter-spacing:-.015em;margin:0 0 var(--sp-base);color:var(--ink)}
-.core-card ul{list-style:none;margin:0;padding:0}
-.core-card li{position:relative;padding:var(--sp-sm) 0 var(--sp-sm) var(--sp-base);
-  font-size:16px;line-height:1.5;color:var(--body)}
-.core-card li::before{content:"";position:absolute;left:0;top:15px;width:4px;height:4px;
-  border-radius:50%;background:var(--faint)}
-
-/* ============================================================
-   PROCESS (brand story)
-   ============================================================ */
-.steps{border-top:1px solid var(--hairline)}
-.step{display:grid;grid-template-columns:56px 1.15fr 1fr;gap:clamp(14px,2.6vw,40px);
-  padding:var(--sp-lg) 0;border-bottom:1px solid var(--hairline);align-items:start}
-.step-n{font-size:12px;font-weight:500;letter-spacing:.1em;color:var(--faint);padding-top:6px}
-.step h3{font-size:clamp(19px,2.1vw,24px);font-weight:700;letter-spacing:-.015em;margin:0 0 var(--sp-sm);color:var(--ink)}
-.step p{margin:0;font-size:16px;line-height:1.5;color:var(--body)}
-.step-out{font-size:14px;line-height:1.6;color:var(--muted-alt);padding-top:6px}
-
-/* ============================================================
-   TRACK 딥다이브 (brand story · navy band)
-   ============================================================ */
-.pipe{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--sp-base);margin-bottom:var(--sp-xxl)}
-.pipe-step{background:var(--slate);border-radius:var(--r-xl);padding:var(--sp-xl)}
-.pipe-step:last-child{background:var(--canvas)}
-.pipe-step h4{font-size:12px;font-weight:500;letter-spacing:.12em;color:var(--faint);margin:0 0 var(--sp-base)}
-.pipe-step:last-child h4{color:var(--muted)}
-.pipe-step ul{list-style:none;margin:0;padding:0}
-.pipe-step li{font-size:16px;line-height:1.5;padding:var(--sp-xs) 0;color:var(--surface)}
-.pipe-step:last-child li{color:var(--body)}
-
-.dash{background:var(--slate);border-radius:var(--r-xl);overflow:hidden}
-.dash-bar{display:flex;align-items:center;gap:var(--sp-sm);padding:var(--sp-base) var(--sp-lg);
-  border-bottom:1px solid rgba(242,245,247,.12);font-size:12px;font-weight:500;letter-spacing:.1em;color:var(--faint-alt)}
-.dot{width:7px;height:7px;border-radius:50%;background:var(--faint)}
-.dash-bar span{margin-left:auto;color:var(--faint)}
-.dash-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(242,245,247,.12)}
-.tile{background:var(--slate);padding:var(--sp-lg)}
-.tile-l{font-size:12px;font-weight:500;letter-spacing:.08em;color:var(--faint);margin:0 0 var(--sp-sm)}
-.tile-v{font-size:clamp(22px,2.6vw,32px);font-weight:800;letter-spacing:-.02em;color:var(--canvas);margin:0;
-  font-variant-numeric:tabular-nums}
-.tile-d{font-size:12px;font-weight:500;color:var(--faint-alt);margin:var(--sp-xs) 0 0}
-.chart{padding:var(--sp-lg);border-top:1px solid rgba(242,245,247,.12)}
-.chart-h{display:flex;justify-content:space-between;font-size:12px;font-weight:500;letter-spacing:.08em;
-  color:var(--faint-alt);margin-bottom:var(--sp-base)}
-.bars{display:flex;align-items:flex-end;gap:clamp(3px,.7vw,8px);height:132px}
-.bars i{flex:1;background:var(--faint);opacity:.45;border-radius:var(--r-sm) var(--r-sm) 0 0;transition:opacity .2s}
-.bars i.hi{background:var(--canvas);opacity:1}
-.axis{display:flex;justify-content:space-between;font-size:12px;color:var(--faint);margin-top:var(--sp-sm)}
-
-/* ============================================================
-   INSIGHT cards / posts
-   ============================================================ */
-.posts{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--sp-base)}
-.post{background:var(--canvas);border:1px solid var(--hairline);border-radius:var(--r-xl);
-  padding:var(--sp-xl);display:flex;flex-direction:column;transition:border-color .15s}
-.post:hover{border-color:var(--faint-alt)}
-.post-cat{font-size:12px;font-weight:500;letter-spacing:.1em;color:var(--muted-alt);margin:0 0 var(--sp-base)}
-.post h3{font-size:clamp(18px,2vw,24px);font-weight:700;line-height:1.3;letter-spacing:-.015em;
-  margin:0 0 var(--sp-md);color:var(--ink)}
-.post p{margin:0 0 var(--sp-lg);font-size:16px;line-height:1.5;color:var(--body)}
-.post-more{margin-top:auto;font-size:14px;font-weight:600;color:var(--muted)}
-
-.news{margin-top:var(--sp-xxl);background:var(--surface);border-radius:var(--r-xl);
-  padding:var(--sp-xxl) var(--sp-xl);display:flex;flex-wrap:wrap;gap:var(--sp-lg);
-  align-items:center;justify-content:space-between}
-.news h3{font-size:clamp(19px,2.1vw,24px);font-weight:700;letter-spacing:-.015em;margin:0 0 var(--sp-xs);color:var(--ink)}
-.news p{margin:0;font-size:16px;color:var(--body)}
-.news div{max-width:52ch}
-.news form{display:flex;gap:var(--sp-sm);flex-wrap:wrap}
-.news input{font-family:var(--font);font-size:16px;padding:var(--sp-base);height:55px;
-  border:1px solid var(--hairline);border-radius:var(--r-md);background:var(--canvas);color:var(--ink);min-width:220px}
-.news input::placeholder{color:var(--faint)}
-
-/* filter pills */
-.tabs{display:flex;flex-wrap:wrap;gap:var(--sp-sm);margin-bottom:var(--sp-xxl)}
-.tab{
-  height:55px;padding:var(--sp-base) var(--sp-lg);
-  font-family:var(--font);font-size:20px;font-weight:400;
-  border:1px solid var(--faint-alt);border-radius:var(--r-full);
-  background:transparent;color:var(--faint-alt);cursor:pointer;transition:.15s;
-}
-.tab:hover{border-color:var(--muted-alt);color:var(--muted-alt)}
-.tab[aria-selected="true"]{background:var(--canvas);color:var(--black);font-weight:700;border-color:var(--black)}
 
 /* ============================================================
    CTA / CONTACT
@@ -352,7 +197,6 @@ summary::-webkit-details-marker{display:none}
 .consent input{width:18px;height:18px;margin-top:2px;accent-color:var(--point);flex:0 0 auto}
 .required{color:var(--point)}
 .success{display:none;background:var(--slate);border-radius:var(--r-xl);padding:var(--sp-xl);margin-top:var(--sp-lg)}
-.success.show{display:block}
 .form-err{margin:var(--sp-sm) 0 0;font-size:14px;line-height:1.5;color:var(--point-lift)}
 .success h3{font-size:24px;font-weight:700;color:var(--canvas);margin:0 0 var(--sp-sm)}
 .success p{margin:0;color:var(--faint-alt);font-size:16px;line-height:1.5}
@@ -366,52 +210,12 @@ summary::-webkit-details-marker{display:none}
   border-top:1px solid rgba(242,245,247,.12)}
 .foot-in{display:flex;flex-wrap:wrap;gap:var(--sp-lg);justify-content:space-between;align-items:flex-start}
 .foot .logo{color:var(--canvas)}
-.foot .logo span{color:var(--faint)}
 .foot-nav{display:flex;flex-wrap:wrap;gap:var(--sp-lg);font-size:14px;font-weight:600}
 .foot-nav a:hover{color:var(--canvas)}
 .foot small{display:block;font-size:12px;color:var(--muted-alt);margin-top:var(--sp-lg);line-height:1.9}
-
-/* ============================================================
-   FAQ (홈 하단)
-   ============================================================ */
-/* ---------- faq ---------- */
-.faq-layout{display:grid;grid-template-columns:280px 1fr;gap:clamp(24px,4vw,64px);align-items:start}
-.faq-side h2{font-size:clamp(27px,3.8vw,48px);font-weight:700;line-height:1.2;
-  letter-spacing:-.02em;margin:0 0 var(--sp-base);color:var(--ink)}
-.faq-side p{font-size:16px;line-height:1.6;color:var(--body);margin:0 0 var(--sp-lg)}
-.faq-side .btn-primary{height:44px;padding:var(--sp-md) var(--sp-base);font-size:16px;border-radius:var(--r-sm)}
-
-.faq-group{margin-bottom:var(--sp-lg)}
-.faq-cat-h{font-size:12px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;
-  color:var(--faint);margin:0 0 var(--sp-md);padding-left:var(--sp-lg)}
-
-.faq-main{min-width:0}
-.faq{display:grid;gap:var(--sp-sm)}
-.faq-item{background:var(--surface);border-radius:var(--r-lg);overflow:hidden;transition:background .15s}
-.faq-item:hover{background:var(--hairline)}
-.faq-item[open]{background:var(--surface)}
-.faq-q{
-  width:100%;text-align:left;background:none;border:none;cursor:pointer;
-  display:flex;justify-content:space-between;align-items:center;gap:var(--sp-base);
-  padding:var(--sp-lg);font-family:var(--font);
-  font-size:clamp(16px,1.7vw,18px);font-weight:600;color:var(--ink);line-height:1.45;
-}
-.faq-plus{
-  flex:0 0 auto;width:24px;height:24px;position:relative;transition:transform .22s ease;
-}
 .faq-plus::before,.faq-plus::after{
   content:"";position:absolute;left:50%;top:50%;background:var(--muted);border-radius:1px;
 }
-.faq-plus::before{width:13px;height:1.5px;transform:translate(-50%,-50%)}
-.faq-plus::after{width:1.5px;height:13px;transform:translate(-50%,-50%)}
-.faq-item[open] .faq-plus{transform:rotate(135deg)}
-.faq-a{margin:0;padding:0 var(--sp-lg) var(--sp-lg);font-size:16px;line-height:1.65;color:var(--body)}
-
-@media(max-width:900px){
-  .faq-layout{grid-template-columns:1fr;gap:var(--sp-lg)}
-  .faq-cat-h{padding-left:0}
-}
-
 
 /* ============================================================
    REVEAL
@@ -426,24 +230,23 @@ summary::-webkit-details-marker{display:none}
 @media(max-width:1024px){
   .probs,.posts,.pipe,.dash-grid,.hero-stats,.core-cards{grid-template-columns:1fr 1fr}
   .stat-hero,.cta-grid,.core-head{grid-template-columns:1fr;gap:var(--sp-lg)}
-  .step{grid-template-columns:40px 1fr}
-  .step-out{grid-column:2;padding-top:var(--sp-md)}
   .sub{grid-template-columns:1fr}
 }
 @media(max-width:640px){
-  /* 메뉴 항목이 늘어나 한 줄에 들어가지 않으므로 2행으로 나눈다.
-     1행: 로고 + 문의 CTA / 2행: 링크 (넘치면 가로 스크롤) */
-  .nav-in{height:auto;flex-wrap:wrap;gap:var(--sp-sm);padding-block:var(--sp-sm)}
-  .logo span{display:none}
-  .nav-cta{order:2;margin-left:auto;font-size:15px;padding:var(--sp-sm) var(--sp-md);height:40px}
-  .nav-menu{order:3;width:100%;margin-left:0;align-self:auto;
-    flex-wrap:nowrap;overflow-x:auto;gap:var(--sp-xs);scrollbar-width:none}
+  /* 로고 · 메뉴 · 문의 CTA 를 한 줄에 유지한다.
+     로고와 CTA 는 고정폭, 가운데 메뉴만 줄어들고 모자라면 그 안에서만 가로 스크롤한다. */
+  .nav-in{gap:var(--sp-sm)}
+  .nav-in .logo{flex:none}
+  .nav-cta{flex:none;font-size:15px;padding:var(--sp-sm) var(--sp-md);height:40px}
+  .nav-menu{flex:1 1 auto;min-width:0;justify-content:flex-end;margin-left:0;
+    flex-wrap:nowrap;overflow-x:auto;gap:0;scrollbar-width:none}
   .nav-menu::-webkit-scrollbar{display:none}
-  .nav-link{padding:var(--sp-sm) var(--sp-md);font-size:15px;white-space:nowrap}
+  /* 좁은 화면에서 좌우 패딩이 줄어 '홈' 같은 짧은 라벨이 24px 미만이 된다 (WCAG 2.5.8) */
+  .nav-link{padding:var(--sp-sm) var(--sp-xs);font-size:15px;white-space:nowrap;
+    min-width:24px;text-align:center}
   .probs,.posts,.pipe,.dash-grid,.hero-stats,.core-cards,.fr{grid-template-columns:1fr}
   .sub{position:static;width:auto;border:none;opacity:1;visibility:visible;transform:none;display:none}
   .btn,.btn-primary{width:100%;font-size:18px}
-  .bars{height:96px}
 }
 @media(prefers-reduced-motion:reduce){
   *{animation:none!important;transition:none!important}
@@ -459,14 +262,16 @@ summary::-webkit-details-marker{display:none}
 <!-- ============ NAV ============ -->
 <nav class="nav">
   <div class="nav-in">
-    <a href="index.html" class="logo"><img src="assets/haip-logo.svg" alt="HaiP" width="157" height="79"><span>CATCH / KEEP / TRACK</span></a>
+    <a href="index.html" class="logo"><img src="assets/haip-logo.svg" alt="HaiP" width="157" height="79"></a>
     <div class="nav-menu">
       <a href="index.html" class="nav-link">홈</a>
       <div class="has-sub">
-        <a href="services.html" class="nav-link">제작 안내</a>
+        <a href="services.html" class="nav-link">서비스</a>
         <div class="sub">
+          <a href="services.html#process"><b>진행 방식 5단계</b><small>진단 → 기획 → 제작 → 운영 → 이관</small></a>
           <a href="services.html#types"><b>콘텐츠 유형 11가지</b><small>참여 흐름과 유형별로 남는 데이터</small></a>
           <a href="services.html#timeline"><b>소요기간 · 포함 범위</b><small>기본형 1~2주 · 커스텀형 3~5주 · AI·AR형 4~6주</small></a>
+          <a href="services.html#track"><b>성과 증명</b><small>방문객 ID 연결부터 CRM 이관까지</small></a>
           <a href="services.html#download"><b>회사소개서 PDF</b><small>비교 검토와 품의 자료용 · 15페이지</small></a>
         </div>
       </div>
@@ -478,7 +283,6 @@ summary::-webkit-details-marker{display:none}
           <a href="insight.html#case"><b>사례집</b><small>국내외 브랜드 캠페인에서 배울 구조와 지표</small></a>
         </div>
       </div>
-      <a href="brand-story.html" class="nav-link">일하는 방식</a>
     </div>
     <a href="contact.html" class="nav-cta">문의하기</a>
   </div>
@@ -554,9 +358,9 @@ summary::-webkit-details-marker{display:none}
 <footer class="foot">
   <div class="wrap">
     <div class="foot-in">
-      <a href="index.html" class="logo"><img src="assets/haip-logo.svg" alt="HaiP" width="157" height="79"><span>CATCH / KEEP / TRACK</span></a>
+      <a href="index.html" class="logo"><img src="assets/haip-logo.svg" alt="HaiP" width="157" height="79"></a>
       <nav class="foot-nav">
-        <a href="index.html">홈</a><a href="services.html">제작 안내</a><a href="insight.html">인사이트</a><a href="brand-story.html">일하는 방식</a><a href="contact.html">문의</a>
+        <a href="index.html">홈</a><a href="services.html">서비스</a><a href="insight.html">인사이트</a><a href="contact.html">문의</a>
       </nav>
     </div>
     <small>
@@ -569,31 +373,6 @@ summary::-webkit-details-marker{display:none}
 <script>
 (function(){
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  /* ---- 스코어보드 카운터 (홈 히어로) ---- */
-  function fmt(v, kind){
-    if(kind==='int')  return Math.round(v).toLocaleString('en-US');
-    if(kind==='pct')  return (v/10).toFixed(1) + '%';
-    if(kind==='time'){
-      var s = Math.round(v), m = Math.floor(s/60);
-      return String(m).padStart(2,'0') + ':' + String(s%60).padStart(2,'0');
-    }
-    return v;
-  }
-  document.querySelectorAll('.hstat-v').forEach(function(el,i){
-    var to = +el.dataset.to, kind = el.dataset.fmt;
-    if(reduce){ el.textContent = fmt(to, kind); return; }
-    var dur = 1100, delay = 220 + i*160, t0 = null;
-    setTimeout(function(){
-      requestAnimationFrame(function step(ts){
-        if(!t0) t0 = ts;
-        var p = Math.min((ts-t0)/dur, 1);
-        var e = 1 - Math.pow(1-p, 3);
-        el.textContent = fmt(to*e, kind);
-        if(p < 1) requestAnimationFrame(step);
-      });
-    }, delay);
-  });
 
   /* ---- 스크롤 리빌 ---- */
   var rv = document.querySelectorAll('.rv');
@@ -608,45 +387,6 @@ summary::-webkit-details-marker{display:none}
     rv.forEach(function(n){ io.observe(n); });
   }
 
-  /* ---- 인사이트 필터 탭 (홈 티저 등에서 재사용될 경우 대비) ---- */
-  document.querySelectorAll('.tab').forEach(function(t){
-    t.addEventListener('click', function(){
-      document.querySelectorAll('.tab').forEach(function(x){ x.setAttribute('aria-selected','false'); });
-      t.setAttribute('aria-selected','true');
-    });
-  });
-
-  /* ---- 용어사전 좌측 서브메뉴 스크롤 연동 ---- */
-  (function(){
-    var links = Array.prototype.slice.call(document.querySelectorAll('.side-sub .ss-link'));
-    if(!links.length) return;
-    var groups = links.map(function(a){
-      return document.querySelector(a.getAttribute('href'));
-    }).filter(Boolean);
-    if(!groups.length) return;
-
-    function setActive(id){
-      links.forEach(function(a){
-        a.classList.toggle('active', a.getAttribute('href') === '#' + id);
-      });
-    }
-
-    function onScroll(){
-      var offset = 120, current = groups[0].id;
-      for(var i=0;i<groups.length;i++){
-        if(groups[i].getBoundingClientRect().top <= offset) current = groups[i].id;
-      }
-      setActive(current);
-    }
-
-    var ticking = false;
-    window.addEventListener('scroll', function(){
-      if(ticking) return;
-      ticking = true;
-      requestAnimationFrame(function(){ onScroll(); ticking = false; });
-    }, {passive:true});
-    onScroll();
-  })();
 
 })();
 

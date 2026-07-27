@@ -7,7 +7,7 @@
 # 웹에 나갈 파일만 별도 디렉터리에 모아서 그것만 올린다.
 set -e
 
-PROJECT="haip-kr"
+PROJECT="${CF_PAGES_PROJECT:-haip}"
 BRANCH="${1:-v2}"
 OUT=".cf-dist"
 

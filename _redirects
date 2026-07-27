@@ -1,8 +1,12 @@
 # 구버전에서 사라진 페이지
-/about.html      /brand-story.html   301
-/about           /brand-story.html   301
-/portfolio.html  /services.html      301
-/portfolio       /services.html      301
+/about.html      /services.html#process   301
+/about           /services.html#process   301
+/portfolio.html  /services.html           301
+/portfolio       /services.html           301
+
+# 일하는 방식 → 서비스로 통합
+/brand-story.html  /services.html#process  301
+/brand-story       /services.html#process  301
 
 # 인사이트 하위 진입 (기존 링크 호환)
 /insight-glossary.html  /insight.html#glossary  301

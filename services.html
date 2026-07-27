@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>제작 안내 — HaiP</title>
+<title>서비스 — HaiP</title>
 <meta name="description" content="제작 가능한 인터랙티브 콘텐츠 11가지와 유형별로 남는 데이터, 소요기간과 포함 범위를 공개합니다. 하입(HaiP) 제작 안내.">
 <link rel="preconnect" href="https://cdn.jsdelivr.net">
 <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css">
@@ -47,6 +47,19 @@
 
 *,*::before,*::after{box-sizing:border-box}
 html{scroll-behavior:smooth}
+
+/* ---------- 스크롤바 ----------
+   크롬 기본 막대 대신 얇고 옅게. 새 크롬·파이어폭스는 scrollbar-width/color 를 쓰고,
+   구 크롬·사파리는 아래 ::-webkit- 규칙을 쓴다 (둘은 서로 배타적이라 겹치지 않는다). */
+html,.svc-scroll{scrollbar-width:thin;scrollbar-color:var(--faint-alt) transparent}
+html::-webkit-scrollbar,.svc-scroll::-webkit-scrollbar{width:10px;height:10px}
+html::-webkit-scrollbar-track,.svc-scroll::-webkit-scrollbar-track{background:transparent}
+html::-webkit-scrollbar-thumb,.svc-scroll::-webkit-scrollbar-thumb{
+  background:var(--faint-alt);border-radius:var(--r-full);
+  border:3px solid var(--canvas);background-clip:padding-box}
+html::-webkit-scrollbar-thumb:hover,.svc-scroll::-webkit-scrollbar-thumb:hover{background:var(--faint);background-clip:padding-box}
+html::-webkit-scrollbar-corner,.svc-scroll::-webkit-scrollbar-corner{background:transparent}
+
 body{
   margin:0;
   font-family:var(--font);
@@ -60,8 +73,6 @@ body{
 img{max-width:100%;display:block}
 a{color:inherit;text-decoration:none}
 :focus-visible{outline:2px solid var(--point);outline-offset:3px}
-summary{cursor:pointer;list-style:none}
-summary::-webkit-details-marker{display:none}
 
 .wrap{max-width:var(--max);margin:0 auto;padding-inline:var(--pad)}
 .sec{padding:var(--sp-section) 0}
@@ -70,21 +81,9 @@ summary::-webkit-details-marker{display:none}
 .band-surface{background:var(--surface)}
 .band-navy{background:var(--ink);color:var(--canvas)}
 .band-navy .sec-lead,.band-navy .disc{color:var(--faint-alt)}
-
-/* 어두운 밴드 위에서는 포인트 컬러를 밝은 변형으로 바꾼다.
-   #0425FF는 #0e171f 대비 2.34:1로 텍스트에 쓸 수 없다(#6B87FF는 5.63:1). */
-.band-navy .big-pct,
-.band-navy .required{color:var(--point-lift)}
-.band-navy .consent input{accent-color:var(--point-lift)}
 .band-navy :focus-visible,
 .hero :focus-visible,
 .foot :focus-visible{outline-color:var(--point-lift)}
-
-/* .stat-hero는 흰 배경 기준으로 작성됐는데 navy 밴드 안에 놓여 있어
-   본문(#3e5463 1.9:1)과 강조(#0e171f 1:1), 리댁션 바가 사실상 보이지 않았다. */
-.band-navy .stat-hero p:not(.big-pct){color:var(--faint-alt)}
-.band-navy .stat-hero p b{color:var(--canvas)}
-.band-navy .redact{background:var(--faint-alt)}
 
 /* ---------- type roles ---------- */
 .eyebrow{
@@ -113,7 +112,6 @@ summary::-webkit-details-marker{display:none}
 /* 로고 워드마크 — 단색(#0425FF) SVG. 네이비 푸터에서는 대비가 2.34:1 이라 흰색으로 반전한다. */
 .logo img{display:block;height:26px;width:auto}
 .foot .logo img{filter:brightness(0) invert(1)}
-.logo span{display:block;font-size:11px;font-weight:500;letter-spacing:.1em;color:var(--faint);margin-top:2px}
 .nav-menu{display:flex;align-items:center;gap:var(--sp-xs);margin-left:auto;align-self:stretch}
 .nav-link{
   font-size:16px;font-weight:600;color:var(--muted);
@@ -149,19 +147,10 @@ summary::-webkit-details-marker{display:none}
 .sub a:hover{background:var(--surface)}
 .sub b{display:block;font-size:16px;font-weight:700;color:var(--ink)}
 .sub small{display:block;font-size:12px;font-weight:400;color:var(--muted);margin-top:2px;line-height:1.45}
-
-/* ============================================================
-   HERO — navy band, 78px ExtraBold, slate stat cards
-   ============================================================ */
-.hero{background:var(--ink);color:var(--canvas);padding:clamp(56px,7vw,88px) 0 var(--sp-section)}
-.hero-kicker{font-size:12px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;
-  color:var(--faint);margin:0 0 var(--sp-lg)}
 .hero h1,.verb-block{
   font-size:clamp(38px,6.4vw,78px);font-weight:800;line-height:1.19;
   letter-spacing:-.03em;margin:0 0 var(--sp-lg);color:var(--canvas);
 }
-.hero-copy p{font-size:clamp(17px,1.7vw,24px);font-weight:400;line-height:1.31;
-  color:var(--surface);margin:0;max-width:52ch}
 .hero-copy p+p{margin-top:var(--sp-sm);color:var(--faint)}
 .btns{display:flex;flex-wrap:wrap;gap:var(--sp-md);margin-top:var(--sp-xl)}
 
@@ -185,60 +174,11 @@ summary::-webkit-details-marker{display:none}
 }
 .btn-primary:hover{filter:brightness(.92)}
 
-/* hero stat cards (card-dark) */
-.hero-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--sp-base);margin-top:clamp(40px,5vw,64px)}
-.hstat{background:var(--slate);color:var(--canvas);border-radius:var(--r-xl);padding:var(--sp-xxl) var(--sp-xl) var(--sp-xl)}
-.hstat-tag{font-size:12px;font-weight:500;letter-spacing:.12em;color:var(--faint);margin:0 0 var(--sp-lg)}
-.hstat-v{font-size:clamp(30px,4vw,52px);font-weight:800;letter-spacing:-.03em;line-height:1.1;margin:0;
-  font-variant-numeric:tabular-nums;color:var(--canvas)}
-.hstat-l{font-size:16px;font-weight:400;color:var(--faint-alt);margin:var(--sp-sm) 0 0}
-
-/* ============================================================
-   PROBLEM
-   ============================================================ */
-.stat-hero{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(24px,4vw,64px);
-  align-items:end;padding-bottom:var(--sp-xxl);border-bottom:1px solid var(--hairline)}
-.band-navy .stat-hero{border-color:rgba(220,227,232,.18)}
-.big-pct{
-  font-size:clamp(64px,11vw,140px);font-weight:800;line-height:.95;letter-spacing:-.04em;
-  color:var(--point);margin:0;font-variant-numeric:tabular-nums;
-}
-.big-pct em{font-style:normal;font-size:.34em;margin-left:.04em}
-.stat-hero p:not(.big-pct){margin:0;font-size:clamp(17px,1.7vw,24px);font-weight:400;line-height:1.45;color:var(--body)}
-.stat-hero p b{color:var(--ink);font-weight:700}
-.redact{display:inline-block;background:var(--ink);border-radius:var(--r-sm);
-  width:3.1em;height:.92em;vertical-align:-.06em;margin:0 .12em;user-select:none}
-
-.probs{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--sp-base);margin-top:var(--sp-xxl)}
-.prob{background:var(--surface);border-radius:var(--r-xl);padding:var(--sp-xxl) var(--sp-xl) var(--sp-xl)}
-.prob-n{font-size:12px;font-weight:500;letter-spacing:.1em;color:var(--faint);margin:0 0 var(--sp-base)}
-.prob h3{font-size:clamp(19px,2.1vw,24px);font-weight:700;letter-spacing:-.015em;margin:0 0 var(--sp-md);color:var(--ink)}
-.prob p{margin:0;font-size:16px;line-height:1.5;color:var(--body)}
-.prob cite{display:block;font-size:12px;font-weight:500;font-style:normal;color:var(--muted-alt);
-  margin-top:var(--sp-lg);padding-top:var(--sp-md);border-top:1px solid var(--hairline)}
-
 /* ============================================================
    핵심사업 — 대분류 3 × 하위 3 (feature cards, 32px)
    ============================================================ */
 .core-block{padding:var(--sp-xxl) 0}
 .core-block+.core-block{border-top:1px solid var(--hairline)}
-.core-head{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(16px,3vw,48px);
-  align-items:start;margin-bottom:var(--sp-xl)}
-.core-num{font-size:12px;font-weight:500;letter-spacing:.12em;color:var(--faint);margin:0 0 var(--sp-md)}
-.core-h{font-size:clamp(24px,3.2vw,40px);font-weight:700;line-height:1.2;letter-spacing:-.025em;margin:0;color:var(--ink)}
-.core-h em{display:block;font-style:normal;font-size:12px;font-weight:500;letter-spacing:.14em;
-  color:var(--muted-alt);margin-top:var(--sp-md)}
-.core-desc{font-size:clamp(16px,1.5vw,20px);font-weight:400;line-height:1.5;color:var(--body);margin:0;padding-top:var(--sp-xs)}
-.core-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--sp-base)}
-.core-card{background:var(--canvas);border-radius:var(--r-xl);padding:var(--sp-xxl) var(--sp-xl) var(--sp-xl);
-  border:1px solid var(--hairline);transition:border-color .15s}
-.core-card:hover{border-color:var(--faint-alt)}
-.core-card h4{font-size:clamp(18px,2vw,24px);font-weight:700;letter-spacing:-.015em;margin:0 0 var(--sp-base);color:var(--ink)}
-.core-card ul{list-style:none;margin:0;padding:0}
-.core-card li{position:relative;padding:var(--sp-sm) 0 var(--sp-sm) var(--sp-base);
-  font-size:16px;line-height:1.5;color:var(--body)}
-.core-card li::before{content:"";position:absolute;left:0;top:15px;width:4px;height:4px;
-  border-radius:50%;background:var(--faint)}
 
 /* ============================================================
    PROCESS (brand story)
@@ -283,80 +223,18 @@ summary::-webkit-details-marker{display:none}
 .axis{display:flex;justify-content:space-between;font-size:12px;color:var(--faint);margin-top:var(--sp-sm)}
 
 /* ============================================================
-   INSIGHT cards / posts
-   ============================================================ */
-.posts{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--sp-base)}
-.post{background:var(--canvas);border:1px solid var(--hairline);border-radius:var(--r-xl);
-  padding:var(--sp-xl);display:flex;flex-direction:column;transition:border-color .15s}
-.post:hover{border-color:var(--faint-alt)}
-.post-cat{font-size:12px;font-weight:500;letter-spacing:.1em;color:var(--muted-alt);margin:0 0 var(--sp-base)}
-.post h3{font-size:clamp(18px,2vw,24px);font-weight:700;line-height:1.3;letter-spacing:-.015em;
-  margin:0 0 var(--sp-md);color:var(--ink)}
-.post p{margin:0 0 var(--sp-lg);font-size:16px;line-height:1.5;color:var(--body)}
-.post-more{margin-top:auto;font-size:14px;font-weight:600;color:var(--muted)}
-
-.news{margin-top:var(--sp-xxl);background:var(--surface);border-radius:var(--r-xl);
-  padding:var(--sp-xxl) var(--sp-xl);display:flex;flex-wrap:wrap;gap:var(--sp-lg);
-  align-items:center;justify-content:space-between}
-.news h3{font-size:clamp(19px,2.1vw,24px);font-weight:700;letter-spacing:-.015em;margin:0 0 var(--sp-xs);color:var(--ink)}
-.news p{margin:0;font-size:16px;color:var(--body)}
-.news div{max-width:52ch}
-.news form{display:flex;gap:var(--sp-sm);flex-wrap:wrap}
-.news input{font-family:var(--font);font-size:16px;padding:var(--sp-base);height:55px;
-  border:1px solid var(--hairline);border-radius:var(--r-md);background:var(--canvas);color:var(--ink);min-width:220px}
-.news input::placeholder{color:var(--faint)}
-
-/* filter pills */
-.tabs{display:flex;flex-wrap:wrap;gap:var(--sp-sm);margin-bottom:var(--sp-xxl)}
-.tab{
-  height:55px;padding:var(--sp-base) var(--sp-lg);
-  font-family:var(--font);font-size:20px;font-weight:400;
-  border:1px solid var(--faint-alt);border-radius:var(--r-full);
-  background:transparent;color:var(--faint-alt);cursor:pointer;transition:.15s;
-}
-.tab:hover{border-color:var(--muted-alt);color:var(--muted-alt)}
-.tab[aria-selected="true"]{background:var(--canvas);color:var(--black);font-weight:700;border-color:var(--black)}
-
-/* ============================================================
    CTA / CONTACT
    ============================================================ */
 .cta-h{font-size:clamp(28px,4.6vw,56px);font-weight:700;line-height:1.2;letter-spacing:-.03em;
   margin:0 0 var(--sp-lg);max-width:24ch;color:var(--canvas)}
 .cta-h b{color:var(--point-lift);font-weight:inherit}
-.cta-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,5vw,72px);align-items:start}
 .cta-note{font-size:16px;line-height:1.6;color:var(--faint-alt);margin:0 0 var(--sp-xl)}
-.meta{list-style:none;margin:0;padding:0;font-size:14px}
-.meta li{display:flex;gap:var(--sp-base);padding:var(--sp-md) 0;
-  border-bottom:1px solid rgba(242,245,247,.14);color:var(--faint-alt)}
-.meta li b{min-width:88px;color:var(--canvas);font-weight:600}
-
-.form{display:grid;gap:var(--sp-md)}
-.fr{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-md)}
-.field label{display:block;font-size:12px;font-weight:500;letter-spacing:.06em;color:var(--faint);margin-bottom:var(--sp-sm)}
 .field input,.field select,.field textarea{
   width:100%;font-family:var(--font);font-size:16px;padding:var(--sp-base);
   background:var(--slate);border:1px solid rgba(242,245,247,.16);color:var(--canvas);
   border-radius:var(--r-md);
 }
-.field textarea{min-height:104px;resize:vertical}
 .field input::placeholder,.field textarea::placeholder{color:var(--faint)}
-.chips{display:flex;flex-wrap:wrap;gap:var(--sp-sm)}
-.chip{
-  font-family:var(--font);font-size:16px;padding:var(--sp-md) var(--sp-base);
-  border:1px solid var(--faint-alt);border-radius:var(--r-full);
-  background:transparent;color:var(--faint-alt);cursor:pointer;transition:.15s;
-}
-.chip:hover{border-color:var(--canvas);color:var(--canvas)}
-.chip[aria-pressed="true"]{background:var(--canvas);color:var(--black);border-color:var(--canvas);font-weight:700}
-.consent{display:flex;gap:var(--sp-md);align-items:flex-start;font-size:14px;color:var(--faint-alt);line-height:1.55}
-.consent input{width:18px;height:18px;margin-top:2px;accent-color:var(--point);flex:0 0 auto}
-.required{color:var(--point)}
-.success{display:none;background:var(--slate);border-radius:var(--r-xl);padding:var(--sp-xl);margin-top:var(--sp-lg)}
-.success.show{display:block}
-.success h3{font-size:24px;font-weight:700;color:var(--canvas);margin:0 0 var(--sp-sm)}
-.success p{margin:0;color:var(--faint-alt);font-size:16px;line-height:1.5}
-.cpage{min-height:calc(100vh - var(--nav-h));display:flex;align-items:center}
-.cpage .sec{width:100%}
 
 /* ============================================================
    FOOTER
@@ -365,52 +243,12 @@ summary::-webkit-details-marker{display:none}
   border-top:1px solid rgba(242,245,247,.12)}
 .foot-in{display:flex;flex-wrap:wrap;gap:var(--sp-lg);justify-content:space-between;align-items:flex-start}
 .foot .logo{color:var(--canvas)}
-.foot .logo span{color:var(--faint)}
 .foot-nav{display:flex;flex-wrap:wrap;gap:var(--sp-lg);font-size:14px;font-weight:600}
 .foot-nav a:hover{color:var(--canvas)}
 .foot small{display:block;font-size:12px;color:var(--muted-alt);margin-top:var(--sp-lg);line-height:1.9}
-
-/* ============================================================
-   FAQ (홈 하단)
-   ============================================================ */
-/* ---------- faq ---------- */
-.faq-layout{display:grid;grid-template-columns:280px 1fr;gap:clamp(24px,4vw,64px);align-items:start}
-.faq-side h2{font-size:clamp(27px,3.8vw,48px);font-weight:700;line-height:1.2;
-  letter-spacing:-.02em;margin:0 0 var(--sp-base);color:var(--ink)}
-.faq-side p{font-size:16px;line-height:1.6;color:var(--body);margin:0 0 var(--sp-lg)}
-.faq-side .btn-primary{height:44px;padding:var(--sp-md) var(--sp-base);font-size:16px;border-radius:var(--r-sm)}
-
-.faq-group{margin-bottom:var(--sp-lg)}
-.faq-cat-h{font-size:12px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;
-  color:var(--faint);margin:0 0 var(--sp-md);padding-left:var(--sp-lg)}
-
-.faq-main{min-width:0}
-.faq{display:grid;gap:var(--sp-sm)}
-.faq-item{background:var(--surface);border-radius:var(--r-lg);overflow:hidden;transition:background .15s}
-.faq-item:hover{background:var(--hairline)}
-.faq-item[open]{background:var(--surface)}
-.faq-q{
-  width:100%;text-align:left;background:none;border:none;cursor:pointer;
-  display:flex;justify-content:space-between;align-items:center;gap:var(--sp-base);
-  padding:var(--sp-lg);font-family:var(--font);
-  font-size:clamp(16px,1.7vw,18px);font-weight:600;color:var(--ink);line-height:1.45;
-}
-.faq-plus{
-  flex:0 0 auto;width:24px;height:24px;position:relative;transition:transform .22s ease;
-}
 .faq-plus::before,.faq-plus::after{
   content:"";position:absolute;left:50%;top:50%;background:var(--muted);border-radius:1px;
 }
-.faq-plus::before{width:13px;height:1.5px;transform:translate(-50%,-50%)}
-.faq-plus::after{width:1.5px;height:13px;transform:translate(-50%,-50%)}
-.faq-item[open] .faq-plus{transform:rotate(135deg)}
-.faq-a{margin:0;padding:0 var(--sp-lg) var(--sp-lg);font-size:16px;line-height:1.65;color:var(--body)}
-
-@media(max-width:900px){
-  .faq-layout{grid-template-columns:1fr;gap:var(--sp-lg)}
-  .faq-cat-h{padding-left:0}
-}
-
 
 /* ============================================================
    REVEAL
@@ -430,15 +268,17 @@ summary::-webkit-details-marker{display:none}
   .sub{grid-template-columns:1fr}
 }
 @media(max-width:640px){
-  /* 메뉴 항목이 늘어나 한 줄에 들어가지 않으므로 2행으로 나눈다.
-     1행: 로고 + 문의 CTA / 2행: 링크 (넘치면 가로 스크롤) */
-  .nav-in{height:auto;flex-wrap:wrap;gap:var(--sp-sm);padding-block:var(--sp-sm)}
-  .logo span{display:none}
-  .nav-cta{order:2;margin-left:auto;font-size:15px;padding:var(--sp-sm) var(--sp-md);height:40px}
-  .nav-menu{order:3;width:100%;margin-left:0;align-self:auto;
-    flex-wrap:nowrap;overflow-x:auto;gap:var(--sp-xs);scrollbar-width:none}
+  /* 로고 · 메뉴 · 문의 CTA 를 한 줄에 유지한다.
+     로고와 CTA 는 고정폭, 가운데 메뉴만 줄어들고 모자라면 그 안에서만 가로 스크롤한다. */
+  .nav-in{gap:var(--sp-sm)}
+  .nav-in .logo{flex:none}
+  .nav-cta{flex:none;font-size:15px;padding:var(--sp-sm) var(--sp-md);height:40px}
+  .nav-menu{flex:1 1 auto;min-width:0;justify-content:flex-end;margin-left:0;
+    flex-wrap:nowrap;overflow-x:auto;gap:0;scrollbar-width:none}
   .nav-menu::-webkit-scrollbar{display:none}
-  .nav-link{padding:var(--sp-sm) var(--sp-md);font-size:15px;white-space:nowrap}
+  /* 좁은 화면에서 좌우 패딩이 줄어 '홈' 같은 짧은 라벨이 24px 미만이 된다 (WCAG 2.5.8) */
+  .nav-link{padding:var(--sp-sm) var(--sp-xs);font-size:15px;white-space:nowrap;
+    min-width:24px;text-align:center}
   .probs,.posts,.pipe,.dash-grid,.hero-stats,.core-cards,.fr{grid-template-columns:1fr}
   .sub{position:static;width:auto;border:none;opacity:1;visibility:visible;transform:none;display:none}
   .btn,.btn-primary{width:100%;font-size:18px}
@@ -450,17 +290,31 @@ summary::-webkit-details-marker{display:none}
   html{scroll-behavior:auto}
 }
 
-
 /* ============================================================
    SERVICES — 제작 안내
    ============================================================ */
 section[id]{scroll-margin-top:calc(var(--nav-h) + 16px)}
-.svc-hero{background:var(--surface);padding:clamp(44px,6vw,72px) 0 clamp(36px,5vw,56px)}
+/* 히어로 — 어두운 배경 이미지. 일러스트가 오른쪽에 있어 텍스트는 왼쪽 여백 안에 둔다.
+   이미지가 없거나 로드 전이면 --ink 가 그대로 보인다. */
+/* 히어로 — 배경 이미지를 contain 으로 두어 위아래가 잘리지 않게 한다.
+   이미지 왼쪽 54% 는 원래 단색(#01040c)이라 배경색과 이어져 경계가 보이지 않는다. */
+.svc-hero{background:#01040c url("assets/hero-brand-story-bg.webp") right center/auto 100% no-repeat;
+  padding:clamp(44px,6vw,72px) 0 clamp(36px,5vw,56px)}
+.svc-hero .eyebrow{color:var(--faint)}
 .svc-hero h1{font-size:clamp(30px,5vw,56px);font-weight:700;line-height:1.2;
-  letter-spacing:-.03em;color:var(--ink);margin:0 0 var(--sp-base)}
-/* .eyebrow 가 이 규칙에 눌리지 않도록 제외 — 상단 라벨은 12px 캡션 */
+  letter-spacing:-.03em;color:var(--canvas);margin:0 0 var(--sp-base);max-width:16ch}
+/* 어두운 히어로 위 본문 — 밝은 회색. .eyebrow 가 이 규칙에 눌리지 않도록 제외 */
 .svc-hero p:not(.eyebrow){font-size:clamp(16px,1.6vw,24px);font-weight:400;line-height:1.4;
-  color:var(--body);max-width:64ch;margin:0}
+  color:var(--faint-alt);max-width:44ch;margin:0}
+@media(max-width:1200px){
+  /* 가로 배치는 일러스트가 글자에 닿지 않을 만큼 넓을 때만 쓴다.
+     그 아래에서는 일러스트만 잘라낸 이미지를 글자 아래에 놓는다.
+     가로로 겹치게 두면 글자와 부딪히고, 전체 이미지를 쓰면 그림이 너무 작아진다. */
+  .svc-hero{background-image:url("assets/hero-brand-story-art.webp");
+    background-position:center bottom;background-size:min(420px,88%) auto;
+    padding-bottom:calc(clamp(36px,5vw,56px) + min(295px,62vw))}
+  .svc-hero h1,.svc-hero p:not(.eyebrow){max-width:none}
+}
 
 .svc-scroll{overflow-x:auto;margin:var(--sp-lg) 0 0}
 /* 콘텐츠 유형 비교 표 — 11개를 한 화면에서 나란히 비교하도록 */
@@ -499,20 +353,6 @@ section[id]{scroll-margin-top:calc(var(--nav-h) + 16px)}
 .svc-table tr:last-child td{border-bottom:none}
 .band-surface .svc-table th,.band-surface .svc-table td{border-color:var(--faint-alt)}
 
-/* 참여 흐름 한 줄 */
-.flow{margin:var(--sp-md) 0 0;font-size:14px;line-height:1.8;color:var(--body)}
-.flow i{font-style:normal;color:var(--faint-alt);margin:0 5px}
-
-/* 남는 데이터 필드 */
-.fields{margin:var(--sp-base) 0 0}
-.fields b{display:block;font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;
-  color:var(--faint);margin:0 0 var(--sp-sm)}
-.fields span{display:inline-block;background:var(--surface);border-radius:var(--r-sm);
-  padding:3px var(--sp-sm);margin:0 4px 4px 0;color:var(--body);font-size:12px;font-weight:500}
-
-.svc-meta{margin:var(--sp-base) 0 0;padding-top:var(--sp-md);border-top:1px solid var(--hairline);
-  font-size:12px;font-weight:500;color:var(--muted-alt);display:flex;flex-wrap:wrap;gap:var(--sp-md)}
-
 /* 자료 다운로드 */
 .dl{display:grid;grid-template-columns:1fr auto;gap:clamp(20px,3vw,40px);align-items:center;
   background:var(--surface);border-radius:var(--r-xl);padding:var(--sp-xxl) var(--sp-xl)}
@@ -539,14 +379,16 @@ section[id]{scroll-margin-top:calc(var(--nav-h) + 16px)}
 
 <nav class="nav">
   <div class="nav-in">
-    <a href="index.html" class="logo"><img src="assets/haip-logo.svg" alt="HaiP" width="157" height="79"><span>CATCH / KEEP / TRACK</span></a>
+    <a href="index.html" class="logo"><img src="assets/haip-logo.svg" alt="HaiP" width="157" height="79"></a>
     <div class="nav-menu">
       <a href="index.html" class="nav-link">홈</a>
       <div class="has-sub">
-        <a href="services.html" class="nav-link is-active">제작 안내</a>
+        <a href="services.html" class="nav-link is-active">서비스</a>
         <div class="sub">
+          <a href="services.html#process"><b>진행 방식 5단계</b><small>진단 → 기획 → 제작 → 운영 → 이관</small></a>
           <a href="services.html#types"><b>콘텐츠 유형 11가지</b><small>참여 흐름과 유형별로 남는 데이터</small></a>
           <a href="services.html#timeline"><b>소요기간 · 포함 범위</b><small>기본형 1~2주 · 커스텀형 3~5주 · AI·AR형 4~6주</small></a>
+          <a href="services.html#track"><b>성과 증명</b><small>방문객 ID 연결부터 CRM 이관까지</small></a>
           <a href="services.html#download"><b>회사소개서 PDF</b><small>비교 검토와 품의 자료용 · 15페이지</small></a>
         </div>
       </div>
@@ -558,7 +400,6 @@ section[id]{scroll-margin-top:calc(var(--nav-h) + 16px)}
           <a href="insight.html#case"><b>사례집</b><small>국내외 브랜드 캠페인에서 배울 구조와 지표</small></a>
         </div>
       </div>
-      <a href="brand-story.html" class="nav-link">일하는 방식</a>
     </div>
     <a href="contact.html" class="nav-cta">문의하기</a>
   </div>
@@ -566,18 +407,52 @@ section[id]{scroll-margin-top:calc(var(--nav-h) + 16px)}
 
 <header class="svc-hero">
   <div class="wrap">
-    <p class="eyebrow">Service</p>
-    <h1>무엇을 만들 수 있고, 얼마나 걸리는가</h1>
-    <p>제작 가능한 콘텐츠 11가지를 목적별로 정리했습니다. 유형마다 <b>참여 흐름</b>과 <b>끝나고 남는 데이터</b>를 같이 적었습니다. 목적과 시기만 알려주시면 어떤 유형이 맞는지부터 함께 정리합니다.</p>
+    <h1>이벤트 콘텐츠의</br>기획·제작·트래킹까지</h1>
+    <p>목적과 시기만 알려주시면 어떤 유형이 맞는지부터 함께 정리합니다.</p>
   </div>
 </header>
 
-<section class="sec" id="purpose">
+<section class="band-surface sec" id="process">
   <div class="wrap">
     <p class="eyebrow rv">Step 1</p>
-    <h2 class="sec-h rv">목적을 먼저 고르면 유형이 좁혀집니다</h2>
-    <p class="sec-lead rv">인지형·판매형·데이터 확보형은 KPI가 다르고, 그래서 맞는 콘텐츠도 다릅니다. 세 가지를 한 캠페인에 담을 수는 있지만 1차 목적은 하나여야 합니다.</p>
-    <div class="svc-scroll rv">
+    <h2 class="sec-h rv">측정할 목표를 먼저 정합니다</h2>
+    <p class="sec-lead rv">화려하게 시작해서 조용히 끝나는 캠페인이 너무 많습니다.</br> 하입은 기획 전, 진단을 한 단계 더 둡니다.</p>
+
+    <div class="steps rv">
+      <div class="step">
+        <div class="step-n">01</div>
+        <div><h3>진단</h3><p>캠페인 목적과 KPI를 정의하고, 어떤 데이터를 남길지 먼저 설계합니다.</p></div>
+        <div class="step-out">KPI 정의서<br>데이터 수집 설계서</div>
+      </div>
+      <div class="step">
+        <div class="step-n">02</div>
+        <div><h3>기획</h3><p>브랜드 메시지를 게임 규칙으로 번역하고, 동선과 참여 흐름을 설계합니다.</p></div>
+        <div class="step-out">게임 기획서<br>참여 플로우</div>
+      </div>
+      <div class="step">
+        <div class="step-n">03</div>
+        <div><h3>제작</h3><p>개발·디자인·AI/AR을 구현하고, 트래킹 코드를 함께 심습니다.</p></div>
+        <div class="step-out">웹게임 · 대시보드<br>연동 스펙</div>
+      </div>
+      <div class="step">
+        <div class="step-n">04</div>
+        <div><h3>운영</h3><p>현장에 대응하고 실시간으로 모니터링하며, 필요하면 캠페인 중간에 개선합니다.</p></div>
+        <div class="step-out">운영 리포트</div>
+      </div>
+      <div class="step">
+        <div class="step-n">05</div>
+        <div><h3>이관</h3><p>성과 리포트와 함께 데이터·세그먼트를 브랜드에 넘깁니다. 리포트만 남기지 않습니다.</p></div>
+        <div class="step-out">성과 보고서<br>데이터셋 · 세그먼트</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="purpose">
+  <div class="wrap">
+    <p class="eyebrow rv">Step 2</p>
+    <h2 class="sec-h rv">KPI에 따라 선택하세요</h2>
+      <div class="svc-scroll rv">
       <table class="svc-table">
         <thead><tr><th>목적</th><th>1차 KPI</th><th>맞는 유형</th><th>필요한 데이터 구조</th></tr></thead>
         <tbody>
@@ -602,21 +477,19 @@ section[id]{scroll-margin-top:calc(var(--nav-h) + 16px)}
         </tbody>
       </table>
     </div>
-    <p class="disc rv">KPI를 잡는 방법은 <a href="insight.html#guide-01" style="text-decoration:underline;text-underline-offset:2px">가이드 01 — 팝업스토어 KPI, 목적별로 이렇게 잡습니다</a>에서 더 자세히 다룹니다.</p>
+    <p class="disc rv">KPI를 잡는 방법은 <a href="insight.html#guide-01" style="text-decoration:underline;text-underline-offset:2px">가이드 01 — 팝업스토어 KPI, 목적별로 이렇게 잡습니다</a> 칼럼을 읽어보세요</p>
   </div>
 </section>
 
 <section class="band-surface sec" id="types">
   <div class="wrap">
-    <p class="eyebrow rv">Step 2</p>
-    <h2 class="sec-h rv">제작 가능한 콘텐츠 11가지</h2>
-    <p class="sec-lead rv">모두 앱 설치 없이 QR 한 번으로 진입하는 웹 기반입니다. 유형마다 <b>끝나고 무엇이 데이터로 남는지</b>를 함께 적었습니다.</p>
-
+    <p class="eyebrow rv">Step 3</p>
+    <h2 class="sec-h rv">제작 콘텐츠</h2>
     <div class="svc-scroll rv">
       <table class="svc-table svc-types">
         <thead><tr><th>유형</th><th>참여 흐름</th><th>끝나고 남는 데이터</th><th>주 목적 / 기간</th></tr></thead>
         <tbody>
-          <tr class="grp"><th colspan="4" scope="colgroup"><span class="grp-l">A · 참여를 만드는 것<em>CATCH</em></span></th></tr>
+          <tr class="grp"><th colspan="4" scope="colgroup"><span class="grp-l">A · 참여 유도</span></th></tr>
           <tr>
             <td><b>룰렛 · 럭키드로우</b><span>현장 · 온라인</span></td>
             <td class="flow-c">QR 스캔 <i>→</i> 룰렛 1회 <i>→</i> 즉시 쿠폰 발급 <i>→</i> 매장 사용 시 결제 매칭</td>
@@ -641,7 +514,7 @@ section[id]{scroll-margin-top:calc(var(--nav-h) + 16px)}
             <td class="data-c">참여 ID · 인증 이미지 · 구매 금액·매장 · 승인 상태</td>
             <td><b>판매</b><span>기본형 1~2주</span></td>
           </tr>
-          <tr class="grp"><th colspan="4" scope="colgroup"><span class="grp-l">B · 브랜드를 각인시키는 것<em>KEEP</em></span></th></tr>
+          <tr class="grp"><th colspan="4" scope="colgroup"><span class="grp-l">B · 브랜드 각인 · 체류시간 확보</span></th></tr>
           <tr>
             <td><b>브랜드 미니게임</b><span>현장 · 온라인</span></td>
             <td class="flow-c">진입 <i>→</i> 튜토리얼 <i>→</i> 플레이 <i>→</i> 점수·랭킹 <i>→</i> 재도전</td>
@@ -666,7 +539,7 @@ section[id]{scroll-margin-top:calc(var(--nav-h) + 16px)}
             <td class="data-c">참여 ID · 선택한 스타일 · 변환·저장 수 · 재시도 횟수</td>
             <td><b>인지</b><span>AI·AR형 4~6주</span></td>
           </tr>
-          <tr class="grp"><th colspan="4" scope="colgroup"><span class="grp-l">C · 다시 오게 하는 것<em>RETENTION</em></span></th></tr>
+          <tr class="grp"><th colspan="4" scope="colgroup"><span class="grp-l">C · 재방문 유도</span></th></tr>
           <tr>
             <td><b>스탬프 투어</b><span>현장</span></td>
             <td class="flow-c">지점 QR 스캔 ×N <i>→</i> 스탬프 적립 <i>→</i> 전체 완주 <i>→</i> 보상</td>
@@ -704,28 +577,27 @@ section[id]{scroll-margin-top:calc(var(--nav-h) + 16px)}
 
 <section class="sec" id="timeline">
   <div class="wrap">
-    <p class="eyebrow rv">Step 3</p>
+    <p class="eyebrow rv">Step 4</p>
     <h2 class="sec-h rv">소요기간과 포함 범위</h2>
-    <p class="sec-lead rv">발주 검토와 품의에 그대로 쓰실 수 있게 포함·제외·추가 항목을 나눠 적었습니다.</p>
-    <div class="svc-scroll rv">
+     <div class="svc-scroll rv">
       <table class="svc-table">
         <thead><tr><th>구분</th><th>소요기간</th><th>포함</th><th>해당 유형</th></tr></thead>
         <tbody>
           <tr>
-            <td><b>기본형</b></td>
-            <td><b>1~2주</b><br><span style="color:var(--muted-alt);font-size:12px">영업일 기준</span></td>
+            <td><b>기본형ㅤ</b></td>
+            <td><b>1~2주ㅤ</b><br><span style="color:var(--muted-alt);font-size:12px">영업일 기준</span></td>
             <td>콘텐츠 1종 · 브랜드 스킨(색·로고·폰트) · 참여 로그 수집 · 결과 화면 · 모바일 반응형 · 기본 성과 리포트</td>
             <td>룰렛, 퀴즈·OX, 유형 테스트, 인증 이벤트, 스탬프 투어, 출석체크, 추천코드</td>
           </tr>
           <tr>
-            <td><b>커스텀형</b></td>
-            <td><b>3~5주</b><br><span style="color:var(--muted-alt);font-size:12px">영업일 기준</span></td>
+            <td><b>커스텀ㅤ</b></td>
+            <td><b>3~5주ㅤㅤ</b><br><span style="color:var(--muted-alt);font-size:12px">영업일 기준</span></td>
             <td>기본형 전체 <b>+</b> 커스텀 게임 규칙·아트 · 랜딩 페이지 · 관리자 화면 · 참여자 명단 CSV · 랭킹·보상 관리 · 실시간 대시보드</td>
             <td>브랜드 미니게임</td>
           </tr>
           <tr>
-            <td><b>AI·AR형</b></td>
-            <td><b>4~6주</b><br><span style="color:var(--muted-alt);font-size:12px">영업일 기준</span></td>
+            <td><b>AI·ARㅤ</b></td>
+            <td><b>4~6주ㅤㅤ</b><br><span style="color:var(--muted-alt);font-size:12px">영업일 기준</span></td>
             <td>커스텀형 전체 <b>+</b> AI·AR 구현 · 키오스크·포토부스 연동 · 현장 운영 대응 · 트래픽 대응 설계</td>
             <td>AR 필터, 포토부스·키오스크, AI 이미지 변환</td>
           </tr>
@@ -734,18 +606,70 @@ section[id]{scroll-margin-top:calc(var(--nav-h) + 16px)}
     </div>
 
     <div class="svc-note rv">
-      <h4>별도 견적으로 구분하는 추가 항목</h4>
+      <h4>별도 추가 항목</h4>
       <ul>
-        <li>고급 일러스트·캐릭터 디자인, 사운드·BGM 제작</li>
+        <li>일러스트·캐릭터 디자인, 사운드·BGM 제작</li>
         <li>다국어 대응</li>
         <li>외부 시스템 연동 — CRM · CDP · POS · MMP</li>
         <li>현장 운영 인력, 경품 사입·배송, 촬영·영상</li>
       </ul>
-      <p><b>업무 범위가 아닌 것</b> — 매체 집행(광고 지면 구매·운영)은 저희가 하지 않습니다. 필요하시면 대행사와 병행해 진행하고, 저희는 수집한 데이터를 타깃 모수로 넘기는 지점까지 맡습니다.</p>
-      <p>위 기간은 참고 범위입니다. 확정 일정과 포함·제외 기준은 요구사항 확인 후 견적서에 명시합니다. 캠페인 중간의 규칙 변경과 기능 추가는 기본 범위 밖입니다.</p>
-    </div>
   </div>
 </section>
+
+
+<!-- ============ TRACK 딥다이브 ============ -->
+
+<section class="band-navy sec" id="track">
+  <div class="wrap">
+    <p class="eyebrow rv">Step 5 · TRACK</p>
+    <h2 class="sec-h rv" style="max-width:24ch">"이번 캠페인, 매출로 이어졌나요?"</h2>
+    <p class="sec-lead rv" style="color:var(--faint-alt);opacity:1">이 질문에 숫자로 답할 수 있게 만드는 것이 저희 일의 절반입니다.</p>
+
+    <div class="pipe rv">
+      <div class="pipe-step">
+        <h4>01 &nbsp;현장 참여</h4>
+        <ul><li>게임 참여</li><li>참여 로그 자동 수집</li><li>동선별 QR 구분</li></ul>
+      </div>
+      <div class="pipe-step">
+        <h4>02 &nbsp;ID 연결</h4>
+        <ul><li>방문객 ID 발급</li><li>기존 회원 ID 매칭</li><li>옵트인 동의 확보</li></ul>
+      </div>
+      <div class="pipe-step">
+        <h4>03 &nbsp;성과 추적</h4>
+        <ul><li>전환율 · 재구매</li><li>리텐션 · 코호트</li><li>ROAS · CAC</li></ul>
+      </div>
+      <div class="pipe-step">
+        <h4>04 &nbsp;자산 이관</h4>
+        <ul><li>CRM · CDP 연동</li><li>세그먼트 인계</li><li>리타깃 모수 확보</li></ul>
+      </div>
+    </div>
+
+    <!-- 대시보드 목업 -->
+    <div class="dash rv">
+      <div class="dash-bar"><i class="dot"></i>CAMPAIGN DASHBOARD<span>예시 화면 · Sample</span></div>
+      <div class="dash-grid">
+        <div class="tile"><p class="tile-l">누적 참여</p><p class="tile-v">12,480</p><p class="tile-d">신규 68% / 기존 32%</p></div>
+        <div class="tile"><p class="tile-l">평균 체류</p><p class="tile-v">08:42</p><p class="tile-d">완주율 74.1%</p></div>
+        <div class="tile"><p class="tile-l">전환율</p><p class="tile-v">6.3%</p><p class="tile-d">룩백 7일 기준</p></div>
+        <div class="tile"><p class="tile-l">30일 리텐션</p><p class="tile-v">21.5%</p><p class="tile-d">참여 코호트 기준</p></div>
+      </div>
+      <div class="chart">
+        <div class="chart-h"><span>시간대별 참여 · 유입 곡선</span><span>PEAK 15:00–17:00</span></div>
+        <div class="bars" aria-hidden="true">
+          <i style="height:14%"></i><i style="height:22%"></i><i style="height:31%"></i>
+          <i style="height:44%"></i><i style="height:52%"></i><i style="height:47%"></i>
+          <i style="height:61%"></i><i style="height:78%"></i><i class="hi" style="height:96%"></i>
+          <i class="hi" style="height:88%"></i><i style="height:71%"></i><i style="height:58%"></i>
+          <i style="height:39%"></i><i style="height:24%"></i>
+        </div>
+        <div class="axis"><span>10시</span><span>13시</span><span>16시</span><span>19시</span><span>21시</span></div>
+      </div>
+    </div>
+
+    <p class="disc rv" style="color:var(--faint-alt)">방문객 ID 추적과 CRM 이관은 개인정보 수집·이용 동의를 전제로, 적법한 동의 절차 위에서 설계합니다.</p>
+  </div>
+</section>
+
 
 <section class="band-surface sec" id="download">
   <div class="wrap">
@@ -763,7 +687,7 @@ section[id]{scroll-margin-top:calc(var(--nav-h) + 16px)}
 <section class="band-navy sec">
   <div class="wrap">
     <p class="eyebrow rv">Contact</p>
-    <h2 class="cta-h rv">어떤 유형이 맞을지 <b>같이 정리해 드립니다</b>.</h2>
+    <h2 class="cta-h rv">어떤 유형이 맞을지 <b>함께 정리해 드립니다</b>.</h2>
     <p class="cta-note rv">진행 시기와 목적만 알려주셔도 됩니다. 기획서가 없어도, 예산이 확정되지 않아도 상담할 수 있습니다. 영업일 기준 1일 내 회신드립니다.</p>
     <div class="btns rv">
       <a href="contact.html" class="btn-primary">프로젝트 문의하기</a>
@@ -775,14 +699,14 @@ section[id]{scroll-margin-top:calc(var(--nav-h) + 16px)}
 <footer class="foot">
   <div class="wrap">
     <div class="foot-in">
-      <a href="index.html" class="logo"><img src="assets/haip-logo.svg" alt="HaiP" width="157" height="79"><span>CATCH / KEEP / TRACK</span></a>
+      <a href="index.html" class="logo"><img src="assets/haip-logo.svg" alt="HaiP" width="157" height="79"></a>
       <nav class="foot-nav">
-        <a href="index.html">홈</a><a href="services.html">제작 안내</a><a href="insight.html">인사이트</a><a href="brand-story.html">일하는 방식</a><a href="contact.html">문의</a>
+        <a href="index.html">홈</a><a href="services.html">서비스</a><a href="insight.html">인사이트</a><a href="contact.html">문의</a>
       </nav>
     </div>
     <small>
       하입(HaiP) &nbsp;·&nbsp; 대표 김문원 &nbsp;·&nbsp; 사업자등록번호 579-22-02317<br>서울특별시 중구 장충단로 6길 54, 5층<br>
-      © 2026 HaiP. All rights reserved. &nbsp;—&nbsp; 소요기간은 참고 범위이며 확정 일정은 견적서에 명시합니다.
+      © 2026 HaiP. All rights reserved.
     </small>
   </div>
 </footer>
@@ -790,31 +714,6 @@ section[id]{scroll-margin-top:calc(var(--nav-h) + 16px)}
 <script>
 (function(){
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  /* ---- 스코어보드 카운터 (홈 히어로) ---- */
-  function fmt(v, kind){
-    if(kind==='int')  return Math.round(v).toLocaleString('en-US');
-    if(kind==='pct')  return (v/10).toFixed(1) + '%';
-    if(kind==='time'){
-      var s = Math.round(v), m = Math.floor(s/60);
-      return String(m).padStart(2,'0') + ':' + String(s%60).padStart(2,'0');
-    }
-    return v;
-  }
-  document.querySelectorAll('.hstat-v').forEach(function(el,i){
-    var to = +el.dataset.to, kind = el.dataset.fmt;
-    if(reduce){ el.textContent = fmt(to, kind); return; }
-    var dur = 1100, delay = 220 + i*160, t0 = null;
-    setTimeout(function(){
-      requestAnimationFrame(function step(ts){
-        if(!t0) t0 = ts;
-        var p = Math.min((ts-t0)/dur, 1);
-        var e = 1 - Math.pow(1-p, 3);
-        el.textContent = fmt(to*e, kind);
-        if(p < 1) requestAnimationFrame(step);
-      });
-    }, delay);
-  });
 
   /* ---- 스크롤 리빌 ---- */
   var rv = document.querySelectorAll('.rv');
@@ -829,45 +728,6 @@ section[id]{scroll-margin-top:calc(var(--nav-h) + 16px)}
     rv.forEach(function(n){ io.observe(n); });
   }
 
-  /* ---- 인사이트 필터 탭 (홈 티저 등에서 재사용될 경우 대비) ---- */
-  document.querySelectorAll('.tab').forEach(function(t){
-    t.addEventListener('click', function(){
-      document.querySelectorAll('.tab').forEach(function(x){ x.setAttribute('aria-selected','false'); });
-      t.setAttribute('aria-selected','true');
-    });
-  });
-
-  /* ---- 용어사전 좌측 서브메뉴 스크롤 연동 ---- */
-  (function(){
-    var links = Array.prototype.slice.call(document.querySelectorAll('.side-sub .ss-link'));
-    if(!links.length) return;
-    var groups = links.map(function(a){
-      return document.querySelector(a.getAttribute('href'));
-    }).filter(Boolean);
-    if(!groups.length) return;
-
-    function setActive(id){
-      links.forEach(function(a){
-        a.classList.toggle('active', a.getAttribute('href') === '#' + id);
-      });
-    }
-
-    function onScroll(){
-      var offset = 120, current = groups[0].id;
-      for(var i=0;i<groups.length;i++){
-        if(groups[i].getBoundingClientRect().top <= offset) current = groups[i].id;
-      }
-      setActive(current);
-    }
-
-    var ticking = false;
-    window.addEventListener('scroll', function(){
-      if(ticking) return;
-      ticking = true;
-      requestAnimationFrame(function(){ onScroll(); ticking = false; });
-    }, {passive:true});
-    onScroll();
-  })();
 
 })();
 
