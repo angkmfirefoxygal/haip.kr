@@ -4,3 +4,4 @@ design/
 _bk_*/
 .wrangler/
 .cf-dist/
+dist/
