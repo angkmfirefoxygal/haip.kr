@@ -12,26 +12,7 @@
   font-size:clamp(38px,6.4vw,78px);font-weight:800;line-height:1.19;
   letter-spacing:-.03em;margin:0 0 var(--sp-lg);color:var(--canvas);
 }
-.hero-copy p+p{margin-top:var(--sp-sm);color:var(--faint)}
-.btns{display:flex;flex-wrap:wrap;gap:var(--sp-md);margin-top:var(--sp-xl)}
-
-/* buttons per token spec */
-.btn{
-  display:inline-flex;align-items:center;justify-content:center;
-  height:55px;padding:var(--sp-base) var(--sp-xl);
-  font-size:20px;font-weight:400;border-radius:var(--r-md);
-  background:var(--surface);color:var(--body);border:1px solid var(--surface);
-  transition:background .15s,color .15s;cursor:pointer;
-}
-.btn:hover{background:var(--hairline);border-color:var(--hairline)}
-.btn-primary{
-  display:inline-flex;align-items:center;justify-content:center;
-  height:55px;padding:var(--sp-base) var(--sp-xl);
-  background:var(--point);color:var(--on-primary);border:1px solid var(--point);
-  font-size:20px;font-weight:400;border-radius:var(--r-md);cursor:pointer;
-  font-family:var(--font);transition:filter .15s;
-}
-.btn-primary:hover{filter:brightness(.92)}/* ============================================================
+.hero-copy p+p{margin-top:var(--sp-sm);color:var(--faint)}/* ============================================================
    핵심사업 — 대분류 3 × 하위 3 (feature cards, 32px)
    ============================================================ */
 
@@ -77,8 +58,6 @@
 .hero-stats,
 .core-cards,
 .fr{grid-template-columns:1fr}
-  .btn,
-.btn-primary{width:100%;font-size:18px}
 }/* ============================================================
    SERVICES — 제작 안내
    ============================================================ */

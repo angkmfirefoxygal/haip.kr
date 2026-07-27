@@ -94,8 +94,6 @@
 .hero-stats,
 .core-cards,
 .fr{grid-template-columns:1fr}
-  .btn,
-.btn-primary{width:100%;font-size:18px}
 }
 @media(prefers-reduced-motion:reduce){
   .rv{opacity:1;transform:none}
@@ -347,4 +345,16 @@
 .g-card .g-tag{margin:0 0 var(--sp-sm)}
 .g-card-d{margin:0 0 var(--sp-base);font-size:14px;line-height:1.6;color:var(--body)}
 .g-card-go{font-size:13px;font-weight:600;color:var(--point)}
-@media(max-width:700px){ .g-hub{grid-template-columns:minmax(0,1fr)} }
+@media(max-width:700px){ .g-hub{grid-template-columns:minmax(0,1fr)}
+}
+
+/* 직답 도입부 — 답변 엔진은 문서 상단을 불균형하게 많이 본다.
+   완결된 답을 먼저 두고 서사는 그 뒤에 둔다. */
+.art-answer{border-left:3px solid var(--point);background:var(--surface);
+  border-radius:0 var(--r-md) var(--r-md) 0;padding:var(--sp-base) var(--sp-lg);
+  margin:0 0 var(--sp-xl)}
+.art-answer p{margin:0;font-size:17px;line-height:1.62;color:var(--ink)}
+.art-answer strong{font-weight:700}
+.art-take ul{margin:var(--sp-sm) 0 0;padding-left:1.15em}
+.art-take li{margin:0 0 var(--sp-sm);line-height:1.6}
+.art-take li:last-child{margin-bottom:0}
