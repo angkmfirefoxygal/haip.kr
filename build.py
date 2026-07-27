@@ -11,7 +11,21 @@ import os, re, shutil, sys
 SRC = os.path.dirname(os.path.abspath(__file__))
 DIST = os.path.join(SRC, 'dist')
 
-PAGES = [f for f in os.listdir(SRC) if f.endswith('.html')]
+# 루트 + insight/ 하위까지 훑는다.
+SKIP = {'dist', 'design', 'nginx', 'partials', '.git', '.wrangler', '.cf-dist'}
+
+
+def _pages():
+    out = []
+    for root, dirs, files in os.walk(SRC):
+        dirs[:] = [d for d in dirs if d not in SKIP and not d.startswith(('_bk_', '.'))]
+        for f in files:
+            if f.endswith('.html'):
+                out.append(os.path.relpath(os.path.join(root, f), SRC).replace(os.sep, '/'))
+    return sorted(out)
+
+
+PAGES = _pages()
 
 
 def strip_js(code):
@@ -109,7 +123,17 @@ ACTIVE = {'index': 'index', 'services': 'services', 'insight': 'insight'}
 PARTIALS = ('nav', 'footer', 'schema')
 
 
-def render_partial(name, page):
+def rebase(html, depth):
+    """루트 기준 상대경로를 depth 단 아래에서도 맞게 고친다.
+    insight/guide/x.html 은 depth 2 이므로 ../../assets/... 가 된다."""
+    if not depth:
+        return html
+    up = '../' * depth
+    return re.sub(r'(href|src)="(?!https?:|//|#|mailto:|tel:|data:|\.\./)([^"/][^"]*)"',
+                  lambda m: '%s="%s%s"' % (m.group(1), up, m.group(2)), html)
+
+
+def render_partial(name, page, depth=0):
     """partials/<name>.html 을 페이지에 맞게 렌더. nav 는 현재 메뉴에 is-active 를 붙인다."""
     with open(os.path.join(SRC, 'partials', name + '.html'), encoding='utf-8') as f:
         html = f.read().strip()
@@ -118,7 +142,7 @@ def render_partial(name, page):
         if key:
             html = html.replace('class="nav-link" data-nav="%s"' % key,
                                 'class="nav-link is-active" data-nav="%s"' % key)
-    return html
+    return rebase(html, depth)
 
 
 def sync_partials(write):
@@ -129,7 +153,9 @@ def sync_partials(write):
     문서라서 file:// 로 바로 열어볼 수 있고, 동시에 nav/footer 의 출처는 한 곳이다."""
     drift = []
     for name in sorted(PAGES):
-        page = name[:-5]
+        depth = name.count('/')
+        # insight/guide/x.html 같은 하위 문서는 nav 에서 '인사이트'를 활성으로 둔다
+        page = name.split('/')[0] if depth else name[:-5]
         path = os.path.join(SRC, name)
         with open(path, encoding='utf-8') as f:
             s = f.read()
@@ -139,7 +165,7 @@ def sync_partials(write):
             m = pat.search(out)
             if not m:
                 continue
-            want = render_partial(part, page)
+            want = render_partial(part, page, depth)
             if m.group(2) != want:
                 out = out[:m.start(2)] + want + out[m.end(2):]
         if out != s:
@@ -172,7 +198,9 @@ def main():
         with open(src, encoding='utf-8') as f:
             raw = f.read()
         out = build_page(raw)
-        with open(os.path.join(DIST, name), 'w', encoding='utf-8', newline='\n') as f:
+        dst = os.path.join(DIST, name)
+        os.makedirs(os.path.dirname(dst), exist_ok=True)
+        with open(dst, 'w', encoding='utf-8', newline='\n') as f:
             f.write(out)
         before += len(raw.encode('utf-8'))
         after += len(out.encode('utf-8'))

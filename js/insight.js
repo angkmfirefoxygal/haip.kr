@@ -1,4 +1,44 @@
-/* 인사이트 해시 라우터 — 좌측 메뉴와 히어로는 유지하고 .view 만 전환한다 */
+/* 인사이트 허브 스크립트
+
+   문서 23편이 각자 URL 을 갖게 되면서(insight/guide/*, insight/case/*,
+   insight/glossary/*) 이 파일은 두 가지만 한다.
+   1) 예전에 공유된 해시 URL 을 새 주소로 보낸다
+   2) 허브 안의 목록 뷰 4개(overview/glossary/guide/case)를 해시로 전환한다 */
+(function(){
+  var MOVED = {
+    'guide-01':'insight/guide/popup-kpi.html',
+    'guide-02':'insight/guide/dwell-time.html',
+    'guide-03':'insight/guide/booth-measurement.html',
+    'guide-04':'insight/guide/consent-design.html',
+    'guide-05':'insight/guide/data-over-goods.html',
+    'guide-06':'insight/guide/no-app-entry.html',
+    'guide-07':'insight/guide/online-offline-id.html',
+    'guide-08':'insight/guide/cherry-picker.html',
+    'case-01':'insight/case/burger-king-burn-that-ad.html',
+    'case-02':'insight/case/coca-cola-wonderful.html',
+    'case-03':'insight/case/simmons-grocery-store.html',
+    'case-04':'insight/case/pokemon-go-sponsored-stops.html',
+    'case-05':'insight/case/chipotle-loyalty-game.html',
+    'case-06':'insight/case/sephora-virtual-artist.html',
+    'case-07':'insight/case/snap-attribution-model.html',
+    'case-08':'insight/case/homeplus-prize-event.html',
+    'case-09':'insight/case/houston-airport-wait.html',
+    'g-a':'insight/glossary/engagement.html',
+    'g-b':'insight/glossary/conversion.html',
+    'g-c':'insight/glossary/attribution.html',
+    'g-d':'insight/glossary/data-privacy.html',
+    'g-e':'insight/glossary/event-format.html',
+    'g-f':'insight/glossary/adtech.html'
+  };
+  function redirect(){
+    var h = (location.hash || '').replace(/^#/, '').split('/')[0];
+    if(MOVED[h]){ location.replace(MOVED[h]); return true; }
+    return false;
+  }
+  if(redirect()) return;
+  window.addEventListener('hashchange', redirect);
+})();
+
 /* ============================================================
      INSIGHT SPA ROUTER
      좌측 메뉴(insight-side)와 상단 히어로(ins-hero)는 절대 다시 그리지 않고,

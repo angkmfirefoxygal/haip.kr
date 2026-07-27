@@ -338,3 +338,13 @@
   .art-nav{grid-template-columns:1fr}
   .art-nav .nx{text-align:left}
 }
+
+/* 용어사전 허브 — 그룹 6개 카드. 용어 74개 본문은 각 그룹 페이지로 옮겼다. */
+.g-hub{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--sp-base)}
+.g-card{display:block;border:1px solid var(--hairline);border-radius:var(--r-lg);
+  padding:var(--sp-lg);transition:border-color .15s,background .15s}
+.g-card:hover{border-color:var(--faint-alt);background:var(--surface)}
+.g-card .g-tag{margin:0 0 var(--sp-sm)}
+.g-card-d{margin:0 0 var(--sp-base);font-size:14px;line-height:1.6;color:var(--body)}
+.g-card-go{font-size:13px;font-weight:600;color:var(--point)}
+@media(max-width:700px){ .g-hub{grid-template-columns:minmax(0,1fr)} }
