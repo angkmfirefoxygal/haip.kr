@@ -188,6 +188,20 @@
 </nav>
 <!-- /@nav -->
 
+<!-- @insight-crumb -->
+<header class="ins-hero ins-hero--slim">
+  <div class="wrap">
+    <nav class="crumb" aria-label="현재 위치">
+      <a href="../../index.html">홈</a>
+      <span aria-hidden="true">›</span>
+      <a href="../../insight.html">인사이트</a>
+      <span aria-hidden="true">›</span>
+      <a href="../../insight.html#guide" data-crumb="guide" aria-current="page">가이드</a>
+    </nav>
+  </div>
+</header>
+<!-- /@insight-crumb -->
+
 <svg class="svg-sprite" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
 <symbol id="th-g3" viewBox="0 0 180 112">
     <path d="M26 24H154L136 48H44Z" fill="#c1ccd6"/><path d="M46 54H134L120 76H60Z" fill="#9fb1bd"/>
@@ -195,7 +209,27 @@
   </symbol>
 </svg>
 
-<div class="insight-shell insight-shell--solo">
+<div class="insight-shell">
+<!-- @insight-side -->
+<aside class="insight-side">
+  <p class="side-label">Insight</p>
+  <ul class="side-nav">
+    <li><a href="../../insight.html#overview" data-side="overview">전체<small>인사이트 개요</small></a></li>
+    <li><a href="../../insight.html#glossary" data-side="glossary">용어사전<small>마케팅·애드테크 필수 용어 74개</small></a>
+      <ul class="side-sub">
+        <li><a href="../../insight/glossary/engagement.html">참여·체류<em>10</em></a></li>
+        <li><a href="../../insight/glossary/conversion.html">전환·수익<em>13</em></a></li>
+        <li><a href="../../insight/glossary/attribution.html">어트리뷰션<em>11</em></a></li>
+        <li><a href="../../insight/glossary/data-privacy.html">데이터·프라이버시<em>13</em></a></li>
+        <li><a href="../../insight/glossary/event-format.html">이벤트·게임<em>16</em></a></li>
+        <li><a href="../../insight/glossary/adtech.html">애드테크<em>11</em></a></li>
+      </ul>
+    </li>
+    <li><a href="../../insight.html#guide" data-side="guide" aria-current="page">가이드<small>KPI·체류·동의 설계 실무 10편</small></a></li>
+    <li><a href="../../insight.html#case" data-side="case">사례집<small>국내외 브랜드 캠페인 9건 + 자사 1건</small></a></li>
+  </ul>
+</aside>
+<!-- /@insight-side -->
   <main class="insight-main">
 
       <a class="art-back" href="../../insight.html#guide">← 가이드 전체</a>
@@ -203,14 +237,13 @@
         <div>
           <p class="art-cat">GUIDE 03 · 측정 설계<span class="art-updated">최종 업데이트 2026.7</span></p>
           <h1>부스 성과 측정이 어려운 3가지 이유</h1>
-          <p class="art-lead">기술이 없어서가 아닙니다. 수기 기록에 의존하고, 페이지뷰를 대신할 지표를 정하지 않았고, 방문객을 식별할 키가 없기 때문입니다. 세 가지는 각각 다른 방법으로 풀립니다.</p>
+          <div class="art-answer">
+            <p><strong>오프라인 부스 성과 측정이 어려운 이유는 세 가지입니다.</strong> 현장 데이터를 사람이 손으로 적고, 페이지뷰를 대신할 지표를 아무도 정해 두지 않았고, 방문객을 식별할 키가 없습니다. 기술이 없어서가 아니라 이 세 가지가 각각 다른 방법으로 풀리는 문제여서, 순서를 잘못 잡으면 예산을 써도 남는 것이 없습니다.</p>
+          </div>
         </div>
         <div class="idx-thumb"><svg role="img" aria-label="마지막 단계가 점선으로 끊긴 퍼널"><use href="#th-g3"/></svg></div>
       </div>
       <div class="art-body">
-        <div class="art-answer">
-          <p><strong>오프라인 부스 성과 측정이 어려운 이유는 세 가지입니다.</strong> 현장 데이터를 사람이 손으로 적고, 페이지뷰를 대신할 지표를 아무도 정해 두지 않았고, 방문객을 식별할 키가 없습니다. 기술이 없어서가 아니라 이 세 가지가 각각 다른 방법으로 풀리는 문제여서, 순서를 잘못 잡으면 예산을 써도 남는 것이 없습니다.</p>
-        </div>
         <h2>왜 부스 방문자 수는 손으로 세게 되는가</h2>
         <p>많은 현장에서 방문자 수는 스태프가 계수기로 세고, 만족도는 종료 후 설문으로 받습니다. <mark>이 방식의 문제는 정확도가 아니라</mark> <strong>구조</strong>입니다. 수기 기록은 집계가 늦고, 쪼갤 수 없고, 다음 캠페인에 재사용되지 않습니다. 시간대별로 나눠 볼 수도, 유입 경로별로 비교할 수도 없습니다.</p>
         <p>해법은 사람이 세지 않는 지점을 하나 만드는 것입니다. 참여 콘텐츠가 웹으로 돌아가면 참여 로그는 자동으로 남습니다. 진입 시각, 유입 QR, 단계별 통과, 완주 여부, 결과값, 재참여 여부가 전부 이벤트로 기록됩니다. 스태프는 세는 일에서 벗어나 안내와 운영에 집중합니다.</p>

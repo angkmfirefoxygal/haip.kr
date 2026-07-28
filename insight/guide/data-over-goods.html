@@ -183,6 +183,20 @@
 </nav>
 <!-- /@nav -->
 
+<!-- @insight-crumb -->
+<header class="ins-hero ins-hero--slim">
+  <div class="wrap">
+    <nav class="crumb" aria-label="현재 위치">
+      <a href="../../index.html">홈</a>
+      <span aria-hidden="true">›</span>
+      <a href="../../insight.html">인사이트</a>
+      <span aria-hidden="true">›</span>
+      <a href="../../insight.html#guide" data-crumb="guide" aria-current="page">가이드</a>
+    </nav>
+  </div>
+</header>
+<!-- /@insight-crumb -->
+
 <svg class="svg-sprite" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
 <symbol id="th-g5" viewBox="0 0 180 112">
     <rect x="26" y="40" width="48" height="40" rx="4" fill="none" stroke="#c1ccd6" stroke-width="1.5"/>
@@ -193,7 +207,27 @@
   </symbol>
 </svg>
 
-<div class="insight-shell insight-shell--solo">
+<div class="insight-shell">
+<!-- @insight-side -->
+<aside class="insight-side">
+  <p class="side-label">Insight</p>
+  <ul class="side-nav">
+    <li><a href="../../insight.html#overview" data-side="overview">전체<small>인사이트 개요</small></a></li>
+    <li><a href="../../insight.html#glossary" data-side="glossary">용어사전<small>마케팅·애드테크 필수 용어 74개</small></a>
+      <ul class="side-sub">
+        <li><a href="../../insight/glossary/engagement.html">참여·체류<em>10</em></a></li>
+        <li><a href="../../insight/glossary/conversion.html">전환·수익<em>13</em></a></li>
+        <li><a href="../../insight/glossary/attribution.html">어트리뷰션<em>11</em></a></li>
+        <li><a href="../../insight/glossary/data-privacy.html">데이터·프라이버시<em>13</em></a></li>
+        <li><a href="../../insight/glossary/event-format.html">이벤트·게임<em>16</em></a></li>
+        <li><a href="../../insight/glossary/adtech.html">애드테크<em>11</em></a></li>
+      </ul>
+    </li>
+    <li><a href="../../insight.html#guide" data-side="guide" aria-current="page">가이드<small>KPI·체류·동의 설계 실무 10편</small></a></li>
+    <li><a href="../../insight.html#case" data-side="case">사례집<small>국내외 브랜드 캠페인 9건 + 자사 1건</small></a></li>
+  </ul>
+</aside>
+<!-- /@insight-side -->
   <main class="insight-main">
 
       <a class="art-back" href="../../insight.html#guide">← 가이드 전체</a>
@@ -201,14 +235,13 @@
         <div>
           <p class="art-cat">GUIDE 05 · 예산 설계<span class="art-updated">최종 업데이트 2026.7</span></p>
           <h1>굿즈 대신 데이터를 남기는 팝업 설계</h1>
-          <p class="art-lead">굿즈를 없애라는 말이 아닙니다. 같은 예산이 만들어 내는 자산의 종류가 다르다는 이야기입니다. 원가로 비교하면 결정이 쉬워집니다.</p>
+          <div class="art-answer">
+            <p><strong>굿즈와 데이터 중 무엇에 예산을 쓸지는 취향이 아니라 원가로 비교해 결정합니다.</strong> 굿즈 1개당 원가와 유효 명단 1건당 원가를 같은 표에 올리면 논의가 취향 논쟁에서 벗어납니다. 굿즈를 없애라는 말이 아니라, 같은 예산이 만들어 내는 자산의 종류가 다르다는 이야기입니다.</p>
+          </div>
         </div>
         <div class="idx-thumb"><svg role="img" aria-label="굿즈 상자와 데이터 목록 비교"><use href="#th-g5"/></svg></div>
       </div>
       <div class="art-body">
-        <div class="art-answer">
-          <p><strong>굿즈와 데이터 중 무엇에 예산을 쓸지는 취향이 아니라 원가로 비교해 결정합니다.</strong> 굿즈 1개당 원가와 유효 명단 1건당 원가를 같은 표에 올리면 논의가 취향 논쟁에서 벗어납니다. 굿즈를 없애라는 말이 아니라, 같은 예산이 만들어 내는 자산의 종류가 다르다는 이야기입니다.</p>
-        </div>
         <h2>굿즈에 예산을 몰아주는 것이 맞을 때는 언제인가</h2>
         <p>시몬스는 침대 브랜드입니다. 그런데 &lsquo;시몬스 그로서리 스토어 청담&rsquo;에는 침대가 없었습니다. 대신 지역성과 브랜드 역사를 담은 굿즈를 팔았고, 1년 7개월간 운영하며 <strong>20만 명</strong>이 방문했고 굿즈 매출은 <strong>약 11억 원</strong>으로 집계됐습니다. 관련 인스타그램 해시태그는 4만 건을 기록했습니다.</p>
         <div class="art-metrics">

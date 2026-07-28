@@ -188,6 +188,20 @@
 </nav>
 <!-- /@nav -->
 
+<!-- @insight-crumb -->
+<header class="ins-hero ins-hero--slim">
+  <div class="wrap">
+    <nav class="crumb" aria-label="현재 위치">
+      <a href="../../index.html">홈</a>
+      <span aria-hidden="true">›</span>
+      <a href="../../insight.html">인사이트</a>
+      <span aria-hidden="true">›</span>
+      <a href="../../insight.html#case" data-crumb="case" aria-current="page">사례집</a>
+    </nav>
+  </div>
+</header>
+<!-- /@insight-crumb -->
+
 <svg class="svg-sprite" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
 <symbol id="th-c8" viewBox="0 0 180 112">
     <rect x="30" y="20" width="84" height="72" rx="4" fill="none" stroke="#c1ccd6" stroke-width="1.5"/>
@@ -198,7 +212,27 @@
   </symbol>
 </svg>
 
-<div class="insight-shell insight-shell--solo">
+<div class="insight-shell">
+<!-- @insight-side -->
+<aside class="insight-side">
+  <p class="side-label">Insight</p>
+  <ul class="side-nav">
+    <li><a href="../../insight.html#overview" data-side="overview">전체<small>인사이트 개요</small></a></li>
+    <li><a href="../../insight.html#glossary" data-side="glossary">용어사전<small>마케팅·애드테크 필수 용어 74개</small></a>
+      <ul class="side-sub">
+        <li><a href="../../insight/glossary/engagement.html">참여·체류<em>10</em></a></li>
+        <li><a href="../../insight/glossary/conversion.html">전환·수익<em>13</em></a></li>
+        <li><a href="../../insight/glossary/attribution.html">어트리뷰션<em>11</em></a></li>
+        <li><a href="../../insight/glossary/data-privacy.html">데이터·프라이버시<em>13</em></a></li>
+        <li><a href="../../insight/glossary/event-format.html">이벤트·게임<em>16</em></a></li>
+        <li><a href="../../insight/glossary/adtech.html">애드테크<em>11</em></a></li>
+      </ul>
+    </li>
+    <li><a href="../../insight.html#guide" data-side="guide">가이드<small>KPI·체류·동의 설계 실무 10편</small></a></li>
+    <li><a href="../../insight.html#case" data-side="case" aria-current="page">사례집<small>국내외 브랜드 캠페인 9건 + 자사 1건</small></a></li>
+  </ul>
+</aside>
+<!-- /@insight-side -->
   <main class="insight-main">
 
       <a class="art-back" href="../../insight.html#case">← 사례집 전체</a>
@@ -206,14 +240,13 @@
         <div>
           <p class="art-cat">CASE 08 · 동의 설계 — 홈플러스 경품 이벤트, 2011~2024, 한국<span class="art-updated">최종 업데이트 2026.7</span></p>
           <h1>동의를 받았는데 위법이 된 이유</h1>
-          <p class="art-lead">응모권에는 고지 문구가 있었습니다. 글씨 크기가 약 1mm였습니다. 법원은 형식이 아니라 참여자가 실제로 무엇을 예상했는지를 봤습니다.</p>
+          <div class="art-answer">
+            <p><strong>고지 문구가 있어도 참여자가 예상하지 못한 사용처가 있으면 동의는 무효가 될 수 있습니다.</strong> 응모권에 제3자 제공 고지가 있었지만 글씨 크기가 약 1mm 였고, 대법원은 형식적 동의가 아니라 실질적 동의를 봤습니다. 이벤트 설계에서 동의는 받는 것이 아니라 이해시키는 것이라는 기준이 여기서 나옵니다.</p>
+          </div>
         </div>
         <div class="idx-thumb"><svg role="img" aria-label="작은 글씨 고지문과 확대경"><use href="#th-c8"/></svg></div>
       </div>
       <div class="art-body">
-        <div class="art-answer">
-          <p><strong>고지 문구가 있어도 참여자가 예상하지 못한 사용처가 있으면 동의는 무효가 될 수 있습니다.</strong> 응모권에 제3자 제공 고지가 있었지만 글씨 크기가 약 1mm 였고, 대법원은 형식적 동의가 아니라 실질적 동의를 봤습니다. 이벤트 설계에서 동의는 받는 것이 아니라 이해시키는 것이라는 기준이 여기서 나옵니다.</p>
-        </div>
         <h2>무슨 일이 있었나</h2>
         <p>2011년 홈플러스는 경품 이벤트를 통해 고객 개인정보 약 <strong>2,400만 건</strong>을 수집하고, 이를 보험사에 판매했습니다. 응모권에는 제3자 제공에 관한 고지가 인쇄되어 있었지만 글씨 크기가 약 1mm 수준이어서 &lsquo;깨알고지&rsquo;로 불렸습니다.</p>
         <p>사건은 9년 가까이 다퉈졌습니다. 대법원은 개인정보보호법 위반을 인정했고, 파기환송을 거친 재상고심에서 <strong>벌금 7억 5천만 원</strong>이 확정됐습니다. 2024년 5월에는 민사 손해배상 사건에서 대법원 판단이 나왔는데, 배상이 인정된 원고는 극히 일부였습니다.</p>

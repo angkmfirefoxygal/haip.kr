@@ -120,7 +120,7 @@ def build_page(html):
 
 
 ACTIVE = {'index': 'index', 'services': 'services', 'insight': 'insight'}
-PARTIALS = ('nav', 'footer', 'schema')
+PARTIALS = ('nav', 'footer', 'schema', 'insight-side', 'insight-crumb')
 
 
 def rebase(html, depth):
@@ -133,7 +133,7 @@ def rebase(html, depth):
                   lambda m: '%s="%s%s"' % (m.group(1), up, m.group(2)), html)
 
 
-def render_partial(name, page, depth=0):
+def render_partial(name, page, depth=0, section=None):
     """partials/<name>.html 을 페이지에 맞게 렌더. nav 는 현재 메뉴에 is-active 를 붙인다."""
     with open(os.path.join(SRC, 'partials', name + '.html'), encoding='utf-8') as f:
         html = f.read().strip()
@@ -142,6 +142,17 @@ def render_partial(name, page, depth=0):
         if key:
             html = html.replace('class="nav-link" data-nav="%s"' % key,
                                 'class="nav-link is-active" data-nav="%s"' % key)
+    if name == 'insight-crumb' and section:
+        # 현재 섹션만 남기고 나머지 형제 링크는 지운다
+        for k in ('guide', 'case', 'glossary'):
+            if k == section:
+                html = html.replace('data-crumb="%s"' % k, 'data-crumb="%s" aria-current="page"' % k)
+            else:
+                html = re.sub(r'\s*<a [^>]*data-crumb="%s"[^>]*>.*?</a>' % k, '', html)
+    if name == 'insight-side' and section:
+        # 현재 보고 있는 섹션을 표시한다 (문서 간 이동 편의 + 내부 링크 확보)
+        html = html.replace('data-side="%s"' % section,
+                            'data-side="%s" aria-current="page"' % section)
     return rebase(html, depth)
 
 
@@ -165,7 +176,8 @@ def sync_partials(write):
             m = pat.search(out)
             if not m:
                 continue
-            want = render_partial(part, page, depth)
+            sec = name.split('/')[1] if depth >= 2 else None
+            want = render_partial(part, page, depth, sec)
             if m.group(2) != want:
                 out = out[:m.start(2)] + want + out[m.end(2):]
         if out != s:

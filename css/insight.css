@@ -352,8 +352,8 @@
    완결된 답을 먼저 두고 서사는 그 뒤에 둔다. */
 .art-answer{border-left:3px solid var(--point);background:var(--surface);
   border-radius:0 var(--r-md) var(--r-md) 0;padding:var(--sp-base) var(--sp-lg);
-  margin:0 0 var(--sp-xl)}
-.art-answer p{margin:0;font-size:17px;line-height:1.62;color:var(--ink)}
+  margin:0}
+.art-answer p{margin:0;font-size:clamp(16px,1.55vw,18px);line-height:1.6;color:var(--ink)}
 .art-answer strong{font-weight:700}
 .art-take ul{margin:var(--sp-sm) 0 0;padding-left:1.15em}
 .art-take li{margin:0 0 var(--sp-sm);line-height:1.6}
@@ -383,3 +383,13 @@
 .gh-list a:hover{background:var(--surface);color:var(--ink)}
 .gh-list small{display:block;font-size:12px;color:var(--faint)}
 .gh-empty{color:var(--muted-alt)}
+
+/* 하위 문서 상단 — 히어로를 통째로 복사하면 26개 페이지 최상단이 같은 문구로 덮인다.
+   시각적 연속성만 얇은 밴드로 잇고, 텍스트는 현재 위치만 남긴다. */
+.ins-hero--slim{padding:var(--sp-base) 0;background-size:cover;background-position:center 40%}
+.crumb{display:flex;flex-wrap:wrap;align-items:center;gap:var(--sp-sm);
+  font-size:13px;font-weight:500;color:var(--muted)}
+.crumb a{padding:2px 0}
+.crumb a:hover{color:var(--ink);text-decoration:underline;text-underline-offset:3px}
+.crumb a[aria-current="page"]{color:var(--ink);font-weight:700}
+.crumb span{color:var(--faint-alt)}

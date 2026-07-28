@@ -183,6 +183,20 @@
 </nav>
 <!-- /@nav -->
 
+<!-- @insight-crumb -->
+<header class="ins-hero ins-hero--slim">
+  <div class="wrap">
+    <nav class="crumb" aria-label="현재 위치">
+      <a href="../../index.html">홈</a>
+      <span aria-hidden="true">›</span>
+      <a href="../../insight.html">인사이트</a>
+      <span aria-hidden="true">›</span>
+      <a href="../../insight.html#guide" data-crumb="guide" aria-current="page">가이드</a>
+    </nav>
+  </div>
+</header>
+<!-- /@insight-crumb -->
+
 <svg class="svg-sprite" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
 <symbol id="th-g6" viewBox="0 0 180 112">
     <rect x="26" y="28" width="56" height="56" rx="4" fill="none" stroke="#c1ccd6" stroke-width="1.5"/>
@@ -195,7 +209,27 @@
   </symbol>
 </svg>
 
-<div class="insight-shell insight-shell--solo">
+<div class="insight-shell">
+<!-- @insight-side -->
+<aside class="insight-side">
+  <p class="side-label">Insight</p>
+  <ul class="side-nav">
+    <li><a href="../../insight.html#overview" data-side="overview">전체<small>인사이트 개요</small></a></li>
+    <li><a href="../../insight.html#glossary" data-side="glossary">용어사전<small>마케팅·애드테크 필수 용어 74개</small></a>
+      <ul class="side-sub">
+        <li><a href="../../insight/glossary/engagement.html">참여·체류<em>10</em></a></li>
+        <li><a href="../../insight/glossary/conversion.html">전환·수익<em>13</em></a></li>
+        <li><a href="../../insight/glossary/attribution.html">어트리뷰션<em>11</em></a></li>
+        <li><a href="../../insight/glossary/data-privacy.html">데이터·프라이버시<em>13</em></a></li>
+        <li><a href="../../insight/glossary/event-format.html">이벤트·게임<em>16</em></a></li>
+        <li><a href="../../insight/glossary/adtech.html">애드테크<em>11</em></a></li>
+      </ul>
+    </li>
+    <li><a href="../../insight.html#guide" data-side="guide" aria-current="page">가이드<small>KPI·체류·동의 설계 실무 10편</small></a></li>
+    <li><a href="../../insight.html#case" data-side="case">사례집<small>국내외 브랜드 캠페인 9건 + 자사 1건</small></a></li>
+  </ul>
+</aside>
+<!-- /@insight-side -->
   <main class="insight-main">
 
       <a class="art-back" href="../../insight.html#guide">← 가이드 전체</a>
@@ -203,14 +237,13 @@
         <div>
           <p class="art-cat">GUIDE 06 · 진입 설계<span class="art-updated">최종 업데이트 2026.7</span></p>
           <h1>앱 설치 없이 참여시키는 법</h1>
-          <p class="art-lead">부스에서 앱 설치를 요구하면 대부분 죽습니다. QR에서 첫 인터랙션까지의 20초를 어떻게 설계하고, 어디서 사람이 빠지는지 어떻게 재는지의 문제입니다.</p>
+          <div class="art-answer">
+            <p><strong>부스 참여는 앱 설치 없이 QR 한 번으로 진입하는 웹 콘텐츠로 설계합니다.</strong> 앱 설치를 요구하면 진입 퍼널에 되돌릴 수 없는 단계가 하나 더 생기고, 그 단계에서 대부분이 빠집니다. 스캔 → 로딩 → 첫 인터랙션 → 완주 네 단계로 쪼개면 어디서 사람이 빠지는지 숫자로 보입니다.</p>
+          </div>
         </div>
         <div class="idx-thumb"><svg role="img" aria-label="QR 코드에서 모바일 화면으로 이어지는 진입 경로"><use href="#th-g6"/></svg></div>
       </div>
       <div class="art-body">
-        <div class="art-answer">
-          <p><strong>부스 참여는 앱 설치 없이 QR 한 번으로 진입하는 웹 콘텐츠로 설계합니다.</strong> 앱 설치를 요구하면 진입 퍼널에 되돌릴 수 없는 단계가 하나 더 생기고, 그 단계에서 대부분이 빠집니다. 스캔 → 로딩 → 첫 인터랙션 → 완주 네 단계로 쪼개면 어디서 사람이 빠지는지 숫자로 보입니다.</p>
-        </div>
         <h2>앱을 요구해도 되는 경우는 언제인가</h2>
         <p>버거킹 브라질의 &lsquo;Burn That Ad&rsquo;는 전용 앱을 설치해야 참여할 수 있는 AR 캠페인이었고, 한 달 만에 <strong>100만 다운로드</strong>를 기록했습니다. 앱 설치가 장벽이 아니었던 이유는 분명합니다. 경쟁사 광고를 태워 버린다는 아이디어 자체가 화제였고, 전국의 옥외·인쇄 광고가 사실상 매체로 동원됐고, 보상이 와퍼 무료 쿠폰이었습니다.</p>
         <p>팝업 부스의 조건은 정반대입니다. 방문객은 이미 현장에 와 있고, 대기 중이며, 데이터를 쓰기 싫어하고, 옆 사람이 보고 있습니다. 이 상황에서 앱스토어로 보내는 것은 <strong>참여의 마지막 단계에 설치라는 새 퍼널을 하나 더 붙이는 것</strong>입니다. 그래서 저희는 기본값을 웹으로 둡니다.</p>

@@ -69,6 +69,8 @@ summary::-webkit-details-marker{display:none}
    ============================================================ */
 
 .logos{padding:clamp(24px,3vw,36px) var(--pad);background:var(--canvas)}
+.logos-cap{margin:0 0 var(--sp-base);text-align:center;
+  font-size:12px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--faint)}
 .logos-mask{position:relative;overflow:hidden;width:min(560px,100%);margin-inline:auto}
 /* 좌우 페이드 — 섹션 배경(흰색)과 같은 색에서 투명으로 */
 .logos-mask::before,

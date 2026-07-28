@@ -188,6 +188,20 @@
 </nav>
 <!-- /@nav -->
 
+<!-- @insight-crumb -->
+<header class="ins-hero ins-hero--slim">
+  <div class="wrap">
+    <nav class="crumb" aria-label="현재 위치">
+      <a href="../../index.html">홈</a>
+      <span aria-hidden="true">›</span>
+      <a href="../../insight.html">인사이트</a>
+      <span aria-hidden="true">›</span>
+      <a href="../../insight.html#guide" data-crumb="guide" aria-current="page">가이드</a>
+    </nav>
+  </div>
+</header>
+<!-- /@insight-crumb -->
+
 <svg class="svg-sprite" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
 <symbol id="th-g1" viewBox="0 0 180 112">
     <rect x="24" y="62" width="20" height="30" fill="#c1ccd6"/><rect x="52" y="44" width="20" height="48" fill="#c1ccd6"/>
@@ -198,7 +212,27 @@
   </symbol>
 </svg>
 
-<div class="insight-shell insight-shell--solo">
+<div class="insight-shell">
+<!-- @insight-side -->
+<aside class="insight-side">
+  <p class="side-label">Insight</p>
+  <ul class="side-nav">
+    <li><a href="../../insight.html#overview" data-side="overview">전체<small>인사이트 개요</small></a></li>
+    <li><a href="../../insight.html#glossary" data-side="glossary">용어사전<small>마케팅·애드테크 필수 용어 74개</small></a>
+      <ul class="side-sub">
+        <li><a href="../../insight/glossary/engagement.html">참여·체류<em>10</em></a></li>
+        <li><a href="../../insight/glossary/conversion.html">전환·수익<em>13</em></a></li>
+        <li><a href="../../insight/glossary/attribution.html">어트리뷰션<em>11</em></a></li>
+        <li><a href="../../insight/glossary/data-privacy.html">데이터·프라이버시<em>13</em></a></li>
+        <li><a href="../../insight/glossary/event-format.html">이벤트·게임<em>16</em></a></li>
+        <li><a href="../../insight/glossary/adtech.html">애드테크<em>11</em></a></li>
+      </ul>
+    </li>
+    <li><a href="../../insight.html#guide" data-side="guide" aria-current="page">가이드<small>KPI·체류·동의 설계 실무 10편</small></a></li>
+    <li><a href="../../insight.html#case" data-side="case">사례집<small>국내외 브랜드 캠페인 9건 + 자사 1건</small></a></li>
+  </ul>
+</aside>
+<!-- /@insight-side -->
   <main class="insight-main">
 
       <a class="art-back" href="../../insight.html#guide">← 가이드 전체</a>
@@ -206,14 +240,13 @@
         <div>
           <p class="art-cat">GUIDE 01 · KPI 설계<span class="art-updated">최종 업데이트 2026.7</span></p>
           <h1>팝업스토어 KPI, 목적별로 이렇게 잡습니다</h1>
-          <p class="art-lead">방문자 수는 KPI가 아니라 모수입니다. 목적을 세 갈래로 쪼개고, 분모를 먼저 합의하면 같은 캠페인이 전혀 다른 숫자로 평가됩니다.</p>
+          <div class="art-answer">
+            <p><strong>팝업스토어 KPI 는 목적을 인지형·판매형·데이터 확보형 중 하나로 먼저 좁히고, 각 지표의 분모를 문서로 합의한 뒤에 정합니다.</strong> 방문자 수는 KPI 가 아니라 분모입니다. 분모를 정하지 않으면 같은 캠페인의 전환율이 4.5%·10.7%·15.0% 세 개로 동시에 읽히고, 그때부터는 성과 논의가 아니라 정의 논쟁이 시작됩니다.</p>
+          </div>
         </div>
         <div class="idx-thumb"><svg role="img" aria-label="목적별로 다르게 잡은 KPI 막대"><use href="#th-g1"/></svg></div>
       </div>
       <div class="art-body">
-        <div class="art-answer">
-          <p><strong>팝업스토어 KPI 는 목적을 인지형·판매형·데이터 확보형 중 하나로 먼저 좁히고, 각 지표의 분모를 문서로 합의한 뒤에 정합니다.</strong> 방문자 수는 KPI 가 아니라 분모입니다. 분모를 정하지 않으면 같은 캠페인의 전환율이 4.5%·10.7%·15.0% 세 개로 동시에 읽히고, 그때부터는 성과 논의가 아니라 정의 논쟁이 시작됩니다.</p>
-        </div>
         <h2>먼저, 이 어려움은 담당자 개인의 문제가 아닙니다</h2>
         <p>팝업은 최근 몇 년 사이 가장 빠르게 늘어난 오프라인 채널입니다. 스위트스팟이 집계한 2025년 1~11월 국내 팝업 오픈 건수는 <strong>3,077건</strong>으로 전년 동기 대비 109% 늘었고, 전체의 35%가 성수동에 몰렸습니다. 반면 마케터들이 매긴 팝업 KPI 측정 난이도는 5점 만점에 <strong>3.8점</strong>입니다. 채널은 폭발적으로 늘었는데 성과를 말하는 언어는 그만큼 정교해지지 않았습니다.</p>
         <div class="art-metrics">

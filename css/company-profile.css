@@ -34,6 +34,8 @@
 .wk-tags{display:flex;flex-wrap:wrap;gap:6px}
 .wk-tags span{font-size:12px;color:var(--muted);border:1px solid var(--hairline);
   border-radius:var(--r-full);padding:4px var(--sp-md)}
+.wk-num{margin:var(--sp-base) 0 0;font-size:14px;font-weight:600;color:var(--ink)}
+.wk-num small{font-weight:400;color:var(--muted-alt);font-size:12px;margin-left:6px}
 .wk-demo{display:inline-block;margin-top:var(--sp-base);font-size:13px;font-weight:600;color:var(--point)}
 .wk-demo:hover{text-decoration:underline;text-underline-offset:2px}
 

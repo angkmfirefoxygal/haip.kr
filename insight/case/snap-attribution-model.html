@@ -188,6 +188,20 @@
 </nav>
 <!-- /@nav -->
 
+<!-- @insight-crumb -->
+<header class="ins-hero ins-hero--slim">
+  <div class="wrap">
+    <nav class="crumb" aria-label="현재 위치">
+      <a href="../../index.html">홈</a>
+      <span aria-hidden="true">›</span>
+      <a href="../../insight.html">인사이트</a>
+      <span aria-hidden="true">›</span>
+      <a href="../../insight.html#case" data-crumb="case" aria-current="page">사례집</a>
+    </nav>
+  </div>
+</header>
+<!-- /@insight-crumb -->
+
 <svg class="svg-sprite" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
 <symbol id="th-c7" viewBox="0 0 180 112">
     <g fill="none" stroke="#c1ccd6" stroke-width="1.5"><circle cx="30" cy="34" r="6"/><circle cx="70" cy="34" r="6"/><circle cx="110" cy="34" r="6"/></g>
@@ -199,7 +213,27 @@
   </symbol>
 </svg>
 
-<div class="insight-shell insight-shell--solo">
+<div class="insight-shell">
+<!-- @insight-side -->
+<aside class="insight-side">
+  <p class="side-label">Insight</p>
+  <ul class="side-nav">
+    <li><a href="../../insight.html#overview" data-side="overview">전체<small>인사이트 개요</small></a></li>
+    <li><a href="../../insight.html#glossary" data-side="glossary">용어사전<small>마케팅·애드테크 필수 용어 74개</small></a>
+      <ul class="side-sub">
+        <li><a href="../../insight/glossary/engagement.html">참여·체류<em>10</em></a></li>
+        <li><a href="../../insight/glossary/conversion.html">전환·수익<em>13</em></a></li>
+        <li><a href="../../insight/glossary/attribution.html">어트리뷰션<em>11</em></a></li>
+        <li><a href="../../insight/glossary/data-privacy.html">데이터·프라이버시<em>13</em></a></li>
+        <li><a href="../../insight/glossary/event-format.html">이벤트·게임<em>16</em></a></li>
+        <li><a href="../../insight/glossary/adtech.html">애드테크<em>11</em></a></li>
+      </ul>
+    </li>
+    <li><a href="../../insight.html#guide" data-side="guide">가이드<small>KPI·체류·동의 설계 실무 10편</small></a></li>
+    <li><a href="../../insight.html#case" data-side="case" aria-current="page">사례집<small>국내외 브랜드 캠페인 9건 + 자사 1건</small></a></li>
+  </ul>
+</aside>
+<!-- /@insight-side -->
   <main class="insight-main">
 
       <a class="art-back" href="../../insight.html#case">← 사례집 전체</a>
@@ -207,14 +241,13 @@
         <div>
           <p class="art-cat">CASE 07 · 기여 모델 — Snap, 글로벌<span class="art-updated">최종 업데이트 2026.7</span></p>
           <h1>모델을 바꾸자 같은 캠페인 성과가 45% 달라졌다</h1>
-          <p class="art-lead">캠페인이 달라진 것이 아닙니다. 데이터도 같습니다. 기여도를 배분하는 규칙만 바꿨는데 귀속 구매 건수가 평균 45% 차이 났습니다.</p>
+          <div class="art-answer">
+            <p><strong>기여 모델만 바꿔도 같은 캠페인의 귀속 구매 건수가 평균 45% 달라집니다.</strong> 캠페인도 데이터도 같았고, 기여도를 배분하는 규칙만 바뀌었습니다. 그래서 오프라인 체험 캠페인에서는 어느 모델을 쓸지 먼저 합의하지 않으면 성과 논의가 성립하지 않습니다.</p>
+          </div>
         </div>
         <div class="idx-thumb"><svg role="img" aria-label="여러 접점과 기여도 배분 막대"><use href="#th-c7"/></svg></div>
       </div>
       <div class="art-body">
-        <div class="art-answer">
-          <p><strong>기여 모델만 바꿔도 같은 캠페인의 귀속 구매 건수가 평균 45% 달라집니다.</strong> 캠페인도 데이터도 같았고, 기여도를 배분하는 규칙만 바뀌었습니다. 그래서 오프라인 체험 캠페인에서는 어느 모델을 쓸지 먼저 합의하지 않으면 성과 논의가 성립하지 않습니다.</p>
-        </div>
         <h2>무슨 일이 있었나</h2>
         <p>스냅이 10개 캠페인을 대상으로 자사 AR 렌즈의 기여도를 분석했습니다. <strong>라스트터치</strong>(마지막 접점에 전부 귀속)로 계산했을 때와 <strong>애니터치</strong>(전환 경로에 포함된 모든 접점을 인정)로 계산했을 때, 렌즈에 귀속된 구매는 평균 <strong>45%</strong> 차이가 났습니다.</p>
         <p>같은 자료 계열에서 다른 수치도 함께 공개됐습니다. AR을 포함한 캠페인은 그렇지 않은 캠페인과 비교해 광고 인지 2.4배, 브랜드 인지 1.8배, 브랜드 연상 1.4배의 리프트를 보였고, AR 렌즈의 평균 액티브 플레이 시간은 20~30초 수준이었습니다. 스냅과 OMD가 함께 진행한 어텐션 연구는 6개국 2,121명, 3만 2천 회 이상의 광고 노출을 분석했습니다.</p>

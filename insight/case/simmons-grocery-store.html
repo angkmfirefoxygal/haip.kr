@@ -193,6 +193,20 @@
 </nav>
 <!-- /@nav -->
 
+<!-- @insight-crumb -->
+<header class="ins-hero ins-hero--slim">
+  <div class="wrap">
+    <nav class="crumb" aria-label="현재 위치">
+      <a href="../../index.html">홈</a>
+      <span aria-hidden="true">›</span>
+      <a href="../../insight.html">인사이트</a>
+      <span aria-hidden="true">›</span>
+      <a href="../../insight.html#case" data-crumb="case" aria-current="page">사례집</a>
+    </nav>
+  </div>
+</header>
+<!-- /@insight-crumb -->
+
 <svg class="svg-sprite" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
 <symbol id="th-c3" viewBox="0 0 180 112">
     <path d="M26 40l14-14h100l14 14" fill="none" stroke="#c1ccd6" stroke-width="1.5"/>
@@ -205,7 +219,27 @@
   </symbol>
 </svg>
 
-<div class="insight-shell insight-shell--solo">
+<div class="insight-shell">
+<!-- @insight-side -->
+<aside class="insight-side">
+  <p class="side-label">Insight</p>
+  <ul class="side-nav">
+    <li><a href="../../insight.html#overview" data-side="overview">전체<small>인사이트 개요</small></a></li>
+    <li><a href="../../insight.html#glossary" data-side="glossary">용어사전<small>마케팅·애드테크 필수 용어 74개</small></a>
+      <ul class="side-sub">
+        <li><a href="../../insight/glossary/engagement.html">참여·체류<em>10</em></a></li>
+        <li><a href="../../insight/glossary/conversion.html">전환·수익<em>13</em></a></li>
+        <li><a href="../../insight/glossary/attribution.html">어트리뷰션<em>11</em></a></li>
+        <li><a href="../../insight/glossary/data-privacy.html">데이터·프라이버시<em>13</em></a></li>
+        <li><a href="../../insight/glossary/event-format.html">이벤트·게임<em>16</em></a></li>
+        <li><a href="../../insight/glossary/adtech.html">애드테크<em>11</em></a></li>
+      </ul>
+    </li>
+    <li><a href="../../insight.html#guide" data-side="guide">가이드<small>KPI·체류·동의 설계 실무 10편</small></a></li>
+    <li><a href="../../insight.html#case" data-side="case" aria-current="page">사례집<small>국내외 브랜드 캠페인 9건 + 자사 1건</small></a></li>
+  </ul>
+</aside>
+<!-- /@insight-side -->
   <main class="insight-main">
 
       <a class="art-back" href="../../insight.html#case">← 사례집 전체</a>
@@ -213,14 +247,13 @@
         <div>
           <p class="art-cat">CASE 03 · 공간 설계 — 시몬스, 2022~2023, 한국<span class="art-updated">최종 업데이트 2026.7</span></p>
           <h1>침대를 치운 팝업이 남긴 것과 남기지 못한 것</h1>
-          <p class="art-lead">침대 브랜드가 침대를 전시하지 않았습니다. 20만 명이 왔고 굿즈로 11억 원이 팔렸습니다. 브랜드 인지 관점에서는 분명한 성공이고, 자산 관점에서는 다른 질문이 남습니다.</p>
+          <div class="art-answer">
+            <p><strong>침대를 전시하지 않은 침대 브랜드 팝업은 인지 관점에서 성공했지만 방문객 데이터라는 자산은 남기지 못했습니다.</strong> 20만 명이 방문하고 굿즈로 11억 원이 팔렸습니다. 공간 설계와 화제성은 분명한 성과이고, 그 20만 명을 다음 캠페인에서 다시 부를 수 있는지는 별개의 질문입니다.</p>
+          </div>
         </div>
         <div class="idx-thumb"><svg role="img" aria-label="제품 없는 매장 진열과 비어 있는 칸"><use href="#th-c3"/></svg></div>
       </div>
       <div class="art-body">
-        <div class="art-answer">
-          <p><strong>침대를 전시하지 않은 침대 브랜드 팝업은 인지 관점에서 성공했지만 방문객 데이터라는 자산은 남기지 못했습니다.</strong> 20만 명이 방문하고 굿즈로 11억 원이 팔렸습니다. 공간 설계와 화제성은 분명한 성과이고, 그 20만 명을 다음 캠페인에서 다시 부를 수 있는지는 별개의 질문입니다.</p>
-        </div>
         <h2>무슨 일이 있었나</h2>
         <p>&lsquo;시몬스 그로서리 스토어 청담&rsquo;은 2022년 2월 문을 열고 약 1년 7개월간 운영됐습니다. 공간에는 침대가 없었고, 대신 브랜드 역사와 지역성을 담은 굿즈를 팔았습니다. 앞선 &lsquo;시몬스 하드웨어 스토어&rsquo;에서 이어진 접근입니다.</p>
         <div class="art-metrics">

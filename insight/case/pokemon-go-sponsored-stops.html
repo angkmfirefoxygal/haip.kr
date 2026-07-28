@@ -193,6 +193,20 @@
 </nav>
 <!-- /@nav -->
 
+<!-- @insight-crumb -->
+<header class="ins-hero ins-hero--slim">
+  <div class="wrap">
+    <nav class="crumb" aria-label="현재 위치">
+      <a href="../../index.html">홈</a>
+      <span aria-hidden="true">›</span>
+      <a href="../../insight.html">인사이트</a>
+      <span aria-hidden="true">›</span>
+      <a href="../../insight.html#case" data-crumb="case" aria-current="page">사례집</a>
+    </nav>
+  </div>
+</header>
+<!-- /@insight-crumb -->
+
 <svg class="svg-sprite" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
 <symbol id="th-c4" viewBox="0 0 180 112">
     <circle cx="70" cy="54" r="34" fill="none" stroke="#c1ccd6" stroke-width="1" stroke-dasharray="4 4"/>
@@ -205,7 +219,27 @@
   </symbol>
 </svg>
 
-<div class="insight-shell insight-shell--solo">
+<div class="insight-shell">
+<!-- @insight-side -->
+<aside class="insight-side">
+  <p class="side-label">Insight</p>
+  <ul class="side-nav">
+    <li><a href="../../insight.html#overview" data-side="overview">전체<small>인사이트 개요</small></a></li>
+    <li><a href="../../insight.html#glossary" data-side="glossary">용어사전<small>마케팅·애드테크 필수 용어 74개</small></a>
+      <ul class="side-sub">
+        <li><a href="../../insight/glossary/engagement.html">참여·체류<em>10</em></a></li>
+        <li><a href="../../insight/glossary/conversion.html">전환·수익<em>13</em></a></li>
+        <li><a href="../../insight/glossary/attribution.html">어트리뷰션<em>11</em></a></li>
+        <li><a href="../../insight/glossary/data-privacy.html">데이터·프라이버시<em>13</em></a></li>
+        <li><a href="../../insight/glossary/event-format.html">이벤트·게임<em>16</em></a></li>
+        <li><a href="../../insight/glossary/adtech.html">애드테크<em>11</em></a></li>
+      </ul>
+    </li>
+    <li><a href="../../insight.html#guide" data-side="guide">가이드<small>KPI·체류·동의 설계 실무 10편</small></a></li>
+    <li><a href="../../insight.html#case" data-side="case" aria-current="page">사례집<small>국내외 브랜드 캠페인 9건 + 자사 1건</small></a></li>
+  </ul>
+</aside>
+<!-- /@insight-side -->
   <main class="insight-main">
 
       <a class="art-back" href="../../insight.html#case">← 사례집 전체</a>
@@ -213,14 +247,13 @@
         <div>
           <p class="art-cat">CASE 04 · 지표 정의 — Pokémon GO 스폰서 포켓스톱, 2016~2017<span class="art-updated">최종 업데이트 2026.7</span></p>
           <h1>&lsquo;방문&rsquo;을 누가 정의했나</h1>
-          <p class="art-lead">방문당 과금 모델로 5억 회 방문이 발표됐습니다. 그런데 그 방문은 매장 문을 열고 들어온 사건이 아니라 게임 안에서 아이콘을 돌린 사건이었습니다.</p>
+          <div class="art-answer">
+            <p><strong>성과 지표를 공급자가 정의하게 두면, 발표된 숫자와 발주 측이 기대한 사건이 달라집니다.</strong> 방문당 과금 모델로 5억 회 방문이 발표됐지만, 그 방문은 매장 문을 열고 들어온 사건이 아니라 게임 안에서 아이콘을 돌린 사건이었습니다. 지표의 이름이 같아도 정의가 다르면 같은 성과가 아닙니다.</p>
+          </div>
         </div>
         <div class="idx-thumb"><svg role="img" aria-label="위치 핀과 방문 집계 막대"><use href="#th-c4"/></svg></div>
       </div>
       <div class="art-body">
-        <div class="art-answer">
-          <p><strong>성과 지표를 공급자가 정의하게 두면, 발표된 숫자와 발주 측이 기대한 사건이 달라집니다.</strong> 방문당 과금 모델로 5억 회 방문이 발표됐지만, 그 방문은 매장 문을 열고 들어온 사건이 아니라 게임 안에서 아이콘을 돌린 사건이었습니다. 지표의 이름이 같아도 정의가 다르면 같은 성과가 아닙니다.</p>
-        </div>
         <h2>무슨 일이 있었나</h2>
         <p>2016년 7월 포켓몬 GO의 일본 출시와 함께 맥도날드가 첫 스폰서로 참여해 약 3,000개 매장이 게임 내 거점이 됐습니다. 미국에서는 스타벅스 약 7,800개 지점과 스프린트가 스폰서로 합류했습니다. 과금 방식은 <strong>방문당 과금</strong>이었고, 방문 1건당 0.15~0.50달러 수준으로 보도됐습니다. 개발사는 파트너들이 5억 회에 이르는 방문의 수혜를 봤다고 설명했습니다.</p>
         <p>2017년 3월 포브스는 이 주장을 정면으로 반박했습니다. 핵심은 단순합니다. 여기서 &lsquo;방문&rsquo;으로 집계된 사건은 게임 내 포켓스톱을 회전시킨 행위였습니다.</p>

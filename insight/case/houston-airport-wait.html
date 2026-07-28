@@ -188,6 +188,20 @@
 </nav>
 <!-- /@nav -->
 
+<!-- @insight-crumb -->
+<header class="ins-hero ins-hero--slim">
+  <div class="wrap">
+    <nav class="crumb" aria-label="현재 위치">
+      <a href="../../index.html">홈</a>
+      <span aria-hidden="true">›</span>
+      <a href="../../insight.html">인사이트</a>
+      <span aria-hidden="true">›</span>
+      <a href="../../insight.html#case" data-crumb="case" aria-current="page">사례집</a>
+    </nav>
+  </div>
+</header>
+<!-- /@insight-crumb -->
+
 <svg class="svg-sprite" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
 <symbol id="th-c9" viewBox="0 0 180 112">
     <circle cx="24" cy="40" r="4" fill="#0e171f"/>
@@ -199,7 +213,27 @@
   </symbol>
 </svg>
 
-<div class="insight-shell insight-shell--solo">
+<div class="insight-shell">
+<!-- @insight-side -->
+<aside class="insight-side">
+  <p class="side-label">Insight</p>
+  <ul class="side-nav">
+    <li><a href="../../insight.html#overview" data-side="overview">전체<small>인사이트 개요</small></a></li>
+    <li><a href="../../insight.html#glossary" data-side="glossary">용어사전<small>마케팅·애드테크 필수 용어 74개</small></a>
+      <ul class="side-sub">
+        <li><a href="../../insight/glossary/engagement.html">참여·체류<em>10</em></a></li>
+        <li><a href="../../insight/glossary/conversion.html">전환·수익<em>13</em></a></li>
+        <li><a href="../../insight/glossary/attribution.html">어트리뷰션<em>11</em></a></li>
+        <li><a href="../../insight/glossary/data-privacy.html">데이터·프라이버시<em>13</em></a></li>
+        <li><a href="../../insight/glossary/event-format.html">이벤트·게임<em>16</em></a></li>
+        <li><a href="../../insight/glossary/adtech.html">애드테크<em>11</em></a></li>
+      </ul>
+    </li>
+    <li><a href="../../insight.html#guide" data-side="guide">가이드<small>KPI·체류·동의 설계 실무 10편</small></a></li>
+    <li><a href="../../insight.html#case" data-side="case" aria-current="page">사례집<small>국내외 브랜드 캠페인 9건 + 자사 1건</small></a></li>
+  </ul>
+</aside>
+<!-- /@insight-side -->
   <main class="insight-main">
 
       <a class="art-back" href="../../insight.html#case">← 사례집 전체</a>
@@ -207,14 +241,13 @@
         <div>
           <p class="art-cat">CASE 09 · 대기 설계 — Houston 공항 수하물, 미국<span class="art-updated">최종 업데이트 2026.7</span></p>
           <h1>대기 시간을 줄이지 않고 불만을 없앤 방법</h1>
-          <p class="art-lead">인력을 늘려 평균 대기를 8분까지 줄였는데 불만은 그대로였습니다. 총 시간이 아니라 비어 있는 시간을 바꾸자 해결됐습니다.</p>
+          <div class="art-answer">
+            <p><strong>대기 불만은 총 대기 시간이 아니라 비어 있는 시간의 비율에서 나옵니다.</strong> 평균 대기를 8분까지 줄였는데도 불만이 그대로였던 공항은, 총 8분을 유지한 채 걷는 시간을 6분으로 늘리고 서서 기다리는 시간을 2분으로 줄여 문제를 해결했습니다. 부스 대기 설계에 그대로 적용되는 원리입니다.</p>
+          </div>
         </div>
         <div class="idx-thumb"><svg role="img" aria-label="걷는 시간과 대기 시간 비교 막대"><use href="#th-c9"/></svg></div>
       </div>
       <div class="art-body">
-        <div class="art-answer">
-          <p><strong>대기 불만은 총 대기 시간이 아니라 비어 있는 시간의 비율에서 나옵니다.</strong> 평균 대기를 8분까지 줄였는데도 불만이 그대로였던 공항은, 총 8분을 유지한 채 걷는 시간을 6분으로 늘리고 서서 기다리는 시간을 2분으로 줄여 문제를 해결했습니다. 부스 대기 설계에 그대로 적용되는 원리입니다.</p>
-        </div>
         <h2>무슨 일이 있었나</h2>
         <p>휴스턴 공항은 수하물 대기 불만이 폭주하자 담당 인력을 늘렸습니다. 평균 대기시간은 8분까지 떨어졌고 업계 기준으로는 문제가 없는 수준이었습니다. 그런데 불만은 줄지 않았습니다.</p>
         <p>도착 게이트부터 수하물 수취까지의 여정을 실측한 결과가 원인을 설명했습니다. 승객은 <strong>1분을 걷고 7분을 서서 기다리고</strong> 있었습니다. 전체 시간의 약 88%가 아무것도 하지 않는 시간이었습니다. 공항은 도착 게이트를 본 터미널에서 더 멀리 옮기고 수하물을 가장 먼 컨베이어로 돌렸습니다. 총 8분은 그대로였지만 구성이 <strong>6분 걷고 2분 기다리는</strong> 형태로 바뀌었고, <mark>불만은 사실상 사라졌습니다</mark>.</p>
@@ -275,8 +308,8 @@
           <p>부스 적용 방안과 15분 기준은 저희 현장 운영 판단입니다. 관련 설계는 <a href="../guide/dwell-time.html">가이드 02</a>에 정리했습니다.</p>
         </div>
         <nav class="art-nav">
-          <a href="../case/homeplus-prize-event.html"><small>이전 사례</small><b>동의를 받았는데 위법이 된 이유</b></a>
-          <a class="nx" href="../../insight.html#guide"><small>이어서 보기</small><b>가이드 — 실무 해법 8편</b></a>
+          <span class="sp"></span>
+          <a class="nx" href="cass-bottle-recognition.html"><small>다음 사례</small><b>방문 24.5만, 참여 7.2만 — 장기 운영이 만든 것</b></a>
         </nav>
       </div>
   </main>
