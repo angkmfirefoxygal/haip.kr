@@ -451,3 +451,6 @@
   .fig-row{grid-template-columns:minmax(0,1fr);gap:4px}
   .fig-row dd{gap:var(--sp-sm)}
 }
+
+/* 검색 일치 구간 */
+.gh-list mark{background:#F3FF94;color:inherit;padding:0 1px;border-radius:2px}
