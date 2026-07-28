@@ -4,15 +4,16 @@
 웹 루트를 dist/ 로 두면 .git/ · CLAUDE.md · deploy.sh · nginx/ 가
 아예 서빙 대상 밖에 있게 되므로, 차단 규칙에 기대지 않아도 된다.
 
-사용: python build.py
+사용: python tools/build.py
 """
 import os, re, shutil, sys
 
-SRC = os.path.dirname(os.path.abspath(__file__))
+# tools/ 안에 있으므로 프로젝트 루트는 한 단계 위다
+SRC = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DIST = os.path.join(SRC, 'dist')
 
 # 루트 + insight/ 하위까지 훑는다.
-SKIP = {'dist', 'design', 'nginx', 'partials', '.git', '.wrangler', '.cf-dist'}
+SKIP = {'dist', 'docs', 'tools', 'partials', '.git', '.wrangler', '.cf-dist'}
 
 
 def _pages():
@@ -238,6 +239,15 @@ def main():
             after += len(out.encode('utf-8'))
             print('  %-24s %7.1fKB -> %7.1fKB' % (
                 sub + '/' + name, len(raw.encode()) / 1024, len(out.encode()) / 1024))
+
+    # robots.txt · sitemap.xml · llms.txt 는 웹 루트에 그대로 있어야 한다.
+    # dist 로 복사하지 않으면 배포 직후 /robots.txt 가 404 가 되고
+    # 사이트맵을 제출할 수 없어 색인 작업 전체가 막힌다.
+    for name in ('robots.txt', 'sitemap.xml', 'llms.txt'):
+        src = os.path.join(SRC, name)
+        if os.path.exists(src):
+            shutil.copy2(src, os.path.join(DIST, name))
+            print('  %-24s 그대로 복사' % name)
 
     # 남은 주석이 없는지 확인
     leftover = []

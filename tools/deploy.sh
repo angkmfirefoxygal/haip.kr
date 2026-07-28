@@ -1,5 +1,5 @@
 #!/bin/bash
-# EC2에서 실행: bash deploy.sh
+# EC2에서 실행: bash tools/deploy.sh
 #
 # 저장소를 받아 dist/ 를 다시 만들고 nginx 를 리로드한다.
 # nginx 의 웹 루트는 /var/www/haip/dist 이므로, 저장소의 내부 파일
@@ -23,7 +23,7 @@ sudo git clean -fd --exclude=dist    # 구버전 잔여 파일 제거
 echo "현재 커밋: $(git rev-parse --short HEAD)"
 
 echo "빌드 중 (주석 제거)..."
-sudo python3 build.py
+sudo python3 tools/build.py
 
 echo "Nginx 설정 확인 중..."
 sudo nginx -t
