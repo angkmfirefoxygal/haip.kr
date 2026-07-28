@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """배포용 빌드 — 주석을 제거한 HTML 을 dist/ 에 만든다.
 
-웹 루트를 dist/ 로 두면 .git/ · CLAUDE.md · deploy.sh · nginx/ 가
+웹 루트를 dist/ 로 두면 .git/, CLAUDE.md, deploy.sh, nginx/ 가
 아예 서빙 대상 밖에 있게 되므로, 차단 규칙에 기대지 않아도 된다.
 
 사용: python tools/build.py
@@ -30,7 +30,7 @@ PAGES = _pages()
 
 
 def strip_js(code):
-    """JS 주석 제거. 문자열·정규식 리터럴 안의 슬래시를 건드리지 않도록
+    """JS 주석 제거. 문자열, 정규식 리터럴 안의 슬래시를 건드리지 않도록
     한 글자씩 훑는다."""
     out = []
     i, n = 0, len(code)
@@ -98,7 +98,7 @@ def strip_css(code):
 
 
 def tidy(text):
-    """주석을 걷어낸 자리에 남는 빈 줄·후행 공백 정리."""
+    """주석을 걷어낸 자리에 남는 빈 줄, 후행 공백 정리."""
     text = re.sub(r'[ \t]+(\r?\n)', r'\1', text)
     text = re.sub(r'(\r?\n)[ \t]*(\r?\n)[ \t]*(\r?\n)+', r'\1\2', text)
     return text
@@ -226,7 +226,7 @@ def main():
         print('  %-24s %7.1fKB -> %7.1fKB' % (
             name, len(raw.encode()) / 1024, len(out.encode()) / 1024))
 
-    # css/ · js/ 도 주석을 제거해 dist 로 옮긴다
+    # css/, js/ 도 주석을 제거해 dist 로 옮긴다
     for sub, fn in (('css', strip_css), ('js', strip_js)):
         srcdir = os.path.join(SRC, sub)
         if not os.path.isdir(srcdir):
@@ -246,7 +246,7 @@ def main():
             print('  %-24s %7.1fKB -> %7.1fKB' % (
                 sub + '/' + name, len(raw.encode()) / 1024, len(out.encode()) / 1024))
 
-    # robots.txt · sitemap.xml · llms.txt 는 웹 루트에 그대로 있어야 한다.
+    # robots.txt, sitemap.xml, llms.txt 는 웹 루트에 그대로 있어야 한다.
     # dist 로 복사하지 않으면 배포 직후 /robots.txt 가 404 가 되고
     # 사이트맵을 제출할 수 없어 색인 작업 전체가 막힌다.
     for name in ('robots.txt', 'sitemap.xml', 'llms.txt'):

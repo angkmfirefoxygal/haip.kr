@@ -3,7 +3,7 @@
 #
 # 저장소를 받아 dist/ 를 다시 만들고 nginx 를 리로드한다.
 # nginx 의 웹 루트는 /var/www/haip/dist 이므로, 저장소의 내부 파일
-# (.git/ · CLAUDE.md · deploy.sh · nginx/)은 애초에 서빙 대상이 아니다.
+# (.git/, CLAUDE.md, deploy.sh, nginx/)은 애초에 서빙 대상이 아니다.
 set -e
 
 BRANCH="${1:-v2}"

@@ -16,7 +16,7 @@
       v.removeAttribute('autoplay'); v.removeAttribute('src'); v.load(); return;
     }
     /* 일부 브라우저는 autoplay 속성만으로 재생을 시작하지 않으므로 명시적으로 한 번 더 시도한다.
-       실패하면(정책·저전력 모드 등) 영상 없이 --ink 배경만 남고 레이아웃은 그대로다. */
+       실패하면(정책, 저전력 모드 등) 영상 없이 --ink 배경만 남고 레이아웃은 그대로다. */
     var go = function(){ var r = v.play(); if(r && r.catch) r.catch(function(){}); };
     if(v.readyState >= 2) go(); else v.addEventListener('loadeddata', go, {once:true});
     /* 탭이 백그라운드로 가면 멈추고 돌아오면 재생 — 불필요한 디코딩을 줄인다 */

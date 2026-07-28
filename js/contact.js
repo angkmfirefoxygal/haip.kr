@@ -33,7 +33,7 @@ document.querySelectorAll('#typeChips .chip').forEach(function(c){
     if(missing.length){ fail('필수 항목을 모두 입력해 주세요.'); document.getElementById(missing[0]).focus(); return; }
     if(!document.getElementById('em').checkValidity()){ fail('이메일 형식을 확인해 주세요.'); document.getElementById('em').focus(); return; }
     if(!syncTypes()){ fail('프로젝트 유형을 하나 이상 선택해 주세요.'); return; }
-    if(!document.getElementById('consent').checked){ fail('개인정보 수집·이용 동의가 필요합니다.'); return; }
+    if(!document.getElementById('consent').checked){ fail('개인정보 수집 및 이용 동의가 필요합니다.'); return; }
 
     btn.disabled = true; btn.textContent = '전송 중…';
     fetch(form.action, {

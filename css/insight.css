@@ -4,8 +4,8 @@
    ============================================================ */
 
 /* ---------- 스크롤바 ----------
-   크롬 기본 막대 대신 얇고 옅게. 새 크롬·파이어폭스는 scrollbar-width/color 를 쓰고,
-   구 크롬·사파리는 아래 ::-webkit- 규칙을 쓴다 (둘은 서로 배타적이라 겹치지 않는다). */
+   크롬 기본 막대 대신 얇고 옅게. 새 크롬, 파이어폭스는 scrollbar-width/color 를 쓰고,
+   구 크롬, 사파리는 아래 ::-webkit- 규칙을 쓴다 (둘은 서로 배타적이라 겹치지 않는다). */
 .art-scroll,
 .side-nav{scrollbar-width:thin;scrollbar-color:var(--faint-alt) transparent}
 .art-scroll::-webkit-scrollbar,
@@ -107,7 +107,7 @@
   color:var(--muted-alt);margin:0 0 var(--sp-base);
 }
 
-/* 배경 사진은 매우 밝은 워시 이미지. 로드 실패·지연 시에도 레이아웃이 유지되도록
+/* 배경 사진은 매우 밝은 워시 이미지. 로드 실패, 지연 시에도 레이아웃이 유지되도록
    --surface 를 폴백 색으로 남긴다. */
 .ins-hero{
   background:var(--surface) url("../assets/ins_hero_bg.webp") center center/cover no-repeat;
@@ -176,7 +176,7 @@
 .g-item dt small{font-size:12px;font-weight:500;color:var(--faint);margin-left:var(--sp-sm)}
 .g-item dd{margin:0;font-size:14px;line-height:1.6;color:var(--body)}
 
-/* ---------- index list — 가이드 · 사례집 공용 ---------- */
+/* ---------- index list — 가이드, 사례집 공용 ---------- */
 .idx-intro{margin:0 0 var(--sp-lg);font-size:16px;line-height:1.6;color:var(--body);max-width:64ch}
 .idx-intro b{color:var(--ink);font-weight:700}
 .g-note b{color:var(--ink);font-weight:700}
@@ -201,11 +201,11 @@
 .idx-link{font-size:14px;font-weight:600;color:var(--muted);white-space:nowrap;transition:color .15s}
 .idx-row:hover .idx-link{color:var(--ink)}
 
-/* ---------- article detail — 가이드 · 사례집 공용 ---------- */
+/* ---------- article detail — 가이드, 사례집 공용 ---------- */
 .art-back{display:inline-block;font-size:14px;font-weight:600;color:var(--muted);
   margin-bottom:var(--sp-lg);transition:color .15s}
 .art-back:hover{color:var(--ink)}
-/* 제목·썸네일은 나란히, 직답은 아래 전체 폭.
+/* 제목, 썸네일은 나란히, 직답은 아래 전체 폭.
    직답을 썸네일과 같은 줄에 두면 630px 로 눌리는데, 이 블록이 이 문서에서
    가장 먼저 읽혀야 하는 문장이라 폭을 온전히 준다. */
 .art-head{display:grid;grid-template-columns:minmax(0,1fr) 200px;
@@ -215,11 +215,11 @@
 .art-head-t{grid-area:text;min-width:0}
 .art-head .idx-thumb{grid-area:thumb;aspect-ratio:180/112}
 .art-head .art-answer{grid-area:answer;margin-top:var(--sp-lg)}
-/* 갱신일(사례는 브랜드·연도 포함) — 제목·설명을 읽은 뒤에 오도록 맨 아래 */
+/* 갱신일(사례는 브랜드, 연도 포함) — 제목, 설명을 읽은 뒤에 오도록 맨 아래 */
 .art-meta{margin:var(--sp-base) 0 0;font-size:12px;color:var(--muted-alt);
   font-variant-numeric:tabular-nums}
 .art-head > .art-meta{grid-area:meta}
-/* 썸네일이 없는 문서(용어사전·자사 사례 등)에서는 200px 칸이 빈 채로 남아
+/* 썸네일이 없는 문서(용어사전, 자사 사례 등)에서는 200px 칸이 빈 채로 남아
    제목이 630px 로 눌린다. 그럴 때는 한 칸으로 편다. */
 .art-head:not(:has(.idx-thumb)){grid-template-columns:minmax(0,1fr);
   grid-template-areas:"text" "answer" "meta"}
@@ -404,7 +404,7 @@
 /* ============================================================
    본문 시각 자료
    외부 차트 라이브러리를 쓰지 않는다. 값은 dl/ol 로 적고 CSS 로 막대만 그린다.
-   스크린리더와 검색엔진은 숫자를 그대로 읽고, 인쇄·CSS 미적용 시에도 목록으로 남는다.
+   스크린리더와 검색엔진은 숫자를 그대로 읽고, 인쇄, CSS 미적용 시에도 목록으로 남는다.
    막대 길이는 --pct (그 차트 안의 최댓값 대비 %) 로 준다.
    ============================================================ */
 .fig{margin:var(--sp-xl) 0;padding:var(--sp-lg);border:1px solid var(--hairline);

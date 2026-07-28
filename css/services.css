@@ -4,8 +4,8 @@
    ============================================================ */
 
 /* ---------- 스크롤바 ----------
-   크롬 기본 막대 대신 얇고 옅게. 새 크롬·파이어폭스는 scrollbar-width/color 를 쓰고,
-   구 크롬·사파리는 아래 ::-webkit- 규칙을 쓴다 (둘은 서로 배타적이라 겹치지 않는다). */
+   크롬 기본 막대 대신 얇고 옅게. 새 크롬, 파이어폭스는 scrollbar-width/color 를 쓰고,
+   구 크롬, 사파리는 아래 ::-webkit- 규칙을 쓴다 (둘은 서로 배타적이라 겹치지 않는다). */
 .svc-scroll{scrollbar-width:thin;scrollbar-color:var(--faint-alt) transparent}
 .svc-scroll::-webkit-scrollbar{width:10px;height:10px}
 .svc-scroll::-webkit-scrollbar-track{background:transparent}
@@ -57,7 +57,7 @@
 .step h3{font-size:clamp(19px,2.1vw,24px);font-weight:700;letter-spacing:-.015em;margin:0 0 var(--sp-sm);color:var(--ink)}
 .step p{margin:0;font-size:16px;line-height:1.5;color:var(--body)}
 .step-out{font-size:14px;line-height:1.6;color:var(--muted-alt);padding-top:6px}/* ============================================================
-   TRACK 딥다이브 (brand story · navy band)
+   TRACK 딥다이브 (brand story, navy band)
    ============================================================ */
 
 .pipe{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--sp-base);margin-bottom:var(--sp-xxl)}
