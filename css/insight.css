@@ -205,12 +205,20 @@
 .art-back{display:inline-block;font-size:14px;font-weight:600;color:var(--muted);
   margin-bottom:var(--sp-lg);transition:color .15s}
 .art-back:hover{color:var(--ink)}
-.art-head{display:grid;grid-template-columns:1fr 200px;gap:clamp(20px,3vw,40px);
-  align-items:center;padding-bottom:var(--sp-xl);border-bottom:1px solid var(--hairline)}
-.art-head .idx-thumb{aspect-ratio:180/112}
+/* 제목·썸네일은 나란히, 직답은 아래 전체 폭.
+   직답을 썸네일과 같은 줄에 두면 630px 로 눌리는데, 이 블록이 이 문서에서
+   가장 먼저 읽혀야 하는 문장이라 폭을 온전히 준다. */
+.art-head{display:grid;grid-template-columns:minmax(0,1fr) 200px;
+  grid-template-areas:"text thumb" "answer answer";
+  gap:0 clamp(20px,3vw,40px);align-items:start;
+  padding-bottom:var(--sp-xl);border-bottom:1px solid var(--hairline)}
+.art-head-t{grid-area:text;min-width:0}
+.art-head .idx-thumb{grid-area:thumb;aspect-ratio:180/112}
+.art-head .art-answer{grid-area:answer;margin-top:var(--sp-lg)}
 /* 썸네일이 없는 문서(용어사전·자사 사례 등)에서는 200px 칸이 빈 채로 남아
    제목이 630px 로 눌린다. 그럴 때는 한 칸으로 편다. */
-.art-head:not(:has(.idx-thumb)){grid-template-columns:minmax(0,1fr)}
+.art-head:not(:has(.idx-thumb)){grid-template-columns:minmax(0,1fr);
+  grid-template-areas:"text" "answer"}
 .art-cat{font-size:12px;font-weight:500;letter-spacing:.1em;color:var(--muted-alt);
   margin:0 0 var(--sp-md);font-variant-numeric:tabular-nums}
 .art-head h1{font-size:clamp(24px,3.4vw,40px);font-weight:700;line-height:1.25;
@@ -314,8 +322,14 @@
   .g-list{grid-template-columns:1fr}
   .idx-row{grid-template-columns:148px 1fr}
   .idx-link{display:none}
-  .art-head{grid-template-columns:1fr;gap:var(--sp-lg)}
-  .art-head .idx-thumb{max-width:280px;order:-1}
+  /* 좁은 화면에서는 한 칸으로 쌓는다. grid-template-areas 도 함께 바꿔야 한다 —
+     컬럼만 1fr 로 두면 areas 가 2칸을 요구해 두 번째 칸(썸네일)이 남고
+     제목이 27px 까지 눌린다. */
+  .art-head{grid-template-columns:minmax(0,1fr);
+    grid-template-areas:"thumb" "text" "answer";gap:var(--sp-lg)}
+  .art-head:not(:has(.idx-thumb)){grid-template-areas:"text" "answer"}
+  .art-head .idx-thumb{max-width:280px}
+  .art-head .art-answer{margin-top:0}
   .art-metrics{grid-template-columns:1fr}
 }
 @media(max-width:900px){

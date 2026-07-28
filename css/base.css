@@ -68,6 +68,10 @@ body{
   line-height:1.5;
   -webkit-font-smoothing:antialiased;
 }
+/* 한국어는 기본값(word-break:normal)에서 단어 중간이 잘린다.
+   "…잡습니 / 다" 처럼 한 글자만 넘어가는 줄바꿈이 생기므로 어절 단위로 끊는다.
+   URL 같은 긴 문자열은 overflow-wrap 으로 넘침만 막는다. */
+body{word-break:keep-all;overflow-wrap:break-word}
 img{max-width:100%;display:block}
 a{color:inherit;text-decoration:none}
 :focus-visible{outline:2px solid var(--point);outline-offset:3px}
