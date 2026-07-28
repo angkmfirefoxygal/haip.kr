@@ -12,7 +12,7 @@
 
 - [홈](https://haip.kr/): 사업 개요(CATCH 참여 설계 / KEEP 브랜드 체험 / TRACK 성과 측정)와 FAQ 14개
 - [서비스](https://haip.kr/services.html): 제작 가능한 콘텐츠 유형 11가지와 유형별로 남는 데이터, 소요기간(기본형 1~2주 · 커스텀형 3~5주 · AI·AR형 4~6주), 진행 방식 5단계, 성과 증명 구조
-- [인사이트](https://haip.kr/insight.html): 용어사전 74개, 실무 가이드 10편, 브랜드 캠페인 사례집 10편
+- [인사이트](https://haip.kr/insight.html): 용어사전 99개, 실무 가이드 10편, 브랜드 캠페인 사례집 10편
 - [문의](https://haip.kr/contact.html)
 
 ## 인사이트 안내
