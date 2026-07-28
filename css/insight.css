@@ -208,6 +208,9 @@
 .art-head{display:grid;grid-template-columns:1fr 200px;gap:clamp(20px,3vw,40px);
   align-items:center;padding-bottom:var(--sp-xl);border-bottom:1px solid var(--hairline)}
 .art-head .idx-thumb{aspect-ratio:180/112}
+/* 썸네일이 없는 문서(용어사전·자사 사례 등)에서는 200px 칸이 빈 채로 남아
+   제목이 630px 로 눌린다. 그럴 때는 한 칸으로 편다. */
+.art-head:not(:has(.idx-thumb)){grid-template-columns:minmax(0,1fr)}
 .art-cat{font-size:12px;font-weight:500;letter-spacing:.1em;color:var(--muted-alt);
   margin:0 0 var(--sp-md);font-variant-numeric:tabular-nums}
 .art-head h1{font-size:clamp(24px,3.4vw,40px);font-weight:700;line-height:1.25;
