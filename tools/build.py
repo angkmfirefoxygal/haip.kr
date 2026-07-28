@@ -143,13 +143,16 @@ def render_partial(name, page, depth=0, section=None):
         if key:
             html = html.replace('class="nav-link" data-nav="%s"' % key,
                                 'class="nav-link is-active" data-nav="%s"' % key)
-    if name == 'insight-crumb' and section:
-        # 현재 섹션만 남기고 나머지 형제 링크는 지운다
+    if name == 'insight-crumb':
+        # 현재 섹션만 남기고 나머지는 지운다. 허브(section=None)는 셋 다 지우고
+        # 앞의 구분자도 함께 없앤다 — '홈 › 인사이트' 로 끝난다.
         for k in ('guide', 'case', 'glossary'):
             if k == section:
                 html = html.replace('data-crumb="%s"' % k, 'data-crumb="%s" aria-current="page"' % k)
             else:
                 html = re.sub(r'\s*<a [^>]*data-crumb="%s"[^>]*>.*?</a>' % k, '', html)
+        if not section:
+            html = re.sub(r'\s*<span aria-hidden="true">›</span>(?=\s*</nav>)', '', html)
     if name == 'insight-side' and section:
         # 현재 보고 있는 섹션을 표시한다 (문서 간 이동 편의 + 내부 링크 확보)
         html = html.replace('data-side="%s"' % section,
@@ -177,6 +180,7 @@ def sync_partials(write):
             m = pat.search(out)
             if not m:
                 continue
+            # insight/guide/x.html → 'guide'. 허브(insight.html)는 섹션 없음
             sec = name.split('/')[1] if depth >= 2 else None
             want = render_partial(part, page, depth, sec)
             if m.group(2) != want:

@@ -393,3 +393,7 @@
 .crumb a:hover{color:var(--ink);text-decoration:underline;text-underline-offset:3px}
 .crumb a[aria-current="page"]{color:var(--ink);font-weight:700}
 .crumb span{color:var(--faint-alt)}
+
+/* 허브 섹션 제목 — 히어로를 밴드로 바꾸면서 목록 뷰에 제목이 없어졌다 */
+.view-h{margin:0 0 var(--sp-base);font-size:clamp(24px,3vw,34px);font-weight:700;
+  letter-spacing:-.02em;color:var(--ink)}

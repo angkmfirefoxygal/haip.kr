@@ -192,3 +192,43 @@ html{scroll-behavior:auto}
 .btns{display:flex;flex-wrap:wrap;gap:var(--sp-md);margin-top:var(--sp-xl)}
 .btn.ghost{background:transparent;color:var(--surface);border:1px solid var(--surface)}
 .btn.ghost:hover{background:rgba(242,245,247,.12)}
+
+/* ============================================================
+   페이지 전환 — Cross-document View Transitions
+   문서마다 URL 을 따로 두면(색인·인용에 필요) 이동할 때마다 전체 화면이
+   다시 그려져 히어로가 깜빡인다. 아래 규칙은 URL 구조는 그대로 두고
+   nav·사이드바·푸터를 전환 사이에 유지시켜, 실제로 바뀌는 본문만 움직이게 한다.
+   Chrome 126+ / Safari 18.2+ 에서 동작하고, 미지원 브라우저는 기존 이동 그대로다.
+   file:// 로 열면 동작하지 않는다 (같은 출처가 아니라서). 로컬 확인은 http 로.
+   ============================================================ */
+@view-transition{ navigation:auto }
+
+/* 같은 이름을 가진 요소는 전환 사이에 '같은 것'으로 취급돼 유지된다 */
+.nav{ view-transition-name:site-nav }
+.foot{ view-transition-name:site-foot }
+.insight-side{ view-transition-name:insight-side }
+.ins-hero{ view-transition-name:insight-hero }
+.insight-main{ view-transition-name:insight-main }
+
+/* 고정 영역은 애니메이션을 주지 않는다 — 스냅샷 교차 페이드에서 생기는 미세한 떨림 방지 */
+::view-transition-group(site-nav),
+::view-transition-group(site-foot),
+::view-transition-group(insight-side){ animation-duration:0s }
+::view-transition-old(site-nav),::view-transition-new(site-nav),
+::view-transition-old(site-foot),::view-transition-new(site-foot),
+::view-transition-old(insight-side),::view-transition-new(insight-side){ animation:none;mix-blend-mode:normal }
+
+/* 히어로는 허브(큰 히어로) ↔ 하위(얇은 밴드) 사이에서 높이가 자연스럽게 변한다 */
+::view-transition-group(insight-hero){ animation-duration:.24s;animation-timing-function:cubic-bezier(.2,0,0,1) }
+
+/* 실제로 바뀌는 본문만 움직인다 */
+::view-transition-old(insight-main){ animation:vt-out .16s cubic-bezier(.4,0,1,1) both }
+::view-transition-new(insight-main){ animation:vt-in .24s cubic-bezier(0,0,.2,1) both }
+::view-transition-old(root){ animation:vt-out .16s ease both }
+::view-transition-new(root){ animation:vt-in .24s ease both }
+@keyframes vt-out{ to{ opacity:0;transform:translateY(-6px) } }
+@keyframes vt-in{ from{ opacity:0;transform:translateY(8px) } }
+
+@media(prefers-reduced-motion:reduce){
+  @view-transition{ navigation:none }
+}

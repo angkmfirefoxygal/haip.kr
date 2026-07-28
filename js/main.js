@@ -37,4 +37,16 @@
     }, {threshold:.12, rootMargin:'0px 0px -8% 0px'});
     rv.forEach(function(n){ io.observe(n); });
   }
+
+  /* ---- 이동을 즉시로 만들기 ----
+     전환 애니메이션이 매끄러워도 다음 문서를 받아 오는 시간이 남으면 끊겨 보인다.
+     같은 출처 링크를 hover 시점에 미리 받아 둔다. prefetch 라 스크립트는 실행되지 않는다. */
+  if(HTMLScriptElement.supports && HTMLScriptElement.supports('speculationrules')){
+    var sr = document.createElement('script');
+    sr.type = 'speculationrules';
+    sr.textContent = JSON.stringify({
+      prefetch: [{ where: { selector_matches: 'a[href]' }, eagerness: 'moderate' }]
+    });
+    document.head.appendChild(sr);
+  }
 })();

@@ -352,12 +352,17 @@
 </nav>
 <!-- /@nav -->
 
-<header class="ins-hero">
+<!-- @insight-crumb -->
+<header class="ins-hero ins-hero--slim">
   <div class="wrap">
-    <h1>현장에서 쌓인 인사이트</h1>
-    <p>발주를 앞두고 한 번 훑어보시면 좋을 순서로 묶었습니다.</p>
+    <nav class="crumb" aria-label="현재 위치">
+      <a href="index.html">홈</a>
+      <span aria-hidden="true">›</span>
+      <a href="insight.html">인사이트</a>
+    </nav>
   </div>
 </header>
+<!-- /@insight-crumb -->
 
 <div class="insight-shell">
   <aside class="insight-side">
@@ -381,6 +386,12 @@
   <main class="insight-main">
 
     <div class="view" data-view="overview">
+      <div class="art-head">
+        <div>
+          <h1>현장에서 쌓인 인사이트</h1>
+          <p class="idx-intro">발주를 앞두고 한 번 훑어보시면 좋을 순서로 묶었습니다.</p>
+        </div>
+      </div>
       <div class="posts rv">
         <a href="insight.html#glossary" class="post">
           <p class="post-cat">용어사전</p>
@@ -406,6 +417,8 @@
     </div>
 
     <div class="view" data-view="glossary">
+      <h2 class="view-h">용어사전</h2>
+      <p class="idx-intro">인터랙티브 이벤트와 오프라인 성과 측정 실무에서 쓰는 용어 74개입니다.</p>
       <nav class="g-jump" aria-label="용어 그룹 선택">
         <a href="insight/glossary/engagement.html">참여·체류</a>
         <a href="insight/glossary/conversion.html">전환·수익</a>
@@ -451,6 +464,7 @@
     </div>
 
     <div class="view" data-view="guide">
+      <h2 class="view-h">가이드</h2>
       <p class="idx-intro rv">발주 담당자에게 실제로 반복해서 받은 질문만 골랐습니다. 각 편은 <b>무엇이 문제인가 → 어떻게 설계하는가 → 무엇으로 확인하는가</b> 순서로 씁니다. 인용한 수치에는 출처를 달았고, 저희 추정치는 추정치라고 적었습니다.</p>
       <div class="idx-list rv">
 
@@ -583,6 +597,7 @@
     <!--/CASE-ARTICLES-->
 
     <div class="view" data-view="case">
+      <h2 class="view-h">사례집</h2>
       <p class="idx-intro rv">전부 다른 브랜드의 캠페인입니다. <b>무엇을 만들었는지가 아니라 어떤 지표가 움직였는지</b>로 읽습니다. 각 편은 공개된 자료의 수치를 먼저 놓고, 그 수치를 만든 구조를 분해한 뒤, 저희 작업에 옮길 때의 조건과 한계를 적었습니다.</p>
       <p class="g-note rv">여기 실린 9건은 모두 <b>타사 캠페인에 대한 공개 자료 기반 분석</b>이며, 하입이 수행한 프로젝트가 아닙니다. 브랜드가 발표한 수치, 제3자 매체가 검증한 수치, 저희 해석을 본문에서 구분해 표기했습니다.</p>
       <div class="idx-list rv">
