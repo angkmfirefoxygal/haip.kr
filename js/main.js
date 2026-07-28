@@ -49,4 +49,22 @@
     });
     document.head.appendChild(sr);
   }
+
+  /* ---- 해시로 들어온 항목을 화면 위로 ----
+     브라우저는 대상이 뷰포트 안에 걸쳐 있기만 하면 스크롤하지 않는다.
+     용어사전에서 검색해 찾아온 항목이 화면 최하단에 걸려 사실상 안 보이는 일이
+     생기므로, 직접 한 번 올려 준다. scroll-margin-top 이 적용돼 nav 아래에 선다. */
+  function focusHash(){
+    var id;
+    try { id = decodeURIComponent((location.hash || '').slice(1)); } catch(err){ return; }
+    if(!id) return;
+    var el = document.getElementById(id);
+    if(!el) return;
+    requestAnimationFrame(function(){
+      el.scrollIntoView({block:'start', behavior: reduce ? 'auto' : 'smooth'});
+    });
+  }
+  if(document.readyState === 'complete') focusHash();
+  else window.addEventListener('load', focusHash);
+  window.addEventListener('hashchange', focusHash);
 })();

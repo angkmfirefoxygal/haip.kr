@@ -14,6 +14,11 @@
   var items  = [].slice.call(document.querySelectorAll('.gh-list a'));
   var groups = [].slice.call(document.querySelectorAll('.gh-group'));
   var count  = document.getElementById('gcount');
+  var out    = document.getElementById('ghResults');
+  var groupWrap = document.querySelector('.gh-groups');
+  // 검색을 풀었을 때 원래 자리로 되돌리기 위해 처음 배치를 기억해 둔다
+  var home = [].slice.call(document.querySelectorAll('.gh-list:not(.gh-results)'))
+    .map(function(ul){ return {ul: ul, kids: [].slice.call(ul.children)}; });
   var empty  = document.getElementById('gempty');
   var total  = items.length;
 
@@ -50,10 +55,14 @@
     var gname = group ? ((group.querySelector('h2') || {}).textContent || '') : '';
     a._n = norm(raw);          // 용어 자체
     a._g = norm(gname);        // 그룹 이름 (직접 일치가 없을 때만 쓴다)
+    a._gname = gname.replace(/\s*\d+\s*$/, '').trim();   // 결과 목록에 붙일 소속 표시
     a._c = cho(norm(raw));
     var n = a.querySelector('.gh-n'), sm = a.querySelector('small');
     a._name = n ? n.textContent : a.textContent;
     a._alt  = sm ? sm.textContent : '';
+    var d = a.querySelector('.gh-d');
+    a._def = d ? d.textContent : '';
+    a._dn  = norm(a._def);        // 정의 본문 (이름에 없어도 여기서 찾을 수 있게)
   });
 
   /* 일치 구간에 <mark>. norm() 이 글자를 지웠을 수 있어 원문 위치를 다시 센다. */
@@ -89,16 +98,57 @@
     });
 
     items.forEach(function(a){
-      var hit = !key || (byCho ? a._c.indexOf(key) > -1
-                               : (direct ? a._n.indexOf(key) > -1
-                                         : a._g.indexOf(key) > -1));
+      var byName = byCho ? a._c.indexOf(key) > -1 : a._n.indexOf(key) > -1;
+      var byDef  = !byCho && key && a._dn.indexOf(key) > -1;
+      var byGrp  = !byCho && key && !direct && a._g.indexOf(key) > -1;
+      var hit = !key || byName || byDef || byGrp;
+      /* 이름에 걸린 것이 먼저 오고, 설명에서만 언급된 것은 뒤로 보낸다.
+         'ROAS' 를 찾는 사람에게 ROI(설명에 ROAS 가 나옴)가 먼저 오면 안 된다. */
+      var weak = hit && key && !byName;
+      a.parentNode.style.order = weak ? '1' : '0';
+      a.parentNode.classList.toggle('is-weak', !!weak);
       a.parentNode.hidden = !hit;
       if(hit){
         n++;
         paint(a.querySelector('.gh-n'), a._name, byCho ? '' : key);
         paint(a.querySelector('small'), a._alt,  byCho ? '' : key);
+        paint(a.querySelector('.gh-d'),  a._def,  byCho ? '' : key);
+        var tag = a.querySelector('.gh-g');
+        if(key && !tag && a._gname){
+          tag = document.createElement('span');
+          tag.className = 'gh-g';
+          tag.textContent = a._gname;
+          a.appendChild(tag);
+        }
       }
     });
+    // 검색 중에는 목록을 한 줄씩 펼쳐 정의까지 보여 준다
+    document.querySelectorAll('.gh-list').forEach(function(l){
+      l.classList.toggle('is-searching', !!key);
+    });
+    /* 검색 중에는 그룹을 풀고 순위대로 한 줄 목록으로 보여 준다.
+       그룹을 유지하면 '전환' 을 찾을 때 A그룹의 약한 일치(체류시간)가
+       B그룹의 정확한 일치(전환·전환율)보다 위에 온다. */
+    if(out){
+      if(key){
+        var strong = [], weakArr = [];
+        items.forEach(function(a){
+          var li = a.parentNode;
+          if(li.hidden) return;
+          (li.classList.contains('is-weak') ? weakArr : strong).push(li);
+        });
+        strong.concat(weakArr).forEach(function(li){ out.appendChild(li); });
+        out.hidden = false;
+        out.classList.add('is-searching');
+        if(groupWrap) groupWrap.hidden = true;
+      } else {
+        home.forEach(function(h){ h.kids.forEach(function(li){ h.ul.appendChild(li); }); });
+        out.hidden = true;
+        out.classList.remove('is-searching');
+        if(groupWrap) groupWrap.hidden = false;
+      }
+    }
+
     groups.forEach(function(g){
       var on = g.querySelectorAll('li:not([hidden])').length;
       g.hidden = !on;
