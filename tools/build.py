@@ -144,15 +144,17 @@ def render_partial(name, page, depth=0, section=None):
             html = html.replace('class="nav-link" data-nav="%s"' % key,
                                 'class="nav-link is-active" data-nav="%s"' % key)
     if name == 'insight-crumb':
-        # 현재 섹션만 남기고 나머지는 지운다. 허브(section=None)는 셋 다 지우고
-        # 앞의 구분자도 함께 없앤다 — '홈 › 인사이트' 로 끝난다.
-        for k in ('guide', 'case', 'glossary'):
-            if k == section:
-                html = html.replace('data-crumb="%s"' % k, 'data-crumb="%s" aria-current="page"' % k)
-            else:
-                html = re.sub(r'\s*<a [^>]*data-crumb="%s"[^>]*>.*?</a>' % k, '', html)
-        if not section:
-            html = re.sub(r'\s*<span aria-hidden="true">›</span>(?=\s*</nav>)', '', html)
+        if section:
+            # 하위 문서는 위치가 정적으로 확정된다 — 해당 섹션만 남기고 나머지는 지운다
+            html = html.replace('<span class="crumb-sec" hidden>', '<span class="crumb-sec">')
+            for k in ('guide', 'case', 'glossary'):
+                if k == section:
+                    html = html.replace(' data-crumb="%s" hidden>' % k,
+                                        ' data-crumb="%s" aria-current="page">' % k)
+                else:
+                    html = re.sub(r'\s*<a [^>]*data-crumb="%s"[^>]*>.*?</a>' % k, '', html)
+        # 허브(section 없음)는 해시로 뷰가 바뀌므로 감춘 채로 두고
+        # js/insight.js 의 라우터가 현재 섹션을 켠다
     if name == 'insight-side' and section:
         # 현재 보고 있는 섹션을 표시한다 (문서 간 이동 편의 + 내부 링크 확보)
         html = html.replace('data-side="%s"' % section,

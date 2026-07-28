@@ -31,8 +31,10 @@
     'g-f':'insight/glossary/adtech.html'
   };
   function redirect(){
-    var h = (location.hash || '').replace(/^#/, '').split('/')[0];
-    if(MOVED[h]){ location.replace(MOVED[h]); return true; }
+    // #guide-01 처럼 한 토막인 것과 #glossary/g-a 처럼 두 토막인 옛 주소를 모두 받는다
+    var parts = (location.hash || '').replace(/^#/, '').split('/');
+    var to = MOVED[parts[0]] || (parts[1] && MOVED[parts[1]]);
+    if(to){ location.replace(to); return true; }
     return false;
   }
   if(redirect()) return;
@@ -75,6 +77,22 @@
       return {view:'overview', group:null};
     }
 
+    /* 상단 '현재 위치' 표시 — 허브는 해시로 뷰가 바뀌므로 여기서 켠다.
+       하위 문서는 빌드 시점에 이미 확정돼 있어 이 함수가 돌지 않는다. */
+    var crumbSec = document.querySelector('.crumb-sec');
+    var crumbLinks = crumbSec ? crumbSec.querySelectorAll('[data-crumb]') : [];
+    function setCrumb(section){
+      if(!crumbSec) return;
+      var hit = false;
+      Array.prototype.forEach.call(crumbLinks, function(a){
+        var on = a.dataset.crumb === section;
+        a.hidden = !on;
+        if(on){ a.setAttribute('aria-current','page'); hit = true; }
+        else  { a.removeAttribute('aria-current'); }
+      });
+      crumbSec.hidden = !hit;
+    }
+
     function activate(hash, opts){
       opts = opts || {};
       var r = parseHash(hash);
@@ -88,6 +106,7 @@
         a.classList.toggle('active', a.dataset.view === meta.parent);
       });
       document.title = meta.title + ' — HaiP';
+      setCrumb(meta.parent);
 
       // 방금 켜진 뷰 안의 리빌 요소는 즉시 보이게 (숨겨져 있는 동안은 IntersectionObserver가 잡지 못하므로)
       var active = document.querySelector('.view.is-active');
