@@ -155,7 +155,7 @@
 .view.is-active{display:block}
 
 /* group jump (mobile only) */
-.g-jump{display:none;flex-wrap:wrap;gap:var(--sp-sm);margin-bottom:var(--sp-lg)}
+.g-jump{display:flex;flex-wrap:wrap;gap:var(--sp-sm);margin-bottom:var(--sp-lg)}
 .g-jump a{font-size:14px;font-weight:500;padding:var(--sp-sm) var(--sp-base);
   border:1px solid var(--hairline);border-radius:var(--r-full);color:var(--body)}
 .g-jump a:hover{background:var(--ink);color:var(--canvas);border-color:var(--ink)}
@@ -343,7 +343,6 @@
     padding:var(--sp-md) var(--sp-base)}
   .side-nav>li>a small{display:none}
   .side-nav .side-sub{display:none}
-  .g-jump{display:flex}
   .idx-row{grid-template-columns:104px 1fr;gap:var(--sp-base);align-items:start;
     margin-inline:0;padding-inline:0}
   .idx-row p{font-size:15px}
@@ -354,16 +353,6 @@
   .art-nav .nx{text-align:left}
 }
 
-/* 용어사전 허브 — 그룹 6개 카드. 용어 74개 본문은 각 그룹 페이지로 옮겼다. */
-.g-hub{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--sp-base)}
-.g-card{display:block;border:1px solid var(--hairline);border-radius:var(--r-lg);
-  padding:var(--sp-lg);transition:border-color .15s,background .15s}
-.g-card:hover{border-color:var(--faint-alt);background:var(--surface)}
-.g-card .g-tag{margin:0 0 var(--sp-sm)}
-.g-card-d{margin:0 0 var(--sp-base);font-size:14px;line-height:1.6;color:var(--body)}
-.g-card-go{font-size:13px;font-weight:600;color:var(--point)}
-@media(max-width:700px){ .g-hub{grid-template-columns:minmax(0,1fr)}
-}
 
 /* 직답 도입부 — 답변 엔진은 문서 상단을 불균형하게 많이 본다.
    완결된 답을 먼저 두고 서사는 그 뒤에 둔다. */

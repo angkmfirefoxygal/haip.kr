@@ -23,6 +23,7 @@
     'case-07':'insight/case/snap-attribution-model.html',
     'case-08':'insight/case/homeplus-prize-event.html',
     'case-09':'insight/case/houston-airport-wait.html',
+    'glossary':'insight/glossary/index.html',
     'g-a':'insight/glossary/engagement.html',
     'g-b':'insight/glossary/conversion.html',
     'g-c':'insight/glossary/attribution.html',
@@ -47,7 +48,7 @@
      insight-main 안의 .view 4개(overview/glossary/guide/case)만 해시로 전환한다.
      ============================================================ */
   (function(){
-    var TITLES = {overview:'인사이트', glossary:'용어사전', guide:'가이드', case:'사례집'};
+    var TITLES = {overview:'인사이트', guide:'가이드', case:'사례집'};
     var views = document.querySelectorAll('.view');
     var topLinks = document.querySelectorAll('.side-nav > li > a[data-view]');
     var shell = document.querySelector('.insight-shell');
