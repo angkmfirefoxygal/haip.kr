@@ -414,3 +414,51 @@
 /* 허브 섹션 제목 — 히어로를 밴드로 바꾸면서 목록 뷰에 제목이 없어졌다 */
 .view-h{margin:0 0 var(--sp-base);font-size:clamp(24px,3vw,34px);font-weight:700;
   letter-spacing:-.02em;color:var(--ink)}
+
+/* ============================================================
+   본문 시각 자료
+   외부 차트 라이브러리를 쓰지 않는다. 값은 dl/ol 로 적고 CSS 로 막대만 그린다.
+   스크린리더와 검색엔진은 숫자를 그대로 읽고, 인쇄·CSS 미적용 시에도 목록으로 남는다.
+   막대 길이는 --pct (그 차트 안의 최댓값 대비 %) 로 준다.
+   ============================================================ */
+.fig{margin:var(--sp-xl) 0;padding:var(--sp-lg);border:1px solid var(--hairline);
+  border-radius:var(--r-lg);background:var(--canvas)}
+.fig-cap{margin:0 0 var(--sp-base);font-size:14px;font-weight:700;color:var(--ink);line-height:1.5}
+.fig-note{margin:var(--sp-base) 0 0;font-size:12px;line-height:1.6;color:var(--muted-alt)}
+.fig-note b{color:var(--muted);font-weight:600}
+
+/* 가로 막대 비교 */
+.fig-bars{margin:0;display:grid;gap:var(--sp-md)}
+.fig-row{display:grid;grid-template-columns:minmax(96px,26%) 1fr;gap:var(--sp-base);align-items:center}
+.fig-row dt{font-size:13px;line-height:1.45;color:var(--body)}
+.fig-row dd{margin:0;display:flex;align-items:center;gap:var(--sp-md);min-width:0}
+.fig-track{flex:1 1 auto;min-width:0;height:22px;background:var(--surface);
+  border-radius:var(--r-sm);overflow:hidden}
+.fig-fill{display:block;height:100%;width:calc(var(--pct) * 1%);
+  background:var(--point);border-radius:var(--r-sm)}
+.fig-row.is-muted .fig-fill{background:var(--faint)}
+.fig-row b{flex:none;min-width:5.5ch;text-align:right;font-size:14px;font-weight:700;
+  color:var(--ink);font-variant-numeric:tabular-nums}
+
+/* 구성 비교 — 총량은 같고 안이 다른 경우 */
+.fig-split{display:grid;gap:var(--sp-base)}
+.fig-sp-l{margin:0 0 6px;font-size:13px;font-weight:600;color:var(--body)}
+.fig-sp-bar{display:flex;height:34px;border-radius:var(--r-sm);overflow:hidden}
+.fig-sp-bar span{display:flex;align-items:center;justify-content:center;
+  font-size:12px;font-weight:600;white-space:nowrap;overflow:hidden}
+.fig-sp-bar .a{width:calc(var(--a) * 1%);background:var(--point);color:var(--on-primary)}
+.fig-sp-bar .b{width:calc(var(--b) * 1%);background:var(--surface);color:var(--muted)}
+
+/* 퍼널 — 막대 위에 글자를 얹지 않는다. 얹으면 채움 경계에서 대비가 무너진다. */
+.fig-funnel{margin:0;padding:0;list-style:none;display:grid;gap:var(--sp-md)}
+.fig-funnel li{display:grid;grid-template-columns:minmax(88px,24%) 1fr auto;
+  gap:var(--sp-base);align-items:center}
+.fig-funnel .fig-fl{font-size:13px;line-height:1.45;color:var(--body)}
+.fig-funnel b{min-width:6ch;text-align:right;font-size:14px;font-weight:700;
+  color:var(--ink);font-variant-numeric:tabular-nums}
+
+@media(max-width:640px){
+  .fig{padding:var(--sp-base)}
+  .fig-row{grid-template-columns:minmax(0,1fr);gap:4px}
+  .fig-row dd{gap:var(--sp-sm)}
+}

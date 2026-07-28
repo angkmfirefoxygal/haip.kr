@@ -273,6 +273,17 @@
         <p>세 목적을 한 팝업에 담아도 됩니다. 다만 <strong>1차 KPI는 하나여야 합니다.</strong> 나머지는 보조 지표로 내려두고, 가드레일은 "이 숫자가 나빠지면 1차 KPI가 좋아져도 실패로 본다"는 기준으로 씁니다. 예를 들어 참여율이 올라갔는데 평균 대기시간이 12분이 됐다면 그 참여율은 다음 캠페인에서 재현되지 않습니다.</p>
 
         <h2>전환율의 분모는 누가 언제 정하는가</h2>
+        <figure class="fig">
+          <figcaption class="fig-cap">한 캠페인의 단계별 인원 — 아래 세 전환율은 모두 이 로그에서 나옵니다</figcaption>
+          <ol class="fig-funnel">
+            <li style="--pct:100"><span class="fig-fl">부스 앞 통행</span><span class="fig-track"><span class="fig-fill"></span></span><b>1,000명</b></li>
+            <li style="--pct:62"><span class="fig-fl">부스 진입</span><span class="fig-track"><span class="fig-fill"></span></span><b>620명</b></li>
+            <li style="--pct:42"><span class="fig-fl">콘텐츠 참여</span><span class="fig-track"><span class="fig-fill"></span></span><b>420명</b></li>
+            <li style="--pct:30"><span class="fig-fl">완주</span><span class="fig-track"><span class="fig-fill"></span></span><b>300명</b></li>
+            <li style="--pct:4.5"><span class="fig-fl">쿠폰 사용</span><span class="fig-track"><span class="fig-fill"></span></span><b>45명</b></li>
+          </ol>
+          <p class="fig-note">출처 유형: <b>하입의 예시 모델</b> — 실제 캠페인 수치가 아닙니다</p>
+        </figure>
         <p>실무에서 가장 자주 벌어지는 논쟁은 지표 이름이 아니라 분모에서 발생합니다. 같은 팝업의 같은 로그를 두고 이렇게 됩니다.</p>
         <div class="art-note">
           <p class="art-note-h">같은 데이터, 세 개의 전환율</p>
@@ -285,6 +296,24 @@
         </div>
         <p><mark>세 숫자 모두 틀리지 않았습니다. 그래서 위험합니다.</mark> 저희는 착수 시점의 KPI 정의서에 <strong>지표명·분자·분모·집계 시점·제외 조건</strong>을 한 줄씩 못 박습니다. 이 문서가 없으면 캠페인이 끝난 뒤 <mark>성과 논의가 아니라 정의 논쟁이 시작됩니다</mark>.</p>
 
+        <figure class="fig">
+          <figcaption class="fig-cap">같은 로그, 분모만 바꿨을 때의 전환율</figcaption>
+          <dl class="fig-bars">
+            <div class="fig-row is-muted" style="--pct:30">
+              <dt>통행 기준<br><small>45 ÷ 1,000</small></dt>
+              <dd><span class="fig-track"><span class="fig-fill"></span></span><b>4.5%</b></dd>
+            </div>
+            <div class="fig-row" style="--pct:71">
+              <dt>참여자 기준<br><small>45 ÷ 420</small></dt>
+              <dd><span class="fig-track"><span class="fig-fill"></span></span><b>10.7%</b></dd>
+            </div>
+            <div class="fig-row is-muted" style="--pct:100">
+              <dt>완주자 기준<br><small>45 ÷ 300</small></dt>
+              <dd><span class="fig-track"><span class="fig-fill"></span></span><b>15.0%</b></dd>
+            </div>
+          </dl>
+          <p class="fig-note">출처 유형: <b>하입의 예시 모델</b> — 실제 캠페인 수치가 아닙니다. 세 숫자 모두 같은 캠페인이고, 셋 다 틀리지 않았습니다.</p>
+        </figure>
         <h2>마케터들이 가장 쓸모없다고 답한 KPI 는 무엇인가</h2>
         <p>오픈애즈가 정리한 조사에서 현직 마케터들이 팝업 KPI 중 가장 쓸모없다고 꼽은 항목은 순서대로 <strong>스탬프 투어 완주 수, SNS 이벤트 참여 수, 카카오톡 채널 친구 증가 수, 언론 보도량</strong>이었습니다. 이유로 인용된 문장이 정확합니다. "사은품을 받으려고 참여한 거라 허수가 많아요."</p>
         <h3>그럼 스탬프 투어를 하지 말라는 뜻일까요</h3>
