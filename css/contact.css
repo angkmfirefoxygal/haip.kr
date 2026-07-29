@@ -5,18 +5,17 @@
 
 .sec{padding:var(--sp-section) 0}
 
-/* 어두운 밴드 위에서는 포인트 컬러를 밝은 변형으로 바꾼다.
-   #0425FF는 #0e171f 대비 2.34:1로 텍스트에 쓸 수 없다(#6B87FF는 5.63:1). */
+/* 블루 밴드 위 피드백과 필수 표시는 라임으로 구분한다. */
 .band-navy .big-pct,
-.band-navy .required{color:var(--point-lift)}
-.band-navy .consent input{accent-color:var(--point-lift)}
+.band-navy .required{color:var(--lime)}
+.band-navy .consent input{accent-color:var(--lime)}
 
 /* ---------- type roles ---------- */
 .eyebrow{
-  font-size:12px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;
-  color:var(--muted-alt);margin:0 0 var(--sp-base);
+  font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--point);margin:0 0 var(--sp-base);
 }
-.band-navy .eyebrow{color:var(--faint)}/* ============================================================
+.band-navy .eyebrow{color:var(--lime)}/* ============================================================
    NAV — sticky white, 75px, hairline base
    ============================================================ */
 
@@ -34,44 +33,47 @@
    CTA / CONTACT
    ============================================================ */
 
-.cta-h{font-size:clamp(28px,4.6vw,56px);font-weight:700;line-height:1.2;letter-spacing:-.03em;
+.cta-h{font-size:clamp(28px,4.6vw,56px);font-weight:800;line-height:1.15;letter-spacing:-.03em;
   margin:0 0 var(--sp-lg);max-width:24ch;color:var(--canvas)}
-.cta-h b{color:var(--point-lift);font-weight:inherit}
+.cta-h b{color:var(--lime);font-weight:inherit}
 .cta-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,5vw,72px);align-items:start}
-.cta-note{font-size:16px;line-height:1.6;color:var(--faint-alt);margin:0 0 var(--sp-xl)}
+.cta-note{font-size:18px;line-height:1.7;color:rgba(255,255,255,.85);margin:0 0 var(--sp-xl)}
 .meta{list-style:none;margin:0;padding:0;font-size:14px}
 .meta li{display:flex;gap:var(--sp-base);padding:var(--sp-md) 0;
-  border-bottom:1px solid rgba(242,245,247,.14);color:var(--faint-alt)}
+  border-bottom:1px solid rgba(255,255,255,.2);color:rgba(255,255,255,.85)}
 .meta li b{min-width:88px;color:var(--canvas);font-weight:600}
 
 .form{display:grid;gap:var(--sp-md)}
 .fr{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-md)}
-.field label{display:block;font-size:12px;font-weight:500;letter-spacing:.06em;color:var(--faint);margin-bottom:var(--sp-sm)}
+.field label{display:block;font-size:12px;font-weight:700;letter-spacing:.12em;color:rgba(255,255,255,.85);margin-bottom:var(--sp-sm)}
 .field input,
 .field select,
 .field textarea{
   width:100%;font-family:var(--font);font-size:16px;padding:var(--sp-base);
-  background:var(--slate);border:1px solid rgba(242,245,247,.16);color:var(--canvas);
+  background:rgba(17,17,17,.18);border:1.5px solid rgba(255,255,255,.35);color:var(--canvas);
   border-radius:var(--r-md);
 }
 .field textarea{min-height:104px;resize:vertical}
 .field input::placeholder,
-.field textarea::placeholder{color:var(--faint)}
+.field textarea::placeholder{color:rgba(255,255,255,.65)}
+.field input:focus,
+.field select:focus,
+.field textarea:focus{outline:none;border-color:var(--lime)}
 .chips{display:flex;flex-wrap:wrap;gap:var(--sp-sm)}
 .chip{
-  font-family:var(--font);font-size:16px;padding:var(--sp-md) var(--sp-base);
-  border:1px solid var(--faint-alt);border-radius:var(--r-full);
-  background:transparent;color:var(--faint-alt);cursor:pointer;transition:.15s;
+  font-family:var(--font);font-size:15px;font-weight:600;padding:var(--sp-md) var(--sp-base);
+  border:1.5px solid rgba(255,255,255,.35);border-radius:var(--r-full);
+  background:transparent;color:rgba(255,255,255,.85);cursor:pointer;transition:.15s;
 }
 .chip:hover{border-color:var(--canvas);color:var(--canvas)}
-.chip[aria-pressed="true"]{background:var(--canvas);color:var(--black);border-color:var(--canvas);font-weight:700}
-.consent{display:flex;gap:var(--sp-md);align-items:flex-start;font-size:14px;color:var(--faint-alt);line-height:1.55}
+.chip[aria-pressed="true"]{background:var(--lime);color:var(--ink);border-color:var(--lime);font-weight:700}
+.consent{display:flex;gap:var(--sp-md);align-items:flex-start;font-size:14px;color:rgba(255,255,255,.85);line-height:1.7}
 .consent input{width:18px;height:18px;margin-top:2px;accent-color:var(--point);flex:0 0 auto}
 .required{color:var(--point)}
-.success{display:none;background:var(--slate);border-radius:var(--r-xl);padding:var(--sp-xl);margin-top:var(--sp-lg)}
-.form-err{margin:var(--sp-sm) 0 0;font-size:14px;line-height:1.5;color:var(--point-lift)}
+.success{display:none;background:var(--success);border-radius:var(--r-xl);padding:var(--sp-xl);margin-top:var(--sp-lg)}
+.form-err{margin:var(--sp-sm) 0 0;font-size:14px;line-height:1.7;color:var(--lime)}
 .success h3{font-size:24px;font-weight:700;color:var(--canvas);margin:0 0 var(--sp-sm)}
-.success p{margin:0;color:var(--faint-alt);font-size:16px;line-height:1.5}
+.success p{margin:0;color:rgba(255,255,255,.85);font-size:16px;line-height:1.7}
 .cpage{min-height:calc(100vh - var(--nav-h));display:flex;align-items:center}
 .cpage .sec{width:100%}/* ============================================================
    FOOTER

@@ -9,15 +9,15 @@ summary::-webkit-details-marker{display:none}
 
 /* ---------- type roles ---------- */
 .eyebrow{
-  font-size:12px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;
-  color:var(--muted-alt);margin:0 0 var(--sp-base);
+  font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--point);margin:0 0 var(--sp-base);
 }
 .sec-h{
-  font-size:clamp(27px,3.8vw,48px);font-weight:700;line-height:1.2;
-  letter-spacing:-.02em;margin:0 0 var(--sp-lg);color:inherit;
+  font-size:clamp(27px,3.8vw,48px);font-weight:800;line-height:1.15;
+  letter-spacing:-.03em;margin:0 0 var(--sp-lg);color:inherit;
 }
 .sec-lead{
-  font-size:clamp(17px,1.7vw,24px);font-weight:400;line-height:1.31;
+  font-size:18px;font-weight:400;line-height:1.7;
   color:var(--body);max-width:60ch;margin:0 0 var(--sp-xxl);
 }
 /* 가운데 정렬 섹션 헤더 — .sec-lead 는 max-width 가 있어 블록 자체도 가운데로 보낸다 */
@@ -70,7 +70,7 @@ summary::-webkit-details-marker{display:none}
 
 .logos{padding:clamp(24px,3vw,36px) var(--pad);background:var(--canvas)}
 .logos-cap{margin:0 0 var(--sp-base);text-align:center;
-  font-size:12px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--faint)}
+  font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--point)}
 .logos-mask{position:relative;overflow:hidden;width:min(560px,100%);margin-inline:auto}
 /* 좌우 페이드 — 섹션 배경(흰색)과 같은 색에서 투명으로 */
 .logos-mask::before,
@@ -113,9 +113,9 @@ summary::-webkit-details-marker{display:none}
 
 .core-block{padding:var(--sp-xxl) 0}
 .core-block+.core-block{border-top:1px solid var(--hairline)}
-.core-num{font-size:12px;font-weight:500;letter-spacing:.12em;color:var(--faint);margin:0 0 var(--sp-md)}
-.core-h{font-size:clamp(24px,3.2vw,40px);font-weight:700;line-height:1.2;letter-spacing:-.025em;margin:0;color:var(--ink)}
-.core-desc{font-size:clamp(16px,1.5vw,20px);font-weight:400;line-height:1.5;color:var(--body);margin:0;padding-top:var(--sp-xs)}
+.core-num{font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--point);margin:0 0 var(--sp-md)}
+.core-h{font-size:clamp(24px,3.2vw,40px);font-weight:800;line-height:1.15;letter-spacing:-.03em;margin:0;color:var(--ink)}
+.core-desc{font-size:clamp(16px,1.5vw,20px);font-weight:400;line-height:1.7;color:var(--body);margin:0;padding-top:var(--sp-xs)}
 /* 홈에서는 축(대분류)만 요약한다. 구체적인 유형, 흐름, 기간은 제작 안내의 비교 표가 담당한다. */
 .core-tags{display:flex;flex-wrap:wrap;gap:var(--sp-sm);margin:0;padding:0;list-style:none}
 /* 핵심사업 — 3열. 각 열은 라벨 → 제목 → 썸네일 → 설명 → 태그 순으로 쌓는다. */
@@ -134,7 +134,7 @@ summary::-webkit-details-marker{display:none}
 .core-thumb img{display:block;width:100%;height:100%;object-fit:cover}
 .core-grid .core-desc{font-size:clamp(15px,1.2vw,17px);padding-top:0;margin:0 0 var(--sp-lg)}
 .core-tags li{font-size:14px;font-weight:500;color:var(--body);
-  background:var(--surface);border-radius:var(--r-full);padding:8px var(--sp-base)}
+  background:var(--surface);border:1.5px solid var(--hairline);border-radius:var(--r-full);padding:8px var(--sp-base)}
 @media(max-width:900px){
   /* 좁아지면 세로로 쌓고 구분선을 가로로 바꾼다 */
   .core-grid{grid-template-columns:1fr;gap:0}
@@ -146,37 +146,40 @@ summary::-webkit-details-marker{display:none}
    ============================================================ */
 
 .posts{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--sp-base)}
-.post{background:var(--canvas);border:1px solid var(--hairline);border-radius:var(--r-xl);
-  padding:var(--sp-xl);display:flex;flex-direction:column;transition:border-color .15s}
-.post:hover{border-color:var(--faint-alt)}
-.post-cat{font-size:12px;font-weight:500;letter-spacing:.1em;color:var(--point);margin:0 0 var(--sp-base)}
+.post{background:var(--surface);border:none;border-radius:var(--r-lg);
+  padding:var(--sp-xl);display:flex;flex-direction:column;transition:box-shadow .15s}
+.post:hover{box-shadow:0 20px 60px rgba(0,0,0,.10)}
+.post-cat{font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--point);margin:0 0 var(--sp-base)}
 .post h3{font-size:clamp(18px,2vw,24px);font-weight:700;line-height:1.3;letter-spacing:-.015em;
   margin:0 0 var(--sp-md);color:var(--ink)}
 /* .post-cat(0,1,0) 이 이 규칙(0,1,1)에 눌려 12px 캡션이 16px 본문색으로 렌더되던 문제 */
-.post p:not(.post-cat){margin:0 0 var(--sp-lg);font-size:16px;line-height:1.5;color:var(--body)}
-.post-more{margin-top:auto;font-size:14px;font-weight:600;color:var(--muted)}/* ============================================================
+.post p:not(.post-cat){margin:0 0 var(--sp-lg);font-size:16px;line-height:1.7;color:var(--body)}
+.post-more{margin-top:auto;font-size:14px;font-weight:700;color:var(--point)}/* ============================================================
    CTA / CONTACT
    ============================================================ */
 
-.cta-h{font-size:clamp(28px,4.6vw,56px);font-weight:700;line-height:1.2;letter-spacing:-.03em;
+.cta-h{font-size:clamp(28px,4.6vw,56px);font-weight:800;line-height:1.15;letter-spacing:-.03em;
   margin:0 0 var(--sp-lg);max-width:24ch;color:var(--canvas)}
-.cta-h b{color:var(--point-lift);font-weight:inherit}
-.cta-note{font-size:16px;line-height:1.6;color:var(--faint-alt);margin:0 0 var(--sp-xl)}
+.cta-h b{color:var(--lime);font-weight:inherit}
+.cta-note{font-size:18px;line-height:1.7;color:rgba(255,255,255,.85);margin:0 0 var(--sp-xl)}
 .field input,
 .field select,
 .field textarea{
   width:100%;font-family:var(--font);font-size:16px;padding:var(--sp-base);
-  background:var(--slate);border:1px solid rgba(242,245,247,.16);color:var(--canvas);
+  background:rgba(17,17,17,.18);border:1.5px solid rgba(255,255,255,.35);color:var(--canvas);
   border-radius:var(--r-md);
 }
 .field input::placeholder,
-.field textarea::placeholder{color:var(--faint)}/* ============================================================
+.field textarea::placeholder{color:rgba(255,255,255,.65)}
+.field input:focus,
+.field select:focus,
+.field textarea:focus{outline:none;border-color:var(--lime)}/* ============================================================
    FOOTER
    ============================================================ */
 
 .faq-group{margin-bottom:var(--sp-lg)}
-.faq-cat-h{font-size:12px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;
-  color:var(--faint);margin:0 0 var(--sp-md);padding-left:var(--sp-lg)}
+.faq-cat-h{font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--point);margin:0 0 var(--sp-md);padding-left:var(--sp-lg)}
 .faq{display:grid;gap:var(--sp-sm)}
 .faq-item{background:var(--surface);border-radius:var(--r-lg);overflow:hidden;transition:background .15s}
 .faq-item:hover{background:var(--hairline)}
@@ -197,7 +200,7 @@ summary::-webkit-details-marker{display:none}
 .faq-plus::before{width:13px;height:1.5px;transform:translate(-50%,-50%)}
 .faq-plus::after{width:1.5px;height:13px;transform:translate(-50%,-50%)}
 .faq-item[open] .faq-plus{transform:rotate(135deg)}
-.faq-a{margin:0;padding:0 var(--sp-lg) var(--sp-lg);font-size:16px;line-height:1.65;color:var(--body)}
+.faq-a{margin:0;padding:0 var(--sp-lg) var(--sp-lg);font-size:16px;line-height:1.7;color:var(--body)}
 
 @media(max-width:900px){
   .faq-cat-h{padding-left:0}

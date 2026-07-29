@@ -39,24 +39,27 @@
    ============================================================ */
 
 .posts{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--sp-base)}
-.post{background:var(--canvas);border:1px solid var(--hairline);border-radius:var(--r-xl);
-  padding:var(--sp-xl);display:flex;flex-direction:column;transition:border-color .15s}
-.post:hover{border-color:var(--faint-alt)}
-.post-cat{font-size:12px;font-weight:500;letter-spacing:.1em;color:var(--muted-alt);margin:0 0 var(--sp-base)}
+.post{background:var(--surface);border:none;border-radius:var(--r-lg);
+  padding:var(--sp-xl);display:flex;flex-direction:column;transition:box-shadow .15s}
+.post:hover{box-shadow:0 20px 60px rgba(0,0,0,.10)}
+.post-cat{font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--point);margin:0 0 var(--sp-base)}
 .post h3{font-size:clamp(18px,2vw,24px);font-weight:700;line-height:1.3;letter-spacing:-.015em;
   margin:0 0 var(--sp-md);color:var(--ink)}
 /* .post-cat(0,1,0) 이 이 규칙(0,1,1)에 눌려 12px 캡션이 16px 본문색으로 렌더되던 문제 */
-.post p:not(.post-cat){margin:0 0 var(--sp-lg);font-size:16px;line-height:1.5;color:var(--body)}
-.post-more{margin-top:auto;font-size:14px;font-weight:600;color:var(--muted)}
+.post p:not(.post-cat){margin:0 0 var(--sp-lg);font-size:16px;line-height:1.7;color:var(--body)}
+.post-more{margin-top:auto;font-size:14px;font-weight:700;color:var(--point)}
 .field input,
 .field select,
 .field textarea{
   width:100%;font-family:var(--font);font-size:16px;padding:var(--sp-base);
-  background:var(--slate);border:1px solid rgba(242,245,247,.16);color:var(--canvas);
+  background:var(--canvas);border:1.5px solid var(--hairline);color:var(--ink);
   border-radius:var(--r-md);
 }
 .field input::placeholder,
-.field textarea::placeholder{color:var(--faint)}/* ============================================================
+.field textarea::placeholder{color:var(--muted)}
+.field input:focus,
+.field select:focus,
+.field textarea:focus{outline:none;border-color:var(--point)}/* ============================================================
    FOOTER
    ============================================================ */
 
@@ -103,8 +106,8 @@
 
 /* ---------- type roles ---------- */
 .eyebrow{
-  font-size:12px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;
-  color:var(--muted-alt);margin:0 0 var(--sp-base);
+  font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--point);margin:0 0 var(--sp-base);
 }
 
 /* 배경 사진은 매우 밝은 워시 이미지. 로드 실패, 지연 시에도 레이아웃이 유지되도록
@@ -126,18 +129,18 @@
 }
 .insight-side{position:sticky;top:calc(var(--nav-h) + 16px);
   max-height:calc(100vh - var(--nav-h) - 40px);overflow-y:auto;scrollbar-width:thin}
-.side-label{font-size:12px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;
-  color:var(--faint);margin:0 0 var(--sp-base)}
+.side-label{font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--point);margin:0 0 var(--sp-base)}
 .side-nav{list-style:none;margin:0;padding:0}
 .side-nav>li>a{
   display:block;padding:var(--sp-md) var(--sp-base);border-radius:var(--r-md);
-  font-size:16px;font-weight:600;color:var(--muted);transition:.15s;
+  font-size:15px;font-weight:600;color:var(--muted);transition:.15s;
 }
 .side-nav>li>a:hover{background:var(--surface);color:var(--ink)}
-.side-nav>li>a.active{background:var(--ink);color:var(--canvas)}
+.side-nav>li>a.active{background:var(--point);color:var(--canvas)}
 .side-nav>li>a small{display:block;font-size:12px;font-weight:400;color:var(--faint);
   margin-top:2px;line-height:1.4}
-.side-nav>li>a.active small{color:var(--faint-alt)}
+.side-nav>li>a.active small{color:rgba(255,255,255,.85)}
 
 .side-nav .side-sub{list-style:none;margin:var(--sp-sm) 0 var(--sp-md);padding:0 0 0 var(--sp-base)}
 .side-nav .side-sub a{
@@ -156,28 +159,28 @@
 
 /* group jump (mobile only) */
 .g-jump{display:flex;flex-wrap:wrap;gap:var(--sp-sm);margin-bottom:var(--sp-lg)}
-.g-jump a{font-size:14px;font-weight:500;padding:var(--sp-sm) var(--sp-base);
-  border:1px solid var(--hairline);border-radius:var(--r-full);color:var(--body)}
-.g-jump a:hover{background:var(--ink);color:var(--canvas);border-color:var(--ink)}
-.g-jump a.active{background:var(--ink);color:var(--canvas);border-color:var(--ink);font-weight:700}
+.g-jump a{font-size:15px;font-weight:600;padding:var(--sp-sm) var(--sp-base);
+  border:1.5px solid var(--hairline);border-radius:var(--r-full);color:var(--body)}
+.g-jump a:hover{background:var(--point);color:var(--canvas);border-color:var(--point)}
+.g-jump a.active{background:var(--point);color:var(--canvas);border-color:var(--point);font-weight:700}
 
 /* ---------- glossary ---------- */
 .g-groups{display:block}
 .g-group{padding:var(--sp-xl) 0}
 .g-group+.g-group{border-top:1px solid var(--hairline)}
-.g-tag{font-size:clamp(19px,2.1vw,24px);font-weight:700;letter-spacing:-.015em;
+.g-tag{font-size:clamp(19px,2.1vw,24px);font-weight:800;line-height:1.15;letter-spacing:-.03em;
   color:var(--ink);margin:0 0 var(--sp-lg)}
 .g-cnt{font-size:12px;font-weight:500;color:var(--faint);margin-left:var(--sp-sm)}
-.g-note{font-size:14px;line-height:1.6;color:var(--muted);margin:calc(var(--sp-base) * -1) 0 var(--sp-lg);
-  padding:var(--sp-md) var(--sp-base);background:var(--surface);border-radius:var(--r-md)}
+.g-note{font-size:14px;line-height:1.7;color:var(--muted);margin:calc(var(--sp-base) * -1) 0 var(--sp-lg);
+  padding:var(--sp-md) var(--sp-base);background:var(--surface);border-radius:var(--r-lg)}
 .g-list{display:grid;grid-template-columns:1fr 1fr;gap:0 clamp(24px,3vw,48px)}
 .g-item{padding:var(--sp-base) 0;border-bottom:1px solid var(--hairline)}
 .g-item dt{font-size:16px;font-weight:700;color:var(--ink);margin:0 0 var(--sp-xs)}
 .g-item dt small{font-size:12px;font-weight:500;color:var(--faint);margin-left:var(--sp-sm)}
-.g-item dd{margin:0;font-size:14px;line-height:1.6;color:var(--body)}
+.g-item dd{margin:0;font-size:14px;line-height:1.7;color:var(--body)}
 
 /* ---------- index list — 가이드, 사례집 공용 ---------- */
-.idx-intro{margin:0 0 var(--sp-lg);font-size:16px;line-height:1.6;color:var(--body);max-width:64ch}
+.idx-intro{margin:0 0 var(--sp-lg);font-size:16px;line-height:1.7;color:var(--body);max-width:64ch}
 .idx-intro b{color:var(--ink);font-weight:700}
 .g-note b{color:var(--ink);font-weight:700}
 .idx-list{border-top:1px solid var(--hairline)}
@@ -191,20 +194,20 @@
 .idx-thumb{border-radius:var(--r-lg);overflow:hidden;background:var(--surface);aspect-ratio:180/112}
 .idx-thumb svg{display:block;width:100%;height:100%}
 .idx-body{min-width:0}
-.idx-row h3{font-size:clamp(18px,2vw,24px);font-weight:700;line-height:1.3;letter-spacing:-.015em;
+.idx-row h3{font-size:clamp(18px,2vw,24px);font-weight:800;line-height:1.15;letter-spacing:-.03em;
   margin:0 0 var(--sp-sm);color:var(--ink)}
-.idx-row p{margin:0;font-size:16px;line-height:1.55;color:var(--body)}
+.idx-row p{margin:0;font-size:16px;line-height:1.7;color:var(--body)}
 .idx-meta{display:flex;flex-wrap:wrap;gap:var(--sp-md);margin:var(--sp-md) 0 0;
   font-size:12px;font-weight:500;color:var(--faint)}
 .idx-meta span{display:inline-flex;align-items:center;gap:var(--sp-md)}
 .idx-meta span+span::before{content:"";width:3px;height:3px;border-radius:50%;background:var(--faint-alt)}
-.idx-link{font-size:14px;font-weight:600;color:var(--muted);white-space:nowrap;transition:color .15s}
-.idx-row:hover .idx-link{color:var(--ink)}
+.idx-link{font-size:14px;font-weight:700;color:var(--point);white-space:nowrap;transition:color .15s}
+.idx-row:hover .idx-link{color:var(--point-hover)}
 
 /* ---------- article detail — 가이드, 사례집 공용 ---------- */
-.art-back{display:inline-block;font-size:14px;font-weight:600;color:var(--muted);
+.art-back{display:inline-block;font-size:14px;font-weight:700;color:var(--point);
   margin-bottom:var(--sp-lg);transition:color .15s}
-.art-back:hover{color:var(--ink)}
+.art-back:hover{color:var(--point-hover)}
 /* 제목, 썸네일은 나란히, 직답은 아래 전체 폭.
    직답을 썸네일과 같은 줄에 두면 630px 로 눌리는데, 이 블록이 이 문서에서
    가장 먼저 읽혀야 하는 문장이라 폭을 온전히 준다. */
@@ -223,63 +226,63 @@
    제목이 630px 로 눌린다. 그럴 때는 한 칸으로 편다. */
 .art-head:not(:has(.idx-thumb)){grid-template-columns:minmax(0,1fr);
   grid-template-areas:"text" "answer" "meta"}
-.art-head h1{font-size:clamp(24px,3.4vw,40px);font-weight:700;line-height:1.25;
-  letter-spacing:-.025em;color:var(--ink);margin:0 0 var(--sp-md)}
-.art-lead{font-size:clamp(16px,1.7vw,20px);font-weight:400;line-height:1.6;color:var(--body);margin:0}
+.art-head h1{font-size:clamp(24px,3.4vw,40px);font-weight:800;line-height:1.15;
+  letter-spacing:-.03em;color:var(--ink);margin:0 0 var(--sp-md)}
+.art-lead{font-size:18px;font-weight:400;line-height:1.7;color:var(--body);margin:0}
 
 .art-body{padding-top:var(--sp-xl)}
-.art-body h2{font-size:clamp(19px,2.3vw,26px);font-weight:700;line-height:1.3;letter-spacing:-.02em;
+.art-body h2{font-size:clamp(19px,2.3vw,26px);font-weight:800;line-height:1.15;letter-spacing:-.03em;
   color:var(--ink);margin:var(--sp-xxl) 0 var(--sp-base)}
 .art-body h2:first-child{margin-top:0}
 .art-body h3{font-size:clamp(16px,1.8vw,19px);font-weight:700;line-height:1.4;
   color:var(--ink);margin:var(--sp-xl) 0 var(--sp-sm)}
-.art-body p{margin:0 0 var(--sp-base);font-size:16px;line-height:1.75;color:var(--body)}
+.art-body p{margin:0 0 var(--sp-base);font-size:16px;line-height:1.7;color:var(--body)}
 .art-body strong{color:var(--ink);font-weight:700}
 .art-body ul,
 .art-body ol{margin:0 0 var(--sp-base);padding-left:var(--sp-lg);color:var(--body)}
-.art-body li{font-size:16px;line-height:1.75;margin-bottom:var(--sp-sm)}
+.art-body li{font-size:16px;line-height:1.7;margin-bottom:var(--sp-sm)}
 .art-body li::marker{color:var(--faint)}
 /* 본문 하이라이트 — 지정 색 #F3FF94 */
 .art-body mark,
 .g-item dd mark{
-  background:#F3FF94;color:inherit;
+  background:var(--lime);color:inherit;
   padding:.06em .18em;border-radius:2px;
   box-decoration-break:clone;-webkit-box-decoration-break:clone;
 }
 .art-body code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:.88em;
-  background:var(--surface);border-radius:var(--r-sm);padding:2px 6px;color:var(--ink);white-space:nowrap}
+  background:var(--surface);border-radius:4px;padding:2px 6px;color:var(--ink);white-space:nowrap}
 .art-table code{background:var(--canvas)}
 
 .art-note{background:var(--surface);border-radius:var(--r-lg);padding:var(--sp-lg);margin:var(--sp-lg) 0}
 .art-note p:last-child,
 .art-note ul:last-child{margin-bottom:0}
-.art-note .art-note-h{font-size:12px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;
-  color:var(--faint);margin:0 0 var(--sp-md)}
+.art-note .art-note-h{font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--point);margin:0 0 var(--sp-md)}
 
 .art-check{list-style:none;padding:0;margin:var(--sp-base) 0}
 .art-check li{position:relative;padding:var(--sp-sm) 0 var(--sp-sm) 28px;
-  font-size:16px;line-height:1.6;color:var(--body);margin:0}
+  font-size:16px;line-height:1.7;color:var(--body);margin:0}
 .art-check li::before{content:"";position:absolute;left:3px;top:14px;width:9px;height:5px;
   border-left:1.5px solid var(--muted);border-bottom:1.5px solid var(--muted);transform:rotate(-45deg)}
 
 .art-scroll{overflow-x:auto;margin:var(--sp-lg) 0}
 .art-table{width:100%;border-collapse:collapse;font-size:14px;min-width:520px}
-.art-table th{text-align:left;font-size:12px;font-weight:500;letter-spacing:.08em;color:var(--faint);
+.art-table th{text-align:left;font-size:12px;font-weight:600;letter-spacing:.08em;color:var(--muted);
   padding:var(--sp-md);border-bottom:1px solid var(--hairline);white-space:nowrap}
 .art-table td{padding:var(--sp-md);border-bottom:1px solid var(--hairline);
-  color:var(--body);line-height:1.6;vertical-align:top}
+  color:var(--body);line-height:1.7;vertical-align:top}
 .art-table td b{color:var(--ink);font-weight:700}
 .art-table tr:last-child td{border-bottom:none}
 
 .art-metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--sp-sm);margin:var(--sp-lg) 0}
 .art-metric{background:var(--surface);border-radius:var(--r-lg);padding:var(--sp-lg) var(--sp-base)}
-.art-metric-l{font-size:12px;font-weight:500;letter-spacing:.06em;color:var(--muted-alt);margin:0 0 var(--sp-sm)}
+.art-metric-l{font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--point);margin:0 0 var(--sp-sm)}
 .art-metric-v{font-size:clamp(20px,2.4vw,28px);font-weight:800;letter-spacing:-.02em;line-height:1.15;
   color:var(--ink);margin:0;font-variant-numeric:tabular-nums}
-.art-metric-d{font-size:12px;font-weight:400;line-height:1.5;color:var(--muted);margin:var(--sp-xs) 0 0}
+.art-metric-d{font-size:12px;font-weight:400;line-height:1.7;color:var(--muted);margin:var(--sp-xs) 0 0}
 
 .art-take{border-left:2px solid var(--ink);padding:var(--sp-xs) 0 var(--sp-xs) var(--sp-lg);margin:var(--sp-lg) 0}
-.art-take p{margin:0;font-size:clamp(16px,1.7vw,18px);line-height:1.6;color:var(--ink);font-weight:500}
+.art-take p{margin:0;font-size:clamp(16px,1.7vw,18px);line-height:1.7;color:var(--ink);font-weight:500}
 .art-take .art-note-h{margin-bottom:var(--sp-sm)}
 
 /* 사례집 — 우리가 맡았다면 어떻게 측정하는가 */
@@ -287,8 +290,8 @@
   padding:var(--sp-lg);margin:var(--sp-lg) 0}
 .art-measure .art-note-h{margin:0 0 var(--sp-md)}
 .art-measure dl{display:grid;grid-template-columns:116px 1fr;gap:var(--sp-sm) var(--sp-base);margin:0}
-.art-measure dt{font-size:12px;font-weight:500;letter-spacing:.04em;color:var(--faint);padding-top:3px}
-.art-measure dd{margin:0;font-size:15px;line-height:1.65;color:var(--body)}
+.art-measure dt{font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--point);padding-top:3px}
+.art-measure dd{margin:0;font-size:15px;line-height:1.7;color:var(--body)}
 .art-measure dd b{color:var(--ink);font-weight:700}
 @media(max-width:640px){
   .art-measure dl{grid-template-columns:1fr;gap:2px}
@@ -298,8 +301,8 @@
 
 .art-src{font-size:12px;line-height:1.8;color:var(--muted-alt);
   border-top:1px solid var(--hairline);padding-top:var(--sp-base);margin-top:var(--sp-xxl)}
-.art-src b{display:block;font-weight:500;letter-spacing:.1em;text-transform:uppercase;
-  color:var(--faint);margin-bottom:var(--sp-sm)}
+.art-src b{display:block;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--point);margin-bottom:var(--sp-sm)}
 .art-src ol{margin:0;padding-left:var(--sp-lg)}
 .art-src li{margin-bottom:var(--sp-xs)}
 .art-src a{text-decoration:underline;text-underline-offset:2px;text-decoration-color:var(--faint-alt)}
@@ -307,11 +310,11 @@
 
 .art-nav{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-base);
   margin-top:var(--sp-xxl);padding-top:var(--sp-lg);border-top:1px solid var(--hairline)}
-.art-nav a{display:block;padding:var(--sp-base);border:1px solid var(--hairline);
-  border-radius:var(--r-lg);transition:border-color .15s}
-.art-nav a:hover{border-color:var(--faint-alt)}
+.art-nav a{display:block;padding:var(--sp-base);border:1.5px solid var(--hairline);
+  border-radius:var(--r-lg);transition:box-shadow .15s,border-color .15s}
+.art-nav a:hover{border-color:var(--hairline);box-shadow:0 20px 60px rgba(0,0,0,.10)}
 .art-nav small{display:block;font-size:12px;font-weight:500;color:var(--faint);margin-bottom:var(--sp-xs)}
-.art-nav b{font-size:15px;font-weight:600;line-height:1.4;color:var(--ink)}
+.art-nav b{font-size:15px;font-weight:700;line-height:1.4;color:var(--point)}
 .art-nav .nx{text-align:right}
 .art-nav .sp{border:none}
 
@@ -336,7 +339,7 @@
   .insight-side{position:static;max-height:none;overflow:visible;margin-bottom:var(--sp-sm);min-width:0}
   .side-label{display:none}
   .side-nav{display:flex;overflow-x:auto;gap:var(--sp-sm);padding-bottom:var(--sp-sm)}
-  .side-nav>li>a{white-space:nowrap;border:1px solid var(--hairline);border-radius:var(--r-full);
+  .side-nav>li>a{white-space:nowrap;border:1.5px solid var(--hairline);border-radius:var(--r-full);
     padding:var(--sp-md) var(--sp-base)}
   .side-nav>li>a small{display:none}
   .side-nav .side-sub{display:none}
@@ -356,10 +359,10 @@
 .art-answer{border-left:3px solid var(--point);background:var(--surface);
   border-radius:0 var(--r-md) var(--r-md) 0;padding:var(--sp-base) var(--sp-lg);
   margin:0}
-.art-answer p{margin:0;font-size:clamp(16px,1.55vw,18px);line-height:1.6;color:var(--ink)}
+.art-answer p{margin:0;font-size:clamp(16px,1.55vw,18px);line-height:1.7;color:var(--ink)}
 .art-answer strong{font-weight:700}
 .art-take ul{margin:var(--sp-sm) 0 0;padding-left:1.15em}
-.art-take li{margin:0 0 var(--sp-sm);line-height:1.6}
+.art-take li{margin:0 0 var(--sp-sm);line-height:1.7}
 .art-take li:last-child{margin-bottom:0}
 
 /* 사이드바 없는 단독 문서 페이지 — 기본 .insight-shell 은 232px 1fr 2단이라
@@ -371,12 +374,12 @@
   clip:rect(0 0 0 0);white-space:nowrap;border:0}
 .gh-search{display:flex;align-items:center;gap:var(--sp-base);margin:0 0 var(--sp-xl)}
 .gh-search input{flex:1 1 auto;min-width:0;font-family:var(--font);font-size:16px;
-  padding:var(--sp-md) var(--sp-base);border:1px solid var(--hairline);
+  padding:var(--sp-md) var(--sp-base);border:1.5px solid var(--hairline);
   border-radius:var(--r-md);background:var(--canvas);color:var(--ink)}
 .gh-search input:focus{outline:2px solid var(--point);outline-offset:2px;border-color:transparent}
 .gh-count{margin:0;font-size:13px;color:var(--muted-alt);white-space:nowrap}
 .gh-group{margin:0 0 var(--sp-xl)}
-.gh-group h2{margin:0 0 var(--sp-base);font-size:clamp(17px,1.9vw,20px);font-weight:700;color:var(--ink)}
+.gh-group h2{margin:0 0 var(--sp-base);font-size:clamp(17px,1.9vw,20px);font-weight:800;line-height:1.15;letter-spacing:-.03em;color:var(--ink)}
 .gh-group h2 a{text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--faint-alt)}
 .gh-group h2 .g-cnt{font-size:13px;font-weight:500;color:var(--muted-alt);margin-left:6px}
 .gh-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
@@ -398,8 +401,8 @@
 .crumb span{color:var(--faint-alt)}
 
 /* 허브 섹션 제목 — 히어로를 밴드로 바꾸면서 목록 뷰에 제목이 없어졌다 */
-.view-h{margin:0 0 var(--sp-base);font-size:clamp(24px,3vw,34px);font-weight:700;
-  letter-spacing:-.02em;color:var(--ink)}
+.view-h{margin:0 0 var(--sp-base);font-size:clamp(24px,3vw,34px);font-weight:800;
+  line-height:1.15;letter-spacing:-.03em;color:var(--ink)}
 
 /* ============================================================
    본문 시각 자료
@@ -408,9 +411,9 @@
    막대 길이는 --pct (그 차트 안의 최댓값 대비 %) 로 준다.
    ============================================================ */
 .fig{margin:var(--sp-xl) 0;padding:var(--sp-lg);border:1px solid var(--hairline);
-  border-radius:var(--r-lg);background:var(--canvas)}
+  border-radius:var(--r-xl);background:var(--canvas)}
 .fig-cap{margin:0 0 var(--sp-base);font-size:14px;font-weight:700;color:var(--ink);line-height:1.5}
-.fig-note{margin:var(--sp-base) 0 0;font-size:12px;line-height:1.6;color:var(--muted-alt)}
+.fig-note{margin:var(--sp-base) 0 0;font-size:12px;line-height:1.7;color:var(--muted-alt)}
 .fig-note b{color:var(--muted);font-weight:600}
 
 /* 가로 막대 비교 */
@@ -450,13 +453,13 @@
 }
 
 /* 검색 일치 구간 */
-.gh-list mark{background:#F3FF94;color:inherit;padding:0 1px;border-radius:2px}
+.gh-list mark{background:var(--lime);color:inherit;padding:0 1px;border-radius:2px}
 
 /* 검색 결과의 정의 — 전체 목록에서는 감추고 검색 중일 때만 펼친다.
    이름만 보여 주면 뜻을 알려고 온 사람이 한 번 더 클릭해야 한다. */
-.gh-d{display:none;margin-top:4px;font-size:13px;line-height:1.6;color:var(--body)}
-.gh-list.is-searching a{padding:var(--sp-md);border:1px solid var(--hairline);
-  border-radius:var(--r-md)}
+.gh-d{display:none;margin-top:4px;font-size:13px;line-height:1.7;color:var(--body)}
+.gh-list.is-searching a{padding:var(--sp-md);border:1.5px solid var(--hairline);
+  border-radius:var(--r-lg)}
 .gh-list.is-searching .gh-d{display:block}
 .gh-list.is-searching{grid-template-columns:minmax(0,1fr);gap:var(--sp-sm)}
 
@@ -471,7 +474,7 @@
 .gh-list li.is-weak a{border-style:dashed}
 .gh-list li.is-weak .gh-n::after{content:"설명에서 언급";margin-left:var(--sp-sm);
   font-size:11px;font-weight:500;color:var(--muted-alt);
-  border:1px solid var(--hairline);border-radius:var(--r-full);padding:1px 7px;
+  border:1.5px solid var(--hairline);border-radius:var(--r-full);padding:1px 7px;
   vertical-align:2px}
 
 /* 검색 결과 목록 — 그룹을 풀고 순위대로 세운다 */
@@ -479,5 +482,5 @@
   margin:0 0 var(--sp-xl);padding:0;list-style:none}
 .gh-results.is-searching{display:grid}
 .gh-g{display:inline-block;margin-top:6px;font-size:11px;font-weight:500;
-  color:var(--muted-alt);border:1px solid var(--hairline);
+  color:var(--muted-alt);border:1.5px solid var(--hairline);
   border-radius:var(--r-full);padding:1px 8px}

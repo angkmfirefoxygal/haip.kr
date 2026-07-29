@@ -18,20 +18,20 @@
 
 /* ---------- type roles ---------- */
 .eyebrow{
-  font-size:12px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;
-  color:var(--muted-alt);margin:0 0 var(--sp-base);
+  font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--point);margin:0 0 var(--sp-base);
 }
-.band-navy .eyebrow{color:var(--faint)}
+.band-navy .eyebrow{color:var(--lime)}
 
 .sec-h{
-  font-size:clamp(27px,3.8vw,48px);font-weight:700;line-height:1.2;
-  letter-spacing:-.02em;margin:0 0 var(--sp-lg);color:inherit;
+  font-size:clamp(27px,3.8vw,48px);font-weight:800;line-height:1.15;
+  letter-spacing:-.03em;margin:0 0 var(--sp-lg);color:inherit;
 }
 .sec-lead{
-  font-size:clamp(17px,1.7vw,24px);font-weight:400;line-height:1.31;
+  font-size:18px;font-weight:400;line-height:1.7;
   color:var(--body);max-width:60ch;margin:0 0 var(--sp-xxl);
 }
-.disc{font-size:12px;font-weight:500;color:var(--muted-alt);margin:var(--sp-lg) 0 0}/* ============================================================
+.disc{font-size:12px;font-weight:500;line-height:1.7;color:var(--muted-alt);margin:var(--sp-lg) 0 0}/* ============================================================
    NAV — sticky white, 75px, hairline base
    ============================================================ */
 
@@ -53,56 +53,59 @@
 .steps{border-top:1px solid var(--hairline)}
 .step{display:grid;grid-template-columns:56px 1.15fr 1fr;gap:clamp(14px,2.6vw,40px);
   padding:var(--sp-lg) 0;border-bottom:1px solid var(--hairline);align-items:start}
-.step-n{font-size:12px;font-weight:500;letter-spacing:.1em;color:var(--faint);padding-top:6px}
-.step h3{font-size:clamp(19px,2.1vw,24px);font-weight:700;letter-spacing:-.015em;margin:0 0 var(--sp-sm);color:var(--ink)}
-.step p{margin:0;font-size:16px;line-height:1.5;color:var(--body)}
-.step-out{font-size:14px;line-height:1.6;color:var(--muted-alt);padding-top:6px}/* ============================================================
+.step-n{font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--point);padding-top:6px}
+.step h3{font-size:clamp(19px,2.1vw,24px);font-weight:800;line-height:1.15;letter-spacing:-.03em;margin:0 0 var(--sp-sm);color:var(--ink)}
+.step p{margin:0;font-size:16px;line-height:1.7;color:var(--body)}
+.step-out{font-size:14px;line-height:1.7;color:var(--muted-alt);padding-top:6px}/* ============================================================
    TRACK 딥다이브 (brand story, navy band)
    ============================================================ */
 
 .pipe{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--sp-base);margin-bottom:var(--sp-xxl)}
-.pipe-step{background:var(--slate);border-radius:var(--r-xl);padding:var(--sp-xl)}
+.pipe-step{background:rgba(17,17,17,.18);border-radius:var(--r-xl);padding:var(--sp-xl)}
 .pipe-step:last-child{background:var(--canvas)}
-.pipe-step h4{font-size:12px;font-weight:500;letter-spacing:.12em;color:var(--faint);margin:0 0 var(--sp-base)}
-.pipe-step:last-child h4{color:var(--muted)}
+.pipe-step h4{font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--lime);margin:0 0 var(--sp-base)}
+.pipe-step:last-child h4{color:var(--point)}
 .pipe-step ul{list-style:none;margin:0;padding:0}
-.pipe-step li{font-size:16px;line-height:1.5;padding:var(--sp-xs) 0;color:var(--surface)}
+.pipe-step li{font-size:16px;line-height:1.7;padding:var(--sp-xs) 0;color:rgba(255,255,255,.85)}
 .pipe-step:last-child li{color:var(--body)}
 
-.dash{background:var(--slate);border-radius:var(--r-xl);overflow:hidden}
+.dash{background:rgba(17,17,17,.18);border-radius:var(--r-xl);overflow:hidden}
 .dash-bar{display:flex;align-items:center;gap:var(--sp-sm);padding:var(--sp-base) var(--sp-lg);
-  border-bottom:1px solid rgba(242,245,247,.12);font-size:12px;font-weight:500;letter-spacing:.1em;color:var(--faint-alt)}
-.dot{width:7px;height:7px;border-radius:50%;background:var(--faint)}
-.dash-bar span{margin-left:auto;color:var(--faint)}
-.dash-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(242,245,247,.12)}
-.tile{background:var(--slate);padding:var(--sp-lg)}
-.tile-l{font-size:12px;font-weight:500;letter-spacing:.08em;color:var(--faint);margin:0 0 var(--sp-sm)}
+  border-bottom:1px solid rgba(255,255,255,.15);font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--lime)}
+.dot{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.65)}
+.dash-bar span{margin-left:auto;color:rgba(255,255,255,.65)}
+.dash-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,255,255,.15)}
+.tile{background:rgba(17,17,17,.18);padding:var(--sp-lg)}
+.tile-l{font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--lime);margin:0 0 var(--sp-sm)}
 .tile-v{font-size:clamp(22px,2.6vw,32px);font-weight:800;letter-spacing:-.02em;color:var(--canvas);margin:0;
   font-variant-numeric:tabular-nums}
-.tile-d{font-size:12px;font-weight:500;color:var(--faint-alt);margin:var(--sp-xs) 0 0}
-.chart{padding:var(--sp-lg);border-top:1px solid rgba(242,245,247,.12)}
+.tile-d{font-size:12px;font-weight:500;color:rgba(255,255,255,.85);margin:var(--sp-xs) 0 0}
+.chart{padding:var(--sp-lg);border-top:1px solid rgba(255,255,255,.15)}
 .chart-h{display:flex;justify-content:space-between;font-size:12px;font-weight:500;letter-spacing:.08em;
-  color:var(--faint-alt);margin-bottom:var(--sp-base)}
+  color:rgba(255,255,255,.85);margin-bottom:var(--sp-base)}
 .bars{display:flex;align-items:flex-end;gap:clamp(3px,.7vw,8px);height:132px}
-.bars i{flex:1;background:var(--faint);opacity:.45;border-radius:var(--r-sm) var(--r-sm) 0 0;transition:opacity .2s}
+.bars i{flex:1;background:rgba(255,255,255,.65);opacity:.45;border-radius:var(--r-sm) var(--r-sm) 0 0;transition:opacity .2s}
 .bars i.hi{background:var(--canvas);opacity:1}
-.axis{display:flex;justify-content:space-between;font-size:12px;color:var(--faint);margin-top:var(--sp-sm)}/* ============================================================
+.axis{display:flex;justify-content:space-between;font-size:12px;color:rgba(255,255,255,.65);margin-top:var(--sp-sm)}/* ============================================================
    CTA / CONTACT
    ============================================================ */
 
-.cta-h{font-size:clamp(28px,4.6vw,56px);font-weight:700;line-height:1.2;letter-spacing:-.03em;
+.cta-h{font-size:clamp(28px,4.6vw,56px);font-weight:800;line-height:1.15;letter-spacing:-.03em;
   margin:0 0 var(--sp-lg);max-width:24ch;color:var(--canvas)}
-.cta-h b{color:var(--point-lift);font-weight:inherit}
-.cta-note{font-size:16px;line-height:1.6;color:var(--faint-alt);margin:0 0 var(--sp-xl)}
+.cta-h b{color:var(--lime);font-weight:inherit}
+.cta-note{font-size:18px;line-height:1.7;color:rgba(255,255,255,.85);margin:0 0 var(--sp-xl)}
 .field input,
 .field select,
 .field textarea{
   width:100%;font-family:var(--font);font-size:16px;padding:var(--sp-base);
-  background:var(--slate);border:1px solid rgba(242,245,247,.16);color:var(--canvas);
+  background:rgba(17,17,17,.18);border:1.5px solid rgba(255,255,255,.35);color:var(--canvas);
   border-radius:var(--r-md);
 }
 .field input::placeholder,
-.field textarea::placeholder{color:var(--faint)}/* ============================================================
+.field textarea::placeholder{color:rgba(255,255,255,.65)}
+.field input:focus,
+.field select:focus,
+.field textarea:focus{outline:none;border-color:var(--lime)}/* ============================================================
    FOOTER
    ============================================================ */
 
@@ -205,10 +208,10 @@ section[id]{scroll-margin-top:calc(var(--nav-h) + 16px)}
 }
 
 .svc-table{width:100%;border-collapse:collapse;font-size:14px;min-width:640px}
-.svc-table th{text-align:left;font-size:12px;font-weight:500;letter-spacing:.08em;color:var(--faint);
+.svc-table th{text-align:left;font-size:12px;font-weight:600;letter-spacing:.08em;color:var(--muted);
   padding:var(--sp-md);border-bottom:1px solid var(--hairline);white-space:nowrap}
 .svc-table td{padding:var(--sp-md);border-bottom:1px solid var(--hairline);color:var(--body);
-  line-height:1.6;vertical-align:top}
+  line-height:1.7;vertical-align:top}
 .svc-table td b{color:var(--ink);font-weight:700}
 .svc-table tr:last-child td{border-bottom:none}
 .band-surface .svc-table th,
@@ -217,14 +220,14 @@ section[id]{scroll-margin-top:calc(var(--nav-h) + 16px)}
 /* 자료 다운로드 */
 .dl{display:grid;grid-template-columns:1fr auto;gap:clamp(20px,3vw,40px);align-items:center;
   background:var(--surface);border-radius:var(--r-xl);padding:var(--sp-xxl) var(--sp-xl)}
-.dl h3{font-size:clamp(19px,2.1vw,24px);font-weight:700;letter-spacing:-.015em;margin:0 0 var(--sp-sm);color:var(--ink)}
-.dl p{margin:0;font-size:16px;line-height:1.55;color:var(--body);max-width:56ch}
+.dl h3{font-size:clamp(19px,2.1vw,24px);font-weight:800;line-height:1.15;letter-spacing:-.03em;margin:0 0 var(--sp-sm);color:var(--ink)}
+.dl p{margin:0;font-size:16px;line-height:1.7;color:var(--body);max-width:56ch}
 .dl-meta{display:block;font-size:12px;font-weight:500;color:var(--muted-alt);margin-top:var(--sp-md)}
 
 .svc-note{background:var(--surface);border-radius:var(--r-lg);padding:var(--sp-lg);margin-top:var(--sp-lg)}
 .band-surface .svc-note{background:var(--canvas)}
-.svc-note h4{font-size:12px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;
-  color:var(--faint);margin:0 0 var(--sp-md)}
+.svc-note h4{font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--point);margin:0 0 var(--sp-md)}
 .svc-note ul{margin:0;padding-left:var(--sp-lg);color:var(--body)}
 .svc-note li{font-size:15px;line-height:1.7;margin-bottom:var(--sp-xs)}
 .svc-note li::marker{color:var(--faint)}

@@ -10,18 +10,23 @@
 :root{
   /* color */
   --point:      #0425FF;
-  --point-lift: #6B87FF;
-  --ink:        #0e171f;
+  --point-hover:#0318CC;
+  --lime:       #F3FF94;
+  --ink:        #111111;
+  /* index hero 전용. 히어로의 현행 색을 유지한다. */
   --black:      #000000;
+  --hero-focus: #6B87FF;
   --canvas:     #ffffff;
-  --surface:    #f2f5f7;
-  --slate:      #2a3f4d;
-  --body:       #3e5463;
-  --muted:      #5b7282;
-  --muted-alt:  #7a909e;
-  --faint:      #9fb1bd;
-  --faint-alt:  #c1ccd6;
-  --hairline:   #dce3e8;
+  --surface:    #F7F7F7;
+  --slate:      #666666;
+  --body:       #666666;
+  --muted:      #666666;
+  --muted-alt:  #666666;
+  --faint:      #AAAAAA;
+  --faint-alt:  #AAAAAA;
+  --hairline:   #E8E8E8;
+  --error:      #EF4444;
+  --success:    #22C55E;
   --on-primary: #ffffff;
 
   /* type */
@@ -34,7 +39,7 @@
   --sp-section: clamp(56px, 7vw, 80px);
 
   /* radius */
-  --r-sm:4px; --r-md:8px; --r-lg:16px; --r-xl:32px; --r-full:9999px;
+  --r-sm:12px; --r-md:10px; --r-lg:16px; --r-xl:20px; --r-full:100px;
 
   --pad: clamp(20px, 5vw, 60px);
   --max: 1280px;
@@ -62,10 +67,10 @@ body{
   margin:0;
   font-family:var(--font);
   background:var(--canvas);
-  color:var(--black);
+  color:var(--ink);
   font-size:16px;
   font-weight:400;
-  line-height:1.5;
+  line-height:1.7;
   -webkit-font-smoothing:antialiased;
 }
 /* 한국어는 기본값(word-break:normal)에서 단어 중간이 잘린다.
@@ -78,24 +83,23 @@ a{color:inherit;text-decoration:none}
 
 .wrap{max-width:var(--max);margin:0 auto;padding-inline:var(--pad)}
 .band-navy .sec-lead,
-.band-navy .disc{color:var(--faint-alt)}
+.band-navy .disc{color:rgba(255,255,255,.85)}
 .band-navy :focus-visible,
-.hero :focus-visible,
-.foot :focus-visible{outline-color:var(--point-lift)}
+.foot :focus-visible{outline-color:var(--lime)}
+.hero :focus-visible{outline-color:var(--hero-focus)}
 
 /* ============================================================
    NAV — sticky white, 75px, hairline base
    ============================================================ */
-.nav{position:sticky;top:0;z-index:100;background:var(--canvas);border-bottom:1px solid var(--hairline)}
+.nav{position:sticky;top:0;z-index:100;background:var(--canvas);border-bottom:1px solid var(--hairline);box-shadow:none}
 .nav-in{display:flex;align-items:center;gap:var(--sp-xl);height:var(--nav-h);
   max-width:var(--max);margin:0 auto;padding-inline:var(--pad);position:relative}
 .logo{font-size:19px;font-weight:800;letter-spacing:-.03em;color:var(--ink);line-height:1.1}
-/* 로고 워드마크 — 단색(#0425FF) SVG. 네이비 푸터에서는 대비가 2.34:1 이라 흰색으로 반전한다. */
+/* 로고 워드마크 — 단색(#0425FF) SVG. */
 .logo img{display:block;height:26px;width:auto}
-.foot .logo img{filter:brightness(0) invert(1)}
 .nav-menu{display:flex;align-items:center;gap:var(--sp-xs);margin-left:auto;align-self:stretch}
 .nav-link{
-  font-size:16px;font-weight:600;color:var(--muted);
+  font-size:15px;font-weight:600;color:var(--muted);
   padding:var(--sp-md) var(--sp-base);border-radius:var(--r-sm);
   transition:color .15s;
 }
@@ -104,10 +108,15 @@ a{color:inherit;text-decoration:none}
   display:inline-flex;align-items:center;height:44px;
   padding:var(--sp-md) var(--sp-base);
   background:var(--point);color:var(--on-primary);
-  font-size:16px;font-weight:400;border-radius:var(--r-sm);
-  margin-left:var(--sp-sm);transition:filter .15s;
+  font-size:15px;font-weight:600;border-radius:var(--r-full);
+  margin-left:var(--sp-sm);transition:background .15s;
 }
-.nav-cta:hover{filter:brightness(.92)}
+.nav-cta:hover{background:var(--point-hover)}
+
+@supports (animation-timeline:scroll()){
+  .nav{animation:nav-shadow linear both;animation-timeline:scroll(root);animation-range:0 1px}
+  @keyframes nav-shadow{to{box-shadow:0 1px 24px rgba(0,0,0,.06)}}
+}
 
 /* mega dropdown */
 /* 드롭다운은 링크가 아니라 nav 컨테이너(.nav-in)를 기준으로 배치한다.
@@ -117,14 +126,14 @@ a{color:inherit;text-decoration:none}
 .sub{
   position:absolute;top:100%;right:var(--pad);left:auto;
   background:var(--canvas);border:1px solid var(--hairline);
-  border-radius:var(--r-lg);padding:var(--sp-sm);
+  border-radius:var(--r-xl);padding:var(--sp-sm);
   width:min(400px,calc(100% - var(--pad) * 2));display:grid;grid-template-columns:1fr;gap:2px;
   opacity:0;visibility:hidden;transform:translateY(-6px);
   transition:opacity .18s,transform .18s,visibility .18s;
 }
 .has-sub:hover .sub,
 .has-sub:focus-within .sub{opacity:1;visibility:visible;transform:none}
-.sub a{display:block;padding:var(--sp-md) var(--sp-base);border-radius:var(--r-md)}
+.sub a{display:block;padding:var(--sp-md) var(--sp-base);border-radius:var(--r-sm)}
 .sub a:hover{background:var(--surface)}
 .sub b{display:block;font-size:16px;font-weight:700;color:var(--ink)}
 .sub small{display:block;font-size:12px;font-weight:400;color:var(--muted);margin-top:2px;line-height:1.45}
@@ -132,13 +141,13 @@ a{color:inherit;text-decoration:none}
 /* ============================================================
    FOOTER
    ============================================================ */
-.foot{background:var(--ink);color:var(--faint);padding:var(--sp-xxl) 0 var(--sp-xl);
-  border-top:1px solid rgba(242,245,247,.12)}
+.foot{background:var(--lime);color:rgba(17,17,17,.7);padding:var(--sp-xxl) 0 var(--sp-xl);
+  border-top:1px solid var(--hairline)}
 .foot-in{display:flex;flex-wrap:wrap;gap:var(--sp-lg);justify-content:space-between;align-items:flex-start}
-.foot .logo{color:var(--canvas)}
+.foot .logo{color:var(--point)}
 .foot-nav{display:flex;flex-wrap:wrap;gap:var(--sp-lg);font-size:14px;font-weight:600}
-.foot-nav a:hover{color:var(--canvas)}
-.foot small{display:block;font-size:12px;color:var(--muted-alt);margin-top:var(--sp-lg);line-height:1.9}
+.foot-nav a:hover{color:var(--ink)}
+.foot small{display:block;font-size:12px;color:rgba(17,17,17,.55);margin-top:var(--sp-lg);line-height:1.9}
 
 /* ============================================================
    REVEAL
@@ -165,28 +174,28 @@ html{scroll-behavior:auto}
    @media 오버라이드가 같은 파일에 있어야 순서가 뒤집히지 않는다. */
 /* bands */
 .band-surface{background:var(--surface)}
-.band-navy{background:var(--ink);color:var(--canvas)}
+.band-navy{background:var(--point);color:var(--canvas)}
 
 /* buttons per token spec */
 .btn{
   display:inline-flex;align-items:center;justify-content:center;
   height:55px;padding:var(--sp-base) var(--sp-xl);
-  font-size:20px;font-weight:400;border-radius:var(--r-md);
-  background:var(--surface);color:var(--body);border:1px solid var(--surface);
+  font-size:15px;font-weight:600;border-radius:var(--r-full);
+  background:var(--surface);color:var(--body);border:1.5px solid var(--hairline);
   transition:background .15s,color .15s;cursor:pointer;
 }
 .btn:hover{background:var(--hairline);border-color:var(--hairline)}
 .btn-primary{
   display:inline-flex;align-items:center;justify-content:center;
   height:55px;padding:var(--sp-base) var(--sp-xl);
-  background:var(--point);color:var(--on-primary);border:1px solid var(--point);
-  font-size:20px;font-weight:400;border-radius:var(--r-md);cursor:pointer;
-  font-family:var(--font);transition:filter .15s;
+  background:var(--point);color:var(--on-primary);border:1.5px solid var(--point);
+  font-size:15px;font-weight:600;border-radius:var(--r-full);cursor:pointer;
+  font-family:var(--font);transition:background .15s;
 }
-.btn-primary:hover{filter:brightness(.92)}
+.btn-primary:hover{background:var(--point-hover);border-color:var(--point-hover)}
 @media(max-width:640px){
   .btn,
-.btn-primary{width:100%;font-size:18px}
+.btn-primary{width:100%;font-size:15px}
 }
 
 /* ---------- 밴드, 버튼 (공용 컴포넌트) ----------
@@ -194,8 +203,8 @@ html{scroll-behavior:auto}
 
 /* 앞서 base 로 올릴 때 services/404 에만 있어 빠진 규칙 */
 .btns{display:flex;flex-wrap:wrap;gap:var(--sp-md);margin-top:var(--sp-xl)}
-.btn.ghost{background:transparent;color:var(--surface);border:1px solid var(--surface)}
-.btn.ghost:hover{background:rgba(242,245,247,.12)}
+.btn.ghost{background:transparent;color:var(--canvas);border:1.5px solid rgba(255,255,255,.85)}
+.btn.ghost:hover{background:rgba(255,255,255,.12)}
 
 /* ============================================================
    페이지 전환 — Cross-document View Transitions
