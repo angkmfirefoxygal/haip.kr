@@ -15,15 +15,30 @@ DIST = os.path.join(SRC, 'dist')
 # 루트 + insight/ 하위까지 훑는다.
 SKIP = {'dist', 'docs', 'tools', 'partials', '.git', '.wrangler', '.cf-dist'}
 
+# 검색엔진 소유확인 파일 — 네이버 서치어드바이저와 구글 서치콘솔이 발급하는
+# naver<해시>.html, google<해시>.html 같은 파일이다. 겉모습은 HTML 이지만
+# 페이지가 아니다. 발급된 내용이 한 바이트라도 달라지면 확인이 실패하므로
+# 주석 제거와 partials 동기화 대상에서 빼고 원본을 그대로 dist 로 옮긴다.
+# 사이트맵 검사에서도 빠진다 (색인 대상이 아니다).
+VERIFY = re.compile(
+    r'^(naver[0-9a-z]{8,}\.html|google[0-9a-z]{8,}\.html'
+    r'|BingSiteAuth\.xml|yandex_[0-9a-z]+\.html)$', re.I)
+
 
 def _pages():
     out = []
     for root, dirs, files in os.walk(SRC):
         dirs[:] = [d for d in dirs if d not in SKIP and not d.startswith(('_bk_', '.'))]
         for f in files:
-            if f.endswith('.html'):
+            if f.endswith('.html') and not VERIFY.match(f):
                 out.append(os.path.relpath(os.path.join(root, f), SRC).replace(os.sep, '/'))
     return sorted(out)
+
+
+def _verify_files():
+    """루트에 놓인 소유확인 파일 목록."""
+    return sorted(f for f in os.listdir(SRC)
+                  if os.path.isfile(os.path.join(SRC, f)) and VERIFY.match(f))
 
 
 PAGES = _pages()
@@ -369,6 +384,10 @@ def main():
         else:
             shutil.copy2(src, os.path.join(DIST, name))
             print('  %-24s 그대로 복사' % name)
+
+    for name in _verify_files():
+        shutil.copy2(os.path.join(SRC, name), os.path.join(DIST, name))
+        print('  %-24s 소유확인 파일, 원본 그대로 복사' % name)
 
     # 남은 주석이 없는지 확인
     # 검사 대상은 주석을 걷어낸 html/css/js 뿐이다. robots.txt 의 `Disallow: /*?q=`
