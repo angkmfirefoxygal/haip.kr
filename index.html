@@ -13,11 +13,12 @@
      지우면 소유확인이 풀려 서치어드바이저·서치콘솔 데이터가 끊긴다. 등록 후에도 남겨 둔다.
      네이버 서치어드바이저 https://searchadvisor.naver.com  (2026-08-11 등록) -->
 <meta name="naver-site-verification" content="2d3e6344fefc89bccb05c4805d6bc02d60be94d4">
-<!-- 구글 서치콘솔 https://search.google.com/search-console
-     URL 접두어 방식으로 등록하면 발급되는 값을 아래에 채우고 주석을 풀면 된다.
-     도메인 속성 방식을 고르면 메타태그 대신 가비아에 DNS TXT 를 넣어야 한다.
-<meta name="google-site-verification" content="여기에 발급값">
--->
+<!-- 구글 서치콘솔은 여기 메타태그가 아니라 DNS 로 확인한다.
+     2026-08-11 도메인 속성(haip.kr)으로 등록 — 가비아 DNS 에 TXT 레코드가 있다:
+       TXT  @  google-site-verification=YAOG2vr_ZNvLWOdhHmyFzT86yNBvx6XL98oIeSdSaDU
+     그 레코드를 지우면 속성이 해제된다. 다른 TXT(SPF 등)를 추가할 때는
+     이 줄을 남겨 두고 새 줄을 더한다 — TXT 는 여러 개 공존한다.
+     도메인 속성이라 www 와 http 도 같은 속성에 함께 잡힌다. -->
 <link rel="canonical" href="https://haip.kr/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="스튜디오 하입">
