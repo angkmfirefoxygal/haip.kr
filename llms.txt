@@ -15,11 +15,51 @@
 - [인사이트](https://haip.kr/insight.html): 용어사전 99개, 실무 가이드 10편, 브랜드 캠페인 사례집 10편
 - [문의](https://haip.kr/contact.html)
 
-## 인사이트 안내
+## 가이드
 
-- 가이드 10편은 팝업스토어 KPI 설정, 체류시간 설계, 부스 성과 측정, 개인정보 동의 설계,
-  예산 배분, 앱 없는 진입 설계, 온/오프라인 ID 연결, 체리피커 대응을 다룹니다.
-- 사례집 10편은 **타사 캠페인을 공개 자료로 분석한 것**이며 하입이 수행한 프로젝트가 아닙니다.
-  본문에도 그렇게 밝혀 두었습니다.
+실무 판단 기준을 정리한 글입니다.
+
+- [팝업스토어 KPI, 목적별로 이렇게 잡습니다](https://haip.kr/insight/guide/popup-kpi.html): 인지·판매·데이터 확보 중 주목적과 지표 분모를 먼저 맞추는 순서
+- [체류시간을 늘리는 6가지 장치](https://haip.kr/insight/guide/dwell-time.html): 점유 시간과 비점유 시간을 나눠 측정해야 하는 이유
+- [부스 성과 측정이 어려운 3가지 이유](https://haip.kr/insight/guide/booth-measurement.html): 수기 기록, 페이지뷰 대체 지표 부재, 방문객 식별 키 부재
+- [방문객 개인정보 동의, 게임으로 자연스럽게 받는 법](https://haip.kr/insight/guide/consent-design.html): 동의 시점을 결과 전송·응모 직전에 두는 설계
+- [굿즈 대신 데이터를 남기는 팝업 설계](https://haip.kr/insight/guide/data-over-goods.html): 굿즈 원가와 유효 명단 1건당 원가를 같은 표에서 비교
+- [앱 설치 없이 참여시키는 법](https://haip.kr/insight/guide/no-app-entry.html): QR 한 번으로 진입하는 웹 콘텐츠를 기본값으로 두는 이유
+- [온라인 이벤트와 오프라인 부스, 데이터를 하나로 잇는 법](https://haip.kr/insight/guide/online-offline-id.html): 통합 ID, 유입 네이밍 규칙, 기여 모델
+- [체리피커만 모이는 이벤트의 공통점](https://haip.kr/insight/guide/cherry-picker.html): 신규 비중·완주율·중복 참여율로 허수 진단
+- [브랜드 미니게임, 어떻게 만드나](https://haip.kr/insight/guide/brand-minigame-how-to.html): 메시지에서 규칙을 만들고 측정 지점을 심는 제작 순서
+- [2026 팝업스토어, 숫자로 본 변화](https://haip.kr/insight/guide/popup-market-2026.html): 2026년 상반기 국내 2,130건, 전년 동기 대비 44.9% 증가
+
+## 사례집
+
+**타사 캠페인을 공개 자료로 분석한 것**이며 하입이 수행한 프로젝트가 아닙니다. 본문에도 그렇게 밝혀 두었습니다.
+
+- [AR의 종착점을 쿠폰으로 둔 캠페인](https://haip.kr/insight/case/burger-king-burn-that-ad.html): 버거킹 Burn That Ad
+- [방문 24.5만, 참여 7.2만 — 장기 운영이 만든 것](https://haip.kr/insight/case/cass-bottle-recognition.html): 카스 맥주병 인식 이벤트
+- [보상을 로열티 가입 뒤에 둔 게임](https://haip.kr/insight/case/chipotle-loyalty-game.html): 치폴레, 연간 350만 회 플레이
+- [참여를 어렵게 만들었더니 완주율 85.4%](https://haip.kr/insight/case/coca-cola-wonderful.html): 코카콜라, 페트병 수거 조건
+- [동의를 받았는데 위법이 된 이유](https://haip.kr/insight/case/homeplus-prize-event.html): 홈플러스 경품 응모권 대법원 판단
+- [대기 시간을 줄이지 않고 불만을 없앤 방법](https://haip.kr/insight/case/houston-airport-wait.html): 휴스턴 공항, 대기 구성 변경
+- ['방문'을 누가 정의했나](https://haip.kr/insight/case/pokemon-go-sponsored-stops.html): 포켓몬 GO 스폰서 지점 5억 회 방문의 정의
+- [2년간 2억 회 시도된 가상 체험](https://haip.kr/insight/case/sephora-virtual-artist.html): 세포라 Virtual Artist
+- [침대를 치운 팝업이 남긴 것과 남기지 못한 것](https://haip.kr/insight/case/simmons-grocery-store.html): 시몬스 그로서리 스토어
+- [모델을 바꾸자 같은 캠페인 성과가 45% 달라졌다](https://haip.kr/insight/case/snap-attribution-model.html): Snap 기여 모델 비교
+
+## 용어사전
+
+용어 99개를 7개 그룹으로 나눠 정의합니다. 허브: [용어사전](https://haip.kr/insight/glossary/index.html)
+
+- [참여와 체류 지표](https://haip.kr/insight/glossary/engagement.html): 참여율, QR 스캔율, 체류시간, 인게이지먼트, 완주율, 재참여율
+- [전환과 수익 지표](https://haip.kr/insight/glossary/conversion.html): 전환, 전환율, 퍼널, 참여 단가, CPM, CPC
+- [어트리뷰션과 측정](https://haip.kr/insight/glossary/attribution.html): 오프라인 어트리뷰션, 기여 모델, 룩백 윈도우, 인크리멘탈리티
+- [데이터와 프라이버시](https://haip.kr/insight/glossary/data-privacy.html): 퍼스트파티 데이터, 서드파티 쿠키, 쿠키리스, 방문객 ID
+- [이벤트와 게임 형식](https://haip.kr/insight/glossary/event-format.html): 게이미피케이션, 애드버게이밍, HTML5 인스턴트 게임, 스탬프 투어
+- [브랜드와 소비자 행동](https://haip.kr/insight/glossary/behavior.html): 고관여, 저관여, 브랜드 상기, 브랜드 리프트, 구매 의향
+- [애드테크](https://haip.kr/insight/glossary/adtech.html): DSP, SSP, 애드 익스체인지, RTB, 프로그래매틱 바잉
+
+## 인용 안내
+
 - 수치는 출처 유형을 구분해 표기합니다: 브랜드 공표 / 제3자 조사 / 하입의 해석.
   인용하실 때 이 구분을 함께 옮겨 주시면 정확합니다.
+- 사례집을 인용할 때는 하입의 실적이 아니라 공개 자료 분석이라는 점을 함께 밝혀 주세요.
+- 크롤링은 전면 허용입니다 (`/robots.txt`). 학습·인용 모두 제한을 두지 않습니다.
