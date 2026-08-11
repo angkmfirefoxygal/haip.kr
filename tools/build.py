@@ -6,7 +6,7 @@
 
 사용: python tools/build.py
 """
-import os, re, shutil, sys
+import os, re, shutil, subprocess, sys
 
 # tools/ 안에 있으므로 프로젝트 루트는 한 단계 위다
 SRC = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -122,6 +122,111 @@ def build_page(html):
 
 ACTIVE = {'index': 'index', 'services': 'services', 'insight': 'insight'}
 PARTIALS = ('nav', 'footer', 'schema', 'insight-side', 'insight-crumb')
+
+SITE = 'https://haip.kr/'
+# 사이트맵에 넣지 않는 페이지 — noindex 라서 넣으면 서치콘솔이 경고를 낸다
+NO_INDEX = {'404.html'}
+
+
+DATE = re.compile(r'^\d{4}-\d{2}-\d{2}$')
+
+
+def _doc_dates():
+    """각 문서 JSON-LD 의 dateModified {경로: 'YYYY-MM-DD'}.
+
+    이게 1순위다. git 커밋일은 CSS 토큰 정리처럼 내용과 무관한 커밋에도 움직이는데,
+    Google 은 lastmod 를 '의미 있는 변경' 기준으로 보길 권한다. 문서에 손으로 적은
+    dateModified 가 곧 그 판단이므로 그대로 옮긴다."""
+    pat = re.compile(r'"dateModified"\s*:\s*"([^"]+)"')
+    out, bad = {}, []
+    for name in PAGES:
+        with open(os.path.join(SRC, name), encoding='utf-8') as f:
+            m = pat.search(f.read())
+        if not m:
+            continue
+        # ISO 날짜 뒤에 시각이 붙어 있어도 날짜만 쓴다 (sitemap 은 날짜로 충분)
+        day = m.group(1)[:10]
+        if DATE.match(day):
+            out[name] = day
+        else:
+            bad.append('%s (%s)' % (name, m.group(1)))
+    return out, bad
+
+
+def _git_dates():
+    """추적 중인 파일의 최종 커밋일 {경로: 'YYYY-MM-DD'}.
+    dateModified 가 없는 페이지(홈, 서비스, 인사이트 허브, 문의)의 대체값이다.
+    git 이 없거나 저장소가 아니면 빈 dict 를 돌려준다."""
+    try:
+        r = subprocess.run(['git', '-C', SRC, 'log', '--date=short',
+                            '--pretty=format:@%cd', '--name-only'],
+                           capture_output=True, text=True, timeout=30)
+    except (OSError, subprocess.SubprocessError):
+        return {}
+    if r.returncode != 0:
+        return {}
+    dates, cur = {}, None
+    for line in r.stdout.splitlines():
+        if line.startswith('@'):
+            cur = line[1:]
+        elif line and cur:
+            # git log 는 최신순이므로 처음 본 날짜가 그 파일의 최종 수정일이다
+            dates.setdefault(line, cur)
+    return dates
+
+
+def build_sitemap(xml):
+    """<lastmod> 를 다시 쓰고, URL 목록이 실제 페이지와 맞는지 검사한다.
+    (xml, 오류목록) 을 돌려준다.
+
+    날짜 출처는 순서대로: 문서의 dateModified → git 최종 커밋일 → 소스에 적힌 수기 값.
+    손으로 맞추면 반드시 어긋난다 — 문서를 고쳐 놓고 lastmod 를 그대로 두면
+    크롤러는 '안 바뀐 페이지'로 보고 재방문을 미룬다. 그래서 빌드가 계산한다."""
+    docs, bad_fmt = _doc_dates()
+    git = _git_dates()
+    seen, from_git, kept = [], [], []
+
+    def fix(m):
+        block = m.group(0)
+        loc = re.search(r'<loc>\s*([^<\s]+)\s*</loc>', block)
+        if not loc:
+            return block
+        path = loc.group(1)[len(SITE):] if loc.group(1).startswith(SITE) else loc.group(1)
+        path = path or 'index.html'
+        seen.append(path)
+        day = docs.get(path)
+        if not day:
+            day = git.get(path)
+            if day:
+                from_git.append(path)
+            else:
+                kept.append(path)
+                return block
+        return re.sub(r'<lastmod>[^<]*</lastmod>', '<lastmod>%s</lastmod>' % day, block)
+
+    xml = re.sub(r'<url>.*?</url>', fix, xml, flags=re.S)
+
+    errs = []
+    want = set(PAGES) - NO_INDEX
+    got = set(seen)
+    if len(seen) != len(got):
+        dup = sorted({p for p in seen if seen.count(p) > 1})
+        errs.append('sitemap.xml 에 중복 URL -> %s' % ', '.join(dup))
+    for p in sorted(want - got):
+        errs.append('sitemap.xml 에 빠진 페이지 -> %s' % p)
+    for p in sorted(got - want):
+        errs.append('sitemap.xml 에 없는 페이지 URL -> %s' % p)
+    for b in bad_fmt:
+        errs.append('dateModified 형식이 YYYY-MM-DD 가 아닙니다 -> %s' % b)
+
+    if from_git:
+        print('  %-24s dateModified 없음 → git 커밋일 사용: %s'
+              % ('', ', '.join(sorted(set(from_git)))))
+    if kept:
+        # 새로 만들어 아직 커밋하지 않은 파일이면 정상이다
+        print('  %-24s 날짜 출처 없음 → 수기 값 유지: %s'
+              % ('', ', '.join(sorted(set(kept)))))
+    return xml, errs
 
 
 def rebase(html, depth):
@@ -249,16 +354,30 @@ def main():
     # robots.txt, sitemap.xml, llms.txt 는 웹 루트에 그대로 있어야 한다.
     # dist 로 복사하지 않으면 배포 직후 /robots.txt 가 404 가 되고
     # 사이트맵을 제출할 수 없어 색인 작업 전체가 막힌다.
+    sitemap_errs = []
     for name in ('robots.txt', 'sitemap.xml', 'llms.txt'):
         src = os.path.join(SRC, name)
-        if os.path.exists(src):
+        if not os.path.exists(src):
+            continue
+        if name == 'sitemap.xml':
+            with open(src, encoding='utf-8') as f:
+                xml, sitemap_errs = build_sitemap(f.read())
+            with open(os.path.join(DIST, name), 'w',
+                      encoding='utf-8', newline='\n') as f:
+                f.write(xml)
+            print('  %-24s lastmod 갱신 (%d URL)' % (name, xml.count('<loc>')))
+        else:
             shutil.copy2(src, os.path.join(DIST, name))
             print('  %-24s 그대로 복사' % name)
 
     # 남은 주석이 없는지 확인
+    # 검사 대상은 주석을 걷어낸 html/css/js 뿐이다. robots.txt 의 `Disallow: /*?q=`
+    # 처럼 txt·xml 에는 `/*` 가 정상적으로 들어갈 수 있다.
     leftover = []
     for root, _dirs, files in os.walk(DIST):
         for name in files:
+            if not name.endswith(('.html', '.css', '.js')):
+                continue
             path = os.path.join(root, name)
             with open(path, encoding='utf-8') as f:
                 s = f.read()
@@ -270,6 +389,11 @@ def main():
         print('  경고: 주석이 남은 파일 ->', leftover)
         return 1
     print('  주석 잔여 없음')
+    if sitemap_errs:
+        for e in sitemap_errs:
+            print('  오류: ' + e, file=sys.stderr)
+        return 1
+    print('  sitemap 정합성 확인 (%d 페이지)' % len(set(PAGES) - NO_INDEX))
     return 0
 
 
