@@ -1,59 +1,29 @@
 # haip.kr
 #
-# 2026년 기준으로 "학습용 크롤러"와 "검색, 인용용 크롤러"가 분리돼 있다.
-# 아래는 인용은 허용하고 학습은 거부하는 구성이다.
+# 정책: 전면 허용. 검색 크롤러, 답변 엔진 인용 크롤러, AI 학습 크롤러를
+# 구분하지 않고 모두 통과시킨다.
 #
-# 주의 — 이건 정책 선택이다. 2025년 12월 Rutgers, Wharton 조사는 AI 크롤러를
-# 차단한 퍼블리셔가 트래픽 23.1% 감소를 겪으면서도 인용률은 뚜렷이 줄이지
-# 못했다고 보고했다. 학습 차단의 비용은 확실하고 편익은 불확실하다.
-# 학습도 허용하려면 아래 "학습 크롤러" 블록만 지우면 된다.
+# 근거 — 2025년 12월 Rutgers, Wharton 조사는 AI 크롤러를 차단한 퍼블리셔가
+# 트래픽 23.1% 감소를 겪으면서도 인용률은 뚜렷이 줄이지 못했다고 보고했다.
+# 차단의 비용은 확실하고 편익은 불확실하다. 여기 콘텐츠(가이드, 사례집,
+# 용어사전)는 그 자체가 영업 자산이라 노출 최대화가 목표다.
+#
+# 다시 학습만 막으려면 아래 블록의 주석을 풀면 된다.
+# User-agent: GPTBot
+# Disallow: /
+# User-agent: ClaudeBot
+# Disallow: /
+# User-agent: Google-Extended
+# Disallow: /
+# User-agent: CCBot
+# Disallow: /
 
-# --- 답변 엔진 인용 허용 (닫지 말 것) ---
-User-agent: Googlebot
-Allow: /
-
-User-agent: Bingbot
-Allow: /
-
-User-agent: OAI-SearchBot
-Allow: /
-
-User-agent: ChatGPT-User
-Allow: /
-
-User-agent: Claude-SearchBot
-Allow: /
-
-User-agent: Claude-User
-Allow: /
-
-User-agent: PerplexityBot
-Allow: /
-
-User-agent: Yeti
-Allow: /
-
-# --- 학습 크롤러 (정책 선택, 이 블록만 지우면 학습도 허용) ---
-User-agent: GPTBot
-Disallow: /
-
-User-agent: ClaudeBot
-Disallow: /
-
-User-agent: anthropic-ai
-Disallow: /
-
-User-agent: Google-Extended
-Disallow: /
-
-User-agent: CCBot
-Disallow: /
-
-User-agent: Bytespider
-Disallow: /
-
-# --- 그 외 ---
 User-agent: *
 Allow: /
+
+# 크롤 예산 낭비 방지 — 용어사전 검색 결과(?q=)는 원문과 같은 내용이다.
+# canonical 로도 정리되지만 굳이 긁을 필요가 없다.
+# Allow: / 보다 패턴이 길어서 이 규칙이 이긴다.
+Disallow: /*?q=
 
 Sitemap: https://haip.kr/sitemap.xml
