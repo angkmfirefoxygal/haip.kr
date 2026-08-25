@@ -88,8 +88,6 @@
 .core-head{grid-template-columns:1fr;gap:var(--sp-lg)}
 }
 @media(max-width:640px){
-  .nav-in .logo{flex:none}
-  .nav-menu::-webkit-scrollbar{display:none}
   .probs,
 .posts,
 .pipe,

@@ -25,6 +25,42 @@
     });
   })();
 
+  /* ---- 모바일 메뉴 ----
+     900px 이하에서만 토글이 보인다 (css/base.css 의 @media 와 같은 경계).
+     패널의 표시 여부는 .nav[data-menu="open"] 이 정하고, 여기서는 상태만 옮긴다. */
+  (function(){
+    var nav = document.querySelector('.nav');
+    var btn = nav && nav.querySelector('.nav-toggle');
+    if(!btn) return;
+    var wide = window.matchMedia('(min-width:901px)');
+
+    function set(open){
+      nav.setAttribute('data-menu', open ? 'open' : 'closed');
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      btn.setAttribute('aria-label', open ? '메뉴 닫기' : '메뉴 열기');
+    }
+    set(false);
+
+    btn.addEventListener('click', function(){
+      set(btn.getAttribute('aria-expanded') !== 'true');
+    });
+
+    /* 패널 밖을 누르면 닫는다 — 메뉴를 열어 둔 채 본문을 누르는 흐름이 자연스럽다 */
+    document.addEventListener('click', function(e){
+      if(nav.getAttribute('data-menu') === 'open' && !nav.contains(e.target)) set(false);
+    });
+
+    document.addEventListener('keydown', function(e){
+      if(e.key === 'Escape' && nav.getAttribute('data-menu') === 'open'){ set(false); btn.focus(); }
+    });
+
+    /* 폭이 넓어지면 CSS 상 패널이 사라지므로 상태도 되돌린다 —
+       안 되돌리면 다시 좁혔을 때 열린 채로 나타난다. */
+    function onWide(){ if(wide.matches) set(false); }
+    if(wide.addEventListener) wide.addEventListener('change', onWide);
+    else wide.addListener(onWide);
+  })();
+
   /* ---- 스크롤 리빌 ---- */
   var rv = document.querySelectorAll('.rv');
   if(reduce || !('IntersectionObserver' in window)){
