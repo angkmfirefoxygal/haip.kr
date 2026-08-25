@@ -95,8 +95,8 @@ a{color:inherit;text-decoration:none}
 .nav-in{display:flex;align-items:center;gap:var(--sp-xl);height:var(--nav-h);
   max-width:var(--max);margin:0 auto;padding-inline:var(--pad);position:relative}
 .logo{font-size:19px;font-weight:800;letter-spacing:-.03em;color:var(--ink);line-height:1.1}
-/* 로고 워드마크 — 단색(#0425FF) SVG. */
-.logo img{display:block;height:26px;width:auto}
+/* 로고 락업 — 마크(#0425FF) + 워드마크(black) SVG, 가로 비율 339:43. */
+.logo img{display:block;height:18px;width:auto}
 .nav-menu{display:flex;align-items:center;gap:var(--sp-xs);margin-left:auto;align-self:stretch}
 .nav-link{
   font-size:15px;font-weight:600;color:var(--muted);
