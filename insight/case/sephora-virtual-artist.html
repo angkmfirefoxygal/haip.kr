@@ -39,8 +39,14 @@
       "legalName": "하입",
       "alternateName": ["Studio HaiP", "HaiP", "하입", "하입 스튜디오", "하입 HaiP"],
       "url": "https://haip.kr/",
-      "logo": "https://haip.kr/assets/haip-logo.svg",
-      "image": "https://haip.kr/assets/og-image.jpg",
+      "logo": { "@id": "https://haip.kr/#logo" },
+      "image": [
+        { "@id": "https://haip.kr/#og-image" },
+        { "@id": "https://haip.kr/#logo" },
+        { "@id": "https://haip.kr/#image-catch" },
+        { "@id": "https://haip.kr/#image-keep" },
+        { "@id": "https://haip.kr/#image-track" }
+      ],
       "description": "인터랙티브 이벤트 설계와 오프라인 캠페인 퍼포먼스 트래킹을 제공하는 서울 기반 스튜디오. 참여형 웹 콘텐츠 제작부터 방문객 ID 발급, 전환 측정, CRM 이관까지 담당합니다.",
       "address": {
         "@type": "PostalAddress",
@@ -82,6 +88,71 @@
       "alternateName": ["Studio HaiP", "HaiP", "하입"],
       "publisher": { "@id": "https://haip.kr/#organization" },
       "inLanguage": "ko-KR"
+    },
+    {
+      "@type": "ImageObject",
+      "@id": "https://haip.kr/#logo",
+      "url": "https://haip.kr/assets/haip-logo.svg",
+      "contentUrl": "https://haip.kr/assets/haip-logo.svg",
+      "width": 157,
+      "height": 79,
+      "caption": "스튜디오 하입 (Studio HaiP) 로고"
+    },
+    {
+      "@type": "ImageObject",
+      "@id": "https://haip.kr/#og-image",
+      "url": "https://haip.kr/assets/og-image.jpg",
+      "contentUrl": "https://haip.kr/assets/og-image.jpg",
+      "width": 1200,
+      "height": 630,
+      "caption": "스튜디오 하입 (HaiP) — 게임으로 붙잡고, 브랜드로 남기고, 데이터로 증명합니다.",
+      "creditText": "스튜디오 하입",
+      "copyrightNotice": "스튜디오 하입",
+      "license": "https://haip.kr/",
+      "acquireLicensePage": "https://haip.kr/contact.html",
+      "creator": { "@id": "https://haip.kr/#organization" }
+    },
+    {
+      "@type": "ImageObject",
+      "@id": "https://haip.kr/#image-catch",
+      "url": "https://haip.kr/assets/haip-interactive-event-game.webp",
+      "contentUrl": "https://haip.kr/assets/haip-interactive-event-game.webp",
+      "width": 740,
+      "height": 444,
+      "caption": "스튜디오 하입이 제작한 참여형 브랜드 이벤트 웹게임 화면",
+      "creditText": "스튜디오 하입",
+      "copyrightNotice": "스튜디오 하입",
+      "license": "https://haip.kr/",
+      "acquireLicensePage": "https://haip.kr/contact.html",
+      "creator": { "@id": "https://haip.kr/#organization" }
+    },
+    {
+      "@type": "ImageObject",
+      "@id": "https://haip.kr/#image-keep",
+      "url": "https://haip.kr/assets/haip-brand-experience-content.webp",
+      "contentUrl": "https://haip.kr/assets/haip-brand-experience-content.webp",
+      "width": 740,
+      "height": 444,
+      "caption": "스튜디오 하입이 제작한 브랜드 체험 콘텐츠 — 브랜드 미니게임 화면",
+      "creditText": "스튜디오 하입",
+      "copyrightNotice": "스튜디오 하입",
+      "license": "https://haip.kr/",
+      "acquireLicensePage": "https://haip.kr/contact.html",
+      "creator": { "@id": "https://haip.kr/#organization" }
+    },
+    {
+      "@type": "ImageObject",
+      "@id": "https://haip.kr/#image-track",
+      "url": "https://haip.kr/assets/haip-performance-tracking-dashboard.webp",
+      "contentUrl": "https://haip.kr/assets/haip-performance-tracking-dashboard.webp",
+      "width": 740,
+      "height": 444,
+      "caption": "스튜디오 하입 퍼포먼스 트래킹 대시보드 — 오프라인 캠페인 참여·전환 측정 화면",
+      "creditText": "스튜디오 하입",
+      "copyrightNotice": "스튜디오 하입",
+      "license": "https://haip.kr/",
+      "acquireLicensePage": "https://haip.kr/contact.html",
+      "creator": { "@id": "https://haip.kr/#organization" }
     }
   ]
 }
@@ -97,6 +168,7 @@
   "description": "세포라는 가상 메이크업 체험의 사용자, 선택 색상, 구매 기록을 계정에 연결했습니다. 2년간 2억 회의 시도가 고객별 취향 데이터로 축적된 구조를 살펴봅니다.",
   "url": "https://haip.kr/insight/case/sephora-virtual-artist.html",
   "inLanguage": "ko-KR",
+  "image": "https://haip.kr/assets/og-image.jpg",
   "datePublished": "2026-07-27",
   "dateModified": "2026-07-28",
   "author": {

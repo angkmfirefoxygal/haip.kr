@@ -51,8 +51,14 @@
       "legalName": "하입",
       "alternateName": ["Studio HaiP", "HaiP", "하입", "하입 스튜디오", "하입 HaiP"],
       "url": "https://haip.kr/",
-      "logo": "https://haip.kr/assets/haip-logo.svg",
-      "image": "https://haip.kr/assets/og-image.jpg",
+      "logo": { "@id": "https://haip.kr/#logo" },
+      "image": [
+        { "@id": "https://haip.kr/#og-image" },
+        { "@id": "https://haip.kr/#logo" },
+        { "@id": "https://haip.kr/#image-catch" },
+        { "@id": "https://haip.kr/#image-keep" },
+        { "@id": "https://haip.kr/#image-track" }
+      ],
       "description": "인터랙티브 이벤트 설계와 오프라인 캠페인 퍼포먼스 트래킹을 제공하는 서울 기반 스튜디오. 참여형 웹 콘텐츠 제작부터 방문객 ID 발급, 전환 측정, CRM 이관까지 담당합니다.",
       "address": {
         "@type": "PostalAddress",
@@ -94,6 +100,71 @@
       "alternateName": ["Studio HaiP", "HaiP", "하입"],
       "publisher": { "@id": "https://haip.kr/#organization" },
       "inLanguage": "ko-KR"
+    },
+    {
+      "@type": "ImageObject",
+      "@id": "https://haip.kr/#logo",
+      "url": "https://haip.kr/assets/haip-logo.svg",
+      "contentUrl": "https://haip.kr/assets/haip-logo.svg",
+      "width": 157,
+      "height": 79,
+      "caption": "스튜디오 하입 (Studio HaiP) 로고"
+    },
+    {
+      "@type": "ImageObject",
+      "@id": "https://haip.kr/#og-image",
+      "url": "https://haip.kr/assets/og-image.jpg",
+      "contentUrl": "https://haip.kr/assets/og-image.jpg",
+      "width": 1200,
+      "height": 630,
+      "caption": "스튜디오 하입 (HaiP) — 게임으로 붙잡고, 브랜드로 남기고, 데이터로 증명합니다.",
+      "creditText": "스튜디오 하입",
+      "copyrightNotice": "스튜디오 하입",
+      "license": "https://haip.kr/",
+      "acquireLicensePage": "https://haip.kr/contact.html",
+      "creator": { "@id": "https://haip.kr/#organization" }
+    },
+    {
+      "@type": "ImageObject",
+      "@id": "https://haip.kr/#image-catch",
+      "url": "https://haip.kr/assets/haip-interactive-event-game.webp",
+      "contentUrl": "https://haip.kr/assets/haip-interactive-event-game.webp",
+      "width": 740,
+      "height": 444,
+      "caption": "스튜디오 하입이 제작한 참여형 브랜드 이벤트 웹게임 화면",
+      "creditText": "스튜디오 하입",
+      "copyrightNotice": "스튜디오 하입",
+      "license": "https://haip.kr/",
+      "acquireLicensePage": "https://haip.kr/contact.html",
+      "creator": { "@id": "https://haip.kr/#organization" }
+    },
+    {
+      "@type": "ImageObject",
+      "@id": "https://haip.kr/#image-keep",
+      "url": "https://haip.kr/assets/haip-brand-experience-content.webp",
+      "contentUrl": "https://haip.kr/assets/haip-brand-experience-content.webp",
+      "width": 740,
+      "height": 444,
+      "caption": "스튜디오 하입이 제작한 브랜드 체험 콘텐츠 — 브랜드 미니게임 화면",
+      "creditText": "스튜디오 하입",
+      "copyrightNotice": "스튜디오 하입",
+      "license": "https://haip.kr/",
+      "acquireLicensePage": "https://haip.kr/contact.html",
+      "creator": { "@id": "https://haip.kr/#organization" }
+    },
+    {
+      "@type": "ImageObject",
+      "@id": "https://haip.kr/#image-track",
+      "url": "https://haip.kr/assets/haip-performance-tracking-dashboard.webp",
+      "contentUrl": "https://haip.kr/assets/haip-performance-tracking-dashboard.webp",
+      "width": 740,
+      "height": 444,
+      "caption": "스튜디오 하입 퍼포먼스 트래킹 대시보드 — 오프라인 캠페인 참여·전환 측정 화면",
+      "creditText": "스튜디오 하입",
+      "copyrightNotice": "스튜디오 하입",
+      "license": "https://haip.kr/",
+      "acquireLicensePage": "https://haip.kr/contact.html",
+      "creator": { "@id": "https://haip.kr/#organization" }
     }
   ]
 }
@@ -267,7 +338,7 @@
          aria-hidden="true" tabindex="-1"></video>
   <div class="hero-block">
     <h1 class="hero-title">
-      <img src="assets/hero_text.webp" alt="스튜디오 하입 — We Catch. We Keep. We Track."
+      <img src="assets/haip-catch-keep-track.webp" alt="스튜디오 하입 HaiP — We Catch. We Keep. We Track."
            width="736" height="243" fetchpriority="high">
     </h1>
     <p class="hero-lead">스튜디오 하입은 브랜드 캠페인을 위한 웹게임과 현장형 콘텐츠를 만듭니다.<br>기획부터 참여 데이터 정리까지 한 팀이 맡습니다.</p>
@@ -305,7 +376,7 @@
         <p class="core-num">01 CATCH</p>
         <h3 class="core-h">참여형 이벤트 설계</h3>
         <div class="core-thumb">
-          <img src="assets/catch.webp" alt="참여 이벤트 설계 화면 예시" width="740" height="444" loading="lazy">
+          <img src="assets/haip-interactive-event-game.webp" alt="스튜디오 하입이 제작한 참여형 브랜드 이벤트 웹게임 화면" width="740" height="444" loading="lazy">
         </div>
         <p class="core-desc">지나가는 사람을 참여자로 바꿉니다. 앱 설치도 회원가입도 없이, QR 한 번으로 시작되는 웹 이벤트를 설계합니다.</p>
         <ul class="core-tags">
@@ -319,7 +390,7 @@
         <p class="core-num">02 KEEP</p>
         <h3 class="core-h">브랜드 체험 콘텐츠 제작</h3>
         <div class="core-thumb">
-          <img src="assets/keep.webp" alt="브랜드 체험 콘텐츠 화면 예시" width="740" height="444" loading="lazy">
+          <img src="assets/haip-brand-experience-content.webp" alt="스튜디오 하입이 제작한 브랜드 체험 콘텐츠 — 브랜드 미니게임 화면" width="740" height="444" loading="lazy">
         </div>
         <p class="core-desc">브랜드 메시지를 게임 규칙과 화면에 맞게 풀어냅니다. 체류시간과 브랜드 각인을 함께 고려합니다.</p>
         <ul class="core-tags">
@@ -333,7 +404,7 @@
         <p class="core-num">03 TRACK</p>
         <h3 class="core-h">퍼포먼스 트래킹</h3>
         <div class="core-thumb">
-          <img src="assets/track.webp" alt="퍼포먼스 트래킹 화면 예시" width="740" height="444" loading="lazy">
+          <img src="assets/haip-performance-tracking-dashboard.webp" alt="스튜디오 하입 퍼포먼스 트래킹 대시보드 — 오프라인 캠페인 참여·전환 측정 화면" width="740" height="444" loading="lazy">
         </div>
         <p class="core-desc">참여한 방문객을 데이터로 잇습니다. 캠페인이 매출과 리텐션으로 이어졌는지 숫자로 확인하고, 데이터는 브랜드 자산으로 남깁니다.</p>
         <ul class="core-tags">
