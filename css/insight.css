@@ -464,6 +464,9 @@
 /* 앵커로 도착한 용어를 표시한다. 13개 중 어느 것인지 알 수 없으면
    검색해서 찾아온 의미가 없다. */
 .g-item{scroll-margin-top:calc(var(--nav-h) + 24px);border-radius:var(--r-md)}
+/* 본문 소제목 앵커 — sticky nav 에 가리지 않게 */
+.art-body h2[id],
+.art-body h3[id]{scroll-margin-top:calc(var(--nav-h) + 24px)}
 .g-item:target{background:#FBFFDF;box-shadow:0 0 0 10px #FBFFDF}
 .g-item:target dt{color:var(--point)}
 
