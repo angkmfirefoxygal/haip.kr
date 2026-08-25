@@ -3,7 +3,7 @@
   "@context": "https://schema.org",
   "@graph": [
     {
-      "@type": "Organization",
+      "@type": ["Organization", "ProfessionalService"],
       "@id": "https://haip.kr/#organization",
       "name": "스튜디오 하입",
       "legalName": "하입",
@@ -25,6 +25,8 @@
         "addressRegion": "서울특별시",
         "addressCountry": "KR"
       },
+      "hasMap": "https://map.naver.com/p/entry/place/2075144461",
+      "areaServed": { "@type": "Country", "name": "대한민국" },
       "founder": {
         "@type": "Person",
         "name": "김문원",
