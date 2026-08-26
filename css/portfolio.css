@@ -180,7 +180,8 @@ section[id]{scroll-margin-top:calc(var(--nav-h) + 16px)}
 
 @media(max-width:900px){
   .pf-item{grid-template-columns:1fr;gap:var(--sp-lg)}
-  .pf-shot{aspect-ratio:16/9}
+  /* .pf-shot 에 비율을 강제하지 않는다. 폭 100% + 높이 auto 인 이미지를
+     16/9 틀에 넣으면 overflow:hidden 이 아래를 잘라낸다. */
 }
 @media(prefers-reduced-motion:reduce){
   .rv{opacity:1;transform:none}

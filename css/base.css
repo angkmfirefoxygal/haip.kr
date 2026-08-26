@@ -49,6 +49,13 @@
 *,
 *::before,
 *::after{box-sizing:border-box}
+
+/* hidden 속성은 항상 이긴다.
+   브라우저 기본값 [hidden]{display:none} 은 명시도가 낮아, 클래스로 display 를
+   지정한 요소(.form{display:grid} 등)에 el.hidden=true 를 줘도 안 사라진다.
+   페이지 CSS 가 base.css 보다 뒤에 로드되므로 !important 가 있어야 한다. */
+[hidden]{display:none !important}
+
 html{scroll-behavior:smooth}
 
 /* ---------- 스크롤바 ----------
