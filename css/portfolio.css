@@ -129,6 +129,13 @@ section[id]{scroll-margin-top:calc(var(--nav-h) + 16px)}
   font-size:16px;line-height:1.75;color:var(--body);margin:0;
 }
 
+/* 출처가 갈리는 수치에 다는 단서. 사례집과 같은 기준을 쓴다.
+   .pf-desc 다음에 오므로 위쪽 간격만 준다. */
+.pf-note{
+  font-size:13px;line-height:1.7;color:var(--faint);
+  margin:var(--sp-md) 0 0;
+}
+
 /* 성과 — 숫자가 있으면 강조, 없으면 작업 범위를 적는다.
    길이가 제각각이라 가로로 흘리면 읽는 순서가 무너진다. 한 줄에 하나씩 둔다. */
 .pf-kpi{

@@ -14,7 +14,7 @@
 - [홈](https://haip.kr/): 사업 개요(CATCH 참여 설계 / KEEP 브랜드 체험 / TRACK 성과 측정)와 FAQ 14개
 - [서비스](https://haip.kr/services.html): 제작 가능한 콘텐츠 유형 11가지와 유형별로 남는 데이터, 소요기간(기본형 1~2주, 커스텀형 3~5주, AI/AR형 4~6주), 진행 방식 5단계, 성과 증명 구조
 - [포트폴리오](https://haip.kr/portfolio.html): 수행 프로젝트 11건. 아래 '포트폴리오' 절 참조
-- [인사이트](https://haip.kr/insight.html): 용어사전 99개, 실무 가이드 10편, 브랜드 캠페인 사례집 10편
+- [인사이트](https://haip.kr/insight.html): 용어사전 99개, 실무 가이드 10편, 브랜드 캠페인 사례집 11편
 - [문의](https://haip.kr/contact.html)
 
 ## 포트폴리오
@@ -59,6 +59,7 @@
 
 - [AR의 종착점을 쿠폰으로 둔 캠페인](https://haip.kr/insight/case/burger-king-burn-that-ad.html): 버거킹 Burn That Ad
 - [방문 24.5만, 참여 7.2만 — 장기 운영이 만든 것](https://haip.kr/insight/case/cass-bottle-recognition.html): 카스 맥주병 인식 이벤트
+- [전환율 2.0% → 3.5% — 상세페이지에서 바꾼 것](https://haip.kr/insight/case/decore-cafe24-conversion.html): 드코어 카페24 상세페이지 개편. 주간 구매 전환율 2.0% → 3.5%, 결제 진입 세션 33% 증가, 최고 단가 구성비 23.5% → 28.2%
 - [보상을 로열티 가입 뒤에 둔 게임](https://haip.kr/insight/case/chipotle-loyalty-game.html): 치폴레, 연간 350만 회 플레이
 - [참여를 어렵게 만들었더니 완주율 85.4%](https://haip.kr/insight/case/coca-cola-wonderful.html): 코카콜라, 페트병 수거 조건
 - [동의를 받았는데 위법이 된 이유](https://haip.kr/insight/case/homeplus-prize-event.html): 홈플러스 경품 응모권 대법원 판단
