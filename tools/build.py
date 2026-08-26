@@ -135,7 +135,8 @@ def build_page(html):
     return tidy(html)
 
 
-ACTIVE = {'index': 'index', 'services': 'services', 'insight': 'insight'}
+ACTIVE = {'index': 'index', 'services': 'services',
+          'portfolio': 'portfolio', 'insight': 'insight'}
 PARTIALS = ('nav', 'footer', 'schema', 'insight-side', 'insight-crumb')
 
 SITE = 'https://haip.kr/'

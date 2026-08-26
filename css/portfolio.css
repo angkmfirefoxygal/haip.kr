@@ -1,0 +1,176 @@
+/* portfolio.html 고유 스타일 — 공용은 base.css */
+
+/* ============================================================
+   공통 섹션 타입 — 다른 페이지 CSS 와 같은 정의를 쓴다.
+   base.css 로 올리지 않는 것이 이 저장소의 관례라 그대로 따른다.
+   ============================================================ */
+
+.sec{padding:var(--sp-section) 0}
+section[id]{scroll-margin-top:calc(var(--nav-h) + 16px)}
+
+.eyebrow{
+  font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--point);margin:0 0 var(--sp-base);
+}
+.band-navy .eyebrow{color:var(--lime)}
+
+.sec-h{
+  font-size:clamp(27px,3.8vw,48px);font-weight:800;line-height:1.15;
+  letter-spacing:-.03em;margin:0 0 var(--sp-lg);color:inherit;
+}
+.sec-lead{
+  font-size:18px;font-weight:400;line-height:1.7;
+  color:var(--body);max-width:60ch;margin:0 0 var(--sp-xxl);
+}
+
+/* ============================================================
+   HERO
+   ============================================================ */
+
+.pf-hero{
+  padding:calc(var(--nav-h) + clamp(48px,7vw,88px)) 0 clamp(40px,5vw,64px);
+  border-bottom:1px solid var(--hairline);
+}
+.pf-hero h1{
+  font-size:clamp(34px,5.4vw,64px);font-weight:800;line-height:1.16;
+  letter-spacing:-.03em;margin:0 0 var(--sp-lg);color:var(--ink);
+}
+.pf-hero p{
+  font-size:18px;line-height:1.7;color:var(--body);max-width:56ch;margin:0;
+}
+
+/* 분류 바로가기 — 목록이 길어지면 위에서 건너뛸 수 있게 */
+.pf-jump{
+  display:flex;flex-wrap:wrap;gap:var(--sp-sm);margin:var(--sp-xl) 0 0;
+  padding:0;list-style:none;
+}
+.pf-jump a{
+  display:inline-block;padding:8px 16px;border:1px solid var(--hairline);
+  border-radius:var(--r-full);font-size:14px;font-weight:600;
+  color:var(--body);text-decoration:none;transition:border-color .2s,color .2s;
+}
+.pf-jump a:hover,
+.pf-jump a:focus-visible{border-color:var(--point);color:var(--point)}
+
+/* ============================================================
+   프로젝트 카드
+   ------------------------------------------------------------
+   한 건 추가하려면 .pf-item 을 통째로 복사한다. 순서는 최신순.
+   이미지는 .pf-shot 안을 통째로 갈아끼운다 (아래 '이미지' 절 참고).
+   ============================================================ */
+
+.pf-list{
+  display:grid;grid-template-columns:1fr;gap:0;
+  border-top:1px solid var(--hairline);
+}
+.pf-item{
+  display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);
+  gap:clamp(20px,3.4vw,56px);align-items:start;
+  padding:clamp(28px,4vw,52px) 0;
+  border-bottom:1px solid var(--hairline);
+}
+
+/* ---------- 좌: 이미지 ---------- */
+.pf-shot{
+  position:relative;margin:0;border-radius:var(--r-lg);overflow:hidden;
+  background:var(--surface);aspect-ratio:16/10;
+}
+.pf-shot img{
+  display:block;width:100%;height:100%;object-fit:cover;
+}
+/* 이미지가 아직 없는 항목의 자리표시. img 가 들어오면 이 규칙은 안 쓰인다. */
+.pf-shot--empty{
+  display:flex;align-items:center;justify-content:center;
+  border:1px dashed var(--hairline);background:var(--surface);
+}
+.pf-shot--empty span{
+  font-size:13px;font-weight:600;letter-spacing:.02em;color:var(--faint);
+}
+
+/* ---------- 우: 본문 ---------- */
+.pf-body{min-width:0}
+
+.pf-meta{
+  display:flex;flex-wrap:wrap;align-items:center;gap:var(--sp-sm);
+  margin:0 0 var(--sp-md);
+}
+.pf-client{
+  font-size:13px;font-weight:700;letter-spacing:.02em;color:var(--point);
+}
+.pf-year{font-size:13px;font-weight:500;color:var(--faint)}
+
+/* 자체 제작 샘플 배지 — 수주 작업과 섞이지 않게 반드시 붙인다. */
+.pf-tag{
+  display:inline-block;padding:3px 9px;border-radius:var(--r-full);
+  background:var(--surface);border:1px solid var(--hairline);
+  font-size:11px;font-weight:700;letter-spacing:.02em;color:var(--muted);
+}
+
+.pf-item h3{
+  font-size:clamp(21px,2.5vw,29px);font-weight:800;line-height:1.22;
+  letter-spacing:-.03em;margin:0 0 var(--sp-sm);color:var(--ink);
+}
+.pf-sub{
+  font-size:16px;font-weight:500;line-height:1.6;color:var(--muted);
+  margin:0 0 var(--sp-lg);
+}
+.pf-desc{
+  font-size:16px;line-height:1.75;color:var(--body);margin:0;
+}
+
+/* 성과 — 숫자가 있으면 강조, 없으면 작업 범위를 적는다.
+   길이가 제각각이라 가로로 흘리면 읽는 순서가 무너진다. 한 줄에 하나씩 둔다. */
+.pf-kpi{
+  display:grid;gap:var(--sp-sm);
+  margin:0 0 var(--sp-lg);padding:0;list-style:none;
+}
+.pf-kpi li{
+  font-size:15px;line-height:1.6;color:var(--body);
+  padding-left:15px;position:relative;
+}
+.pf-kpi li::before{
+  content:"";position:absolute;left:0;top:.62em;
+  width:5px;height:5px;border-radius:var(--r-full);background:var(--point);
+}
+.pf-kpi b{font-weight:700;color:var(--ink)}
+
+.pf-scope{
+  font-size:14px;line-height:1.7;color:var(--muted-alt);
+  margin:var(--sp-lg) 0 0;padding-top:var(--sp-lg);
+  border-top:1px solid var(--hairline);
+}
+.pf-scope b{font-weight:700;color:var(--body)}
+
+/* ============================================================
+   REVEAL — services.css 와 같은 값
+   ============================================================ */
+
+.rv{opacity:0;transform:translateY(16px);
+  transition:opacity .55s cubic-bezier(.2,.7,.3,1),transform .55s cubic-bezier(.2,.7,.3,1)}
+.rv.in{opacity:1;transform:none}
+
+/* ============================================================
+   CTA
+   ============================================================ */
+
+.cta-h{
+  font-size:clamp(27px,3.6vw,44px);font-weight:800;line-height:1.2;
+  letter-spacing:-.03em;margin:0 0 var(--sp-lg);
+}
+.cta-h b{color:var(--lime);font-weight:800}
+.cta-note{
+  font-size:16px;line-height:1.75;color:var(--faint);
+  max-width:62ch;margin:0 0 var(--sp-xl);
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+
+@media(max-width:900px){
+  .pf-item{grid-template-columns:1fr;gap:var(--sp-lg)}
+  .pf-shot{aspect-ratio:16/9}
+}
+@media(prefers-reduced-motion:reduce){
+  .rv{opacity:1;transform:none}
+}
