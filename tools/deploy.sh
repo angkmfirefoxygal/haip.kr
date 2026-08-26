@@ -31,4 +31,18 @@ sudo nginx -t
 echo "Nginx 재시작 중..."
 sudo systemctl reload nginx
 
+# HTML 은 Cloudflare 엣지에 s-maxage=600 으로 캐시된다 (CLAUDE.md 의 CDN 절 참고).
+# 퍼지 없이 두면 배포 후 최대 10분간 옛 HTML 이 보일 수 있어 배포마다 지운다.
+# CF_API_TOKEN / CF_ZONE_ID 는 EC2 의 ~/.bashrc 등에 export 해둔다 — 레포에는 두지 않는다.
+if [ -n "$CF_API_TOKEN" ] && [ -n "$CF_ZONE_ID" ]; then
+  echo "Cloudflare 캐시 퍼지 중..."
+  curl -s -o /dev/null -w "퍼지 응답 코드: %{http_code}\n" -X POST \
+    "https://api.cloudflare.com/client/v4/zones/$CF_ZONE_ID/purge_cache" \
+    -H "Authorization: Bearer $CF_API_TOKEN" \
+    -H "Content-Type: application/json" \
+    --data '{"purge_everything":true}'
+else
+  echo "CF_API_TOKEN / CF_ZONE_ID 미설정 — Cloudflare 캐시 퍼지를 건너뜁니다."
+fi
+
 echo "배포 완료."
