@@ -71,20 +71,24 @@ section[id]{scroll-margin-top:calc(var(--nav-h) + 16px)}
 }
 
 /* ---------- 좌: 이미지 ----------
-   들어오는 소스가 기기 목업이라 주변이 투명하다. cover 로 채우면 화면이 잘리므로
-   contain 으로 통째로 보여주고, 남는 자리는 surface 로 받는다. */
+   기본은 프레임을 꽉 채운다. 소스를 알파 경계로 잘라낸 뒤 넣기 때문에
+   가로폭을 100% 로 두고 높이를 따라가게 하면 여백도 잘림도 생기지 않는다.
+   고정 aspect-ratio 를 두면 비율이 제각각인 소스에서 레터박스가 생긴다. */
 .pf-shot{
   position:relative;margin:0;border-radius:var(--r-lg);overflow:hidden;
-  background:var(--surface);aspect-ratio:16/10;
-  display:flex;align-items:center;justify-content:center;
+  background:var(--surface);font-size:0;
+}
+.pf-shot img{display:block;width:100%;height:auto}
+
+/* 세로형 소스(드코어 모바일 상세페이지)만 예외.
+   폭을 100% 로 주면 카드가 감당 못 할 만큼 길어져서, 정사각 안에 담아 가운데 둔다. */
+.pf-shot--tall{
+  aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;
   padding:clamp(12px,1.6vw,22px);
 }
-.pf-shot img{
-  display:block;max-width:100%;max-height:100%;
-  width:auto;height:auto;object-fit:contain;
+.pf-shot--tall img{
+  width:auto;height:100%;max-width:100%;object-fit:contain;
 }
-/* 세로형 소스(모바일 상세페이지)는 16/10 안에서 너무 작아진다 */
-.pf-shot--tall{aspect-ratio:1/1}
 /* 이미지가 아직 없는 항목의 자리표시. img 가 들어오면 이 규칙은 안 쓰인다. */
 .pf-shot--empty{
   display:flex;align-items:center;justify-content:center;

@@ -59,6 +59,10 @@
       <image:title>새로페인트 서비스 소개 홈페이지 — 시공 사례와 상담 신청 화면</image:title>
     </image:image>
     <image:image>
+      <image:loc>https://haip.kr/assets/haip-studio-haip-website.webp</image:loc>
+      <image:title>Studio HaiP 공식 홈페이지 — 히어로·FAQ·가이드·인사이트 화면</image:title>
+    </image:image>
+    <image:image>
       <image:loc>https://haip.kr/assets/haip-cass-ai-bottle-recognition.webp</image:loc>
       <image:title>카스 AI 병인식 O2O 이벤트 — 촬영 인증과 리워드 화면</image:title>
     </image:image>
@@ -77,6 +81,10 @@
     <image:image>
       <image:loc>https://haip.kr/assets/haip-scrubdaddy-memory-game.webp</image:loc>
       <image:title>스크럽대디 메모리 카드 게임 — 제품군을 카드로 만든 웹게임 화면</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://haip.kr/assets/haip-kmong-thumbnail-design.webp</image:loc>
+      <image:title>크몽 썸네일 디자인 — 서비스 제품군별 광고 소재 모음</image:title>
     </image:image>
   </url>
   <url>
