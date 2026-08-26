@@ -113,6 +113,9 @@
 .hero-stats,
 .core-cards,
 .fr{grid-template-columns:1fr}
+  /* 모바일에서는 폼이 길어서 55px 전폭 버튼이 과하게 무겁다.
+     터치 목표 최소치(44px)는 지키는 선에서 낮춘다. */
+  #submitBtn{height:48px}
 }
 @media(prefers-reduced-motion:reduce){
   .rv{opacity:1;transform:none}
