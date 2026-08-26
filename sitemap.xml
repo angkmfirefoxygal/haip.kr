@@ -42,6 +42,42 @@
     <lastmod>2026-08-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://haip.kr/assets/haip-decore-cafe24.webp</image:loc>
+      <image:title>드코어 카페24 상세페이지 — 개선한 모바일 구매 화면</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://haip.kr/assets/haip-adcus-website.webp</image:loc>
+      <image:title>ADCUS 공식 홈페이지 — 캠페인 아카이브 화면</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://haip.kr/assets/haip-ensemble-may-website.webp</image:loc>
+      <image:title>앙상블 메이 공식 홈페이지 — 공연 아카이브 화면</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://haip.kr/assets/haip-saero-paint-website.webp</image:loc>
+      <image:title>새로페인트 서비스 소개 홈페이지 — 시공 사례와 상담 신청 화면</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://haip.kr/assets/haip-cass-ai-bottle-recognition.webp</image:loc>
+      <image:title>카스 AI 병인식 O2O 이벤트 — 촬영 인증과 리워드 화면</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://haip.kr/assets/haip-cass-luckydraw.webp</image:loc>
+      <image:title>카스 현장 럭키드로우 사이트 — 추첨 화면과 팝업스토어 현장</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://haip.kr/assets/haip-mango-bar-game.webp</image:loc>
+      <image:title>쫀득 망고바 게임 이벤트 — 제조 과정을 따라가는 웹게임 화면</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://haip.kr/assets/haip-ai-empty-bottle-challenge.webp</image:loc>
+      <image:title>AI 공병 인증 이벤트 — 공병 촬영 인증과 쿠폰 발급 화면</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://haip.kr/assets/haip-scrubdaddy-memory-game.webp</image:loc>
+      <image:title>스크럽대디 메모리 카드 게임 — 제품군을 카드로 만든 웹게임 화면</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://haip.kr/insight.html</loc>

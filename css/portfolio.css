@@ -70,14 +70,21 @@ section[id]{scroll-margin-top:calc(var(--nav-h) + 16px)}
   border-bottom:1px solid var(--hairline);
 }
 
-/* ---------- 좌: 이미지 ---------- */
+/* ---------- 좌: 이미지 ----------
+   들어오는 소스가 기기 목업이라 주변이 투명하다. cover 로 채우면 화면이 잘리므로
+   contain 으로 통째로 보여주고, 남는 자리는 surface 로 받는다. */
 .pf-shot{
   position:relative;margin:0;border-radius:var(--r-lg);overflow:hidden;
   background:var(--surface);aspect-ratio:16/10;
+  display:flex;align-items:center;justify-content:center;
+  padding:clamp(12px,1.6vw,22px);
 }
 .pf-shot img{
-  display:block;width:100%;height:100%;object-fit:cover;
+  display:block;max-width:100%;max-height:100%;
+  width:auto;height:auto;object-fit:contain;
 }
+/* 세로형 소스(모바일 상세페이지)는 16/10 안에서 너무 작아진다 */
+.pf-shot--tall{aspect-ratio:1/1}
 /* 이미지가 아직 없는 항목의 자리표시. img 가 들어오면 이 규칙은 안 쓰인다. */
 .pf-shot--empty{
   display:flex;align-items:center;justify-content:center;
