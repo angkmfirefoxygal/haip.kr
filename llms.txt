@@ -13,9 +13,30 @@
 
 - [홈](https://haip.kr/): 사업 개요(CATCH 참여 설계 / KEEP 브랜드 체험 / TRACK 성과 측정)와 FAQ 14개
 - [서비스](https://haip.kr/services.html): 제작 가능한 콘텐츠 유형 11가지와 유형별로 남는 데이터, 소요기간(기본형 1~2주, 커스텀형 3~5주, AI/AR형 4~6주), 진행 방식 5단계, 성과 증명 구조
-- [포트폴리오](https://haip.kr/portfolio.html): 기획·디자인·개발을 직접 맡은 작업 목록. 반응형 홈페이지, 온·오프라인 인터랙션 이벤트(웹게임·AI 인증·부스 콘텐츠), 디자인 프로젝트
+- [포트폴리오](https://haip.kr/portfolio.html): 수행 프로젝트 11건. 아래 '포트폴리오' 절 참조
 - [인사이트](https://haip.kr/insight.html): 용어사전 99개, 실무 가이드 10편, 브랜드 캠페인 사례집 10편
 - [문의](https://haip.kr/contact.html)
+
+## 포트폴리오
+
+기획·디자인·개발과 측정 설계를 직접 맡은 작업입니다. 각 항목은 페이지 내 앵커로 참조할 수 있습니다.
+
+반응형 홈페이지
+- [드코어 카페24 상세페이지 UI/UX 개선](https://haip.kr/portfolio.html#w-decore): 2025, 드코어. 주간 구매 전환율 2.0% → 3.5% (75% 증가), 결제 진입 세션 33% 증가
+- [ADCUS 공식 홈페이지](https://haip.kr/portfolio.html#w-adcus): 2026, ADCUS. 30년 광고 캠페인 이력 아카이빙, 인터랙티브 모션
+- [앙상블 메이 공식 홈페이지](https://haip.kr/portfolio.html#w-ensemble): 2026, 앙상블 메이. 현악 앙상블 활동 아카이빙, 영상·사진 DB 태깅
+- [새로페인트 서비스 소개 홈페이지](https://haip.kr/portfolio.html#w-saero): 2026, 새로페인트. 5060 고객층 기준 UX, 외부 리뷰 연동, SEO 작업
+- [Studio HaiP 공식 홈페이지](https://haip.kr/portfolio.html#w-haip): 2026, 자사. SEO·GEO 설계로 신규 리드 유입
+
+온·오프라인 인터랙션 이벤트
+- [CASS AI 병인식 O2O 이벤트](https://haip.kr/portfolio.html#e-cass-ai): 2026, OB맥주. 매장 QR 진입 후 병 라벨 촬영 인식, 확률형 리워드. 상세 성과는 [사례집](https://haip.kr/insight/case/cass-bottle-recognition.html) 참조 (방문 24.5만, 참여 7.2만, 참여율 29.4%)
+- [CASS 현장 럭키드로우 사이트](https://haip.kr/portfolio.html#e-cass-draw): 2026, OB맥주. 팝업스토어 실시간 추첨, 동시 1만 명 이상 트래픽 처리
+- [쫀득 망고바 게임 이벤트](https://haip.kr/portfolio.html#e-mango): 2026, 자체 제작 샘플. 누적 플레이 1만 회
+- [AI 공병 인증 이벤트](https://haip.kr/portfolio.html#e-bottle): 2026, 자체 제작 샘플. 공병 인식 모델 정확도 90%, 자사몰 쿠폰 연결
+- [스크럽대디 메모리 카드 게임](https://haip.kr/portfolio.html#e-scrub): 2026, 자체 제작 샘플. 생성형 3D 제품 카드
+
+디자인 프로젝트
+- [크몽 썸네일 디자인](https://haip.kr/portfolio.html#d-kmong): 2026, 자사. 제품군별 콘셉트 기획
 
 ## 가이드
 
