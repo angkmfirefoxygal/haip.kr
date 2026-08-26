@@ -264,6 +264,27 @@ html{scroll-behavior:auto}
 .btn.ghost{background:transparent;color:var(--canvas);border:1.5px solid rgba(255,255,255,.85)}
 .btn.ghost:hover{background:rgba(255,255,255,.12)}
 
+/* 파란 밴드 위에서는 기본 버튼을 반전한다.
+   .band-navy 배경과 .btn-primary 가 둘 다 --point 라, 그대로 두면 같은 색끼리
+   맞닿아 버튼 경계가 사라지고 흰 글자만 떠 있는 것처럼 보인다.
+   해당 위치: index · services · portfolio 의 CTA, contact 의 전송 버튼. */
+.band-navy .btn-primary{
+  background:var(--canvas);color:var(--point);border-color:var(--canvas);
+  transition:background .15s,color .15s,border-color .15s;
+}
+.band-navy .btn-primary:hover{
+  background:var(--lime);color:var(--ink);border-color:var(--lime);
+}
+
+/* 전송 중에는 눌린 상태를 분명히 한다 (contact.js 가 disabled 를 건다) */
+.btn-primary:disabled{
+  background:rgba(255,255,255,.55);color:var(--point);border-color:transparent;
+  cursor:default;
+}
+.band-navy .btn-primary:disabled:hover{
+  background:rgba(255,255,255,.55);color:var(--point);border-color:transparent;
+}
+
 /* ============================================================
    페이지 전환 — Cross-document View Transitions
    문서마다 URL 을 따로 두면(색인, 인용에 필요) 이동할 때마다 전체 화면이
