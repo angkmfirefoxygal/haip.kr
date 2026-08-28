@@ -137,7 +137,7 @@ def build_page(html):
 
 ACTIVE = {'index': 'index', 'services': 'services',
           'portfolio': 'portfolio', 'insight': 'insight'}
-PARTIALS = ('nav', 'footer', 'schema', 'insight-side', 'insight-crumb')
+PARTIALS = ('nav', 'footer', 'schema', 'insight-side', 'insight-crumb', 'pdfgate')
 
 SITE = 'https://haip.kr/'
 # 사이트맵에 넣지 않는 페이지 — noindex 라서 넣으면 서치콘솔이 경고를 낸다

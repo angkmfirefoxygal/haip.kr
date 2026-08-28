@@ -219,7 +219,6 @@
           <a href="services.html#types"><b>콘텐츠 유형 11가지</b><small>참여 흐름과 유형별로 남는 데이터</small></a>
           <a href="services.html#timeline"><b>소요기간 및 포함 범위</b><small>기본형 1~2주, 커스텀형 3~5주, AI/AR형 4~6주</small></a>
           <a href="services.html#track"><b>성과 증명</b><small>방문객 ID 연결부터 CRM 이관까지</small></a>
-          <a href="services.html#download"><b>회사소개서 PDF</b><small>비교 검토와 품의 자료용, 24페이지</small></a>
         </div>
       </div>
       <div class="has-sub">
@@ -238,6 +237,7 @@
           <a href="insight.html#case"><b>사례집</b><small>국내외 브랜드 캠페인에서 배울 구조와 지표</small></a>
         </div>
       </div>
+      <a href="assets/haip-company-profile.pdf?v=3" download="하입(HaiP) 회사소개서.pdf" class="nav-link pdfgate-trigger">회사소개서</a>
       <a href="contact.html" class="nav-cta">문의하기</a>
     </div>
   </div>
@@ -251,20 +251,15 @@
       <p class="eyebrow rv">문의 / Contact</p>
       <div class="cta-grid">
         <div class="rv">
-          <h1 class="cta-h">진행 중인 캠페인에 맞는 <b>제작 범위</b>를 함께 정리합니다.</h1>
+          <h1 class="cta-h" id="ctaHeadline">진행 중인 캠페인에 맞는 <b>제작 범위</b>를 함께 정리합니다.</h1>
           <p class="cta-note">진행 시기와 목적만 알려주셔도 됩니다. 예산이 정해지지 않았거나 포맷을 아직 고르지 못한 단계여도, 어떤 데이터를 남길 수 있는지부터 함께 정리해 드립니다.</p>
           <ul class="meta">
             <li><b>회신</b><span>영업일 기준 1일 내</span></li>
             <li><b>리드타임</b><span>이벤트 게임 1~2주, 커스텀 3~5주, AI/AR 4~6주 <a href="services.html" style="text-decoration:underline;color:var(--canvas)">범위 보기 →</a></span></li>
             <li><b>메일</b><span>haip.office@gmail.com</span></li>
             <li><b>인사이트</b><span><a href="index.html#faq" style="text-decoration:underline;color:var(--canvas)">발주 전 FAQ 먼저 보기 →</a></span></li>
-            <li><b>자료</b><span><a href="assets/haip-company-profile.pdf?v=2" download="하입(HaiP) 회사소개서.pdf" style="text-decoration:underline;color:var(--canvas)">회사소개서 PDF 받기 →</a> <span style="color:var(--faint)">24p, 7.8MB</span></span></li>
+            <li><b>자료</b><span><a href="assets/haip-company-profile.pdf?v=3" download="하입(HaiP) 회사소개서.pdf" class="pdfgate-trigger" style="text-decoration:underline;color:var(--canvas)">회사소개서 PDF 받기 →</a> <span style="color:var(--faint)">29p, 10.5MB</span></span></li>
           </ul>
-
-          <div class="success" id="successBox">
-            <h3>문의가 접수되었습니다</h3>
-            <p>영업일 기준 1일 내로 담당자가 회신드립니다. 확인이 필요하시면 haip.office@gmail.com 로 직접 연락 주셔도 됩니다.</p>
-          </div>
         </div>
 
         <form class="form rv" id="contactForm" action="https://formspree.io/f/xqeorrol" method="POST" novalidate>
@@ -333,7 +328,29 @@
 </footer>
 <!-- /@footer -->
 
+<!-- @pdfgate -->
+<div class="pdfgate" id="pdfGate" hidden>
+  <div class="pdfgate-backdrop" data-pdfgate-close></div>
+  <div class="pdfgate-card" role="dialog" aria-modal="true" aria-labelledby="pdfGateTitle">
+    <button type="button" class="pdfgate-x" data-pdfgate-close aria-label="닫기">×</button>
+    <img src="assets/studiohaipofficial.svg" alt="스튜디오 하입 HaiP" width="169" height="22" class="pdfgate-logo">
+    <h2 id="pdfGateTitle">문서 열람을 위해<br>아래 정보를 입력해주세요.</h2>
+    <form id="pdfGateForm" action="https://formspree.io/f/xdeooonz" method="POST" novalidate>
+      <input type="hidden" name="_subject" value="[HaiP] 회사소개서 다운로드">
+      <div class="pdfgate-field"><input id="pgEmail" name="이메일" type="email" required placeholder="이메일"></div>
+      <div class="pdfgate-field"><input id="pgName" name="성함" required placeholder="성함"></div>
+      <div class="pdfgate-field"><input id="pgCompany" name="기업명" required placeholder="기업명"></div>
+      <div class="pdfgate-field"><input id="pgPhone" name="전화번호" type="tel" required placeholder="전화번호"></div>
+      <label class="pdfgate-consent"><input type="checkbox" id="pgConsent" name="개인정보동의" value="동의" required> 스튜디오 하입, 정보 수집 및 제공 동의</label>
+      <p class="pdfgate-err" id="pgErr" role="alert" hidden></p>
+      <button class="btn-primary" type="submit" id="pgSubmit">확인</button>
+    </form>
+  </div>
+</div>
+<!-- /@pdfgate -->
+
 <script src="js/main.js"></script>
 <script src="js/contact.js"></script>
+<script src="js/pdf-gate.js"></script>
 </body>
 </html>

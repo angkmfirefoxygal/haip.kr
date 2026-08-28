@@ -149,19 +149,22 @@ a{color:inherit;text-decoration:none}
   @keyframes nav-shadow{to{box-shadow:0 1px 24px rgba(0,0,0,.06)}}
 }
 
-/* mega dropdown */
-/* 드롭다운은 링크가 아니라 nav 컨테이너(.nav-in)를 기준으로 배치한다.
-   링크 기준(position:relative + left:0)으로 열면 우측 정렬된 메뉴에서 패널이
-   화면 밖으로 나가 문서 폭이 늘어나고 가로 스크롤이 생긴다. */
+/* mega dropdown — 각 트리거 링크(.has-sub) 기준으로 바로 아래에 연다.
+   맨 오른쪽 항목(마지막 .has-sub)만 position:relative 를 안 줘서, .sub 의 위치 기준이
+   그대로 .nav-in 으로 남는다 — nav-in 오른쪽 패딩에 붙어 화면 밖으로 나가지 않는다.
+   (last-of-type 에도 position:relative 를 주면 .sub 기준이 그 좁은 링크 자신으로
+   바뀌어 버려, 그 오른쪽에 다른 메뉴가 더 있을 때 패널이 엉뚱한 곳에 뜬다.) */
 .has-sub{display:flex;align-items:center;align-self:stretch}
+.has-sub:not(:last-of-type){position:relative}
 .sub{
   position:absolute;top:100%;right:var(--pad);left:auto;
   background:var(--canvas);border:1px solid var(--hairline);
   border-radius:var(--r-xl);padding:var(--sp-sm);
-  width:min(400px,calc(100% - var(--pad) * 2));display:grid;grid-template-columns:1fr;gap:2px;
+  width:min(400px,calc(100vw - var(--pad) * 2));display:grid;grid-template-columns:1fr;gap:2px;
   opacity:0;visibility:hidden;transform:translateY(-6px);
   transition:opacity .18s,transform .18s,visibility .18s;
 }
+.has-sub:not(:last-of-type) .sub{left:0;right:auto}
 .has-sub:hover .sub,
 .has-sub:focus-within .sub{opacity:1;visibility:visible;transform:none}
 .sub a{display:block;padding:var(--sp-md) var(--sp-base);border-radius:var(--r-sm)}
@@ -323,4 +326,44 @@ html{scroll-behavior:auto}
 
 @media(prefers-reduced-motion:reduce){
   @view-transition{ navigation:none }
+}
+
+/* ============================================================
+   PDF 게이트 — 회사소개서 다운로드 전 리드 정보 입력 모달
+   contact.html · services.html 두 곳에서 각각 마크업을 갖는다 (partials 대상 아님).
+   ============================================================ */
+.pdfgate{position:fixed;inset:0;z-index:200;display:flex;align-items:center;justify-content:center;padding:var(--sp-lg)}
+.pdfgate[hidden]{display:none}
+.pdfgate-backdrop{position:absolute;inset:0;background:rgba(14,23,31,.55)}
+.pdfgate-card{
+  position:relative;width:100%;max-width:420px;max-height:calc(100vh - var(--sp-xl));overflow-y:auto;
+  background:var(--canvas);border-radius:var(--r-xl);
+  padding:clamp(28px,4vw,44px) clamp(24px,4vw,36px);
+  box-shadow:0 24px 60px rgba(14,23,31,.28);
+}
+.pdfgate-x{
+  position:absolute;top:var(--sp-lg);right:var(--sp-lg);width:32px;height:32px;
+  border:0;background:transparent;color:var(--faint);font-size:22px;line-height:1;
+  cursor:pointer;border-radius:var(--r-sm);
+}
+.pdfgate-x:hover{background:var(--surface);color:var(--ink)}
+.pdfgate-logo{margin:0 0 var(--sp-xl)}
+.pdfgate-card h2{font-size:22px;font-weight:800;line-height:1.4;letter-spacing:-.02em;margin:0 0 var(--sp-xl);color:var(--ink)}
+.pdfgate-field{position:relative;border-bottom:1.5px solid var(--hairline);margin-bottom:var(--sp-lg);transition:border-color .15s}
+.pdfgate-field input{
+  width:100%;border:0;background:none;font-family:var(--font);font-size:16px;color:var(--ink);
+  padding:var(--sp-sm) var(--sp-lg) var(--sp-sm) 0;
+}
+.pdfgate-field input::placeholder{color:var(--faint)}
+.pdfgate-field input:focus{outline:none}
+.pdfgate-field:focus-within{border-color:var(--point)}
+.pdfgate-field::after{
+  content:"";position:absolute;right:2px;top:16px;width:6px;height:6px;border-radius:50%;background:var(--point);
+}
+.pdfgate-consent{display:block;font-size:12px;line-height:1.6;color:var(--faint);margin:0 0 var(--sp-lg)}
+.pdfgate-consent a{text-decoration:underline}
+.pdfgate-err{font-size:13px;color:var(--error);margin:0 0 var(--sp-md)}
+.pdfgate-card .btn-primary{width:100%}
+@media(max-width:480px){
+  .pdfgate-card{padding:28px 22px}
 }

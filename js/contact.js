@@ -43,8 +43,7 @@ document.querySelectorAll('#typeChips .chip').forEach(function(c){
     }).then(function(res){
       if(!res.ok) throw new Error(res.status);
       form.hidden = true;
-      document.getElementById('successBox').classList.add('show');
-      document.getElementById('successBox').scrollIntoView({behavior:'smooth', block:'center'});
+      document.getElementById('ctaHeadline').textContent = '문의 접수가 완료되었습니다.';
     }).catch(function(){
       btn.disabled = false; btn.textContent = BTN_LABEL;
       fail('전송에 실패했습니다. 잠시 후 다시 시도하시거나 haip.office@gmail.com 으로 보내주세요.');

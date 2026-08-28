@@ -1,0 +1,18 @@
+<div class="pdfgate" id="pdfGate" hidden>
+  <div class="pdfgate-backdrop" data-pdfgate-close></div>
+  <div class="pdfgate-card" role="dialog" aria-modal="true" aria-labelledby="pdfGateTitle">
+    <button type="button" class="pdfgate-x" data-pdfgate-close aria-label="닫기">×</button>
+    <img src="assets/studiohaipofficial.svg" alt="스튜디오 하입 HaiP" width="169" height="22" class="pdfgate-logo">
+    <h2 id="pdfGateTitle">문서 열람을 위해<br>아래 정보를 입력해주세요.</h2>
+    <form id="pdfGateForm" action="https://formspree.io/f/xdeooonz" method="POST" novalidate>
+      <input type="hidden" name="_subject" value="[HaiP] 회사소개서 다운로드">
+      <div class="pdfgate-field"><input id="pgEmail" name="이메일" type="email" required placeholder="이메일"></div>
+      <div class="pdfgate-field"><input id="pgName" name="성함" required placeholder="성함"></div>
+      <div class="pdfgate-field"><input id="pgCompany" name="기업명" required placeholder="기업명"></div>
+      <div class="pdfgate-field"><input id="pgPhone" name="전화번호" type="tel" required placeholder="전화번호"></div>
+      <label class="pdfgate-consent"><input type="checkbox" id="pgConsent" name="개인정보동의" value="동의" required> 스튜디오 하입, 정보 수집 및 제공 동의</label>
+      <p class="pdfgate-err" id="pgErr" role="alert" hidden></p>
+      <button class="btn-primary" type="submit" id="pgSubmit">확인</button>
+    </form>
+  </div>
+</div>

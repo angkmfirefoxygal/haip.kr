@@ -70,14 +70,10 @@
 .consent{display:flex;gap:var(--sp-md);align-items:flex-start;font-size:14px;color:rgba(255,255,255,.85);line-height:1.7}
 .consent input{width:18px;height:18px;margin-top:2px;accent-color:var(--point);flex:0 0 auto}
 .required{color:var(--point)}
-/* 전송 성공 시 contact.js 가 .show 를 붙인다. 이 규칙이 없으면 계속 숨은 채다. */
-.success{display:none;background:var(--success);border-radius:var(--r-xl);padding:var(--sp-xl);margin-top:var(--sp-lg)}
-.success.show{display:block}
 .form-err{margin:var(--sp-sm) 0 0;font-size:14px;line-height:1.7;color:var(--lime)}
-.success h3{font-size:24px;font-weight:700;color:var(--canvas);margin:0 0 var(--sp-sm)}
-.success p{margin:0;color:rgba(255,255,255,.85);font-size:16px;line-height:1.7}
 .cpage{min-height:calc(100vh - var(--nav-h));display:flex;align-items:center}
-.cpage .sec{width:100%}/* ============================================================
+.cpage .sec{width:100%}
+/* ============================================================
    FOOTER
    ============================================================ */
 

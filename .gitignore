@@ -9,3 +9,6 @@ dist/
 
 # 포트폴리오 원본 이미지 (WebP 변환 전). 저장소에 넣지 않는다.
 _src/
+
+# tools/shrink_pdf.py 의존성 (pikepdf, pillow, pdfplumber) 용 venv
+.venv/
