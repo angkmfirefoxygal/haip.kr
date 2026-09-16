@@ -362,6 +362,11 @@ html{scroll-behavior:auto}
 }
 .pdfgate-consent{display:block;font-size:12px;line-height:1.6;color:var(--faint);margin:0 0 var(--sp-lg)}
 .pdfgate-consent a{text-decoration:underline}
+/* 허니팟 — 사람에게는 안 보이고 봇은 채우는 칸. display:none 은 일부 봇이
+   "숨겨진 칸"으로 알아보고 건너뛰므로 화면 밖으로 밀어내는 방식을 쓴다. */
+.pdfgate-hp{position:absolute;left:-9999px;top:0;width:1px;height:1px;overflow:hidden}
+/* min-height 로 자리를 미리 잡는다 — 위젯이 늦게 렌더되며 버튼을 밀지 않게 */
+.pdfgate-turnstile{min-height:65px;margin:0 0 var(--sp-md)}
 .pdfgate-err{font-size:13px;color:var(--error);margin:0 0 var(--sp-md)}
 .pdfgate-card .btn-primary{width:100%}
 @media(max-width:480px){

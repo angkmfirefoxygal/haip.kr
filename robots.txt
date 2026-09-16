@@ -26,4 +26,11 @@ Allow: /
 # Allow: / 보다 패턴이 길어서 이 규칙이 이긴다.
 Disallow: /*?q=
 
+# 회사소개서 게이트. 페이지가 아니라 엔드포인트라 색인 대상이 아니다.
+# 차단의 본체는 여기가 아니다 — robots.txt 는 예의 바른 크롤러에게만 통한다.
+# 실제 차단은 Worker 의 Turnstile 검증(/api/pdf-gate)과 오리진의 공유 시크릿
+# 헤더 검사(/_gated/)가 한다. 이 두 줄은 크롤 예산을 아끼는 용도다.
+Disallow: /api/
+Disallow: /_gated/
+
 Sitemap: https://haip.kr/sitemap.xml

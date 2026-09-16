@@ -409,6 +409,19 @@ def main():
         print('  경고: 주석이 남은 파일 ->', leftover)
         return 1
     print('  주석 잔여 없음')
+
+    # 회사소개서 게이트의 Turnstile 사이트키가 실제 값으로 바뀌었는지.
+    # 플레이스홀더인 채로 배포되면 위젯이 렌더되지 않아 토큰이 안 생기고,
+    # Worker 가 전부 403 으로 막아 다운로드가 통째로 죽는다. 조용히 죽는 종류라
+    # 여기서 잡는다. 키 발급 절차는 tools/worker/README.md.
+    if 'TURNSTILE_SITE_KEY' in open(
+            os.path.join(SRC, 'partials', 'pdfgate.html'), encoding='utf-8').read():
+        print('  오류: partials/pdfgate.html 의 data-sitekey 가 아직 플레이스홀더입니다.',
+              file=sys.stderr)
+        print('        Cloudflare Turnstile 사이트키로 바꾼 뒤 build.py --sync 를 돌리세요.',
+              file=sys.stderr)
+        return 1
+    print('  Turnstile 사이트키 확인')
     if sitemap_errs:
         for e in sitemap_errs:
             print('  오류: ' + e, file=sys.stderr)

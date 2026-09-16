@@ -1,0 +1,18 @@
+name = "haip-pdf-gate"
+main = "pdf-gate.js"
+compatibility_date = "2025-09-01"
+
+# haip.kr 존의 /api/* 만 Worker 가 가로챈다. 나머지 경로는 지금처럼 EC2 로 그대로 간다.
+# zone_name 을 쓰려면 wrangler 가 로그인된 계정에 haip.kr 존이 있어야 한다.
+[[routes]]
+pattern = "haip.kr/api/*"
+zone_name = "haip.kr"
+
+# 관측용 — 실패한 요청 원인을 wrangler tail 로 볼 수 있다.
+[observability]
+enabled = true
+
+# 시크릿 3개는 레포에 두지 않는다. wrangler secret put 으로 넣는다 (README.md 참고).
+#   TURNSTILE_SECRET    Turnstile 위젯의 Secret Key
+#   FORMSPREE_ENDPOINT  https://formspree.io/f/xdeooonz
+#   ORIGIN_GATE_SECRET  nginx /_gated/ 블록과 맞춰야 하는 공유 문자열
